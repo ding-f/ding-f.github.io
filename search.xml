@@ -4,11 +4,24 @@
   
     
     <entry>
+      <title>Archlinux环境变量配置</title>
+      <link href="2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html"/>
+      <url>2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo教程</title>
       <link href="2021/02/16/hexo-jiao-cheng.html"/>
       <url>2021/02/16/hexo-jiao-cheng.html</url>
       
-        <content type="html"><![CDATA[<blockquote><p>来源Hexo官方教材：<br><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a><br>本教程经过博主的精心实验总结而来，比较官网的教材更易于读懂易于操作</p></blockquote><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><h3 id="普通安装"><a href="#普通安装" class="headerlink" title="普通安装"></a>普通安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="进阶安装"><a href="#进阶安装" class="headerlink" title="进阶安装"></a>进阶安装</h3><p>对于熟悉<code>npm</code>的用户, 可以仅局部安装<code>hexo</code>包</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>来源Hexo官方教材：<br><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a><br>本教程经过博主的精心实验总结而来，比较官网的教材更易于读懂易于操作<br>以下操作过程均是在ArchLinux系统中进行，Windows操作系统也可以</p></blockquote><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><h3 id="普通安装-全局安装"><a href="#普通安装-全局安装" class="headerlink" title="普通安装(全局安装)"></a>普通安装(全局安装)</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>以上命令会在/usr/lib/node_modules目录（Nodejs组件安装目录）下安装hexo-cil,即./hexo-cil/,后在./.xprofile中添加环境变量PATH=”$PATH:/usr/lib/node_modules/hexo-cil/node_modules/.bin/“【以上内容为猜测原理】</p></blockquote><h3 id="进阶安装（局部安装）"><a href="#进阶安装（局部安装）" class="headerlink" title="进阶安装（局部安装）"></a>进阶安装（局部安装）</h3><p>对于熟悉<code>npm</code>的用户, 可以仅局部安装<code>hexo</code>包,这个方式是博主使用的。</p><p>首先创建一个目录，在这个目录中执行：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>以上安装成功后可以直接将自己创建的局部安装Hexo文件夹直接移动到/usr/lib/node_modules目录下，即可直接执行<code>npx hexo</code>，或者将其执行文件路径添加至.xprofile中：<code>PATH=&quot;$PATH:/usr/lib/node_modules/hexo-cil/node_modules/.bin/&quot;</code>，再执行<code>source .xprofile</code>,再直接执行<code>hexo</code>即可</p></blockquote><p>安装以后，可以使用以下两种方式执行 <code>Hexo</code>：</p><ul><li><p>局部安装Hexo文件夹直接移动到/usr/lib/node_modules目录下操作：</p>  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx hexo <span class="token operator">&lt;</span>command<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>添加环境变量到.xprofile后操作：</p>  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo <span class="token operator">&lt;</span>command<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ul><h2 id="卸载Hexo（全局卸载）"><a href="#卸载Hexo（全局卸载）" class="headerlink" title="卸载Hexo（全局卸载）"></a>卸载Hexo（全局卸载）</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>如果是局部，直接删除局部安装的Hexo，删除init目录，删除~/.xprofile下的环境变量即可</p></blockquote>]]></content>
       
       
       <categories>
