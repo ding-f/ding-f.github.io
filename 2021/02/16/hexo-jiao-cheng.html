@@ -463,13 +463,13 @@
 <h3 id="生成Hexo站点"><a href="#生成Hexo站点" class="headerlink" title="生成Hexo站点"></a>生成Hexo站点</h3><blockquote>
 <p>首先要大概了解Hexo-cil主要作用是用来生成Hexo站点的，而真正的Hexo站点是<code>Hexo init &lt;folder&gt;</code>，区别在于：</p>
 </blockquote>
-<p><img src="/Hexo/1.png" alt="左为Hexo-cil  右为Hexo站点"></p>
+<p><img src="/hexo/1.png" alt="左为Hexo-cil  右为Hexo站点"></p>
 <p>安装完成后，请执行以下命令，Hexo将会在指定文件夹中新疆所需的文件：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo init <span class="token operator">&lt;</span>folder<span class="token operator">></span>
 <span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>folder<span class="token operator">></span>
 <span class="token function">npm</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>cd到生成目录再进行<code>npm install</code>才能生成Hexo博客管理网站目录：</p>
-<p><img src="/Hexo/2.png" alt="生成站点目录"></p>
+<p><img src="/hexo/2.png" alt="生成站点目录"></p>
 <h2 id="hexo-init-生成文件"><a href="#hexo-init-生成文件" class="headerlink" title="hexo init 生成文件"></a><code>hexo init</code> 生成文件</h2><h3 id="config-yml-Hexo的主配置文件"><a href="#config-yml-Hexo的主配置文件" class="headerlink" title="_config.yml Hexo的主配置文件"></a>_config.yml Hexo的主配置文件</h3><blockquote>
 <p>网站的 配置 信息，您可以在此配置大部分的参数</p>
 </blockquote>
@@ -585,19 +585,19 @@
 <h3 id="scaffolds-文件夹"><a href="#scaffolds-文件夹" class="headerlink" title="scaffolds 文件夹"></a>scaffolds 文件夹</h3><blockquote>
 <p>模版文件夹<br>当您新建文章时，Hexo 会根据 scaffold 来建立文件</p>
 </blockquote>
-<p><img src="/Hexo/3.png" alt="默认生成模板"></p>
+<p><img src="/hexo/3.png" alt="默认生成模板"></p>
 <p>Hexo的模板是指在每次新建的文章文件中默认填充的内容。例如，如果您修改<code>scaffold/post.md</code>中的<code>Front-matter</code>（写文章时不会显示，但会影响比如文章标题的显示、生成时间、标签、分类等…）内容，那么每次新建一篇文章时都会包含这个修改。</p>
 <h3 id="source文件夹"><a href="#source文件夹" class="headerlink" title="source文件夹"></a>source文件夹</h3><blockquote>
 <p>资源文件夹是存放用户资源的地方。除 <code>_posts </code>文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，<strong>而其他文件会被拷贝过去</strong></p>
 </blockquote>
-<p><img src="/Hexo/4.png" alt="source文件夹"></p>
+<p><img src="/hexo/4.png" alt="source文件夹"></p>
 <h3 id="themes文件夹"><a href="#themes文件夹" class="headerlink" title="themes文件夹"></a>themes文件夹</h3><blockquote>
 <p>主题文件夹<br>Hexo 会根据主题来生成静态页面<br>主题下载后将其解压，修改默认名称到此目录，后修改<code>_config.yml</code>文件中<code>theme: &lt;theme folder name&gt;</code>即可</p>
 </blockquote>
 <h3 id="public文件夹"><a href="#public文件夹" class="headerlink" title="public文件夹"></a>public文件夹</h3><blockquote>
 <p>hexo generate 命令后生成静态文件存放路径：</p>
 </blockquote>
-<p><img src="/Hexo/5.png" alt="public文件夹"></p>
+<p><img src="/hexo/5.png" alt="public文件夹"></p>
 <h2 id="Hexo网站管理命令"><a href="#Hexo网站管理命令" class="headerlink" title="Hexo网站管理命令"></a>Hexo网站管理命令</h2><h3 id="hexo-new-命令"><a href="#hexo-new-命令" class="headerlink" title="hexo new 命令"></a>hexo new 命令</h3><p><code>hexo new [layout] &lt;title&gt;</code>使用：<br>|参数|说明|<br>|:—|—:|<br>|-p, –path|自定义新文章的路径|<br>|-r, –replace|如果存在同名文章，将其替换|<br>|-s, –slug|文章的 Slug，作为新文章的文件名和发布后的 URL|</p>
 <p>默认使用layout<code>_config.yml</code>中36行内容：<code>default_layout:post</code></p>
 <p>对于<strong>独立页面</strong>(生成md文件指定于非<code>_posts</code>目录)来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 index.md 文件:</p>
@@ -718,7 +718,7 @@
 <td align="left">部署之前预先生成静态文件</td>
 </tr>
 </tbody></table>
-<h3 id="hexo-list-lt-type-gt-命令"><a href="#hexo-list-lt-type-gt-命令" class="headerlink" title="hexo list &lt;type&gt;命令"></a><code>hexo list &lt;type&gt;</code>命令</h3><p><img src="/Hexo/6.png" alt="用法示例"></p>
+<h3 id="hexo-list-lt-type-gt-命令"><a href="#hexo-list-lt-type-gt-命令" class="headerlink" title="hexo list &lt;type&gt;命令"></a><code>hexo list &lt;type&gt;</code>命令</h3><p><img src="/hexo/6.png" alt="用法示例"></p>
 <h2 id="卸载Hexo（全局卸载）"><a href="#卸载Hexo（全局卸载）" class="headerlink" title="卸载Hexo（全局卸载）"></a>卸载Hexo（全局卸载）</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>如果是局部，直接删除局部安装的Hexo，删除init目录，删除~/.xprofile下的环境变量即可</p>
