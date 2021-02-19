@@ -598,7 +598,27 @@
 <p>hexo generate 命令后生成静态文件存放路径：</p>
 </blockquote>
 <p><img src="/images/hexo/5.png" alt="public文件夹"></p>
-<h2 id="Hexo网站管理命令"><a href="#Hexo网站管理命令" class="headerlink" title="Hexo网站管理命令"></a>Hexo网站管理命令</h2><h3 id="hexo-new-命令"><a href="#hexo-new-命令" class="headerlink" title="hexo new 命令"></a>hexo new 命令</h3><p><code>hexo new [layout] &lt;title&gt;</code>使用：<br>|参数|说明|<br>|:—|—:|<br>|-p, –path|自定义新文章的路径|<br>|-r, –replace|如果存在同名文章，将其替换|<br>|-s, –slug|文章的 Slug，作为新文章的文件名和发布后的 URL|</p>
+<h2 id="Hexo网站管理命令"><a href="#Hexo网站管理命令" class="headerlink" title="Hexo网站管理命令"></a>Hexo网站管理命令</h2><h3 id="hexo-new-命令"><a href="#hexo-new-命令" class="headerlink" title="hexo new 命令"></a>hexo new 命令</h3><p><code>hexo new [layout] &lt;title&gt;</code>使用：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-p, –path</td>
+<td>自定义新文章的路径</td>
+</tr>
+<tr>
+<td>-r, –replace</td>
+<td>如果存在同名文章，将其替换</td>
+</tr>
+<tr>
+<td>-s, –slug</td>
+<td>文章的 Slug，作为新文章的文件名和发布后的 URL</td>
+</tr>
+</tbody></table>
 <p>默认使用layout<code>_config.yml</code>中36行内容：<code>default_layout:post</code></p>
 <p>对于<strong>独立页面</strong>(生成md文件指定于非<code>_posts</code>目录)来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 index.md 文件:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo new page <span class="token string">"tags"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -683,11 +703,7 @@
 </tr>
 <tr>
 <td align="left">-f, –force</td>
-<td align="left">强制重新生成文件Hexo 引入了差分机制，如果 public 目录存在，那么 <code>hexo g</code>只会重新生成改动的文件。</td>
-</tr>
-<tr>
-<td align="left">使用该参数的效果接近 <code>hexo clean &amp;&amp; hexo generate</code></td>
-<td align="left"></td>
+<td align="left">强制重新生成文件Hexo 引入了差分机制，如果 public 目录存在，那么 <code>hexo g</code>只会重新生成改动的文件。使用该参数的效果接近 <code>hexo clean &amp;&amp; hexo generate</code></td>
 </tr>
 <tr>
 <td align="left">-c, –concurrency</td>
