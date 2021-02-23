@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Wine配置</title>
+      <link href="2021/02/24/wine-pei-zhi.html"/>
+      <url>2021/02/24/wine-pei-zhi.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux环境变量配置</title>
       <link href="2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html"/>
       <url>2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html</url>
@@ -12,8 +37,6 @@
       
       
       <categories>
-          
-          <category> Linux </category>
           
           <category> ArchLinux </category>
           
@@ -49,8 +72,6 @@
       
         <tags>
             
-            <tag> 建站 </tag>
-            
             <tag> 运维 </tag>
             
         </tags>
@@ -76,7 +97,7 @@
       
         <tags>
             
-            <tag> 建站 </tag>
+            <tag> 运维 </tag>
             
         </tags>
       
@@ -98,12 +119,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> 建站 </tag>
-            
-        </tags>
       
     </entry>
     
