@@ -400,21 +400,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-07
+                    2021-03-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    8 分
                 </div>
                 
 
@@ -580,6 +580,44 @@ Other addresses for www.baidu.com (not scanned): 14.215.177.38
 
 443/tcp open  ssl/http Apache httpd
 </code></pre>
+<h2 id="网络配置、更新、安装、浏览器插件（任务005）"><a href="#网络配置、更新、安装、浏览器插件（任务005）" class="headerlink" title="网络配置、更新、安装、浏览器插件（任务005）"></a>网络配置、更新、安装、浏览器插件（任务005）</h2><h3 id="网卡配置-amp-Route命令的使用"><a href="#网卡配置-amp-Route命令的使用" class="headerlink" title="网卡配置&amp;Route命令的使用"></a>网卡配置&amp;Route命令的使用</h3><p>网卡配置IP与掩码：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ifconfig</span> eth0 <span class="token number">192.168</span>.1.1/24        <span class="token comment">#网关使用默认路由配置</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Linux内核路由种类：</p>
+<ul>
+<li><p>主机路由：路由表中指向单个 IP 地址或主机名的路由记录，其 Flags 字段为 H。</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">route <span class="token function">add</span> -net <span class="token number">10.0</span>.0.10 netmask <span class="token number">255.255</span>.255.255 gw <span class="token number">10.139</span>.128.1 dev eth0       <span class="token comment">#只用来相互通讯于另一网络中的主机</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>网络路由：主机可以到达的网络。下面示例中，对于 192.168.1.0/24 这个网络，通过网关 192.168.1.1 网关路由</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">route <span class="token function">add</span> -net <span class="token number">10.0</span>.0.0 netmask <span class="token number">255.255</span>.255.0 gw <span class="token number">10.139</span>.128.1 dev eth0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>默认路由：当目标主机的 IP 地址或网络不在路由表中时，数据包就被发送到默认路由（默认网关）上。</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">route <span class="token function">add</span> default gw <span class="token number">172.17</span>.62.254     <span class="token comment">#添加默认路由</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看系统路由表：</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">route -n        <span class="token comment">#或者：</span>
+<span class="token function">netstat</span> -nr<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>删除路由表直接将add改为del，去掉del项即可删除。</p>
+<p>个人电脑系统的路由表：</p>
+<pre><code>fuding@Immortal:~/ &gt; route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         172.17.62.254   0.0.0.0         UG    100    0        0 enp3s0f3u3u1
+172.17.62.0     0.0.0.0         255.255.255.0   U     100    0        0 enp3s0f3u3u1
+</code></pre>
+<p>各字段说明：<br>|字段|含义|<br>|—|—|<br>|Destination|目标网络或目标主机。Destination 为 default（0.0.0.0）时，表示这个是默认网关，所有数据都发到这个网关（这里是 10.139.128.1）|<br>|Gateway|网关地址，0.0.0.0 表示当前记录对应的 Destination 跟本机在同一个网段，通信时不需要经过网关|<br>|Genmask|Destination 字段的网络掩码，Destination 是主机时需要设置为 255.255.255.255，是默认路由时会设置为 0.0.0.0|<br>|Flags|标记，含义参考表格后面的解释|<br>|Metric|路由距离，到达指定网络所需的中转数，是大型局域网和广域网设置所必需的 （不在Linux内核中使用。）|<br>|Ref|路由项引用次数 （不在Linux内核中使用。）|<br>|Use|此路由项被路由软件查找的次数|<br>|Iface|网卡名字，例如 eth0|</p>
+<p>Flags 含义：</p>
+<ul>
+<li>U 路由是活动的</li>
+<li>H 目标是个主机</li>
+<li>G 需要经过网关</li>
+<li>R 恢复动态路由产生的表项</li>
+<li>D 由路由的后台程序动态地安装</li>
+<li>M 由路由的后台程序修改</li>
+<li>! 拒绝路由</li>
+</ul>
+<blockquote>
+<p>注意添加网络或者网关主机一定要网络可达，才可以添加成功！！</p>
+</blockquote>
+<p>修改DNS的文件：/etc/resolv.conf<br>永久修改网卡配置：/etc/network/interfaces (各个发行版可能不一样)</p>
 
                 
             </div>
@@ -1083,17 +1121,16 @@ Other addresses for www.baidu.com (not scanned): 14.215.177.38
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/07/kali-liunx-xue-xi-bi-ji.html">
+                <a href="/2021/03/08/javaee-ke-tang-bi-ji.html">
                     <div class="card-image">
                         
-                        <img src="/images/kali_linux/kalilinux.jpg" class="responsive-img" alt="Kali Liunx学习笔记">
+                        <img src="/images/error.jpg" class="responsive-img" alt="JavaEE课堂笔记">
                         
-                        <span class="card-title">Kali Liunx学习笔记</span>
+                        <span class="card-title">JavaEE课堂笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1103,29 +1140,16 @@ Other addresses for www.baidu.com (not scanned): 14.215.177.38
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-08
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/KaliLinux/" class="post-category">
-                                    KaliLinux
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鼎
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">渗透测试</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1399,7 +1423,7 @@ Other addresses for www.baidu.com (not scanned): 14.215.177.38
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.7k</span>&nbsp;字
+                class="white-color">12.5k</span>&nbsp;字
             
             
             

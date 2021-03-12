@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Wine配置, Immortal">
+    <meta name="keywords" content="JavaEE课堂笔记, Immortal">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Wine配置 | Immortal</title>
+    <title>JavaEE课堂笔记 | Immortal</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/arch_linux/wine/How-to-install-Wine.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/error.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Wine配置</h1>
+                    <h1 class="description center-align post-title">JavaEE课堂笔记</h1>
                 </div>
             </div>
         </div>
@@ -366,25 +366,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Linux%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                Linux软件
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -393,28 +380,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-24
+                    2021-03-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-24
+                    2021-03-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    666
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -437,69 +424,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>简述：Wine是（Wine Is Not an Emulator）的缩写，是一个能够在多种 POSIX-compliant 操作系统（诸如 Linux，Mac OSX 及 BSD 等）上运行 Windows 应用的兼容层，Wine不是模拟Windows的工具，而是运用API转换技术实做出Linux对应到Windows相对应的函数来调用DLL（动态链接库）以运行Windows程序<br>Crossover是Wine的商业版本，比Wine使用更为方便，不用手动配置，直接一键安装到Linux等系统，但收费</p>
-</blockquote>
-<p>如果是ArchLinux请看<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Wine_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%AD%97%E4%BD%93">ArchLinux Wine教程</a>，比如字体配置。</p>
-<h2 id="Wine版本分类"><a href="#Wine版本分类" class="headerlink" title="Wine版本分类"></a>Wine版本分类</h2><p>官方共分为三类（稳定依次下降，新功能更新依次上升）</p>
-<ul>
-<li>-stable （稳定版）</li>
-<li>-staging （介于上下两版本之间的）</li>
-<li>-devel （开发版）</li>
-</ul>
-<p>非官方（对于官方版本进行改进）</p>
-<ul>
-<li>deepin-wine，又换对国内软件的兼容</li>
-<li>-tkg（针对Arch系统级别）</li>
-<li>-ge</li>
-</ul>
-<p><strong>当然Wine的非官方版本tkg、ge感觉主要作用用来在Linux上玩Windows游戏，比如Steam的大型游戏。</strong></p>
-<h2 id="安装Wine"><a href="#安装Wine" class="headerlink" title="安装Wine"></a>安装Wine</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S wine-staging     <span class="token comment">#这里是ArchLinux下的安装软件命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="安装Winetricks"><a href="#安装Winetricks" class="headerlink" title="安装Winetricks"></a>安装Winetricks</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S winetricks     <span class="token comment">#winetricks是为了方便配置wine容器的软件</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="Wine基本配置"><a href="#Wine基本配置" class="headerlink" title="Wine基本配置"></a>Wine基本配置</h2><p>一般情况下推荐使用Wine的32位容器，每个Windows程序应该有一个Wine容器，例：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">WINEARCH</span><span class="token operator">=</span>win32 <span class="token assign-left variable">WINEPREFIX</span><span class="token operator">=</span>~/TIM wine TIM3.0.21.exe      <span class="token comment">#定义两个环境变量分别名为WINEARCH、WINEPREFIX且用生成的~/TIM Wine32位容器来执行./目录下的TIM3.0.21.exe</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>可以将这两个环境变量配置到~/.xprofile中，详见<a href="https://ding-f.github.io/2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html">Linux环境变量配置</a>，方便运行于对某个软件的调试。</p>
-<h2 id="Wine容器的配置"><a href="#Wine容器的配置" class="headerlink" title="Wine容器的配置"></a>Wine容器的配置</h2><p>如果你将<code>WINEARCH=win32 WINEPREFIX=~/TIM</code>两行添加至环境变量中，那么执行：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">winecfg     <span class="token comment">#启动Wine自带的容器调节窗口</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/arch_linux/wine/winecfg.png" alt="winecfg执行成功！！"></p>
-<p>执行成功后会提醒安装wine-mono、wine-gecko：</p>
-<ul>
-<li><p>wine-mono是微软的.NET框架的开源实现（Winetricks可装）</p>
-</li>
-<li><p>wine-gecko</p>
-</li>
-</ul>
-<p>配置建议：</p>
-<ul>
-<li><p>一般在上图的Windows版本-&gt;选择Windows 7</p>
-</li>
-<li><p>上图显示面板中-&gt;选择虚拟桌面，解决一部分软件不能使用的问题</p>
-</li>
-<li><p>执行<code>winecfg</code>前面也可加上<code>WINEARCH=win32 WINEPREFIX=~/TIM</code>来指定容器，指定容器类型</p>
-</li>
-</ul>
-<p>运行Winetricks</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">winetricks      <span class="token comment">#理解为比winecfg更人性化更强大的软件</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在此命令之前同样可定义WINEARCH WINEPREFIX</p>
-<p><img src="/images/arch_linux/wine/winetricks.png" alt="Winetricks窗口"></p>
-<p>执行以下可调用容器的注册表编辑器（修改字体等操作）：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wine regedit <span class="token punctuation">[</span>.reg文件<span class="token punctuation">]</span>     <span class="token comment">#后可以加上注册表配置文件.reg</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<blockquote>
-<p>大部分Windows软件的配置方式都可以在Wine的官网上有配置说明，详情：<a target="_blank" rel="noopener" href="https://www.winehq.org/">Wine官网</a></p>
-</blockquote>
-<p><img src="/images/arch_linux/wine/winecfg-official.png" alt="绿色线框是用来搜索软件配置的"></p>
-<p><img src="/images/arch_linux/wine/wine-office.png" alt="搜索到的软件配置方法"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>Wine 可以用来安装很多Linux下没有的Windows软件，比如：</p>
-</blockquote>
-<ul>
-<li>QQ</li>
-<li>微信</li>
-<li>MicroOffice</li>
-<li>等…</li>
-</ul>
-
+                
                 
             </div>
             <hr/>
@@ -525,7 +450,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ding-f.github.io/2021/02/24/wine-pei-zhi.html">https://ding-f.github.io/2021/02/24/wine-pei-zhi.html</a>
+                    <a href="https://ding-f.github.io/2021/03/08/javaee-ke-tang-bi-ji.html">https://ding-f.github.io/2021/03/08/javaee-ke-tang-bi-ji.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -562,11 +487,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1006,12 +927,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/05/android-kai-fa-ke-cheng-bi-ji.html">
+                <a href="/2021/03/10/arch-linux-xue-xi.html">
                     <div class="card-image">
                         
-                        <img src="/images/error.jpg" class="responsive-img" alt="Android开发课程笔记">
+                        <img src="/images/error.jpg" class="responsive-img" alt="Arch Linux学习">
                         
-                        <span class="card-title">Android开发课程笔记</span>
+                        <span class="card-title">Arch Linux学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1022,7 +943,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
                         </span>
                         <span class="publish-author">
                             
@@ -1042,12 +963,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html">
+                <a href="/2021/03/07/kali-liunx-xue-xi-bi-ji.html">
                     <div class="card-image">
                         
-                        <img src="/images/arch-linux.png" class="responsive-img" alt="Linux环境变量配置">
+                        <img src="/images/kali_linux/kalilinux.jpg" class="responsive-img" alt="Kali Liunx学习笔记">
                         
-                        <span class="card-title">Linux环境变量配置</span>
+                        <span class="card-title">Kali Liunx学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1058,14 +979,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ArchLinux/" class="post-category">
-                                    ArchLinux
+                            <a href="/categories/KaliLinux/" class="post-category">
+                                    KaliLinux
                                 </a>
                             
                             
@@ -1075,12 +996,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">渗透测试</span>
                     </a>
                     
                 </div>
