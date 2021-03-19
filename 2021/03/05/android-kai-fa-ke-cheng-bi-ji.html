@@ -387,21 +387,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-13
+                    2021-03-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    286
+                    610
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -427,6 +427,25 @@
                 <h2 id="安卓的四大组件"><a href="#安卓的四大组件" class="headerlink" title="安卓的四大组件"></a>安卓的四大组件</h2><blockquote>
 <p>安卓的四大组件，Activity、Service、BroadcastReceiver、ContentProvider提供应用之间的访问接口（很少自定义，主要系统提供）</p>
 </blockquote>
+<h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><blockquote>
+<p>相当于Swing编程中的JFrame控件，与其不同的是JFrame本身可以设置布局管理器，不断地向其添加组件，而Activity只能通过setContentView(View)来显示布局文件中已经定义的组件。Activity就像一个界面管理员，用户在界面上的操作是通过Activity来管理的。</p>
+</blockquote>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
+<li>onCreate(Bundle savedInstanceState):该方法在Activity的实例被Android系统创建后第一个被调用。通常在该方法中设置显示屏幕的布局、初始化数据、设置控件被点击的事件响应代码。</li>
+<li>onRestart():回到最上边的界面，再次可见时执行（可见）。</li>
+<li>onStart():在Activity可见时执行（可见）。</li>
+<li>onResume():Activity获取焦点时执行（可见）。</li>
+<li>onPause():Activity失去焦点时执行（不可见）。</li>
+<li>onStop():用户不可见进入后台时执行（不可见）。</li>
+<li>onDestroy():Activity销毁时执行。</li>
+</ul>
+<p>创建一个Activity的具体步骤：</p>
+<ol>
+<li>定义一个类继承自android.app.Activity或其子类。</li>
+<li>在res/layout目录下创建一个activity_main.xml文件，用于创建Activity的布局。</li>
+<li>在app/manifests目录下的AndroidManifest.xml清单文件中注册Activity（Android Studio自动创建在源码的根目录）。</li>
+<li>重写Activity的onCreate()方法，并在该方法中使用setContentView(R.layout.activity_main)加载指定的布局文件。</li>
+</ol>
 <ul>
 <li><p>Activity</p>
 <ul>
@@ -1298,7 +1317,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.6k</span>&nbsp;字
+                class="white-color">13.1k</span>&nbsp;字
             
             
             

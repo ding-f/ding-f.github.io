@@ -400,14 +400,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-24
+                    2021-03-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    666
+                    674
                 </div>
                 
 
@@ -460,7 +460,7 @@
 <h2 id="Wine基本配置"><a href="#Wine基本配置" class="headerlink" title="Wine基本配置"></a>Wine基本配置</h2><p>一般情况下推荐使用Wine的32位容器，每个Windows程序应该有一个Wine容器，例：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">WINEARCH</span><span class="token operator">=</span>win32 <span class="token assign-left variable">WINEPREFIX</span><span class="token operator">=</span>~/TIM wine TIM3.0.21.exe      <span class="token comment">#定义两个环境变量分别名为WINEARCH、WINEPREFIX且用生成的~/TIM Wine32位容器来执行./目录下的TIM3.0.21.exe</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>可以将这两个环境变量配置到~/.xprofile中，详见<a href="https://ding-f.github.io/2021/02/19/archlinux-huan-jing-bian-liang-pei-zhi.html">Linux环境变量配置</a>，方便运行于对某个软件的调试。</p>
-<h2 id="Wine容器的配置"><a href="#Wine容器的配置" class="headerlink" title="Wine容器的配置"></a>Wine容器的配置</h2><p>如果你将<code>WINEARCH=win32 WINEPREFIX=~/TIM</code>两行添加至环境变量中，那么执行：</p>
+<h2 id="Wine容器的配置（安装一个容器wineprefix）"><a href="#Wine容器的配置（安装一个容器wineprefix）" class="headerlink" title="Wine容器的配置（安装一个容器wineprefix）"></a>Wine容器的配置（安装一个容器wineprefix）</h2><p>如果你将<code>WINEARCH=win32 WINEPREFIX=~/TIM</code>两行添加至环境变量中，那么执行：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">winecfg     <span class="token comment">#启动Wine自带的容器调节窗口</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/arch_linux/wine/winecfg.png" alt="winecfg执行成功！！"></p>
 <p>执行成功后会提醒安装wine-mono、wine-gecko：</p>
@@ -1320,7 +1320,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.6k</span>&nbsp;字
+                class="white-color">13.1k</span>&nbsp;字
             
             
             
