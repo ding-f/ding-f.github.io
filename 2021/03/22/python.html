@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Android开发课程笔记, Immortal">
+    <meta name="keywords" content="Python, Immortal">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Android开发课程笔记 | Immortal</title>
+    <title>Python | Immortal</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/android/android_logo.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/error.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Android开发课程笔记</h1>
+                    <h1 class="description center-align post-title">Python</h1>
                 </div>
             </div>
         </div>
@@ -380,28 +380,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-05
+                    2021-03-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-14
+                    2021-03-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    610
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -424,75 +424,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安卓的四大组件"><a href="#安卓的四大组件" class="headerlink" title="安卓的四大组件"></a>安卓的四大组件</h2><blockquote>
-<p>安卓的四大组件，Activity、Service、BroadcastReceiver、ContentProvider提供应用之间的访问接口（很少自定义，主要系统提供）</p>
-</blockquote>
-<h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><blockquote>
-<p>相当于Swing编程中的JFrame控件，与其不同的是JFrame本身可以设置布局管理器，不断地向其添加组件，而Activity只能通过setContentView(View)来显示布局文件中已经定义的组件。Activity就像一个界面管理员，用户在界面上的操作是通过Activity来管理的。</p>
-</blockquote>
-<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li>onCreate(Bundle savedInstanceState):该方法在Activity的实例被Android系统创建后第一个被调用。通常在该方法中设置显示屏幕的布局、初始化数据、设置控件被点击的事件响应代码。</li>
-<li>onRestart():回到最上边的界面，再次可见时执行（可见）。</li>
-<li>onStart():在Activity可见时执行（可见）。</li>
-<li>onResume():Activity获取焦点时执行（可见）。</li>
-<li>onPause():Activity失去焦点时执行（不可见）。</li>
-<li>onStop():用户不可见进入后台时执行（不可见）。</li>
-<li>onDestroy():Activity销毁时执行。</li>
-</ul>
-<p>创建一个Activity的具体步骤：</p>
-<ol>
-<li>定义一个类继承自android.app.Activity或其子类。</li>
-<li>在res/layout目录下创建一个activity_main.xml文件，用于创建Activity的布局。</li>
-<li>在app/manifests目录下的AndroidManifest.xml清单文件中注册Activity（Android Studio自动创建在源码的根目录）。</li>
-<li>重写Activity的onCreate()方法，并在该方法中使用setContentView(R.layout.activity_main)加载指定的布局文件。</li>
-</ol>
-<ul>
-<li><p>Activity</p>
-<ul>
-<li>显（目标唯一）  <pre class="line-numbers language-java" data-language="java"><code class="language-java">        <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>隐（目标不唯一）</li>
-</ul>
-</li>
-<li><p>Service </p>
-</li>
-<li><p>BroadcastReceiver，中的send_________  的方法发送广播</p>
-</li>
-</ul>
-<blockquote>
-<p>权限，申请某些功能要申请的</p>
-</blockquote>
-<blockquote>
-<p>通知系统：Toast、Notification、Dialog</p>
-</blockquote>
-<blockquote>
-<p>小部件AppW </p>
-</blockquote>
-<blockquote>
-<p>数据持久化，指将内存数据保存在外存</p>
-</blockquote>
-<blockquote>
-<p>WebApp</p>
-</blockquote>
-<h3 id="AndroidManifest-xml清单文件"><a href="#AndroidManifest-xml清单文件" class="headerlink" title="AndroidManifest.xml清单文件"></a>AndroidManifest.xml清单文件</h3><blockquote>
-<p>AndroidManifest.xml清单文件是一个整个安卓应用程序的全局描述文件</p>
-</blockquote>
-<p>其中包含：</p>
-<ul>
-<li><p>包含在Android Studio中的根目录：<code>/AndroidStudioProjects/MyFristApplication/app/src/main/</code></p>
-</li>
-<li><p>应用程序的名称图标、包含组件等信息进行描述和说明</p>
-</li>
-<li><p>声明应用程序的包名</p>
-</li>
-<li><p>描述应用程序组件，包括组成的应用程序四大组件</p>
-</li>
-<li><p>声明应用程序的权限</p>
-</li>
-</ul>
-<p>注意：<br>Android Studio 中的res/drawble图片不能有大写字母,mipmap(响应式布局) 是分设备尺寸选择合适图片的文件夹<br>res/values/colors.xml 是用来设置内容显示颜色的，String字符串、</p>
-<p>下载2.3.3</p>
-<p>nox_adb connect 127.0.0.1:6061</p>
-
+                
                 
             </div>
             <hr/>
@@ -518,7 +450,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ding-f.github.io/2021/03/05/android-kai-fa-ke-cheng-bi-ji.html">https://ding-f.github.io/2021/03/05/android-kai-fa-ke-cheng-bi-ji.html</a>
+                    <a href="https://ding-f.github.io/2021/03/22/python.html">https://ding-f.github.io/2021/03/22/python.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -991,64 +923,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2021/03/07/kali-liunx-xue-xi-bi-ji.html">
-                    <div class="card-image">
-                        
-                        <img src="/images/kali_linux/kalilinux.jpg" class="responsive-img" alt="Kali Liunx学习笔记">
-                        
-                        <span class="card-title">Kali Liunx学习笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/KaliLinux/" class="post-category">
-                                    KaliLinux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">渗透测试</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/02/24/wine-pei-zhi.html">
+                <a href="/2021/03/22/python.html">
                     <div class="card-image">
                         
-                        <img src="/images/arch_linux/wine/How-to-install-Wine.jpg" class="responsive-img" alt="Wine配置">
+                        <img src="/images/error.jpg" class="responsive-img" alt="Python">
                         
-                        <span class="card-title">Wine配置</span>
+                        <span class="card-title">Python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1059,27 +944,52 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                    Linux软件
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鼎
                             
                         </span>
                     </div>
                 </div>
+
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/10/arch-linux.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/arch_linux/arch-linux.png" class="responsive-img" alt="Arch Linux">
+                        
+                        <span class="card-title">Arch Linux</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鼎
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>
@@ -1317,7 +1227,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.2k</span>&nbsp;字
+                class="white-color">13.9k</span>&nbsp;字
             
             
             
