@@ -400,7 +400,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-22
+                    2021-03-27
                 </div>
                 
 
@@ -603,7 +603,47 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         172.17.62.254   0.0.0.0         UG    100    0        0 enp3s0f3u3u1
 172.17.62.0     0.0.0.0         255.255.255.0   U     100    0        0 enp3s0f3u3u1
 </code></pre>
-<p>各字段说明：<br>|字段|含义|<br>|—|—|<br>|Destination|目标网络或目标主机。Destination 为 default（0.0.0.0）时，表示这个是默认网关，所有数据都发到这个网关（这里是 10.139.128.1）|<br>|Gateway|网关地址，0.0.0.0 表示当前记录对应的 Destination 跟本机在同一个网段，通信时不需要经过网关|<br>|Genmask|Destination 字段的网络掩码，Destination 是主机时需要设置为 255.255.255.255，是默认路由时会设置为 0.0.0.0|<br>|Flags|标记，含义参考表格后面的解释|<br>|Metric|路由距离，到达指定网络所需的中转数，是大型局域网和广域网设置所必需的 （不在Linux内核中使用。）|<br>|Ref|路由项引用次数 （不在Linux内核中使用。）|<br>|Use|此路由项被路由软件查找的次数|<br>|Iface|网卡名字，例如 eth0|</p>
+<p>各字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Destination</td>
+<td>目标网络或目标主机。Destination 为 default（0.0.0.0）时，表示这个是默认网关，所有数据都发到这个网关（这里是 10.139.128.1）</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>网关地址，0.0.0.0 表示当前记录对应的 Destination 跟本机在同一个网段，通信时不需要经过网关</td>
+</tr>
+<tr>
+<td>Genmask</td>
+<td>Destination 字段的网络掩码，Destination 是主机时需要设置为 255.255.255.255，是默认路由时会设置为 0.0.0.0</td>
+</tr>
+<tr>
+<td>Flags</td>
+<td>标记，含义参考表格后面的解释</td>
+</tr>
+<tr>
+<td>Metric</td>
+<td>路由距离，到达指定网络所需的中转数，是大型局域网和广域网设置所必需的 （不在Linux内核中使用。）</td>
+</tr>
+<tr>
+<td>Ref</td>
+<td>路由项引用次数 （不在Linux内核中使用。）</td>
+</tr>
+<tr>
+<td>Use</td>
+<td>此路由项被路由软件查找的次数</td>
+</tr>
+<tr>
+<td>Iface</td>
+<td>网卡名字，例如 eth0</td>
+</tr>
+</tbody></table>
 <p>Flags 含义：</p>
 <ul>
 <li>U 路由是活动的</li>
