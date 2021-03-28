@@ -387,21 +387,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-27
+                    2021-03-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    973
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -443,6 +443,31 @@
 <li>方便集成各种优秀框架、</li>
 <li>降低Java EE API的使用难度</li>
 </ol>
+<h3 id="Spring的体系结构"><a href="#Spring的体系结构" class="headerlink" title="Spring的体系结构"></a>Spring的体系结构</h3><p><img src="/images/java_ee/architecture.png" alt="Spring框架体系结构"></p>
+<ul>
+<li><p>核心容器（Core Container）</p>
+<ul>
+<li>Bean模块：提供了BeanFactory，Spring的管理对象称为Bean</li>
+<li>Core模块：提供看Spring框架的基本组成部分，包括Ioc（控制反转）Di（依赖注入）</li>
+<li>Context模块：建立在Core和Beans模块的基础之上，它是访问定义和配置的任何对象的媒介</li>
+<li>等</li>
+</ul>
+</li>
+<li><p>Data Access/Integration（数据访问集成）</p>
+<ul>
+<li>JDBC:提供了一个JDBC的抽象层，大幅度的减少了在开发过程中对数据库操作的编码</li>
+<li>ORM:对流行的对象关系映射API，包括JPA、JDO和Hibernate提供了集成层支持</li>
+<li>Transactions支持对实现特殊接口以及所有POJO类的编程和声明式的事务管理</li>
+</ul>
+</li>
+<li><p>Web</p>
+<ul>
+<li>Servlet:  也称Spring-webmvc模块，包含Spring模型—视图—控制器（MVC）和REST Web Services实现的Web程序</li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
 <h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="导入Spring框架包"><a href="#导入Spring框架包" class="headerlink" title="导入Spring框架包"></a>导入Spring框架包</h3><blockquote>
 <p>需要下载Spring框架包地址：<a target="_blank" rel="noopener" href="https://repo.spring.io/simple/libs-release-local/org/springframework/spring/">https://repo.spring.io/simple/libs-release-local/org/springframework/spring/</a>选择合适的版本，以下使用的Spring4.3.10<br>第三方依赖包地址：<a target="_blank" rel="noopener" href="https://mirror-hk.koddos.net/apache//commons/logging/binaries/commons-logging-1.2-bin.zip">https://mirror-hk.koddos.net/apache//commons/logging/binaries/commons-logging-1.2-bin.zip</a><br>还需要注意的是IDEA导入库后直接作用于于整个Project，其中的Modules共用导入进来的所有库</p>
 </blockquote>
@@ -1304,7 +1329,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.2k</span>&nbsp;字
+                class="white-color">14.4k</span>&nbsp;字
             
             
             
