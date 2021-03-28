@@ -400,21 +400,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-17
+                    2021-03-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    15 分
                 </div>
                 
 
@@ -913,10 +913,11 @@ hexo d -g <span class="token comment">#（简写）</span>
 <li><code>:year/:month/:day/:title/            2013/07/14/hello-world/</code></li>
 <li><code>:category/:title/                foo/bar/hello-world/</code></li>
 </ul>
-<h2 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/fuding/Software/Hexo-Web 			<span class="token comment">#需要插件到Web目录</span>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/fuding/Software/Hexo-Web 			<span class="token comment">#需要插件到Web目录</span>
 <span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-git --save			<span class="token comment">#将部署GitHub插件安装至Web目录</span>
 <span class="token function">npm</span> list hexo-deployer-git			<span class="token comment">#查看是否安装此插件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="config-yml文件编辑"><a href="#config-yml文件编辑" class="headerlink" title="_config.yml文件编辑"></a>_config.yml文件编辑</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Deployment</span>
+<p>_config.yml文件编辑</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Deployment</span>
 <span class="token comment">## Docs: https://hexo.io/docs/one-command-deployment</span>
 <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> git
@@ -925,6 +926,27 @@ hexo d -g <span class="token comment">#（简写）</span>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx d <span class="token punctuation">(</span>一般情况部署到git会提示输入用户名密码<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>去掉git部署的密码：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global credential.helper store   <span class="token comment">#去掉git部署提交身份验证</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="利用sftp部署"><a href="#利用sftp部署" class="headerlink" title="利用sftp部署"></a>利用sftp部署</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-sftp --save   <span class="token comment">#安装部署插件</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>编辑_config.yml文件：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Deployment</span>
+<span class="token comment">## Docs: https://hexo.io/docs/one-command-deployment</span>
+<span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/ding<span class="token punctuation">-</span>f/ding<span class="token punctuation">-</span>f.github.io.git
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> main
+
+
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> sftp
+  <span class="token key atrule">host</span><span class="token punctuation">:</span> fuding.qicp.vip
+  <span class="token key atrule">user</span><span class="token punctuation">:</span> fu    <span class="token comment">#必须使用普通用户来作为部署文件的参数</span>
+  <span class="token key atrule">pass</span><span class="token punctuation">:</span> <span class="token important">********</span>    
+  <span class="token key atrule">remotePath</span><span class="token punctuation">:</span> /www/wwwroot/Hexo/
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">22</span>
+  <span class="token key atrule">privateKey</span><span class="token punctuation">:</span>     <span class="token comment">#这里可以不写</span>
+  <span class="token key atrule">agent</span><span class="token punctuation">:</span>    <span class="token comment">#一样可以不写</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意：有多个部署项目时候的.yaml配置文件的写法，前面必须以类型（type）前面加“-”，才可以进行多个目标主机的部署，部署到Linux主机上不建议使用root用户进行部署，如果是root用户将会卡死，甚至站点部署文件缺失</p>
+</blockquote>
 <h2 id="卸载Hexo（全局卸载）"><a href="#卸载Hexo（全局卸载）" class="headerlink" title="卸载Hexo（全局卸载）"></a>卸载Hexo（全局卸载）</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>如果是局部，直接删除局部安装的Hexo，删除init目录，删除~/.xprofile下的环境变量即可</p>
@@ -1763,7 +1785,7 @@ hexo d -g <span class="token comment">#（简写）</span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.7k</span>&nbsp;字
+                class="white-color">15.9k</span>&nbsp;字
             
             
             
