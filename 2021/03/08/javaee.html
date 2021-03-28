@@ -542,7 +542,7 @@
 <li>@Resource：其作用与Autowired一样。@Resource中有两个重要属性：name和type。Spring将name属性解析为Bean实例名称，type属性解析为Bean实例类型。</li>
 <li>@Qualifier：与@Autowired注解配合使用，会将默认的按Bean类型装配修改为按Bean的实例名称装配，Bean的实例名称由@Qualifier注解的参数指定。</li>
 </ul>
-<p><img src="/images/java_ee/BeanAndAop_Dir.png" alt="目录结构"></p>
+<p><img src="/images/java_ee/beanandaop_dir.png" alt="目录结构"></p>
 <p>在Module新建两个接口<code>com/it/annotation/UserDao.java</code>、<code>com/it/annotation/UserService.java</code>：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>it<span class="token punctuation">.</span>aspectj<span class="token punctuation">.</span></span><span class="token class-name">PointCutClass</span><span class="token punctuation">;</span>
 
