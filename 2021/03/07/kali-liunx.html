@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -662,6 +662,24 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 <p>注意添加网络或者网关主机一定要网络可达，才可以添加成功！！</p>
 </blockquote>
 <p>修改DNS的文件：/etc/resolv.conf<br>永久修改网卡配置：/etc/network/interfaces (各个发行版可能不一样)</p>
+<h2 id="忘记密码"><a href="#忘记密码" class="headerlink" title="忘记密码"></a>忘记密码</h2><blockquote>
+<p>此方式适用于大部分Linux系统，比如CentOS，Redhat等…<br>更改后无需担心改错，如果改错重启后还会恢复以前原有的代码</p>
+</blockquote>
+<p>重启系统，不断的按“e”键进入编辑模式，把其中的 <code>ro</code> 改成 <code>rw</code>, 并删除 <code>.gz</code> 后面的 <code>quite</code>, 替换成 <code>init=/bin/bash</code>,再删除后面的内容，保持本行后面没有其他代码，不然会提示找不到<code>/bin/bash</code>。</p>
+<p>更改后如下所示：</p>
+<p><img src="/images/kali_linux/forgetpasswd.jpg" alt="更改编辑模式结果"></p>
+<p>再次重启进入root的命令行界面，输入以下进行改root密码：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token punctuation">[</span>用户名<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
 
                 
             </div>
@@ -1503,7 +1521,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.9k</span>&nbsp;字
+                class="white-color">16.8k</span>&nbsp;字
             
             
             
