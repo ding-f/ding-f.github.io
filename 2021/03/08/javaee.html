@@ -408,14 +408,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-04-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.6k
                 </div>
                 
 
@@ -511,11 +511,12 @@
 <p>管理整个Project库的方式：</p>
 <p>点击<code>File&gt;Project Structure&gt;</code>弹出以下界面</p>
 <p><img src="/images/java_ee/Project_Structure.png" alt="Project Structure"></p>
-<p>点击Change Version还可以对低版本的Spring进行升级</p>
-<p>导入库后还需要导入classpath中才可以直接import等操作：</p>
-<p>以上点击<code>Modules&gt;Dependencies</code>：</p>
+<p>点击+号，弹出文件夹选择对话框，选择项目内包含要导入包含所需包的文件夹（此时只是导入到库中，并没有在项目中直接可以使用）</p>
+<p>导入库后还需要在每次建立的新Module中导入classpath中才可以直接import等操作：</p>
+<p>以上点击<code>Modules&gt;Dependencies&gt;选择你的项目</code>：</p>
 <p><img src="/images/java_ee/classpath.png" alt="配置classpath"></p>
-<p>点击左下角<code>+</code>号，选择1.Jars or Directories，找到你要导入的库（一个Jar包或者包含Jar包的目录）</p>
+<p>点击左下角<code>+</code>号，选择2.librarys，找到你刚刚导入的库，Addselect即可：</p>
+<p><img src="/images/java_ee/library.png" alt="配置classpath-选择库"></p>
 <blockquote>
 <p>以上界面非常重要,配置项目所需的大部分，作者之前使用的Eclipse，还以为导入的库只作用于一个Module，但导入后才发现所有IDEA的Project内都适用导入的库，但在不同的Module内需要进行classpath才可以import操作。<br>所以上面的库的路径是：<code>~/IdeaProjects/JavaEE/TestSpring/src/main/webapp/WEB-INF/lib/</code>。<br>但如果是在Project内就有之前导入的库，那直接在不同的Module中直接写代码，如果缺少classpath设置就提示缺少的地方缺少您之前导入的库，点击直接导入classpath即可，省去在Project Structure选择Jars or Directories的麻烦。</p>
 </blockquote>
@@ -1508,7 +1509,7 @@ Process finished with exit code 0
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.1k</span>&nbsp;字
+                class="white-color">17.2k</span>&nbsp;字
             
             
             
