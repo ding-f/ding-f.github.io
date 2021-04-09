@@ -408,21 +408,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-06
+                    2021-04-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    4.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    21 分
                 </div>
                 
 
@@ -667,6 +667,310 @@ UserService Save!!
 Controller Save!!
 
 Process finished with exit code 0
+</code></pre>
+<h2 id="Spring的数据库开发"><a href="#Spring的数据库开发" class="headerlink" title="Spring的数据库开发"></a>Spring的数据库开发</h2><blockquote>
+<p>本章最主要的是JdbcTemplate，它是Spring JDBC的核心类，Spring框架的数据库开发基本都是围绕这个类来进行的，继承关系如下：</p>
+</blockquote>
+<p><img src="/images/java_ee/jdbc_template.png" alt="JdbcTemplate
+继承关系"></p>
+<p>直接父类JdbcAccessor提供以下：</p>
+<ul>
+<li>DataSource：获取数据库连接，还可以引入对数据库连接的缓冲池和分布式事务的支持。</li>
+<li>JdbcOperations：接口定义了在JdbcTemplate类中可以使用的操作集合，包括添加、修改、查询和删除等操作。</li>
+<li>SQLExceptionTranslator：该接口负责对SQLException进行转译工作。通过必要的设置获取SQLExceptionTranslator中的方法，可以使JdbcTemplate在需要处理SQLException时，委托SQLExceptionTranslator的实现类来完成相关的转译工作。</li>
+</ul>
+<p>Spring JDBC模块主要由4个包组成：</p>
+<p><img src="/images/java_ee/spring_jdbc_pakages.png" alt="SpringJDBC包分布情况"></p>
+<h3 id="Spring数据库开发所需的jar包"><a href="#Spring数据库开发所需的jar包" class="headerlink" title="Spring数据库开发所需的jar包"></a>Spring数据库开发所需的jar包</h3><p>请参考本文章之前的IDAR导入库以及添加classpath方法</p>
+<p><img src="/images/java_ee/jdbc_jars.png" alt="SpringJDBC包"></p>
+<ul>
+<li>第一个是Java数据库连接，（Java Database Connectivity，简称JDBC）是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，提供了诸如查询和更新数据库中数据的方法，jar包下载<a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/c-j/">https://downloads.mysql.com/archives/c-j/</a></li>
+<li>SpringJDBC的jar包（包含于Spring框架包）</li>
+<li>Spring事物处理的jar包（包含于Spring框架包）</li>
+</ul>
+<h3 id="excute-方法执行sql语句"><a href="#excute-方法执行sql语句" class="headerlink" title="excute()方法执行sql语句"></a>excute()方法执行sql语句</h3><p>首先创建xml配置SpringBean的文件：</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.jdbc.datasource.DriverManagerDataSource<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>driverClassName<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.mysql.jdbc.Driver<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>url<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jdbc:mysql://localhost:3306/ding<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>     <span class="token comment">&lt;!--此处如果有远程数据库应该替换localhost为远程主机的地址或者域名，后面的ding是指在主机下的Mysql下的database名称--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>数据库用户名<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>用户名的密码<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jdbcT<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.jdbc.core.JdbcTemplate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上的两个Bean的class分别来自上面导入的包，其中的<code>&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;</code>说明<code>JdbcTemplate</code>类中一定包含setDataSource的类似于构造方法的函数将<code>DriverManagerDataSource</code>类传递过去作为依赖。</p>
+<p>创建含有excute()方法的Java文件：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span></span><span class="token class-name">JDBC_Template</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">ApplicationContext</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> jdbcTemplateTest <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">ApplicationContext</span> applicationContext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationJDBC.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">JdbcTemplate</span> jdbcTemplate<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">)</span>applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"jdbcT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">//获取JdbcTemplate对象</span>
+        jdbcTemplate<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"create table student("</span> <span class="token operator">+</span>      <span class="token comment">//使用JdbcTemplate中的执行sql语言的方法</span>
+                <span class="token string">"id int primary key auto_increment,"</span> <span class="token operator">+</span>
+                <span class="token string">"name varchar(50),"</span> <span class="token operator">+</span>
+                <span class="token string">"grade varchar(100),"</span> <span class="token operator">+</span>
+                <span class="token string">"age int )"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"~~~~~~~~~~~~~~~创建表格成功~~~~~~~~~~~~~~~~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果运行成功，则会打印<code>~~~~~~~~~~~~~~~创建表格成功~~~~~~~~~~~~~~~~~~</code>，并在相应的数据库表中可查看表结构：</p>
+<pre class="line-numbers language-none"><code class="language-none">MySQL [fuding]&gt; desc student;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50)  | YES  |     | NULL    |                |
+| grade | varchar(100) | YES  |     | NULL    |                |
+| age   | int          | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+4 rows in set (0.018 sec)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意：</strong> 建表时一定要优先使用英文字段名，并且于JavaBean中的变量名称保持一致，不然会出现执行<code>jdbcTemplate.query(all,rows)</code>方法不成功（具体原因往下参阅），就会出现：</p>
+<pre><code>SudentInfo&#123;id=0, name=&#39;null&#39;, age=0, grade=&#39;null&#39;&#125;
+SudentInfo&#123;id=0, name=&#39;null&#39;, age=0, grade=&#39;null&#39;&#125;
+SudentInfo&#123;id=0, name=&#39;null&#39;, age=0, grade=&#39;null&#39;&#125;
+</code></pre>
+<h3 id="update-方法，插入、更新、删除操作"><a href="#update-方法，插入、更新、删除操作" class="headerlink" title="update()方法，插入、更新、删除操作"></a>update()方法，插入、更新、删除操作</h3><blockquote>
+<p>update()方法可以完成插入、更新和删除数据的操作。在JdbcTemplate类中，提供了一系列的update()方法，其常用方法下表所示：</p>
+</blockquote>
+<p><img src="/images/java_ee/spring_jdbc_pakages.png" alt="update"></p>
+<p>虽然一共有4中使用方式，但最常用的还是第四种方式，下面的插入、更新、删除都是以第4种的方式来写的：</p>
+<p>创建JavaBean，定义好于数据库字段一致且类型一致的变量，右击鼠标-&gt;Generate-&gt;Getter and Setter生成以下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span></span><span class="token class-name">JDBC_Template<span class="token punctuation">.</span>Update_Query</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SudentInfo</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> id<span class="token punctuation">;</span>     <span class="token comment">//要于数据库表中的字段名一致</span>
+    <span class="token class-name">String</span> name<span class="token punctuation">;</span>     <span class="token comment">//要于数据库表中的字段名一致</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span>     <span class="token comment">//要于数据库表中的字段名一致</span>
+    <span class="token class-name">String</span> grade<span class="token punctuation">;</span>     <span class="token comment">//要于数据库表中的字段名一致</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setId</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getGrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> grade<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setGrade</span><span class="token punctuation">(</span><span class="token class-name">String</span> grade<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>grade <span class="token operator">=</span> grade<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"SudentInfo&#123;"</span> <span class="token operator">+</span>
+                <span class="token string">"id="</span> <span class="token operator">+</span> id <span class="token operator">+</span>
+                <span class="token string">", name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">", grade='"</span> <span class="token operator">+</span> grade <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">'&#125;'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建Dao设计模式的接口StudentDao：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span></span><span class="token class-name">JDBC_Template<span class="token punctuation">.</span>Update_Query</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">StudentDao</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">addStudent</span><span class="token punctuation">(</span><span class="token class-name">SudentInfo</span> sudentInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//用于添加student数据，给除了id的信息，因为id在数据表中为自增约束</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">updateStudent</span><span class="token punctuation">(</span><span class="token class-name">SudentInfo</span> sudentInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">//用于更新student数据，给全部信息</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">delStudent</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//用于删除student数据，给删除的id即可</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建实现以上的接口的方法StudentDaoImp：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span></span><span class="token class-name">JDBC_Template<span class="token punctuation">.</span>Update_Query</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">BeanPropertyRowMapper</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">JdbcTemplate</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">RowMapper</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StudentDaoImp</span> <span class="token keyword">implements</span> <span class="token class-name">StudentDao</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">JdbcTemplate</span> jdbcTemplate<span class="token punctuation">;</span>
+
+    <span class="token comment">//下面的setJdbcTemplat方法，是为了在配置文件中的&lt;property name="jdbcTemplate" ref="jdbcT">&lt;/property>传入依赖，前面有提到</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setJdbcTemplate</span><span class="token punctuation">(</span><span class="token class-name">JdbcTemplate</span> jdbcTemplate<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>jdbcTemplate <span class="token operator">=</span> jdbcTemplate<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">addStudent</span><span class="token punctuation">(</span><span class="token class-name">SudentInfo</span> sudentInfo<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> sql<span class="token operator">=</span><span class="token string">"insert into student(name,grade,age) values(?,?,?)"</span><span class="token punctuation">;</span>
+        <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> objects<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>      <span class="token comment">//Object数组，可存放任何java中对象或者数据</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getGrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> rs<span class="token operator">=</span>jdbcTemplate<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span>objects<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> rs<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">updateStudent</span><span class="token punctuation">(</span><span class="token class-name">SudentInfo</span> sudentInfo<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> sql<span class="token operator">=</span><span class="token string">"update student set name=?,grade=?,age=? where id=?"</span><span class="token punctuation">;</span>
+        <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> objects<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getGrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                sudentInfo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> rs<span class="token operator">=</span>jdbcTemplate<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span>objects<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> rs<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">delStudent</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> sql<span class="token operator">=</span><span class="token string">"delete from student where id=?"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> jdbcTemplate<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于<code>StudentDaoImp</code>方法需要依赖JdbcTemplate，于是在相应的配置文件中装配为Bean，配置依赖的方法：</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>studentDao<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.example.JDBC_Template.Update_Query.StudentDaoImp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jdbcTemplate<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jdbcT<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>       <span class="token comment">&lt;!--此处的ref属性要与上面的JdbcTemplate的Bean的id一致，但不需要于它的name一致--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意：</strong> <code>property</code>标签中 <code>name=&quot;jdbcTemplate&quot;</code>一定要<code>StudentDaoImp</code>class中有与其对应的<code>setJdbcTemplate</code>(类似于构造方法)</p>
+<p>创建执行以上update的方法:</p>
+<blockquote>
+<p>在软件开发过程中，需要有相应的测试工作。依据测试目的不同，可以将软件测试分为单元测试、集成测试、确认测试和系统测试等。其中单元测试在软件开发阶段是最底层的测试，它易于及时发现并解决问题。JUnit就是一个进行单元测试的开源框架,为了方便测试，需要将Junit库导入classpath，来使用Junit。</p>
+</blockquote>
+<p>以下代码中的@Test即是Junit用来单元测试的注释，如果要在IDEA中正常使用，操作如下：</p>
+<p><code>在要进行单元测试的方法前加入@Test-&gt;出现红色提示-&gt;将鼠标指向红色Test-&gt;点击Add Junit to ClassPath</code>此操作完成后要测试的方法右边就会出现一个绿色的小三角形（点击可运行没有在mian方法中的代码）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span></span><span class="token class-name">JDBC_Template<span class="token punctuation">.</span>Update_Query</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">ApplicationContext</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UpdateQuery</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">//添加数据</span>
+        <span class="token class-name">ApplicationContext</span> applicationContext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationJDBC.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">StudentDao</span> studao<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">StudentDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"studentDao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">SudentInfo</span> sudentInfo<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">SudentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sudentInfo<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sudentInfo<span class="token punctuation">.</span><span class="token function">setGrade</span><span class="token punctuation">(</span><span class="token string">"1班"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sudentInfo<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"付"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sturs <span class="token operator">=</span>studao<span class="token punctuation">.</span><span class="token function">addStudent</span><span class="token punctuation">(</span>sudentInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"添加了"</span><span class="token operator">+</span>sturs<span class="token operator">+</span> <span class="token string">"行学生数据！！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token class-name">DeleteStu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">ApplicationContext</span> applicationContext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationJDBC.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">StudentDao</span> studao<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">StudentDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"studentDao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"删除了"</span><span class="token operator">+</span>studao<span class="token punctuation">.</span><span class="token function">delStudent</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"行学生数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">upDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">ApplicationContext</span> applicationContext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationJDBC.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">StudentDao</span> studao<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">StudentDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"studentDao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">SudentInfo</span> stu<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">SudentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"王麻子"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span><span class="token function">setGrade</span><span class="token punctuation">(</span><span class="token string">"终极一班"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"更改了"</span><span class="token operator">+</span>studao<span class="token punctuation">.</span><span class="token function">updateStudent</span><span class="token punctuation">(</span>stu<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"行！！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="query-处理各种对数据库表的查询操作"><a href="#query-处理各种对数据库表的查询操作" class="headerlink" title="query()处理各种对数据库表的查询操作"></a>query()处理各种对数据库表的查询操作</h3><blockquote>
+<p>JdbcTemplate类中还提供了大量的query()方法来处理各种对数据库表的查询操作。其中，常用的几个query()方法如下表所示：</p>
+</blockquote>
+<p><img src="/images/java_ee/query.png" alt="query方法"></p>
+<p>以上的1和4都是常用的</p>
+<p>接口StudentDao中添加以下两个接口：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SudentInfo</span><span class="token punctuation">></span></span> <span class="token class-name">QueryAllInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//查询所有学生</span>
+<span class="token keyword">public</span> <span class="token class-name">SudentInfo</span> <span class="token class-name">QueryA</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//按id查询一位学生</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>StudentDaoImp中添加实现以上的接口的方法：</p>
+<blockquote>
+<p>sping中的RowMapper可以将数据中的每一行数据封装成用户定义的类。</p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+ <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SudentInfo</span><span class="token punctuation">></span></span> <span class="token class-name">QueryAllInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+     <span class="token class-name">String</span> all<span class="token operator">=</span><span class="token string">"select * from student"</span><span class="token punctuation">;</span>
+     <span class="token class-name">RowMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SudentInfo</span><span class="token punctuation">></span></span> rows<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BeanPropertyRowMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SudentInfo</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token class-name">SudentInfo</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> jdbcTemplate<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>all<span class="token punctuation">,</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span>
+
+ <span class="token annotation punctuation">@Override</span>
+ <span class="token keyword">public</span> <span class="token class-name">SudentInfo</span> <span class="token class-name">QueryA</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+     <span class="token class-name">String</span> stu<span class="token operator">=</span><span class="token string">"select * from student where id=?"</span><span class="token punctuation">;</span>
+     <span class="token class-name">RowMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SudentInfo</span><span class="token punctuation">></span></span> rowMapper<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BeanPropertyRowMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token class-name">SudentInfo</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> jdbcTemplate<span class="token punctuation">.</span><span class="token function">queryForObject</span><span class="token punctuation">(</span>stu<span class="token punctuation">,</span>rowMapper<span class="token punctuation">,</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行测试：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span></span><span class="token class-name">JDBC_Template<span class="token punctuation">.</span>Update_Query</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">ApplicationContext</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UpdateQuery</span> <span class="token punctuation">&#123;</span>      <span class="token comment">//打印多行数据</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token class-name">QueryAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">ApplicationContext</span> applicationContext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationJDBC.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">StudentDao</span> studao<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">StudentDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"studentDao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SudentInfo</span><span class="token punctuation">></span></span> list<span class="token operator">=</span> <span class="token class-name"><span class="token namespace">studao<span class="token punctuation">.</span></span>QueryAllInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">SudentInfo</span> i<span class="token operator">:</span>list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token class-name">QueryAStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token comment">//打印id=2的一行数据</span>
+        <span class="token class-name">ApplicationContext</span> applicationContext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"applicationJDBC.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">StudentDao</span> studao<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">StudentDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"studentDao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">SudentInfo</span> s<span class="token operator">=</span><span class="token class-name"><span class="token namespace">studao<span class="token punctuation">.</span></span>QueryA</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：</p>
+<p>QueryAllStudents()：</p>
+<pre><code>SudentInfo&#123;id=1, name=&#39;付鼎&#39;, age=9, grade=&#39;三年级&#39;&#125;
+SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班&#39;&#125;
+</code></pre>
+<p>QueryAStudent()：</p>
+<pre><code>SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班&#39;&#125;
 </code></pre>
 
                 
@@ -1509,7 +1813,7 @@ Process finished with exit code 0
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.2k</span>&nbsp;字
+                class="white-color">19.5k</span>&nbsp;字
             
             
             
