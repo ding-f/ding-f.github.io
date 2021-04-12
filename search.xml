@@ -47,6 +47,8 @@
       
         <tags>
             
+            <tag> 运维 </tag>
+            
             <tag> Mysql </tag>
             
             <tag> SQL </tag>
@@ -124,8 +126,6 @@
       <categories>
           
           <category> 信息安全 </category>
-          
-          <category> Linux </category>
           
       </categories>
       
