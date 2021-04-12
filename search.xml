@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>MySQL</title>
-      <link href="2021/04/06/mysql.html"/>
-      <url>2021/04/06/mysql.html</url>
+      <title>网络安全</title>
+      <link href="2021/04/12/wang-luo-an-quan.html"/>
+      <url>2021/04/12/wang-luo-an-quan.html</url>
       
-        <content type="html"><![CDATA[<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="重置密码"><a href="#重置密码" class="headerlink" title="重置密码"></a>重置密码</h3><blockquote><p>以下操作在Arch Linux 环境，数据库为10.5.9-MariaDB，经过2小时的搜索资料和实践，才有以下总结</p></blockquote><p>首先，我们停掉MariaDB服务：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl stop mariadb.service  <span class="token comment">#停止MariaDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以安全模式启动MySQL：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> mysqld_safe --skip-grant-tables --skip-networking <span class="token operator">&amp;</span>        <span class="token comment">#--skip-networking；避免远程无密码登录 MariaDB，后面的&amp;的作用是启动安全模式后能继续编辑命令窗口</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这样我们就可以直接用root登录，无需密码：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>特别是此处的操作，不能和Mysql数据库的改密码命令一样，不然会出现<code>ERROR 1348 (HY000): Column &#39;Password&#39; is not updatable</code></p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">use</span> mysql<span class="token punctuation">;</span>  mysql<span class="token operator">></span> <span class="token keyword">set</span> password <span class="token keyword">for</span> <span class="token string">'root'</span><span class="token variable">@'localhost'</span><span class="token operator">=</span>password<span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#以下注释的两个适用于Mysql重置密码操作 </span><span class="token comment">#update mysql.user set authentication_string=password('123456') where host='localhost' and user='root';</span><span class="token comment"># ALTER USER 'root'@'localhost' identified by '123456';</span>mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>重设完毕后，我们退出，然后启动 MariaDB 服务：</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql <span class="token operator">></span> quit  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>重启服务：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart mariadb.service <span class="token comment">#重启MariaDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>接下来直接登录使用设置的密码<code>123456</code>即可，实际的运维当中不建议使用弱密码。</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       
@@ -17,25 +17,13 @@
     
     
     <entry>
-      <title>Python</title>
-      <link href="2021/03/22/python.html"/>
-      <url>2021/03/22/python.html</url>
+      <title>MySQL</title>
+      <link href="2021/04/06/mysql.html"/>
+      <url>2021/04/06/mysql.html</url>
       
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 语言 </category>
-          
-      </categories>
+        <content type="html"><![CDATA[<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="重置密码"><a href="#重置密码" class="headerlink" title="重置密码"></a>重置密码</h3><blockquote><p>以下操作在Arch Linux 环境，数据库为10.5.9-MariaDB，经过2小时的搜索资料和实践，才有以下总结</p></blockquote><p>首先，我们停掉MariaDB服务：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl stop mariadb.service  <span class="token comment">#停止MariaDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>以安全模式启动MySQL：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> mysqld_safe --skip-grant-tables --skip-networking <span class="token operator">&amp;</span>        <span class="token comment">#--skip-networking；避免远程无密码登录 MariaDB，后面的&amp;的作用是启动安全模式后能继续编辑命令窗口</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这样我们就可以直接用root登录，无需密码：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>特别是此处的操作，不能和Mysql数据库的改密码命令一样，不然会出现<code>ERROR 1348 (HY000): Column &#39;Password&#39; is not updatable</code></p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">use</span> mysql<span class="token punctuation">;</span>  mysql<span class="token operator">></span> <span class="token keyword">set</span> password <span class="token keyword">for</span> <span class="token string">'root'</span><span class="token variable">@'localhost'</span><span class="token operator">=</span>password<span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#以下注释的两个适用于Mysql重置密码操作 </span><span class="token comment">#update mysql.user set authentication_string=password('123456') where host='localhost' and user='root';</span><span class="token comment"># ALTER USER 'root'@'localhost' identified by '123456';</span>mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>重设完毕后，我们退出，然后启动 MariaDB 服务：</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql <span class="token operator">></span> quit  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>重启服务：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart mariadb.service <span class="token comment">#重启MariaDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>接下来直接登录使用设置的密码<code>123456</code>即可，实际的运维当中不建议使用弱密码。</p>]]></content>
       
       
-        <tags>
-            
-            <tag> Python </tag>
-            
-        </tags>
       
     </entry>
     
