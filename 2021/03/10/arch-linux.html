@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-12
+                    2021-04-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    388
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -472,6 +472,52 @@ sha256sum -c kali-linux-2021.1-vbox-amd64.ova.txt.sha256sum         <span class=
 <p><code>IgnorePkg=linux</code></p>
 <p>以上为更改使系统不能更新linux内核包，如果忽略多个包，包名之间用<strong>空格隔开</strong>。</p>
 <p>如果只打算忽略一次升级，可以使用 –ignore 选项，这时使用逗号隔开的列表。</p>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="sed-grep批量修改文件内容"><a href="#sed-grep批量修改文件内容" class="headerlink" title="sed|grep批量修改文件内容"></a>sed|grep批量修改文件内容</h3><blockquote>
+<p>Linux sed 命令是利用脚本来处理文本文件。<br>sed 可依照脚本的指令来处理、编辑文本文件。<br>Sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。<br>详情请参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">https://www.runoob.com/linux/linux-comm-sed.html</a></p>
+</blockquote>
+<p>使用sed命令来修改文件内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/Good/GoodNight/g'</span> ./TheDay.txt        <span class="token comment">#此命令直接可以将TheDay.txt 文件下的所有包含Good的字符串改为GoodNight，并加-i参数改写文件，如果不加-i参数则只有打印输出而不会保存修改后的文件,单引号g代表全部内容都会替换。</span>
+
+<span class="token comment">#如果要删除Good字符串后面的GoodNight不写（猜测）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如果加上以下命令,则会修改grep 批量查询所有符合条件的文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/Good/GoodNight/g'</span> <span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> -rl Good ./<span class="token variable">`</span></span>       <span class="token comment">#grep是查找字符串命令，如果加上-rl递归查找并打印本目录下符合条件的所有文件路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>grep执行结果：</p>
+<pre><code>$ grep -rl 鼎&lt; ./  
+about/index.html
+search.xml
+songs/code/Test/区分$_POST和$_FILES系统变量.php
+songs/code/index.php
+songs/add_multiple.php
+songs/index.php
+medias/banner/1.jpg
+medias/banner/6.jpg
+contact/index.html
+</code></pre>
+<p>删除批量文件中大量相同的内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'/GoodNight/d'</span> <span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> -rl GoodNight ./<span class="token variable">`</span></span>       <span class="token comment">#d代表批量删除所有文件匹配成功的GoodNight字符的行</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>注意：</strong> 以上命令添加-i参数属于危险操作，可在<code>-i</code>之后加上<code>.back</code>就会备份修改后的文件以保证修改文件修改错误的损失。</p>
+<h3 id="args-xargs-批量修改文件名称"><a href="#args-xargs-批量修改文件名称" class="headerlink" title="args|xargs 批量修改文件名称"></a>args|xargs 批量修改文件名称</h3><p>复制前n个文件到指定目录：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">head</span> -n <span class="token number">100</span> <span class="token operator">|</span> args -i <span class="token function">cp</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">[</span>target_dir<span class="token punctuation">]</span>       <span class="token comment">#-n 代表前多少个文件args加-i代表接收参数到&#123;&#125;中</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>批量修改文件名：</p>
+<pre><code>xarge(arge命令的进阶版，可对&#123;&#125;中的内容进行修改)测试：
+➜ ls | xargs -i echo abcd &#123;&#125; efgh &#123;&#125;
+abcd 0001.txt efgh 0001.txt
+abcd 0002.txt efgh 0002.txt
+abcd 0003.txt efgh 0003.txt
+abcd 0004.txt efgh 0004.txt
+abcd 0005.txt efgh 0005.txt
+</code></pre>
+<p>测试<code>xargs</code>加强功能（修改{}内部内容<code>sed</code>）：</p>
+<pre><code>ls | xargs -i echo abcd &#123;&#125; efgh &#123;&#125; | sed &#39;s/.txt/.md/2g&#39;
+abcd 0001.txt efgh 0001.md
+abcd 0002.txt efgh 0002.md
+abcd 0003.txt efgh 0003.md
+abcd 0004.txt efgh 0004.md
+abcd 0005.txt efgh 0005.md
+</code></pre>
+<p>实际操作：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">xargs</span> -i <span class="token builtin class-name">echo</span> <span class="token function">mv</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/.txt/.md/2g'</span> <span class="token operator">|</span> <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>注意:</strong> 如果不先 echo 出命令再输入到 sh 的话，mv {} {} 会直接执行，这样就无法输入到后一个管道中进行 sed 替换操作。</p>
 <h2 id="图形化使用技巧"><a href="#图形化使用技巧" class="headerlink" title="图形化使用技巧"></a>图形化使用技巧</h2><h2 id="dolphin文件管理器"><a href="#dolphin文件管理器" class="headerlink" title="dolphin文件管理器"></a>dolphin文件管理器</h2><blockquote>
 <p>连接sftp命令</p>
 </blockquote>
@@ -1365,7 +1411,7 @@ sha256sum -c kali-linux-2021.1-vbox-amd64.ova.txt.sha256sum         <span class=
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.5k</span>&nbsp;字
+                class="white-color">20.1k</span>&nbsp;字
             
             
             
