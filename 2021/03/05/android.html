@@ -400,14 +400,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-12
+                    2021-04-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -437,7 +437,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安卓的四大组件"><a href="#安卓的四大组件" class="headerlink" title="安卓的四大组件"></a>安卓的四大组件</h2><blockquote>
+                <h2 id="推荐学习网站"><a href="#推荐学习网站" class="headerlink" title="推荐学习网站"></a>推荐学习网站</h2><blockquote>
+<p>安卓开发者平台:<a target="_blank" rel="noopener" href="https://developer.android.com/">https://developer.android.com/</a><br>安卓开发者社区：<a target="_blank" rel="noopener" href="https://android-developers.googleblog.com/">https://android-developers.googleblog.com/</a></p>
+</blockquote>
+<h2 id="安卓的四大组件"><a href="#安卓的四大组件" class="headerlink" title="安卓的四大组件"></a>安卓的四大组件</h2><blockquote>
 <p>安卓的四大组件，Activity、Service、BroadcastReceiver、ContentProvider提供应用之间的访问接口（很少自定义，主要系统提供）</p>
 </blockquote>
 <h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><blockquote>
@@ -544,8 +547,8 @@
         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">setContentView</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
         but<span class="token operator">=</span><span class="token function">findViewById</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        but<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token class-name">StringBuffer</span> srt<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        but<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>      <span class="token comment">//匿名内部类直接继承了一个名为View.OnClickListener的接口，千万不能理解为它继承的是一个类中的方法</span>
+    
             <span class="token annotation punctuation">@Override</span>
             <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token class-name">View</span> v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
                 
@@ -553,10 +556,10 @@
         <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="实验-amp-课程-amp-网上查找笔记"><a href="#实验-amp-课程-amp-网上查找笔记" class="headerlink" title="实验&amp;课程&amp;网上查找笔记"></a>实验&amp;课程&amp;网上查找笔记</h1><blockquote>
+<h2 id="实验-amp-课程-amp-网上查找笔记"><a href="#实验-amp-课程-amp-网上查找笔记" class="headerlink" title="实验&amp;课程&amp;网上查找笔记"></a>实验&amp;课程&amp;网上查找笔记</h2><blockquote>
 <p>Android Studio 中的res/drawble图片不能有大写字母,mipmap(响应式布局) 是分设备尺寸选择合适图片的文件夹<br>res/values/colors.xml 是用来设置内容显示颜色的</p>
 </blockquote>
-<h2 id="设置一个底部消息气泡"><a href="#设置一个底部消息气泡" class="headerlink" title="设置一个底部消息气泡"></a>设置一个底部消息气泡</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<h3 id="设置一个底部消息气泡"><a href="#设置一个底部消息气泡" class="headerlink" title="设置一个底部消息气泡"></a>设置一个底部消息气泡</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">
 <span class="token keyword">private</span> <span class="token class-name">EditText</span> userName<span class="token punctuation">;</span>
 <span class="token keyword">private</span> <span class="token class-name">EditText</span> passwd<span class="token punctuation">;</span>
 
@@ -568,7 +571,7 @@
 srt<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>userNa<span class="token punctuation">)</span><span class="token punctuation">;</span>
 srt<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>passWd<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">Toast</span><span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token class-name">MainActivity</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span>srt<span class="token punctuation">,</span><span class="token class-name">Toast</span><span class="token punctuation">.</span>LENGTH_LONG<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//生成消息气泡的函数，其中参数（设置在哪个Activity显示，显示的内容，显示的时间）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="两个Activity之间的跳转"><a href="#两个Activity之间的跳转" class="headerlink" title="两个Activity之间的跳转"></a>两个Activity之间的跳转</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Button</span> button <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Button</span><span class="token punctuation">)</span><span class="token function">findViewById</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h3 id="两个Activity之间的跳转"><a href="#两个Activity之间的跳转" class="headerlink" title="两个Activity之间的跳转"></a>两个Activity之间的跳转</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Button</span> button <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Button</span><span class="token punctuation">)</span><span class="token function">findViewById</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
 button<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token annotation punctuation">@Override</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token class-name">View</span> v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -583,7 +586,7 @@ button<span class="token punctuation">.</span><span class="token function">setOn
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="设置输入框中的提示文字"><a href="#设置输入框中的提示文字" class="headerlink" title="设置输入框中的提示文字"></a>设置输入框中的提示文字</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>EditText</span>
+<h3 id="设置输入框中的提示文字"><a href="#设置输入框中的提示文字" class="headerlink" title="设置输入框中的提示文字"></a>设置输入框中的提示文字</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>EditText</span>
             <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/editTextTextPersonName<span class="token punctuation">"</span></span>
             <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
             <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>54dp<span class="token punctuation">"</span></span>
@@ -1424,7 +1427,7 @@ button<span class="token punctuation">.</span><span class="token function">setOn
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.1k</span>&nbsp;字
+                class="white-color">20.8k</span>&nbsp;字
             
             
             
