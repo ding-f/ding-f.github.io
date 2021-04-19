@@ -4,9 +4,36 @@
   
     
     <entry>
-      <title>Java语言</title>
-      <link href="2021/04/15/java-yu-yan.html"/>
-      <url>2021/04/15/java-yu-yan.html</url>
+      <title>Python3</title>
+      <link href="2021/04/19/python3.html"/>
+      <url>2021/04/19/python3.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础 </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java</title>
+      <link href="2021/04/15/java.html"/>
+      <url>2021/04/15/java.html</url>
       
         <content type="html"><![CDATA[<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><blockquote><p>使用匿名内部类我们必须要继承一个父类或者实现一个接口，当然也仅能只继承一个父类或者实现一个接口。同时它也是没有class关键字，这是因为匿名内部类是直接使用new来生成一个对象的引用。当然这个引用是隐式的。<br>由于匿名内部类不能是抽象类，所以它必须要实现它的抽象父类或者接口里面所有的抽象方法。<br>匿名内部类的使用它是存在一个缺陷的，就是它仅能被使用一次，创建匿名内部类时它会立即创建一个该类的实例，该类的定义会立即消失，所以匿名内部类是不能够被重复使用。</p></blockquote><p>在使用匿名内部类的过程中，我们需要注意如下几点：</p><ol><li><p>使用匿名内部类时，我们必须是继承一个类或者实现一个接口，但是两者不可兼得，同时也只能继承一个类或者实现一个接口。</p></li><li><p>匿名内部类中是不能定义构造函数的。</p></li><li><p>匿名内部类中不能存在任何的静态成员变量和静态方法。</p></li><li><p>匿名内部类为局部内部类，所以局部内部类的所有限制同样对匿名内部类生效。</p></li><li><p>匿名内部类不能是抽象的，它必须要实现继承的类或者实现的接口的所有抽象方法。</p></li></ol><h3 id="匿名类继承一个父类"><a href="#匿名类继承一个父类" class="headerlink" title="匿名类继承一个父类"></a>匿名类继承一个父类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Polygon</span> <span class="token punctuation">&#123;</span>   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"在 Polygon 类内部"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token keyword">class</span> <span class="token class-name">AnonymousDemo</span> <span class="token punctuation">&#123;</span>   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">createClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>      <span class="token comment">// 创建的匿名类继承了 Polygon 类</span>      <span class="token class-name">Polygon</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Polygon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>         <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"在匿名类内部。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">&#125;</span>      <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>      p1<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>       <span class="token class-name">AnonymousDemo</span> an <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnonymousDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       an<span class="token punctuation">.</span><span class="token function">createClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="匿名类实现一个接口"><a href="#匿名类实现一个接口" class="headerlink" title="匿名类实现一个接口"></a>匿名类实现一个接口</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">Polygon</span> <span class="token punctuation">&#123;</span>   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">class</span> <span class="token class-name">AnonymousDemo</span> <span class="token punctuation">&#123;</span>   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">createClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>      <span class="token comment">// 匿名类实现一个接口</span>      <span class="token class-name">Polygon</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Polygon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>         <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"在匿名类内部。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">&#125;</span>      <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>      p1<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>      <span class="token class-name">AnonymousDemo</span> an <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnonymousDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      an<span class="token punctuation">.</span><span class="token function">createClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
@@ -20,7 +47,9 @@
       
         <tags>
             
-            <tag> java </tag>
+            <tag> Java </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
