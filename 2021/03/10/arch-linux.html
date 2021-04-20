@@ -372,8 +372,8 @@
                                 <span class="chip bg-color">运维</span>
                             </a>
                         
-                            <a href="/tags/Arch-Linux/">
-                                <span class="chip bg-color">Arch Linux</span>
+                            <a href="/tags/ArchLinux/">
+                                <span class="chip bg-color">ArchLinux</span>
                             </a>
                         
                     </div>
@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-14
+                    2021-04-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    7 分
                 </div>
                 
 
@@ -441,7 +441,78 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h3 id="pacman"><a href="#pacman" class="headerlink" title="pacman"></a>pacman</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S <span class="token operator">&lt;</span>包名<span class="token operator">></span>        <span class="token comment">#安装软件包命令</span>
+                <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="图形化快捷键"><a href="#图形化快捷键" class="headerlink" title="图形化快捷键"></a>图形化快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Alt+T</td>
+<td>打开终端</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>关闭终端</td>
+<td>退出python也可以</td>
+</tr>
+</tbody></table>
+<h3 id="命令行快捷键"><a href="#命令行快捷键" class="headerlink" title="命令行快捷键"></a>命令行快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+R</td>
+<td>搜索历史命令</td>
+<td>在此命令行的下方出现搜索结果，按右键确认结果</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>清屏</td>
+<td>相当于clear命令</td>
+</tr>
+</tbody></table>
+<h2 id="Arch环境变量配置"><a href="#Arch环境变量配置" class="headerlink" title="Arch环境变量配置"></a>Arch环境变量配置</h2><blockquote>
+<p>以下操作均在ArchLinux系统上操作，其中ArchLinux配置用户环境的文件于其他Linux不用:<del>/.xprofile (添加</del>/.profile是没有用的)</p>
+</blockquote>
+<h3 id="操作命令掌握"><a href="#操作命令掌握" class="headerlink" title="操作命令掌握"></a>操作命令掌握</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span>      <span class="token comment">#命令显示当前系统定义的所有环境变量</span>
+
+<span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span>       <span class="token comment">#命令输出当前的PATH环境变量的值</span>
+
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/home/uusama/mysql/bin        <span class="token comment">#往名为PATH的环境变量往后添加一个路径，$PATH也可以放于后面位置</span>
+
+<span class="token builtin class-name">source</span> /etc/profile     <span class="token comment">#进行生效你当前配置的环境变量文件，对任何环境变量的文件都起效,但只能生效于执行命令窗口，若要求所有窗口都生效，必须重启系统</span>
+
+<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"<span class="token environment constant">$PATH</span>"</span>:/NEW_PATH      <span class="token comment">#临时设置环境变量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>以上命令如果只执行于命令行窗口，那会在下次重启命令行或者打开新的命令行时会失效，要永久保持还是要写入相关环境变量的文件中才行</p>
+</blockquote>
+<h3 id="文件路径及作用范围"><a href="#文件路径及作用范围" class="headerlink" title="文件路径及作用范围"></a>文件路径及作用范围</h3><blockquote>
+<p>常见的环境变量配置文件：/etc/environment、/etc/profile、/etc/bash.bashrc、/etc/profile.d/test.sh、<del>/.profile、</del>/.bashrc（加载顺序从前到后依次）</p>
+</blockquote>
+<ul>
+<li><p><code>~/</code>目录下的环境变量配置文件只能作用于当前用户</p>
+</li>
+<li><p><code>/etc/</code>目录下的环境变量配置文件作用于整个系统所有用户</p>
+</li>
+</ul>
+<h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><ul>
+<li><p>可以自定义一个环境变量文件，比如在某个项目下定义uusama.profile，在这个文件中使用export定义一系列变量，然后在~/.profile文件后面加上：sourc &lt;项目地址&gt;/uusama.profile，这样你每次登陆都可以在Shell脚本中使用自己定义的一系列变量。</p>
+</li>
+<li><p>也可以使用alias命令定义一些命令的别名，比如alias rm=”rm -i”（双引号必须），并把这个代码加入到~/.profile中，这样你每次使用rm命令的时候，都相当于使用rm -i命令，非常方便。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<p>Linux 上的环境变量配置是跟Windows上的道理是一样的，同样具有PATH环境变量，不过Windows上的PATH环境变量路径分割是用；号，Linux用的：号。</p>
+</blockquote>
+<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h3 id="pacman"><a href="#pacman" class="headerlink" title="pacman"></a>pacman</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S <span class="token operator">&lt;</span>包名<span class="token operator">></span>        <span class="token comment">#安装软件包命令</span>
 
 pacman -R <span class="token operator">&lt;</span>包名<span class="token operator">></span>        <span class="token comment">#卸载软件包</span>
 
@@ -523,45 +594,16 @@ abcd 0005.txt efgh 0005.md
 </blockquote>
 <p>打开Dolphin文件管理器地址栏上直接输入，按回车会进行用户名密码的校验：</p>
 <pre class="line-numbers language-none"><code class="language-none">sftp:&#x2F;&#x2F;&lt;用户名&gt;@&lt;主机地址&#x2F;域名&gt;:&lt;端口号&gt;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h2 id="常用-amp-实用命令总结"><a href="#常用-amp-实用命令总结" class="headerlink" title="常用&amp;实用命令总结"></a>常用&amp;实用命令总结</h2><h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><blockquote>
+<p>内部命令：linux系统加载运行时shell就被加载并驻留在系统内存中，比如：exit，history，cd，echo等<br>外部命令：在系统加载时并不随系统一起被加载到内存中，而是在需要时才将其调用内存，外部命令是在bash之外额外安装的，通常放在/bin，/usr/bin，/sbin，/usr/sbin……等等。可通过“echo $PATH”命令查看外部命令的存储路径，比如：ls、vi等。</p>
+</blockquote>
+<p>语法：<code>type(选项)(参数)</code></p>
+<p>选项：</p>
+<ul>
+<li>-p：如果给出的指令为外部指令，则显示其绝对路径</li>
+<li>-a：在环境变量“PATH”指定的路径中，显示给定指令的信息，包括命令别名</li>
+</ul>
+<p>参数：指给出的命令</p>
 
                 
             </div>
@@ -630,8 +672,8 @@ abcd 0005.txt efgh 0005.md
                                     <span class="chip bg-color">运维</span>
                                 </a>
                             
-                                <a href="/tags/Arch-Linux/">
-                                    <span class="chip bg-color">Arch Linux</span>
+                                <a href="/tags/ArchLinux/">
+                                    <span class="chip bg-color">ArchLinux</span>
                                 </a>
                             
                         </div>
@@ -1411,7 +1453,7 @@ abcd 0005.txt efgh 0005.md
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.8k</span>&nbsp;字
+                class="white-color">22.6k</span>&nbsp;字
             
             
             
