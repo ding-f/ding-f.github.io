@@ -1006,7 +1006,7 @@ SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班
 <p>在事务管理过程中，传播行为可以控制是否需要创建事务以及如何创建事务，通常情况下，数据的查询不会影响原数据的改变，所以不需要进行事务管理，而对于数据的插入、更新和删除操作，必须进行事务管理。如果没有指定事务的传播行为，Spring默认传播行为是REQUIRED。</p>
 </blockquote>
 <p><img src="/images/java_ee/propagationbehavior.png" alt="传播行为"></p>
-<h2 id="声明式事务管理-基于XML方式"><a href="#声明式事务管理-基于XML方式" class="headerlink" title="声明式事务管理:基于XML方式"></a>声明式事务管理:基于XML方式</h2><blockquote>
+<h3 id="基于XML方式"><a href="#基于XML方式" class="headerlink" title="基于XML方式"></a>基于XML方式</h3><blockquote>
 <p>事务管理方式有两种：编程式事务管理、声明式事务管理<br>声明式事务管理:通过AOP技术实现的事务管理，主要思想是将事务作为一个“切面”代码单独编写，然后通过AOP技术将事务管理的“切面”植入到业务目标类中</p>
 </blockquote>
 <p><img src="/images/java_ee/xml_transaction.png" alt="基于XML方式配置图"></p>
@@ -1092,7 +1092,7 @@ SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班
 <p><a href="/images/java_ee/by0.png">模拟突发情况生效</a><br><a href="/images/java_ee/no_change.png">执行不成功，数据库表未被更改</a></p>
 <p>注释掉<code>int i=20/0;</code>,就会执行成功：</p>
 <p><a href="/images/java_ee/no_by0.png">无突发情况</a><br><a href="/images/java_ee/changed.png">执行成功，数据库表被更改</a></p>
-<h2 id="声明式事务管理-基于注解方式"><a href="#声明式事务管理-基于注解方式" class="headerlink" title="声明式事务管理:基于注解方式"></a>声明式事务管理:基于注解方式</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--注释部分说明要去除以下配置代码--></span>
+<h3 id="基于注解方式"><a href="#基于注解方式" class="headerlink" title="基于注解方式"></a>基于注解方式</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--注释部分说明要去除以下配置代码--></span>
 <span class="token comment">&lt;!--&lt;tx:advice id="txAdvice" transaction-manager="transactionManager">
 
     &lt;tx:attributes>
