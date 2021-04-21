@@ -415,7 +415,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.9k
+                    6.8k
                 </div>
                 
 
@@ -1089,9 +1089,9 @@ SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果事物管理器生效，执行以上代码会出现：</p>
-<p><a href="/images/java_ee/by0.png">模拟突发情况生效</a><br><a href="/images/java_ee/no_change.png">执行不成功，数据库表未被更改</a></p>
+<p><img src="/images/java_ee/by0.png" alt="模拟突发情况生效"><br><img src="/images/java_ee/no_change.png" alt="执行不成功，数据库表未被更改"></p>
 <p>注释掉<code>int i=20/0;</code>,就会执行成功：</p>
-<p><a href="/images/java_ee/no_by0.png">无突发情况</a><br><a href="/images/java_ee/changed.png">执行成功，数据库表被更改</a></p>
+<p><img src="/images/java_ee/no_by0.png" alt="无突发情况"><br><img src="/images/java_ee/changed.png" alt="执行成功，数据库表被更改"></p>
 <h3 id="基于注解方式"><a href="#基于注解方式" class="headerlink" title="基于注解方式"></a>基于注解方式</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--注释部分说明要去除以下配置代码--></span>
 <span class="token comment">&lt;!--&lt;tx:advice id="txAdvice" transaction-manager="transactionManager">
 
@@ -1128,8 +1128,8 @@ SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>测试运行：</p>
-<p><a href="/images/java_ee/annotation_transaction.png">运行成功</a><br><a href="/images/java_ee/annotation_table.png">查询数据表结果</a></p>
-<p><a href="/images/java_ee/by0.png">突发情况，运行失败</a><br><a href="/images/java_ee/changed.png">数据表未被更改</a></p>
+<p><img src="/images/java_ee/annotation_transaction.png" alt="运行成功"><br><img src="/images/java_ee/annotation_table.png" alt="查询数据表结果"></p>
+<p><img src="/images/java_ee/by0.png" alt="突发情况，运行失败"><br><img src="/images/java_ee/changed.png" alt="数据表未被更改"></p>
 
                 
             </div>
@@ -1975,7 +1975,7 @@ SudentInfo&#123;id=2, name=&#39;付鼎鼎&#39;, age=22, grade=&#39;专升本1班
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">24.7k</span>&nbsp;字
+                class="white-color">24.6k</span>&nbsp;字
             
             
             
