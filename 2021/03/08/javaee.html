@@ -408,21 +408,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-21
+                    2021-06-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.8k
+                    6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    29 分
+                    26 分
                 </div>
                 
 
@@ -497,59 +497,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="配置IDEA开发环境"><a href="#配置IDEA开发环境" class="headerlink" title="配置IDEA开发环境"></a>配置IDEA开发环境</h2><h3 id="安装intellij-idea-ultimate-edition"><a href="#安装intellij-idea-ultimate-edition" class="headerlink" title="安装intellij-idea-ultimate-edition"></a>安装intellij-idea-ultimate-edition</h3><blockquote>
-<p>Arch Linux下直接一条命令即可安装，但不是破解版，直接安装后跟Windows上提示的一样是评估版本，但不要着急，按理来说我们依旧可以像破解Windows版本一样破解它<br>所需内容：教程（破解到2099年）<a target="_blank" rel="noopener" href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3">https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3</a>或（无限使用30天评估）<a target="_blank" rel="noopener" href="https://www.exception.site/essay/idea-reset-eval">https://www.exception.site/essay/idea-reset-eval</a>，推荐使用第一种（作者就是）<br>所需破解包及其教程：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1jqnhRAafTFkX0nIU4ZSGMA">https://pan.baidu.com/s/1jqnhRAafTFkX0nIU4ZSGMA</a> 提取码:immo<br>安装到Arch Linux：</p>
-</blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S intellij-idea-ultimate-edition        <span class="token comment">#安装Idea到Arch Linux</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>为了不让它在对系统进行全面升级时候不被更新，需要添加以下命令到配置文件中去（此步骤为了破解版本的Idea不会破解失效）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/pacman.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在大概25行内容添加以下：</p>
-<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">IgnorePkg&#x3D;intellij-idea-ultimate-edition-jre intellij-idea-ultimate-edition     #忽略更新两个包<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="导入Spring框架包"><a href="#导入Spring框架包" class="headerlink" title="导入Spring框架包"></a>导入Spring框架包</h3><blockquote>
 <p>需要下载Spring框架包地址：<a target="_blank" rel="noopener" href="https://repo.spring.io/simple/libs-release-local/org/springframework/spring/">https://repo.spring.io/simple/libs-release-local/org/springframework/spring/</a>选择合适的版本，以下使用的Spring4.3.10<br>第三方依赖包地址：<a target="_blank" rel="noopener" href="https://mirror-hk.koddos.net/apache//commons/logging/binaries/commons-logging-1.2-bin.zip">https://mirror-hk.koddos.net/apache//commons/logging/binaries/commons-logging-1.2-bin.zip</a><br>还需要注意的是IDEA导入库文件到项目中（位于同一Project目录中）后直接作用于于整个Project，其中的所有Modules可以共用导入进来的所有库，共用方法下面有介绍</p>
-</blockquote>
-<p>管理整个Project库的方式：</p>
-<p>点击<code>File&gt;Project Structure&gt;</code>弹出以下界面</p>
-<p><img src="/images/java_ee/Project_Structure.png" alt="Project Structure"></p>
-<p>点击+号，弹出文件夹选择对话框，选择项目内包含要导入包含所需包的文件夹（此时只是导入到库中，并没有在项目中直接可以使用）</p>
-<p>导入库后还需要在每次建立的新Module中导入classpath中才可以直接import等操作：</p>
-<p>以上点击<code>Modules&gt;Dependencies&gt;选择你的项目</code>：</p>
-<p><img src="/images/java_ee/classpath.png" alt="配置classpath"></p>
-<p>点击左下角<code>+</code>号，选择2.librarys，找到你刚刚导入的库，Addselect即可：</p>
-<p><img src="/images/java_ee/library.png" alt="配置classpath-选择库"></p>
-<blockquote>
-<p>以上界面非常重要,配置项目所需的大部分，作者之前使用的Eclipse，还以为导入的库只作用于一个Module，但导入后才发现所有IDEA的Project内都适用导入的库，但在不同的Module内需要进行classpath才可以import操作。<br>所以上面的库的路径是：<code>~/IdeaProjects/JavaEE/TestSpring/src/main/webapp/WEB-INF/lib/</code>。<br>但如果是在Project内就有之前导入的库，那直接在不同的Module中直接写代码，如果缺少classpath设置就提示缺少的地方缺少您之前导入的库，点击直接导入classpath即可，省去在Project Structure选择Jars or Directories的麻烦。</p>
-</blockquote>
-<h3 id="IDEA配置Tomcat"><a href="#IDEA配置Tomcat" class="headerlink" title="IDEA配置Tomcat"></a>IDEA配置Tomcat</h3><blockquote>
-<p>需要Linux版本的Tomcat7/Tomcat8,配置在Arch Linux环境下包：intellij-idea-ultimate-edition (版本2020.3)</p>
-</blockquote>
-<ol>
-<li><p>导航栏选择:<code>Run&gt;Edit Configration&gt;（弹出配置窗口）</code></p>
-</li>
-<li><p>配置框弹出：<code>选择右上角的+号&gt;拖动滚动条选择Tomcat Server&gt;local&gt;编辑名称Tomcat7/8&gt;Application Server后选择Configure</code><br> <img src="/images/java_ee/tomcat_lib.png" alt="要注意选择Tomcat自带的jar"></p>
-<ul>
-<li>第一个是运行asp所必须的（猜测）</li>
-<li>第二个是Sevlet所必须的</li>
-</ul>
-</li>
-<li><p>弹出Tomcat目录配置框：<code>Tomcat Home后的文件夹图标</code></p>
-</li>
-<li><p>弹出Tomcat目录文件选择器选择(Linux)：<code>/usr/share/tomcat7</code>点击OK</p>
-</li>
-<li><p>配置框选择部署后启动的浏览器、配置端口（建议1024之后）</p>
-</li>
-<li><p>配置窗口导航栏:<code>选择Deployment&gt;选择右下角+&gt;选择Artificial</code></p>
-<p> <img src="/images/java_ee/Screenshot_20210323_154458.png" alt="如图所示,出现两种部署方式"></p>
-<ul>
-<li>带war exploded（译：分解）的是在路径：<code>~/Software/Hexo-Web/source</code>中的</li>
-<li>只带 war的是在Tomcat webApp路径：<code>/var/lib/tomcat7/webapps/BeanAndAOP_war/</code>(建议使用此方式)</li>
-</ul>
-</li>
-<li><p>弹出部署内容选择窗口：选择之前配置的JavaWeb项目</p>
-</li>
-</ol>
-<blockquote>
-<p><strong>注意：</strong> 一定要在主窗口运行右上角Tomcat边上的绿色三角形图标运行项目</p>
 </blockquote>
 <h2 id="Bean的装配方式"><a href="#Bean的装配方式" class="headerlink" title="Bean的装配方式"></a>Bean的装配方式</h2><h3 id="基于XML方式装配"><a href="#基于XML方式装配" class="headerlink" title="基于XML方式装配"></a>基于XML方式装配</h3><h3 id="基于Annotation（译-注解）的装配方式"><a href="#基于Annotation（译-注解）的装配方式" class="headerlink" title="基于Annotation（译:注解）的装配方式"></a>基于Annotation（译:注解）的装配方式</h3><blockquote>
 <p>基于XML的装配可能会导致XML配置文件过于臃肿，给后续的维护和升级带来一定的困难。为此，Spring提供了对Annotation（注解）技术的全面支持<br>首先要导入包aop-4.3.10.RELEASE.jar（本文章之前配置环境内容下载的包），不然会报错</p>
