@@ -408,21 +408,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-12
+                    2021-06-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    283
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -445,7 +445,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="重置密码"><a href="#重置密码" class="headerlink" title="重置密码"></a>重置密码</h3><blockquote>
+                <h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="重置密码-忘记密码"><a href="#重置密码-忘记密码" class="headerlink" title="重置密码(忘记密码)"></a>重置密码(忘记密码)</h3><blockquote>
 <p>以下操作在Arch Linux 环境，数据库为10.5.9-MariaDB，经过2小时的搜索资料和实践，才有以下总结</p>
 </blockquote>
 <p>首先，我们停掉MariaDB服务：</p>
@@ -455,17 +455,78 @@
 <p>这样我们就可以直接用root登录，无需密码：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>特别是此处的操作，不能和Mysql数据库的改密码命令一样，不然会出现<code>ERROR 1348 (HY000): Column &#39;Password&#39; is not updatable</code></p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">use</span> mysql<span class="token punctuation">;</span>  
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span>    <span class="token comment">#必须执行此操作才可以进行以下</span>
+mysql<span class="token operator">></span> <span class="token keyword">use</span> mysql<span class="token punctuation">;</span>  
 mysql<span class="token operator">></span> <span class="token keyword">set</span> password <span class="token keyword">for</span> <span class="token string">'root'</span><span class="token variable">@'localhost'</span><span class="token operator">=</span>password<span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">#以下注释的两个适用于Mysql重置密码操作 </span>
 <span class="token comment">#update mysql.user set authentication_string=password('123456') where host='localhost' and user='root';</span>
 <span class="token comment"># ALTER USER 'root'@'localhost' identified by '123456';</span>
-mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重设完毕后，我们退出，然后启动 MariaDB 服务：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql <span class="token operator">></span> quit  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>重启服务：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart mariadb.service <span class="token comment">#重启MariaDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>接下来直接登录使用设置的密码<code>123456</code>即可，实际的运维当中不建议使用弱密码。</p>
+<h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#只允许指定ip连接</span>
+<span class="token keyword">create</span> <span class="token keyword">user</span> <span class="token string">'新用户名'</span><span class="token variable">@'localhost'</span> identified <span class="token keyword">by</span> <span class="token string">'密码'</span><span class="token punctuation">;</span>
+<span class="token comment">#允许所有ip连接（用通配符%表示）</span>
+<span class="token keyword">create</span> <span class="token keyword">user</span> <span class="token string">'新用户名'</span><span class="token variable">@'%'</span> identified <span class="token keyword">by</span> <span class="token string">'密码'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="新用户授权"><a href="#新用户授权" class="headerlink" title="新用户授权"></a>新用户授权</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#基本格式如下</span>
+<span class="token keyword">grant</span> <span class="token keyword">all</span> <span class="token keyword">privileges</span> <span class="token keyword">on</span> 数据库名<span class="token punctuation">.</span>表名 <span class="token keyword">to</span> <span class="token string">'新用户名'</span><span class="token variable">@'指定ip'</span> identified <span class="token keyword">by</span> <span class="token string">'新用户密码'</span> <span class="token punctuation">;</span>
+<span class="token comment">#示例</span>
+<span class="token comment">#允许访问所有数据库下的所有表</span>
+<span class="token keyword">grant</span> <span class="token keyword">all</span> <span class="token keyword">privileges</span> <span class="token keyword">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'新用户名'</span><span class="token variable">@'指定ip'</span> identified <span class="token keyword">by</span> <span class="token string">'新用户密码'</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="设置用户操作权限"><a href="#设置用户操作权限" class="headerlink" title="设置用户操作权限"></a>设置用户操作权限</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#设置用户拥有所有权限也就是管理员</span>
+<span class="token keyword">grant</span> <span class="token keyword">all</span> <span class="token keyword">privileges</span> <span class="token keyword">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'新用户名'</span><span class="token variable">@'指定ip'</span> identified <span class="token keyword">by</span> <span class="token string">'新用户密码'</span> <span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span>
+<span class="token comment">#拥有查询权限</span>
+<span class="token keyword">grant</span> <span class="token keyword">select</span> <span class="token keyword">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'新用户名'</span><span class="token variable">@'指定ip'</span> identified <span class="token keyword">by</span> <span class="token string">'新用户密码'</span> <span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span>
+<span class="token comment">#其它操作权限说明,select查询 insert插入 delete删除 update修改</span>
+<span class="token comment">#设置用户拥有查询插入的权限</span>
+<span class="token keyword">grant</span> <span class="token keyword">select</span><span class="token punctuation">,</span><span class="token keyword">insert</span> <span class="token keyword">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'新用户名'</span><span class="token variable">@'指定ip'</span> identified <span class="token keyword">by</span> <span class="token string">'新用户密码'</span> <span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span>
+<span class="token comment">#取消用户查询的查询权限</span>
+<span class="token keyword">REVOKE</span> <span class="token keyword">select</span> <span class="token keyword">ON</span> what <span class="token keyword">FROM</span> <span class="token string">'新用户名'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DROP</span> <span class="token keyword">USER</span> username<span class="token variable">@localhost</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="修改后刷新权限"><a href="#修改后刷新权限" class="headerlink" title="修改后刷新权限"></a>修改后刷新权限</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 这个每次都要执行最好</span>
+FLUSH <span class="token keyword">PRIVILEGES</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="允许Mysql用户外部访问"><a href="#允许Mysql用户外部访问" class="headerlink" title="允许Mysql用户外部访问"></a>允许Mysql用户外部访问</h3><p>登进MySQL之后，</p>
+<p>2，输入以下语句，进入mysql库：</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">use</span> mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>3，更新域属性，’%’表示允许外部访问：</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">update</span> <span class="token keyword">user</span> <span class="token keyword">set</span> host<span class="token operator">=</span><span class="token string">'%'</span> <span class="token keyword">where</span> <span class="token keyword">user</span> <span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>4，执行以上语句之后再执行：</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">FLUSH <span class="token keyword">PRIVILEGES</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Mysql数据库配置"><a href="#Mysql数据库配置" class="headerlink" title="Mysql数据库配置"></a>Mysql数据库配置</h2><blockquote>
+<p>做项目如果要搭建到公网那经常会使用此操作，由于学期末的实训使用c3p0连接池搭建了个音乐共享网站，查表操作都放在session中（这里可能是导致连接数过多的原因），于是作者专门网上专门查了一系列的数据库连接数的配置操作，可见这方面的知识对于运维工作还是很重要的。</p>
+</blockquote>
+<h3 id="最大连接数设置"><a href="#最大连接数设置" class="headerlink" title="最大连接数设置"></a>最大连接数设置</h3><ul>
+<li>方式一（root用户登录进Mysql才可以执行）</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#查看mysql连接进程列表(你会发现大部分都是睡眠状态)</span>
+<span class="token keyword">show</span> <span class="token keyword">full</span> processlist<span class="token punctuation">;</span>
+
+<span class="token comment"># 修改最大连接数</span>
+<span class="token keyword">set</span> <span class="token keyword">GLOBAL</span> max_connections <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+
+<span class="token comment">#查看设置的最大连接数，默认100左右（通常，mysql的最大连接数默认是100, 最大可以达到16384。（16384=2的14次方））</span>
+<span class="token keyword">show</span> variables <span class="token operator">like</span> <span class="token string">'%max_connections%'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 查看已经使用的连接数</span>
+<span class="token keyword">show</span> <span class="token keyword">global</span> <span class="token keyword">status</span> <span class="token operator">like</span> <span class="token string">'Max_used_connections'</span><span class="token punctuation">;</span>
+
+<span class="token comment">#查看进程等待多少秒后清除连接</span>
+<span class="token keyword">show</span> <span class="token keyword">global</span> variables <span class="token operator">like</span> <span class="token string">'wait_timeout'</span><span class="token punctuation">;</span>
+
+<span class="token comment">#设置禁触休息多少秒后清除连接</span>
+<span class="token keyword">set</span> <span class="token keyword">global</span> wait_timeout<span class="token operator">=</span><span class="token number">10000</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 设置打断后多少秒清除连接</span>
+<span class="token keyword">set</span> <span class="token keyword">global</span> interactive_timeout<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>方式二（通过修改配置文件来修改mysql最大连接数(max_connections)）</li>
+</ul>
+<p>修改Linux配置文件路径<code>/etc/mysql/my.cnf</code></p>
+<p>只要修改MySQL配置文件my.ini 或 my.cnf的参数max_connections，将其改为<code>max_connections=1000</code>，然后重启MySQL即可。</p>
 
                 
             </div>
@@ -1311,7 +1372,7 @@ mysql<span class="token operator">></span> flush <span class="token keyword">pri
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.9k</span>&nbsp;字
+                class="white-color">28.6k</span>&nbsp;字
             
             
             
