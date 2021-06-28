@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-20
+                    2021-06-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    8 分
                 </div>
                 
 
@@ -523,6 +523,8 @@ pacman -Qs <span class="token operator">&lt;</span>包名<span class="token oper
 pacman Ss       <span class="token comment">#查询库内（不包含AUR）的包名称，包含描述信息内匹配的字符</span>
 
 <span class="token function">sudo</span> pacman -U <span class="token comment">#下载后缀为 .pkg.tar.xz 或 .pkg.tar.zst 的安装包</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="yay"><a href="#yay" class="headerlink" title="yay"></a>yay</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 只升级AUR的软件包</span>
+yay -Sya<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="本地打包安装"><a href="#本地打包安装" class="headerlink" title="本地打包安装"></a>本地打包安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/countstarlight/deepin-wine-tim-arch.git
 <span class="token builtin class-name">cd</span> deepin-wine-tim-arch
 
@@ -536,6 +538,25 @@ makepkg --clean     <span class="token comment">#清除残留的文件和目录<
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">md5sum -c *.md5      <span class="token comment">#校验完成后会出现"成功"字样</span>
 
 sha256sum -c kali-linux-2021.1-vbox-amd64.ova.txt.sha256sum         <span class="token comment">#sha256sum同样适用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>安装以前更新下载过的软件包</p>
+<blockquote>
+<p>pacman 升级或安装下载的包的地址位于<code>/var/cache/pacman/pkg/</code>目录<br>yay 升级或安装下载的包的地址位于<code>~/.cache/yay/</code><br>可使用命令清除，也可以手动清除</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 搜索软件包缓存目录下的所有已经下载的linux内核</span>
+<span class="token function">ls</span> -l /var/cache/pacman/pkg/ <span class="token operator">|</span> <span class="token function">grep</span> linux
+
+<span class="token comment">#跳过所有检查安装（降级可能有时候会需要额外的依赖关系），但不建议跳过检查</span>
+pacman -Udd /var/cache/pacman/pkg/xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>利用工具降级</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装降级工具</span>
+<span class="token function">sudo</span> pacman -S downgrade
+<span class="token comment"># 降级内核，回车后出现本地与远端旧包可选，输入序号即可</span>
+downgrade linux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <h3 id="忽略升级软件包"><a href="#忽略升级软件包" class="headerlink" title="忽略升级软件包"></a>忽略升级软件包</h3><blockquote>
 <p>对应的配置在/etc/pacman.conf 文件中</p>
 </blockquote>
@@ -1453,7 +1474,7 @@ abcd 0005.txt efgh 0005.md
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.6k</span>&nbsp;字
+                class="white-color">28.8k</span>&nbsp;字
             
             
             
