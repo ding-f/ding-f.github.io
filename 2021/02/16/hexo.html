@@ -447,14 +447,14 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-06 19:05:11
+                        2023-05-06 21:05:51
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        4.1k
+                        4.2k
                     </div>
                 
 
@@ -1044,7 +1044,7 @@ hexo d -g <span class="token comment">#（简写）</span>
 <span class="token comment">## Docs: https://hexo.io/docs/one-command-deployment</span>
 <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> git
-  <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/ding<span class="token punctuation">-</span>f/ding<span class="token punctuation">-</span>f.github.io.git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/ding<span class="token punctuation">-</span>f/ding<span class="token punctuation">-</span>f.github.io.git <span class="token comment">#（需要用户名密码，SSH方式不需要）</span>
   <span class="token key atrule">branch</span><span class="token punctuation">:</span> master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo d <span class="token comment">#一般情况部署到git会提示输入用户名密码(GitHub已失效此方式)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1053,17 +1053,30 @@ hexo d -g <span class="token comment">#（简写）</span>
 <h3 id="部署到gitee"><a href="#部署到gitee" class="headerlink" title="部署到gitee"></a>部署到gitee</h3><blockquote>
 <p>用到的Hexo插件：hexo-deployer-git（同上安装即可）</p>
 <p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181">Gitee 官方：如何生成部署公钥</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">Gitee帮助中心：生成/添加SSH公钥</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">GitHub：Generating a new SSH key and adding it to the ssh-agent</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">GitHub：Adding a new SSH key to your GitHub account</a></p>
 </blockquote>
+<p>注意下面的repo没有http协议提交，如果使用http则依旧需要用户名密码。</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">## Docs: https://hexo.io/docs/one-command-deployment</span>
+<span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> git@gitee.com<span class="token punctuation">:</span>ding<span class="token punctuation">-</span>f/ding<span class="token punctuation">-</span>f.git
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master
+  
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> git@github.com<span class="token punctuation">:</span>ding<span class="token punctuation">-</span>f/ding<span class="token punctuation">-</span>f.github.io.git
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>如下命令来生成 sshkey：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t ed25519 -C <span class="token string">"f_ding@126.com"</span> -f ～/.ssh/gitee
-<span class="token comment"># 生成名称为gitee,加密类型为 ed25519 的公私密钥对文件到默认～/.ssh文件夹~/.ssh</span>
+<span class="token comment"># 生成加密类型为 ed25519 的公私密钥对文件到默认ssh文件夹~/.ssh</span>
 <span class="token function">ls</span> ~/.ssh
-gitee      
-gitee.pub <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+id_ed25519      
+id_ed25519.pub <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>列出公钥：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> <span class="token function">cat</span> ~/.ssh/gitee.pub                    ⏎
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> <span class="token function">cat</span> ~/.ssh/id_ed25519.pub                    ⏎
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEBLYRyxny/iXVM6PmxYrGMrDd438arVvGV/YV/qhrTS f_ding@126.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>复制cat后的全部内容到：</p>
@@ -1560,7 +1573,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEBLYRyxny/iXVM6PmxYrGMrDd438arVvGV/YV/qhrTS
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">141.7k</span>&nbsp;
+                        class="white-color">142.2k</span>&nbsp;
             
             
             

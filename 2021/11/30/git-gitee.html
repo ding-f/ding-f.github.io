@@ -463,21 +463,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-06 20:05:06
+                        2023-05-06 21:05:93
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        6.6k
+                        7k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        31 分
+                        32 分
                     </div>
                 
 
@@ -1284,8 +1284,13 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 
 
 <h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><blockquote>
-<p>推荐使用SSH公私钥对进行对仓库的一系列操作，就不需要自己的设备每次都要输入密码啥的（gitee），现在的github已经不支持使用密码验证了，直接就是SSH/PGP密钥进行对仓库的管理，推荐这篇文章：<a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">Gitee帮助中心：生成/添加SSH公钥</a>，每台机器只需设置一遍，该机器上的所有项目均可进行提交。</p>
-<p>建议生成的私密钥对每台设备生成一对，可以给多个可以使用Git工具的网站使用，只需要复制公钥到指定的位置，再进行一个认证就可以对自己的仓库进行所有操作了，比如Gitee，需要类似<code>ssh -T git@gitee.com</code>的认证操作，Github直接上传就提示：Are you sure you want to continue connecting (yes/no/[fingerprint])? 输入<code>yes</code>回车   Warning: Permanently added ‘github.com’ (ED25519) to the list of known hosts. 即可。</p>
+<p>推荐使用SSH公私钥对进行对仓库的一系列操作，就不需要自己的设备每次都要输入密码啥的，现在的github已经不支持使用密码验证了，直接就是SSH/PGP密钥进行对仓库的管理，推荐这篇文章：<a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">Gitee帮助中心：生成/添加SSH公钥</a>，每台机器只需设置一对非对称加密公私密钥，公钥放gitee/github,私钥放置在本机<code>~/.ssh</code>(linux)，该机器上的所有项目均可进行提交，理论上也可以只设置一对公私钥实现所有设备提交gitee/github。</p>
+<p>值得注意的是，如果使用SSH密钥方式，提交一定要SSH的远程连接，例如<code>git@github.com:ding-f/hexo-code.git</code>，如果使用https方式，那依旧要使用用户名密码来验证提交。</p>
+<p>建议生成的私密钥对每台设备生成一对，可以给多个可以使用Git工具的网站使用，只需要复制公钥到github/gitee网站指定设置SSH密钥的地方添加进去公钥，再进行一个验证：命令行输入<code>ssh -T git@gitee.com</code>，提示<code>Hi **ding-f**! You&#39;ve successfully authenticated</code>就成功了。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">Gitee帮助中心：生成/添加SSH公钥</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">GitHub：Generating a new SSH key and adding it to the ssh-agent</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">GitHub：Adding a new SSH key to your GitHub account</a></p>
 </blockquote>
 <p>签名：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global user.name fuding
@@ -1300,9 +1305,13 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 <p>初始化：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init		<span class="token comment">#首先要进入对应要提交的文件夹</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>新加远程仓库：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> gitee git@gitee.com:ding-f/hexo-code.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>移除远程仓库：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote remove gitee<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>查看仓库别名：</p>
+<p>查看本地已设置的仓库别名：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -1323,10 +1332,10 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 
 
 <p>提交代码到指定仓库：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> push gitee-push		<span class="token comment">#此处直接提交的条件是一定要将ssh公私秘钥配置好，不然只能先按一遍密码才可以提交</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> push origin master 		<span class="token comment">#此处直接提交的条件是一定要将ssh公私秘钥配置好，不然只能先按一遍密码才可以提交</span>
+<span class="token function">git</span> push -u github master <span class="token comment">#-u 建立追踪关系。通过追踪关系，我们可以知道当前本地分支和哪个远程分支对应，并可以轻松地推送和拉取更新。这个命令会将本地 main 分支推送到远程仓库的 main 分支，并将本地 main 分支和远程 origin/main 分支建立关联，以后推送时就可以直接使用 git push 命</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-
-
+<p>追踪关系通常是由 Git 自动创建的，但是也可以手动设置，例如通过使用 <code>git branch --set-upstream-to</code> 命令来设置本地分支和远程分支的对应关系。在使用 <code>git push -u</code> 命令推送更新时，如果当前分支还没有建立追踪关系，则 Git 会自动帮我们将本地分支与远程分支建立追踪关系，以便我们以后可以轻松地推送和拉取更新。</p>
 <h2 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h2><ul>
 <li><p>可能使用了代理，我猜是DNS漏了啥的，报错如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">kex_exchange_identification: Connection closed by remote host
@@ -1828,7 +1837,7 @@ and the repository exists.<span aria-hidden="true" class="line-numbers-rows"><sp
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">141.7k</span>&nbsp;
+                        class="white-color">142.2k</span>&nbsp;
             
             
             
