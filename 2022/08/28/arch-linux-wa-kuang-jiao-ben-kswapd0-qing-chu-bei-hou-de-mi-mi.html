@@ -1,0 +1,1373 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Arch Linux &#34;挖矿脚本kswapd0清除&#34; 背后的秘密, 铸鼎_">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Arch Linux &#34;挖矿脚本kswapd0清除&#34; 背后的秘密 | 铸鼎_</title>
+    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/islu.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    
+
+    
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <!--  加载动画，强制加载0.5s  -->
+    <div id="loading-container">
+    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+
+
+<!--    顶部导航栏   -->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <div>
+                        
+                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
+                        
+                        <span class="logo-span">铸鼎_</span>
+                    </div>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>博主</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" id="contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li id="fullscreen_li" class="fullscreen">
+      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
+          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
+      </a>
+  </li>
+
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">铸鼎_</div>
+        <div class="logo-desc">
+            
+                Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        文章
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/tags "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-tags"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>标签</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/categories "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-bookmark"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>分类</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        关于
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/about "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-user-circle"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>博主</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+
+                        留言
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        链接
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/friends "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-address-book"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>友情链接</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('禁止访问，仅内部授权！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Arch Linux &#34;挖矿脚本kswapd0清除&#34; 背后的秘密</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">安全运维</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        <span id="publishDate">
+                            2022-08-28
+                        </span>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        2023-02-08 11:02:58
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.3k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        10 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <!--    添加更新时间截    -->
+        
+            <div class="uk-alert">
+                <p id="thisTime">
+                    <span id="timeLag"></span>
+                </p>
+            </div>
+            <script>
+                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
+                let date2 = new Date();    /*当前时间*/
+                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
+
+                /*计算出相差天数*/
+                let days = Math.floor(date3 / (24 * 3600 * 1000));
+
+                let thisTime = document.getElementById("thisTime");
+                let timeLag = document.getElementById("timeLag");
+                if (days <= 7) {
+                    thisTime.classList.add("uk-alert-success");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
+                } else if (7 < days && days <= 30) {
+                    thisTime.classList.add("uk-alert-warning");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
+                } else {
+                    thisTime.classList.add("uk-alert-danger");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
+                }
+            </script>
+        
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/">
+        
+
+        
+            <!-- 代码块折行 -->
+            <style type="text/css">
+                code[class*="language-"], pre[class*="language-"] {
+                    white-space: pre-wrap !important;
+                }
+            </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="关于本文"><a href="#关于本文" class="headerlink" title="关于本文"></a>关于本文</h2><blockquote>
+<p>国内经常有Linux爱好者经常会认为，装Linux系统只要是内存足够大，直接就不需要Swap分区。作者在这几年Linux使用过程中也证实了这个说法的错误，Swap分区在个人日常使用Linux设备上必须要有Swap,甚至必不可少！！</p>
+<p>网上经常会有网友在讨论Swap对于现代Linux设备有没有用之类的话题，或者Swap分区到底要分区多大，在网上完炒的非常激烈。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu">Ask Ubuntu:kswapd0 is taking a lot of cpu</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Swap">Arch Linux-Wiki:Swap</a></p>
+</blockquote>
+<p><strong>Swap</strong>分区作者建议桌个人面版系统的大小就是<strong>实际内存大小的2倍</strong>！但还有个国外的文章说Swap大小 = 实际内存 + √实际内存，试了一下，果然不幸！不幸的是休眠直接就恢复不了，估计这篇文章可能是要求服务器Swap分区大小计算方式吧，文章找不到了就不追究了…</p>
+<p>不然会出现类似情形：</p>
+<p><img src="/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/1661010515360.jpg" alt="此时电脑异常卡顿"></p>
+<p>以上的情况出现在开发一公司项目时候，由于公司业务代码前后端均使用的微服务，且所有的服务启动起来至少需要16G内存，但我的Linux笔记本正好适合，刚开始就排除了内存不足，一致认为Linux是不是中了某种挖矿病毒，就刻意的搜索到了这样一篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465487828">kswapd0挖矿病毒的发现与清除</a>，一看这个<code>kswapd0</code>程序的名字就知道，估计和Swap有关系，于是找资料查看此程序到底是个什么作用，在国外找到了一篇这样的文章<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu">kswapd0 is taking a lot of cpu</a>最后才明白原来不是什么挖矿脚本，只是缺少了Swap分区导致,添加上Swap分区就解决了以上问题。</p>
+<h3 id="Swap"><a href="#Swap" class="headerlink" title="Swap"></a>Swap</h3><blockquote>
+<p>制作Swap分区前提：铸鼎建议作为个人使用的Linux笔记本，至少需要腾出内存分区大小相同的空闲磁盘分区，如果需要进行休眠，就需要内存两倍大小的空闲磁盘分区。</p>
+<p>制作Swap文件：如果你满足不了以上的要求，建议制作Swap文件，Swap文件直接可以存储在你的磁盘的任何分区内，详细：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Swap#Swap_file">Arch WiKi：Swap</a>。</p>
+</blockquote>
+<p><strong>查看是否已经存在Swap：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">4004</span> ◯  <span class="token function">swapon</span> --show
+NAME      TYPE      SIZE USED PRIO
+/dev/sda4 partition  32G   0B   -2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>如果有，查看内存使用与Swap使用：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">4006</span> ◯  <span class="token function">free</span> -h
+               total        used        <span class="token function">free</span>      shared  buff/cache   available
+内存：       15Gi       <span class="token number">2</span>.8Gi       <span class="token number">9</span>.5Gi       <span class="token number">1</span>.2Gi       <span class="token number">3</span>.2Gi        11Gi
+交换：       31Gi          0B        31Gi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果没有Swap，建议使用fdisk工具对你的磁盘进行分区，<strong>分区，切记！手下留情！！</strong></p>
+<p><strong>分区成功后查看分区：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">4008</span> ◯  <span class="token function">sudo</span> <span class="token function">fdisk</span> -l
+Disk /dev/sda：476.94 GiB，512110190592 字节，1000215216 个扇区
+磁盘型号：Netac SSD 512GB 
+单元：扇区 / <span class="token number">1</span> * <span class="token number">512</span> <span class="token operator">=</span> <span class="token number">512</span> 字节
+扇区大小<span class="token punctuation">(</span>逻辑/物理<span class="token punctuation">)</span>：512 字节 / <span class="token number">512</span> 字节
+I/O 大小<span class="token punctuation">(</span>最小/最佳<span class="token punctuation">)</span>：512 字节 / <span class="token number">512</span> 字节
+磁盘标签类型：gpt
+磁盘标识符：F759950E-A159-497B-BF34-95DCFDA09E79
+
+设备            起点       末尾      扇区   大小 类型
+/dev/sda1       <span class="token number">2048</span>    <span class="token number">1026047</span>   <span class="token number">1024000</span>   500M EFI 系统
+/dev/sda2    <span class="token number">1026048</span>    <span class="token number">1288191</span>    <span class="token number">262144</span>   128M Microsoft 保留
+/dev/sda3    <span class="token number">1288192</span>  <span class="token number">527675391</span> <span class="token number">526387200</span>   251G Apple APFS
+/dev/sda4  <span class="token number">527675392</span>  <span class="token number">594784255</span>  <span class="token number">67108864</span>    32G Linux 文件系统
+/dev/sda5  <span class="token number">594784256</span> <span class="token number">1000215182</span> <span class="token number">405430927</span> <span class="token number">193</span>.3G Linux 文件系统
+
+
+Disk /dev/sdb：29.81 GiB，32010928128 字节，62521344 个扇区
+磁盘型号：MassStorageClass
+单元：扇区 / <span class="token number">1</span> * <span class="token number">512</span> <span class="token operator">=</span> <span class="token number">512</span> 字节
+扇区大小<span class="token punctuation">(</span>逻辑/物理<span class="token punctuation">)</span>：512 字节 / <span class="token number">512</span> 字节
+I/O 大小<span class="token punctuation">(</span>最小/最佳<span class="token punctuation">)</span>：512 字节 / <span class="token number">512</span> 字节
+磁盘标签类型：dos
+磁盘标识符：0xc1db6fd2
+
+设备       启动     起点     末尾     扇区  大小 Id 类型
+/dev/sdb1  *        <span class="token number">2048</span> <span class="token number">62455807</span> <span class="token number">62453760</span> <span class="token number">29</span>.8G  <span class="token number">7</span> HPFS/NTFS/exFAT
+/dev/sdb2       <span class="token number">62455808</span> <span class="token number">62521343</span>    <span class="token number">65536</span>   32M ef EFI <span class="token punctuation">(</span>FAT-12/16/32<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我来解释一下我的磁盘以及分区情况，一共显示两个设备：</p>
+<ul>
+<li><p>Disk /dev/sda：476.94 GiB</p>
+<ul>
+<li><p>设备分区：</p>
+<p>/dev/sda1       2048    1026047   1024000   500M EFI 系统<br>/dev/sda2    1026048    1288191    262144   128M Microsoft 保留<br>/dev/sda3    1288192  527675391 526387200   251G Apple APFS<br>/dev/sda4  527675392  594784255  67108864    32G Linux 文件系统<br>/dev/sda5  594784256 1000215182 405430927 193.3G Linux 文件系统</p>
+</li>
+</ul>
+</li>
+<li><p>Disk /dev/sdb：29.81 GiB</p>
+<ul>
+<li><p>此设备分区：</p>
+<p>/dev/sdb1  *        2048 62455807 62453760 29.8G  7 HPFS/NTFS/exFAT<br>/dev/sdb2       62455808 62521343    65536   32M ef EFI (FAT-12/16/32)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>其中设备Disk /dev/sda：476.94 GiB就是我电脑的固态硬盘了，显示Swap分区就在那个32G的分区/dev/sda4上。</p>
+<p><strong>分区好Swap的分区，需要生成Swap分区的格式化：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 其中的sdxy一定要根据你的分区定</span>
+<span class="token function">mkswap</span> /dev/sdxy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>挂载（开启）Swap分区：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">swapon</span> /dev/sdxy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>查看Swap分区UUID：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">➜  ~ lsblk -f                
+NAME   FSTYPE FSVER LABEL   UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                             
+├─sda1 vfat   FAT32         1E45-250B                             <span class="token number">281</span>.1M    <span class="token number">44</span>% /boot
+├─sda2                                                                          
+├─sda3 apfs                 89c01c70-c5dc-40e1-a69f-1280f4c02ad2                
+├─sda4 swap   <span class="token number">1</span>             f8c6db20-0b66-4928-925d-9c7dd462f67b                <span class="token punctuation">[</span>SWAP<span class="token punctuation">]</span>
+└─sda5 ext4   <span class="token number">1.0</span>           1e28352f-2cf3-400e-a3f7-7b5a6d5b2d9c   <span class="token number">57</span>.7G    <span class="token number">64</span>% /
+sdb                                                                             
+├─sdb1 exfat  <span class="token number">1.0</span>   Ventoy  4E21-0000                                           
+└─sdb2 vfat   FAT16 VTOYEFI C52C-B44F    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>将Swap分区的UUID填入fstab,每次开机挂载Swap分区：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">UUID</span><span class="token operator">=</span>device_UUID none swap defaults <span class="token number">0</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>需要编辑<code>/etc/fstab</code>文件，加进去上面的那行，保存即可在每次启动Linux激活Swap分区。</p>
+<h3 id="Linux系统休眠实现"><a href="#Linux系统休眠实现" class="headerlink" title="Linux系统休眠实现"></a>Linux系统休眠实现</h3><blockquote>
+<p>一定要 Swap分区/Swap分区文件 大小为内存容量的2倍，不然当内存使用超过一半，就会出现休眠唤醒失败的可能。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation">Arch WiKi：Power management/Suspend and hibernate</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Kernel_parameter">Arch WiKi：Kernel parameters</a></p>
+</blockquote>
+<p>In order to use hibernation, you need to create a <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Swap">swap</a> partition or file. You will need to point the kernel to your swap using the <code>resume=</code> kernel parameter, which is configured via the boot loader. You will also need to <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Configure_the_initramfs">configure the initramfs</a>. This tells the kernel to attempt resuming from the specified swap in early userspace. These three steps are described in detail below.</p>
+<p>为了使用休眠，你需要Swap分区或者Swap文件，将需要设置内核参数 <code>resume=</code> ，可以通过boot loader配置，你将需要配置intramfs，此文件会告诉内核企图恢复用户空间的内存数据Swap。以下三步将展示详细步骤：</p>
+<p>Even if your swap partition is smaller than RAM, you still have a big chance of hibernating successfully. See “image_size” in the <a target="_blank" rel="noopener" href="https://docs.kernel.org/admin-guide/pm/sleep-states.html?highlight=image_size#basic-sysfs-interfaces-for-system-suspend-and-hibernation">kernel documentation</a> for information on the <code>image_size</code> <a target="_blank" rel="noopener" href="https://man.archlinux.org/man/sysfs.5">sysfs(5)</a> pseudo-file.</p>
+<p>即使你的Swap分区小于RAM,你仍然有大几率休眠成功，有关镜像大小sysfs(5)伪文件的信息，请参阅内核文档中的“镜像大小”。（铸鼎不建议这么做，但可以尝试）</p>
+<h4 id="配置intramfs"><a href="#配置intramfs" class="headerlink" title="配置intramfs"></a>配置intramfs</h4><ul>
+<li>When an <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Initramfs">initramfs</a> with the <code>base</code> hook is used, which is the default, the <code>resume</code> hook is required in <code>/etc/mkinitcpio.conf</code>. Whether by label or by UUID, the swap partition is referred to with a udev device node, so the <code>resume</code> hook must go <em>after</em> the <code>udev</code> hook. </li>
+<li>当使用带有base钩子的initramfs（默认），包含休眠Swap分区信息的钩子resume将被需要在<code>/etc/mkinitcpio.conf</code>文件中，无论使用分区的标签/UUID，这个Swap分区是udev看作设备的一个节点，所以你在编辑<code>/etc/mkinitcpio.conf</code>文件时，必须将resume钩子放在udev之后，这样才可以加载到 udev(Swap) =&gt; resume(原内存数据)。</li>
+<li>When an initramfs with the <code>systemd</code> hook is used, a resume mechanism is already provided, and no further hooks need to be added.</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">HOOKS&#x3D;(base udev autodetect keyboard modconf block filesystems resume fsck)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>执行<code>mkinitcpio -P</code>：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">➜  ~ mkinitcpio -P
+<span class="token operator">==</span><span class="token operator">></span> Building image from preset: /etc/mkinitcpio.d/linux-lts.preset: <span class="token string">'default'</span>
+  -<span class="token operator">></span> -k /boot/vmlinuz-linux-lts -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-lts.img
+<span class="token operator">==</span><span class="token operator">></span> Starting build: <span class="token number">5.15</span>.61-1-lts
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>base<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>udev<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>autodetect<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>modconf<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>block<span class="token punctuation">]</span>
+<span class="token operator">==</span><span class="token operator">></span> WARNING: Possibly missing firmware <span class="token keyword">for</span> module: xhci_pci
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>keyboard<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>filesystems<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>resume<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>fsck<span class="token punctuation">]</span>
+<span class="token operator">==</span><span class="token operator">></span> Generating module dependencies
+<span class="token operator">==</span><span class="token operator">></span> Creating zstd-compressed initcpio image: /boot/initramfs-linux-lts.img
+<span class="token operator">==</span><span class="token operator">></span> Image generation successful
+<span class="token operator">==</span><span class="token operator">></span> Building image from preset: /etc/mkinitcpio.d/linux-lts.preset: <span class="token string">'fallback'</span>
+  -<span class="token operator">></span> -k /boot/vmlinuz-linux-lts -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-lts-fallback.img -S autodetect
+<span class="token operator">==</span><span class="token operator">></span> Starting build: <span class="token number">5.15</span>.61-1-lts
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>base<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>udev<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>modconf<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>block<span class="token punctuation">]</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: wd719x</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: qla2xxx</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: bfa</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: qla1280</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: qed</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: aic94xx</span>
+<span class="token comment"># ==> WARNING: Possibly missing firmware for module: xhci_pci</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>keyboard<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>filesystems<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>resume<span class="token punctuation">]</span>
+  -<span class="token operator">></span> Running build hook: <span class="token punctuation">[</span>fsck<span class="token punctuation">]</span>
+<span class="token operator">==</span><span class="token operator">></span> Generating module dependencies
+<span class="token operator">==</span><span class="token operator">></span> Creating zstd-compressed initcpio image: /boot/initramfs-linux-lts-fallback.img
+<span class="token operator">==</span><span class="token operator">></span> Image generation successful<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>铸鼎是两个内核，可以看到两个内核分别生成<code>.preset: &#39;default&#39;</code>和.preset: ‘fallback’，原理请查看 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Image_creation_and_activation">Arch WiKi：mkinitcpio =&gt; Image_creation_and_activation</a></p>
+<p>以上的<code>WARNING</code>处理就是解决大部分硬件的问题的关键，一定要重视这些<code>WARNING</code>！！尝试修复请看 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Possibly_missing_firmware_for_module_XXXX">Arch WiKi：mkinitcpio</a>。</p>
+<h4 id="添加内核参数"><a href="#添加内核参数" class="headerlink" title="添加内核参数"></a>添加内核参数</h4><p>The <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Kernel_parameter">kernel parameter</a> <code>resume=*swap_device*</code> must be used. Any of the <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Persistent_block_device_naming">persistent block device naming</a> methods can be used as <code>*swap_device*</code>. For example:</p>
+<p>内核参数 <code>resume=*swap_device*</code>必须使用，任何持久块设备命名方法都可以用作<em>交换设备</em>。例如：</p>
+<ul>
+<li><code>resume=UUID=4209c845-f495-4c43-8a03-5363dd433153</code></li>
+<li><code>resume=&quot;PARTLABEL=Swap partition&quot;</code></li>
+</ul>
+<p>添加内核参数方法有分多，主要区别于你的Linux是哪个引导程序来引导启动的，比如说我的使用Grub（大部分Linux都是）引导启动：</p>
+<ul>
+<li>To make the change persistent after reboot, you could <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/GRUB#Custom_grub.cfg">manually edit /boot/grub/grub.cfg</a> with the exact line from above, or if using <em>grub-mkconfig</em>:</li>
+<li>要使重新启动后的更改持续存在，可以使用上面的行或使用grub-mkconfig手动编辑/boot/grub/grub.cfg</li>
+<li>Edit <code>/etc/default/grub</code> and append your kernel options between the quotes in the <code>GRUB_CMDLINE_LINUX_DEFAULT</code> line:</li>
+<li>编辑/etc/default/grub，并将内核选项附加到GRUB CMDLINE LINUX DEFAULT行的引号之间</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">GRUB_CMDLINE_LINUX_DEFAULT&#x3D;&quot;resume&#x3D;*swap_device*&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>以下命令将<code>/etc/default/grub</code>生成到<code>/boot/grub/grub.cfg</code>：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">grub-mkconfig</span> -o /boot/grub/grub.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>重启生效所有配置</strong></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ding-f.gitee.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi.html">https://ding-f.gitee.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">鼎</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">安全运维</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        
+                    </ul>
+                    <div id="alipay_red">
+                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        📣
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<!-- 直达评论 -->
+<div id="to_comment" class="comment-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
+        <i class="fas fa-comments"></i>
+    </a>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '留下你的足迹..',
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["fu_ding@126.com"],
+        master: ["fu_ding@126.com"],
+        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/2022-10-29-%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.0cb0ecbe4912bad8c6abe125e8d056a3rik=XDrLdRz%252fgxsuiw&riu=http%253a%252f%252fstatics.ovopic.com%252fUpload%252fimgs%252fc705055de8881080%252f1.jpeg" class="responsive-img" alt="企业级小程序前后端开发笔记">
+                        
+                        <span class="card-title">企业级小程序前后端开发笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%90%86%E8%AE%BA/">
+                        <span class="chip bg-color">理论</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/2022-08-28-Arch-Linux-%E7%B3%BB%E7%BB%9F-WiFi%E7%A1%AC%E4%BB%B6%E9%A9%B1%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/OIP-C.jpeg" class="responsive-img" alt="Arch Linux 系统 WiFi硬件驱动修复折腾笔记">
+                        
+                        <span class="card-title">Arch Linux 系统 WiFi硬件驱动修复折腾笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ArchLinux/">
+                        <span class="chip bg-color">ArchLinux</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: 铸鼎_<br />'
+                + '文章作者: 鼎<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+<!-- 高亮CSS-->
+<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+</main>
+
+
+
+
+<!--是否开启暗黑模式-->
+
+<!--footer-->
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        
+        <div class="col s12 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">鼎</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            <br/>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">141.6k</span>&nbsp;
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
+                                                                        class="white-color"></span>&nbsp;
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                           class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+                <span id="sitetime">载入运行时间...</span>
+                <script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "2";
+                        var startDate = "1";
+                        var startHour = "23";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
+                                " h " + diffMinutes + " m " + diffSeconds + " s";
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
+                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
+                        }
+                    }
+
+                    setInterval(siteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m3 l3 social-link social-statis social-statis">
+    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+        
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!--search-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        searchFunc("/search.xml", 'searchInput', 'searchResult')
+    })
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll" title="回到顶部">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/islu.js"></script>
+<script src="/libs/search/search.js"></script>
+
+<!--谷歌广告接入点-->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

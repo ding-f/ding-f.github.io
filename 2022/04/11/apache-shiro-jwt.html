@@ -1,0 +1,1423 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Apache Shiro + JWT, 铸鼎_">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Apache Shiro + JWT | 铸鼎_</title>
+    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/islu.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    
+
+    
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <!--  加载动画，强制加载0.5s  -->
+    <div id="loading-container">
+    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+
+
+<!--    顶部导航栏   -->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <div>
+                        
+                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
+                        
+                        <span class="logo-span">铸鼎_</span>
+                    </div>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>博主</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" id="contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li id="fullscreen_li" class="fullscreen">
+      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
+          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
+      </a>
+  </li>
+
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">铸鼎_</div>
+        <div class="logo-desc">
+            
+                Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        文章
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/tags "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-tags"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>标签</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/categories "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-bookmark"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>分类</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        关于
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/about "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-user-circle"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>博主</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+
+                        留言
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        链接
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/friends "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-address-book"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>友情链接</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('禁止访问，仅内部授权！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/shir_jwt/shiro_jwt.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Apache Shiro + JWT</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">安全运维</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/JavaEE/">
+                                    <span class="chip bg-color">JavaEE</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%90%86%E8%AE%BA/">
+                                    <span class="chip bg-color">理论</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        <span id="publishDate">
+                            2022-04-11
+                        </span>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        2023-02-08 11:02:58
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.2k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        15 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <!--    添加更新时间截    -->
+        
+            <div class="uk-alert">
+                <p id="thisTime">
+                    <span id="timeLag"></span>
+                </p>
+            </div>
+            <script>
+                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
+                let date2 = new Date();    /*当前时间*/
+                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
+
+                /*计算出相差天数*/
+                let days = Math.floor(date3 / (24 * 3600 * 1000));
+
+                let thisTime = document.getElementById("thisTime");
+                let timeLag = document.getElementById("timeLag");
+                if (days <= 7) {
+                    thisTime.classList.add("uk-alert-success");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
+                } else if (7 < days && days <= 30) {
+                    thisTime.classList.add("uk-alert-warning");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
+                } else {
+                    thisTime.classList.add("uk-alert-danger");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
+                }
+            </script>
+        
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/">
+        
+
+        
+            <!-- 代码块折行 -->
+            <style type="text/css">
+                code[class*="language-"], pre[class*="language-"] {
+                    white-space: pre-wrap !important;
+                }
+            </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><blockquote>
+<p>来自：</p>
+<p>铸鼎__ &gt; Java毕业设计开发笔记 &gt; 后端开发 &gt; shiro+JWT</p>
+</blockquote>
+<h4 id="JWT-的原理"><a href="#JWT-的原理" class="headerlink" title="JWT 的原理"></a>JWT 的原理</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/576dbf44b2ae">简书：什么是 JWT – JSON WEB TOKEN</a></p>
+<p><a target="_blank" rel="noopener" href="https://restfulapi.cn/page/jwt">RESTful API:JWT 认证</a></p>
+<p><a target="_blank" rel="noopener" href="https://jwt.io/">JWT官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339477329">知乎：Base64编码详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sdnyqfyqf/article/details/105534376">CSDN:从零入门HMAC-SHA256</a></p>
+</blockquote>
+<p>服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+ &quot;姓名&quot;: &quot;张三&quot;,
+ &quot;角色&quot;: &quot;管理员&quot;,
+ &quot;到期时间&quot;: &quot;2018年7月1日0点0分&quot;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>以后，用户与服务端通信的时候，都要发回这个 JSON 对象。服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会加上签名（详见后文）。</p>
+<p>服务器就不保存任何 session 数据了，也就是说，服务器变成无状态了，从而比较容易实现扩展。</p>
+<p><strong>JWT 的数据结构</strong>：</p>
+<p>实际的 JWT 大概就像下面这样。</p>
+<p><img src="/images/java_dev/jwt_structure.png" alt="img"></p>
+<p>它是一个很长的字符串，中间用点（.）分隔成三个部分。注意，JWT 内部是没有换行的，这里只是为了便于展示，将它写成了几行。</p>
+<p>JWT 的三个部分依次如下。</p>
+<pre class="line-numbers language-none"><code class="language-none">Header（头部）
+Payload（负载）
+Signature（签名）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>写成一行，就是下面的样子。</p>
+<p>Header.Payload.Signature</p>
+<p><img src="/images/java_dev/jet_structure_all.jpg"></p>
+<p>下面依次介绍这三个部分。</p>
+<p><strong>Header</strong></p>
+<p>Header 部分是一个 JSON 对象，描述 JWT 的元数据，通常是下面的样子。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &quot;alg&quot;: &quot;HS256&quot;,
+  &quot;typ&quot;: &quot;JWT&quot;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面代码中，alg属性表示签名的算法（algorithm），默认是 HMAC SHA256（写成 HS256）；typ属性表示这个令牌（token）的类型（type），JWT 令牌统一写为JWT。</p>
+<p>最后，将上面的 JSON 对象使用 Base64URL 算法（详见后文）转成字符串。</p>
+<p><strong>Payload</strong></p>
+<p>Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段，供选用。</p>
+<pre class="line-numbers language-none"><code class="language-none">iss (issuer)：签发人
+exp (expiration time)：过期时间
+sub (subject)：主题
+aud (audience)：受众
+nbf (Not Before)：生效时间
+iat (Issued At)：签发时间
+jti (JWT ID)：编号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>除了官方字段，你还可以在这个部分定义私有字段，下面就是一个例子。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &quot;sub&quot;: &quot;1234567890&quot;,
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;admin&quot;: true
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>注意，JWT 默认是不加密的，任何人都可以读到，所以不要把秘密信息放在这个部分。</p>
+<p>这个 JSON 对象也要使用 Base64URL 算法转成字符串。</p>
+<p><strong>Signature</strong></p>
+<p>Signature 部分是对前两部分的签名，防止数据篡改。</p>
+<p>首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256），按照下面的公式产生签名，也就是说需要base64url加密后的header和base64url加密后的payload使用<code>.</code>连接组成的字符串，然后通过header中声明的加密方式进行加盐<code>secret</code>组合加密，然后就构成了jwt的第三部分。</p>
+<pre class="line-numbers language-none"><code class="language-none">HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload), secret)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用”点”（.）分隔，就可以返回给用户。</p>
+<p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret, 那就意味着客户端是可以自我签发jwt了。</p>
+<p><strong>名词：</strong></p>
+<ul>
+<li>Claim 解析了Jwt后的得到的明文信息；</li>
+</ul>
+<p><strong>总结：</strong></p>
+<p>看到有关HMAC SHA256算法原理的文章，其实就是此算法相当于加盐（secret）处理，有了这个secret才可以对传输过来的Token内部的Signature才可以认证是否是本服务器进行签发的，只有知道secret才可以对<code>base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload)</code> 字符串进行一个完整性的鉴别（再进行一遍HMAC SHA256对比Signature），如果匹配就可以进行登录，含有secret服务器也可以进行对Token延期后发给客户端。</p>
+<p><strong>Base64URL</strong></p>
+<p>前面提到，Header 和 Payload 串型化的算法是 Base64URL。这个算法跟 Base64 算法基本类似，但有一些小的不同。</p>
+<p>JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com/?token=xxx）。Base64 有三个字符+、/和=，在 URL 里面有特殊含义，所以要被替换掉：=被省略、+替换成-，/替换成_ 。这就是 Base64URL 算法。</p>
+<p><strong>JWT 的使用方式</strong></p>
+<p>客户端收到服务器返回的 JWT，可以储存在 Cookie 里面，也可以储存在 localStorage。</p>
+<p>此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 Cookie 里面自动发送，但是这样不能跨域，所以更好的做法是放在 HTTP 请求的头信息Authorization字段里面。</p>
+<p>Authorization: Bearer</p>
+<p>另一种做法是，跨域的时候，JWT 就放在 POST 请求的数据体里面。</p>
+<h4 id="JWT特点"><a href="#JWT特点" class="headerlink" title="JWT特点"></a>JWT特点</h4><ul>
+<li><p>JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。</p>
+</li>
+<li><p>JWT 不加密的情况下，不能将秘密数据写入 JWT。</p>
+</li>
+<li><p>JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</p>
+</li>
+<li><p>JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。</p>
+</li>
+<li><p>JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。</p>
+</li>
+<li><p>为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</p>
+</li>
+</ul>
+<h4 id="Session和JWT登录-整合方案"><a href="#Session和JWT登录-整合方案" class="headerlink" title="Session和JWT登录 整合方案"></a>Session和JWT登录 整合方案</h4><p><strong>分析：</strong></p>
+<ul>
+<li>用类似于JWT的token作为SessionId，客户端采用JWT模式来保存和发送这个sessionId，保存在cookie或localStorage中，发送时用header；</li>
+<li>为了接收非同源客户端的AJAX请求，服务器端需要启用 CORS（Cross-Origin Resource Sharing） 跨域访问，为指定域名的客户端开通白名单，以便接收其他不同客户端的请求；</li>
+<li>服务器端采用session的处理方式，保存session信息，并根据请求来更新过期时间，同时，服务器端兼容从cookie或者header中取得sessionId；</li>
+<li>平滑的处理token过期，如果用户一直在活动，需要刷新token，客户端要配合。</li>
+</ul>
+<h4 id="SessionID与JWT-Token-两种方式的对比"><a href="#SessionID与JWT-Token-两种方式的对比" class="headerlink" title="SessionID与JWT Token 两种方式的对比"></a>SessionID与JWT Token 两种方式的对比</h4><table>
+<thead>
+<tr>
+<th>JWT登录步骤</th>
+<th>Session登录步骤</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户端 携带认证名和密码 发起登录请求</td>
+<td>客户端 携带认证名和密码 发起登录请求</td>
+</tr>
+<tr>
+<td>服务器端验证成功，返回 token 给客户端</td>
+<td>服务器端验证成功，将用户信息存储下来，生成一个 sessionId， 返回给客户端，并通知客户端将sessionId set到cookie中</td>
+</tr>
+<tr>
+<td>客户端保存 token（通常是保存在Cookie或者LocalStorage中）</td>
+<td>客户端自动执行服务器端将sessionId set到cookie中的命令，sessionId被自动保存在cookie中</td>
+</tr>
+<tr>
+<td>客户端以后每次请求，都在Header中 携带该Token</td>
+<td>客户端以后每次请求，都会自动将cookie中的sessionId发送给服务器端</td>
+</tr>
+<tr>
+<td>服务器端，每次接收非登录请求，都验证Header中是否有token</td>
+<td>服务器端，每次接收请求，都从cookie中取出sessionId，根据这个id找到存储的用户信息，如果有，说明登录，否则说明未登录或者已过期。</td>
+</tr>
+</tbody></table>
+<h2 id="Shiro简介"><a href="#Shiro简介" class="headerlink" title="Shiro简介"></a>Shiro简介</h2><blockquote>
+<p>Apache Shiro 是 Java 的一个<strong>安全框架</strong>。</p>
+<p>Shiro是apache旗下一个开源框架，它将软件系统的安全认证相关的功能抽取出来，实现用户身份认证，权限授权、加密、会话管理等功能，组成了一个通用的安全认证框架。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145901232#:~:text=Shiro%E6%98%AFap,%E7%9A%84%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E6%A1%86%E6%9E%B6%E3%80%82">Shiro框架原理及应用分析</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mydistance/article/details/84545768">CSDN:为什么使用token？session与token的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dghkgjlh/article/details/89820043">CSDN:shiro使用(使用token预热,为什么要使用token)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dghkgjlh/article/details/90145603">CSDN:shiro使用(使用token)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dghkgjlh/article/details/90551285">CSDN:shiro使用(增强版token,JWT和shiro结合使用)</a></p>
+</blockquote>
+<h3 id="为什么学习Shiro"><a href="#为什么学习Shiro" class="headerlink" title="为什么学习Shiro"></a>为什么学习Shiro</h3><ul>
+<li>既然shiro将安全认证相关的功能抽取出来组成一个<strong>框架</strong>，使用shiro就可以<strong>非常快速的完成认证</strong>、<strong>授权等</strong>功能的开发，<strong>降低系统成本</strong>。</li>
+<li>shiro使用广泛，shiro可以运行在web应用，非web应用，集群分布式应用中越来越多的用户开始使用shiro。</li>
+<li>java领域中spring security(原名Acegi)也是一个开源的权限管理框架，但是spring security依赖spring运行，而shiro就相对独立，最主要是因为shiro使用简单、灵活，所以现在越来越多的用户选择shiro。</li>
+</ul>
+<h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><p><img src="/images/shiro/1.png" alt="Shiro基本功能"></p>
+<ul>
+<li><strong>Authentication</strong>：身份认证 / 登录，验证用户是不是拥有相应的身份；</li>
+<li><strong>Authorization</strong>：权限验证，验证某个用户是否拥有某项权限；</li>
+<li><strong>Session Management</strong>：会话管理，登录一次后没退登前，他的所有信息都在会话中；</li>
+<li><strong>Cryptography</strong>：加密保护数据安全，密码加密存储到数据库；</li>
+<li><strong>Web Support</strong>：Web 支持，可集成到Web环境；</li>
+<li><strong>Caching</strong>：缓存，用户登录后，其用户信息、拥有的角色 / 权限不必每次去查，这样可以提高效率；</li>
+<li><strong>Concurrency</strong>： 支持多线程应用的并发验证，在一个线程中开启另一个线程，能把权限自动传播过去；</li>
+<li><strong>Testing</strong>：提供测试支持；</li>
+<li><strong>Run As</strong>：允许一个用户假装为另一个用户；</li>
+<li>Remember Me：记住我，常见的功能，一次登录，下次来就不用登录；</li>
+</ul>
+<p><strong>注意：</strong>Shiro 不会去维护用户、维护权限；这些需要我们自己去设计 / 提供；然后通过相应的接口注入给 Shiro 即可。</p>
+<h3 id="工作流程介绍"><a href="#工作流程介绍" class="headerlink" title="工作流程介绍"></a>工作流程介绍</h3><p><img src="https://atts.w3cschool.cn/attachments/image/wk/shiro/2.png" alt="Shiro工作流程"></p>
+<p>代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。</p>
+<ul>
+<li><p><strong>SecurityManager</strong>：安全管理器，所有与安全有关的操作都会与 SecurityManager 交互，Shiro的核心，它负责与后边介绍的其他组件进行交互，比如对全部的subject进行安全管理。实质上SecurityManager是通过Authenticator进行认证，通过Authorizer进行授权，通过SessionManager进行会话管理等。SecurityManager是一个接口，继承了Authenticator, Authorizer, SessionManager这三个接口。；</p>
+</li>
+<li><p><strong>Realm</strong>：域，Shiro 从 Realm 获取安全数据（如用户、角色、权限），SecurityManager 要验证用户身份，那么它需要从 Realm 获取相应的用户进行比较以确定用户身份是否合法，需要从 Realm 得到用户相应的角色 / 权限进行验证用户是否能进行操作</p>
+<ul>
+<li>例如：Realm中获取JWT利用JWT的内部方解密出JWT中包含的信息，比如校验解析出JWT信息成一个Claim（校验后的JWT信息），获取Claim中的getSubject（获得用户唯一信息，比如userID），再将获取到的Subject，比如userID，根据userID对数据库进行查询，将查询出的User实体类一部分信息（保证唯一）放入另一个实体类，再将这个实体类存入比如Redis中，完成认证<strong>（未进行源码调试）</strong>。</li>
+</ul>
+</li>
+<li><p><strong>Subject</strong>：主体，代表当前用户，不一定是具体的人，当前应用交互的任何东西都是 Subject，可能是一个通过浏览器请求的用户，也可能是一个运行的程序，如网络爬虫，机器人等。Subject在shiro中是一个接口，接口中定义了很多认证授相关的方法，外部程序通过subject进行认证授，而subject是通过SecurityManager安全管理器进行认证授权；</p>
+</li>
+<li><p>Subject 的所有交互都会委托给 SecurityManager；</p>
+</li>
+</ul>
+<h3 id="Shiro-的架构"><a href="#Shiro-的架构" class="headerlink" title="Shiro 的架构"></a>Shiro 的架构</h3><p><img src="/images/shiro/3.png" alt="Shiro 内部的架构"></p>
+<ul>
+<li><strong>SecurityManager</strong>： Shiro 的核心，所有具体的交互都通过 SecurityManager 进行控制，管理着所有 Subject，且负责进行认证和授权、及会话、缓存的管理。</li>
+<li><strong>Realm</strong>：可以有 1 个或多个 Realm，可以认为是安全实体，相当于datasource数据源，但不要把realm理解成只是从数据源取数据，在realm中还有认证授权校验的相关的代码。securityManager进行安全认证需要通过Realm获取用户权限数据，用于获取安全实体的；可以是 JDBC 实现、 LDAP 实现、内存实现等等；由用户提供；注意：Shiro 不知道你的用户 / 权限存储在哪及以何种格式存储；一般要在应用中都需要实现自己的 Realm；</li>
+<li><strong>Subject</strong>：主体，任何可以与应用交互的 “用户”；</li>
+<li><strong>Authenticator</strong>：认证器，负责主体认证，是一个扩展点， Shiro 默认实现，shiro提供ModularRealmAuthenticator实现类，通过ModularRealmAuthenticator基本上可以满足大多数需求，也可以自定义实现；其需要认证策略（Authentication Strategy），即什么情况下用户认证通过；</li>
+<li><strong>Authorizer</strong>：授权器，用来决定主体是否有权限进行相应的操作；即控制着用户能访问应用中的哪些功能；</li>
+<li><strong>SessionManager</strong>：如果写过 Servlet 就应该知道 Session 的概念，Session 呢需要有人去管理它的生命周期，这个组件就是 SessionManager；而 Shiro 并不仅仅可以用在 Web 环境，也可以用在如普通的 JavaSE 环境、EJB 等环境；所以呢，Shiro 就抽象了一个自己的 Session 来管理主体与应用之间交互的数据，它不依赖web容器的session，于是shiro可以使用在非web应用上，也可以将分布式应用的会话集中在一点管理，此特性可使它实现单点登录；这样的话，比如我们在 Web 环境用，刚开始是一台 Web 服务器；接着又上了台 EJB 服务器；这时想把两台服务器的会话数据放到一个地方，这个时候就可以实现自己的分布式会话（如把数据放到 Memcached 服务器）；</li>
+<li><strong>SessionDAO</strong>：DAO 即，数据访问对象，用于会话的 CRUD，比如我们想把 Session 保存到数据库，那么可以实现自己的 SessionDAO，通过 JDBC 写到数据库；另外 SessionDAO 中可以使用 Cache 进行缓存，以提高性能；</li>
+<li><strong>CacheManager</strong>：缓存控制器，来管理如用户、角色、权限等的缓存的；因为这些数据基本上很少去改变，放到缓存中后可以提高访问的性能</li>
+<li><strong>Cryptography</strong>：密码模块，Shiro 提供了一些常见的加密组件用于如密码加密 / 解密的，方便开发。比如提供常用的散列、加/解密等功能。。</li>
+</ul>
+<p><strong>作为开发者：</strong></p>
+<ol>
+<li>代码通过Subject 来进行认证和授权，而 Subject 又委托给 SecurityManager；</li>
+<li>需要给 Shiro 的 SecurityManager 注入 Realm，从而让 SecurityManager 能得到合法的用户及其权限进行判断。</li>
+<li>Shiro 不提供维护用户 / 权限，而是通过 Realm 让开发人员自己注入。</li>
+</ol>
+<h2 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h2><blockquote>
+<p>即在应用中谁能证明他就是他本人。一般提供如他们的身份 ID 一些标识信息来表明他就是他本人，如提供身份证，用户名 / 密码来证明。</p>
+</blockquote>
+<p><strong>常见名词：</strong></p>
+<ul>
+<li><strong>principals</strong>：身份，即主体的标识属性，可以是数据库字段任何属性，如用户名、邮箱等，但需要保证唯一。一个主体可以有多个 <code>principals</code>，但只有一个 <code>Primary principals</code>，一般是用户名 / 密码 / 手机号。</li>
+<li><strong>credentials</strong>：证明 / 凭证，即只有主体知道的安全值，如密码 / 数字证书等。</li>
+<li>最常见的 <code>principals</code> 和 <code>credentials</code> 组合就是用户名 / 密码了。</li>
+</ul>
+<h3 id="身份认证流程"><a href="#身份认证流程" class="headerlink" title="身份认证流程"></a>身份认证流程</h3><blockquote>
+<p>代码详见：</p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/shiro/xgj31if4.html">W3c School：Shiro 身份验证</a></p>
+</blockquote>
+<p><img src="/images/shiro/4.png" alt="img"></p>
+<ol>
+<li>首先调用 <code>Subject.login(token)</code> 进行登录，其会自动委托给 <code>Security Manager</code>，调用之前必须通过 <code>SecurityUtils.setSecurityManager()</code> 设置；</li>
+<li><code>SecurityManager</code> 负责真正的身份验证逻辑；它会委托给 <code>Authenticator</code> 进行身份验证；</li>
+<li><code>Authenticator</code> 才是真正的身份验证者，<code>Shiro API</code> 中核心的身份认证入口点，此处可以自定义插入自己的实现；</li>
+<li><code>Authenticator</code> 可能会委托给相应的 <code>AuthenticationStrategy</code> 进行多 <code>Realm</code> 身份验证，默认 <code>ModularRealmAuthenticator</code> 会调用 <code>AuthenticationStrategy</code> 进行多 <code>Realm</code> 身份验证；</li>
+<li><code>Authenticator </code>会把相应的 <code>token</code> 传入 <code>Realm</code>，从 <code>Realm</code> 获取身份验证信息，如果没有返回 / 抛出异常表示身份验证成功了。此处可以配置多个 <code>Realm</code>，将按照相应的顺序及策略进行访问。</li>
+</ol>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ding-f.gitee.io/2022/04/11/apache-shiro-jwt.html">https://ding-f.gitee.io/2022/04/11/apache-shiro-jwt.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">鼎</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">安全运维</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/JavaEE/">
+                                    <span class="chip bg-color">JavaEE</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%90%86%E8%AE%BA/">
+                                    <span class="chip bg-color">理论</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        
+                    </ul>
+                    <div id="alipay_red">
+                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        📣
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<!-- 直达评论 -->
+<div id="to_comment" class="comment-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
+        <i class="fas fa-comments"></i>
+    </a>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '留下你的足迹..',
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["fu_ding@126.com"],
+        master: ["fu_ding@126.com"],
+        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/04/11/redis.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/redis/redis.png" class="responsive-img" alt="Redis">
+                        
+                        <span class="card-title">Redis</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/">
+                        <span class="chip bg-color">Linux软件</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/mini_app/mini_app.png" class="responsive-img" alt="微信小程序开发">
+                        
+                        <span class="card-title">微信小程序开发</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
+                                    小程序
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: 铸鼎_<br />'
+                + '文章作者: 鼎<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+<!-- 高亮CSS-->
+<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+</main>
+
+
+
+
+<!--是否开启暗黑模式-->
+
+<!--footer-->
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        
+        <div class="col s12 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">鼎</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            <br/>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">141.6k</span>&nbsp;
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
+                                                                        class="white-color"></span>&nbsp;
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                           class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+                <span id="sitetime">载入运行时间...</span>
+                <script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "2";
+                        var startDate = "1";
+                        var startHour = "23";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
+                                " h " + diffMinutes + " m " + diffSeconds + " s";
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
+                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
+                        }
+                    }
+
+                    setInterval(siteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m3 l3 social-link social-statis social-statis">
+    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+        
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!--search-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        searchFunc("/search.xml", 'searchInput', 'searchResult')
+    })
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll" title="回到顶部">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/islu.js"></script>
+<script src="/libs/search/search.js"></script>
+
+<!--谷歌广告接入点-->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

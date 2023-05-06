@@ -1,0 +1,1730 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Arch Linux, 铸鼎_">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Arch Linux | 铸鼎_</title>
+    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/islu.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    
+
+    
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <!--  加载动画，强制加载0.5s  -->
+    <div id="loading-container">
+    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+
+
+<!--    顶部导航栏   -->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <div>
+                        
+                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
+                        
+                        <span class="logo-span">铸鼎_</span>
+                    </div>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>博主</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" id="contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li id="fullscreen_li" class="fullscreen">
+      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
+          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
+      </a>
+  </li>
+
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">铸鼎_</div>
+        <div class="logo-desc">
+            
+                Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        文章
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/tags "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-tags"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>标签</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/categories "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-bookmark"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>分类</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        关于
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/about "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-user-circle"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>博主</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+
+                        留言
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        链接
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/friends "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-address-book"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>友情链接</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('禁止访问，仅内部授权！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/arch_linux/arch-linux.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Arch Linux</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ArchLinux/">
+                                    <span class="chip bg-color">ArchLinux</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        <span id="publishDate">
+                            2021-03-10
+                        </span>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        2023-05-05 09:05:42
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.9k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        20 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <!--    添加更新时间截    -->
+        
+            <div class="uk-alert">
+                <p id="thisTime">
+                    <span id="timeLag"></span>
+                </p>
+            </div>
+            <script>
+                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
+                let date2 = new Date();    /*当前时间*/
+                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
+
+                /*计算出相差天数*/
+                let days = Math.floor(date3 / (24 * 3600 * 1000));
+
+                let thisTime = document.getElementById("thisTime");
+                let timeLag = document.getElementById("timeLag");
+                if (days <= 7) {
+                    thisTime.classList.add("uk-alert-success");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
+                } else if (7 < days && days <= 30) {
+                    thisTime.classList.add("uk-alert-warning");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
+                } else {
+                    thisTime.classList.add("uk-alert-danger");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
+                }
+            </script>
+        
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/">
+        
+
+        
+            <!-- 代码块折行 -->
+            <style type="text/css">
+                code[class*="language-"], pre[class*="language-"] {
+                    white-space: pre-wrap !important;
+                }
+            </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="安装Arch-Linux"><a href="#安装Arch-Linux" class="headerlink" title="安装Arch Linux"></a>安装Arch Linux</h2><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="图形化快捷键"><a href="#图形化快捷键" class="headerlink" title="图形化快捷键"></a>图形化快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Alt+T</td>
+<td>打开终端</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>关闭终端</td>
+<td>退出python也可以</td>
+</tr>
+</tbody></table>
+<h3 id="命令行快捷键"><a href="#命令行快捷键" class="headerlink" title="命令行快捷键"></a>命令行快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+R</td>
+<td>搜索历史命令</td>
+<td>在此命令行的下方出现搜索结果，按右键确认结果</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>清屏</td>
+<td>相当于clear命令</td>
+</tr>
+</tbody></table>
+<h2 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h2><blockquote>
+<p>更换内核等操作。</p>
+</blockquote>
+<p>更新Grub配置</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">grub-mkconfig</span> -o /boot/grub/grub.cfg  <span class="token comment">#一般情况下Grub配置文件都是放置/boot/grub/grub.cfg目录</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="根据速度排序源"><a href="#根据速度排序源" class="headerlink" title="根据速度排序源"></a>根据速度排序源</h2><blockquote>
+<p>升级系统排名Mirror List是很必要的。获取最新Mirror List 并使用 rankmirrors 进行镜像源速度排名，使软件更新的速度飞起~ </p>
+<p>如果Arch源文件不全，请到<a target="_blank" rel="noopener" href="https://archlinux.org/mirrorlist/">Arch Linux WIKI：Pacman Mirrorlist Generator</a>查找。</p>
+<p>软件包：<a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=pacman-contrib">pacman-contrib</a> </p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mirrors#Ranking_an_existing_mirror_list">Arch Linux WIKI：Mirrors</a></p>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/mirrorlist/">Arch Linux WIKI：Pacman Mirrorlist Generator</a></p>
+</blockquote>
+<h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><p>安装好所需软件</p>
+<p>备份Arch源文件（重要）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup		<span class="token comment">#此若未更改文件中包含有各个国家的源</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将指定国家的源链接全部筛选出来</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'/^## &lt;Country Name>$/&#123;f=1; next&#125;f==0&#123;next&#125;/^$/&#123;exit&#125;&#123;print substr($0, 1);&#125;'</span> /etc/pacman.d/mirrorlist.backup <span class="token operator">></span> mirrorlist.pacnew	<span class="token comment">#其中的&lt;Country Name>填写所在国家名称，一定要去掉尖括号，此操作会将mirrorlist.backup 文件所有比如China下的所有连接写入mirrorlist.pacnew (如果没有请重建)。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>去掉所有注释符</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/^#Server/Server/'</span> /etc/pacman.d/mirrorlist.pacnew<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>排序出速度从大到小指定数目为 6 的源到源链接文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rankmirrors -n <span class="token number">6</span> /etc/pacman.d/mirrorlist.pacnew <span class="token operator">></span> /etc/pacman.d/mirrorlist<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>成功参考如下</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">➜  pacman.d <span class="token function">cat</span> mirrorlist       
+<span class="token comment"># Server list generated by rankmirrors on 2022-10-23</span>
+Server <span class="token operator">=</span> https://mirrors.aliyun.com/archlinux/<span class="token variable">$repo</span>/os/<span class="token variable">$arch</span>
+Server <span class="token operator">=</span> https://mirror.redrock.team/archlinux/<span class="token variable">$repo</span>/os/<span class="token variable">$arch</span>
+Server <span class="token operator">=</span> https://mirrors.xjtu.edu.cn/archlinux/<span class="token variable">$repo</span>/os/<span class="token variable">$arch</span>
+Server <span class="token operator">=</span> http://mirrors.tuna.tsinghua.edu.cn/archlinux/<span class="token variable">$repo</span>/os/<span class="token variable">$arch</span>
+Server <span class="token operator">=</span> http://mirrors.wsyu.edu.cn/archlinux/<span class="token variable">$repo</span>/os/<span class="token variable">$arch</span>
+Server <span class="token operator">=</span> http://mirrors.ustc.edu.cn/archlinux/<span class="token variable">$repo</span>/os/<span class="token variable">$arch</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><p>安装好所需软件</p>
+<p>访问<a target="_blank" rel="noopener" href="https://archlinux.org/mirrorlist/">Pacman Mirrorlist Generator</a>选择国家、协议、ip版本后回车复制链接</p>
+<p>将链接填入下面的双引号中</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -s <span class="token string">"https://archlinux.org/mirrorlist/?country=CN&amp;protocol=http&amp;protocol=https&amp;ip_version=4"</span> <span class="token operator">|</span> <span class="token function">sed</span> -e <span class="token string">'s/^#Server/Server/'</span> -e <span class="token string">'/^#/d'</span> <span class="token operator">|</span> rankmirrors -n <span class="token number">5</span> -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>回车等待大约2-3分钟，就可以得到5个按照速度排名的镜像。</p>
+<h2 id="Arch环境变量配置"><a href="#Arch环境变量配置" class="headerlink" title="Arch环境变量配置"></a>Arch环境变量配置</h2><blockquote>
+<p>以下操作均在ArchLinux系统上操作。</p>
+</blockquote>
+<h3 id="环境变量配置文件路径及作用范围"><a href="#环境变量配置文件路径及作用范围" class="headerlink" title="环境变量配置文件路径及作用范围"></a>环境变量配置文件路径及作用范围</h3><ul>
+<li><p>Linux环境变量配置文件：/etc/environment、/etc/profile、/etc/bash.bashrc、/etc/profile.d/test.sh、<code>~/.profile</code>、<code>~/.bashrc</code>（加载顺序从前到后依次）</p>
+</li>
+<li><p><code>~/</code>目录下的环境变量配置文件只能作用于当前用户</p>
+</li>
+<li><p><code>/etc/</code>目录下的环境变量配置文件作用于整个系统所有用户</p>
+</li>
+</ul>
+<h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><blockquote>
+<p>命令如果只执行于命令行窗口，那会在下次重启命令行或者打开新的命令行时会失效，要永久保持还是要写入配置环境变量的文件中才行</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span>      <span class="token comment">#命令显示当前系统定义的所有环境变量</span>
+
+<span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span>       <span class="token comment">#命令输出当前的PATH环境变量的值</span>
+
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/home/uusama/mysql/bin        <span class="token comment">#往名为PATH的环境变量往后添加一个路径，$PATH也可以放于后面位置</span>
+
+<span class="token builtin class-name">source</span> /etc/profile     <span class="token comment">#进行生效你当前配置的环境变量文件，此文件设置的环境变量对所有用户生效,但只能生效于执行命令窗口，使所有窗口都生效，必须重启系统</span>
+
+<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"<span class="token environment constant">$PATH</span>"</span>:/NEW_PATH      <span class="token comment">#临时设置环境变量，关闭窗口配置失效</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><ul>
+<li><p>可以自定义一个环境变量文件，比如在某个项目下定义uusama.profile，在这个文件中写入例如<code>export PATH=$PATH:/home/uusama/mysql/bin</code> ，执行：<code>source &lt;项目地址&gt;/uusama.profile</code>，这样你每次登陆都可以在Shell脚本中使用自己定义的一系列变量。</p>
+</li>
+<li><p>使用alias命令定义一些命令的别名，比如alias rm=”rm -i”（双引号必须），并把这个代码加入到~/.profile中，这样你每次使用rm命令的时候，都相当于使用rm -i命令，非常方便。</p>
+</li>
+<li><p>Linux 上的环境变量配置是跟Windows上的道理是一样的，同样具有PATH环境变量，不过Windows上的PATH环境变量路径分割是用；号，Linux用的：号。</p>
+</li>
+</ul>
+<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><blockquote>
+<p>如果安装软件源地址没问题的情况如下，出现<code>error: 404</code>，请尝试 <code>sudo pacman -Syy</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">error: failed retrieving <span class="token function">file</span> <span class="token string">'qt6-5compat-6.4.0-2-x86_64.pkg.tar.zst'</span> from mirrors.aliyun.com <span class="token builtin class-name">:</span> The requested URL returned error: <span class="token number">404</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Pacman#Usage">ArchWiki：pacman</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kainhuck/p/12893643.html">cnblog-kainhuck:Arch安装后的配置（超详细）</a></p>
+</blockquote>
+<h3 id="pacman"><a href="#pacman" class="headerlink" title="pacman"></a>pacman</h3><p><strong>常用</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S <span class="token operator">&lt;</span>包名<span class="token operator">></span>        <span class="token comment">#安装/更新 某软件包命令</span>
+
+pacman -R <span class="token operator">&lt;</span>包名<span class="token operator">></span>        <span class="token comment">#卸载软件包</span>
+<span class="token function">sudo</span> pacman -Rns <span class="token operator">&lt;</span>包名<span class="token operator">></span>     <span class="token comment">#卸载软件包 -n 删除配置 -s 删除不需要的依赖关系</span>
+
+pacman -Syu     <span class="token comment">#升级系统命令</span>
+
+pacman -Ss <span class="token operator">&lt;</span>关键词<span class="token operator">></span>     <span class="token comment">#查询所有软件包名称</span>
+pacman -Qs <span class="token operator">&lt;</span>关键词<span class="token operator">></span>     <span class="token comment">#查询所有本地软件包名称，包含描述信息内匹配的字符</span>
+<span class="token comment"># 例：</span>
+pacman -Qs <span class="token string">"edge"</span> <span class="token string">"microsoft"</span>
+
+pacman -Ql package_name			<span class="token comment"># 检索软件包安装的文件列表</span>
+
+pacman Ss       <span class="token comment">#查询库内（不包含AUR）的包名称，包含描述信息内匹配的字符</span>
+
+<span class="token function">sudo</span> pacman -U <span class="token comment">#下载后缀为 .pkg.tar.xz 或 .pkg.tar.zst 的安装包</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h4><p><strong>archlinuxcn</strong></p>
+<p><code>/etc/pacman.conf</code></p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">[archlinuxcn]
+Server &#x3D; https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinuxcn&#x2F;$arch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>更新软件源</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -Syy <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> pacman -S archlinuxcn-keyring<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="日常问题"><a href="#日常问题" class="headerlink" title="日常问题"></a>日常问题</h4><h5 id="var-lib-pacman-db-lck导致升级失败"><a href="#var-lib-pacman-db-lck导致升级失败" class="headerlink" title="/var/lib/pacman/db.lck导致升级失败"></a>/var/lib/pacman/db.lck导致升级失败</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?id=128461">ArchLinux-Forums:pacman db.lck</a></p>
+</blockquote>
+<h3 id="yay"><a href="#yay" class="headerlink" title="yay"></a>yay</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Jguer/yay">GitHub-Jguer：yay</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<p>其实直接可以进行安装的，之前可能是因为安全的原因，不能直接使用pacman安装,建议使用此方式安装，下面的安装方式就当了解一下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S yay<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>源码安装</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S --needed <span class="token function">git</span> base-devel
+<span class="token function">git</span> clone https://aur.archlinux.org/yay.git
+<span class="token builtin class-name">cd</span> yay
+makepkg -si		<span class="token comment"># 此步骤可能会失败</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>包安装</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S --needed <span class="token function">git</span> base-devel
+<span class="token function">git</span> clone https://aur.archlinux.org/yay-bin.git
+<span class="token builtin class-name">cd</span> yay-bin
+makepkg -si		<span class="token comment"># 成功概率大一些</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>Arch Linux发行版</strong></p>
+<p>比如Manjaro</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S --needed <span class="token function">git</span> base-devel yay<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>修改aururl源为国内</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay --aururl <span class="token string">"源URL"</span> --save
+
+<span class="token comment"># 官方源</span>
+https://aur.archlinux.org<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 只升级AUR的软件包</span>
+yay -Sua<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="本地打包安装"><a href="#本地打包安装" class="headerlink" title="本地打包安装"></a>本地打包安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/countstarlight/deepin-wine-tim-arch.git
+<span class="token builtin class-name">cd</span> deepin-wine-tim-arch
+
+makepkg -si     <span class="token comment">#-s（用pacman 按照PKGBUILD文件安装所缺失的依赖包并下载三方软件包，编译打包成Arch可直接安装的包）-i（安装Arch软件包）它由apcman 提供</span>
+
+makepkg --clean     <span class="token comment">#清除残留的文件和目录</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="安装旧版本包"><a href="#安装旧版本包" class="headerlink" title="安装旧版本包"></a>安装旧版本包</h3><blockquote>
+<p>Arch linux旧版本软件仓库<a target="_blank" rel="noopener" href="https://archive.archlinux.org/">https://archive.archlinux.org/</a>。</p>
+<p>安装历史版本软件包常用包<code>downgrade</code>来进行降级。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://linux.cn/article-9730-1.html">Linux中国-MjSeven：如何在 Arch Linux 中降级软件包如何在 Arch Linux 中降级软件包</a></p>
+</blockquote>
+<p>验证sha256sum、md5sum等：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">md5sum -c *.md5      <span class="token comment">#校验完成后会出现"成功"字样</span>
+
+sha256sum -c kali-linux-2021.1-vbox-amd64.ova.txt.sha256sum         <span class="token comment">#sha256sum同样适用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>安装以前更新下载过的软件包</p>
+<blockquote>
+<p>pacman 升级或安装下载的包的地址位于<code>/var/cache/pacman/pkg/</code>目录<br>yay 升级或安装下载的包的地址位于<code>~/.cache/yay/</code><br>可使用命令清除，也可以手动清除</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 搜索软件包缓存目录下的所有已经下载的linux内核</span>
+<span class="token function">ls</span> -l /var/cache/pacman/pkg/ <span class="token operator">|</span> <span class="token function">grep</span> linux
+
+<span class="token comment">#跳过所有检查安装（降级可能有时候会需要额外的依赖关系），但不建议跳过检查</span>
+pacman -Udd /var/cache/pacman/pkg/xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>利用<code>downgrade</code>工具降级</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装降级工具</span>
+<span class="token function">sudo</span> pacman -S downgrade
+<span class="token comment"># 降级内核，回车后出现本地与远端旧包可选，输入序号即可</span>
+<span class="token function">sudo</span> downgrade linux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<h3 id="忽略升级软件包"><a href="#忽略升级软件包" class="headerlink" title="忽略升级软件包"></a>忽略升级软件包</h3><blockquote>
+<p>对应的配置在/etc/pacman.conf 文件中</p>
+</blockquote>
+<p>更改内容：</p>
+<p><code>IgnorePkg=linux</code></p>
+<p>以上为更改使系统不能更新linux内核包，如果忽略多个包，包名之间用<strong>空格隔开</strong>。</p>
+<p>如果只打算忽略一次升级，可以使用 –ignore 选项，这时使用逗号隔开的列表。</p>
+<h3 id="PGP问题"><a href="#PGP问题" class="headerlink" title="PGP问题"></a>PGP问题</h3><blockquote>
+<p>系统好久没更新，出现密钥不对的问题，<code>pacman -Syu</code> 更新软件时会询问是否删除软件包，其实此时不是软件包的来源问题，是长时间未更新系统导致，先不探究原因，有时间了再研究。</p>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/codeaaa/p/6844331.html">博客园-北里闻箫：ArchLinux升级时签名错误的处理方法。长时间不更新就可能遇到这个问题。ArchLinux升级时签名错误的处理方法。长时间不更新就可能遇到这个问题。</a></p>
+<p><a target="_blank" rel="noopener" href="https://emacs-china.org/t/arch-pgp/19089">Emacs-WingDustWingDust：Arch 更新安装 已损坏 (无效或已损坏的软件包 (PGP 签名))Arch 更新安装 已损坏 (无效或已损坏的软件包 (PGP 签名))-Ynjxsjmh的评论</a></p>
+</blockquote>
+<p><strong>一般情况下</strong></p>
+<p>重新生成签名。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman-key --init
+<span class="token function">sudo</span> pacman-key --populate archlinux
+<span class="token function">sudo</span> pacman-key --refresh-keys<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>但执行<code>sudo pacman-key --refresh-keys</code>时会无限循环报出日志信息</p>
+<p><strong>特殊解决方案</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S archlinux-keyring <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> pacman -Syu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="sed-grep批量修改文件内容"><a href="#sed-grep批量修改文件内容" class="headerlink" title="sed|grep批量修改文件内容"></a>sed|grep批量修改文件内容</h3><blockquote>
+<p>Linux sed 命令是利用脚本来处理文本文件。<br>sed 可依照脚本的指令来处理、编辑文本文件。<br>Sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。<br>详情请参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">https://www.runoob.com/linux/linux-comm-sed.html</a></p>
+</blockquote>
+<p>使用sed命令来修改文件内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/Good/GoodNight/g'</span> ./TheDay.txt        <span class="token comment">#此命令直接可以将TheDay.txt 文件下的所有包含Good的字符串改为GoodNight，并加-i参数改写文件，如果不加-i参数则只有打印输出而不会保存修改后的文件,单引号g代表全部内容都会替换。</span>
+
+<span class="token comment">#如果要删除Good字符串后面的GoodNight不写（猜测）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果加上以下命令,则会修改grep 批量查询所有符合条件的文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'s/Good/GoodNight/g'</span> <span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> -rl Good ./<span class="token variable">`</span></span>       <span class="token comment">#grep是查找字符串命令，如果加上-rl递归查找并打印本目录下符合条件的所有文件路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>grep执行结果：</p>
+<pre><code>$ grep -rl 鼎&lt; ./  
+about/index.html
+search.xml
+songs/code/Test/区分$_POST和$_FILES系统变量.php
+songs/code/index.php
+songs/add_multiple.php
+songs/index.php
+medias/banner/1.jpg
+medias/banner/6.jpg
+contact/index.html
+</code></pre>
+<p>删除批量文件中大量相同的内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">'/GoodNight/d'</span> <span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> -rl GoodNight ./<span class="token variable">`</span></span>       <span class="token comment">#d代表批量删除所有文件匹配成功的GoodNight字符的行</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注意：</strong> 以上命令添加-i参数属于危险操作，可在<code>-i</code>之后加上<code>.back</code>就会备份修改后的文件以保证修改文件修改错误的损失。</p>
+<h3 id="args-xargs-批量修改文件名称"><a href="#args-xargs-批量修改文件名称" class="headerlink" title="args|xargs 批量修改文件名称"></a>args|xargs 批量修改文件名称</h3><p>复制前n个文件到指定目录：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">head</span> -n <span class="token number">100</span> <span class="token operator">|</span> args -i <span class="token function">cp</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">[</span>target_dir<span class="token punctuation">]</span>       <span class="token comment">#-n 代表前多少个文件args加-i代表接收参数到&#123;&#125;中</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>批量修改文件名：</p>
+<pre><code>xarge(arge命令的进阶版，可对&#123;&#125;中的内容进行修改)测试：
+➜ ls | xargs -i echo abcd &#123;&#125; efgh &#123;&#125;
+abcd 0001.txt efgh 0001.txt
+abcd 0002.txt efgh 0002.txt
+abcd 0003.txt efgh 0003.txt
+abcd 0004.txt efgh 0004.txt
+abcd 0005.txt efgh 0005.txt
+</code></pre>
+<p>测试<code>xargs</code>加强功能（修改{}内部内容<code>sed</code>）：</p>
+<pre><code>ls | xargs -i echo abcd &#123;&#125; efgh &#123;&#125; | sed &#39;s/.txt/.md/2g&#39;
+abcd 0001.txt efgh 0001.md
+abcd 0002.txt efgh 0002.md
+abcd 0003.txt efgh 0003.md
+abcd 0004.txt efgh 0004.md
+abcd 0005.txt efgh 0005.md
+</code></pre>
+<p>实际操作：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">xargs</span> -i <span class="token builtin class-name">echo</span> <span class="token function">mv</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/.txt/.md/2g'</span> <span class="token operator">|</span> <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注意:</strong> 如果不先 echo 出命令再输入到 sh 的话，mv {} {} 会直接执行，这样就无法输入到后一个管道中进行 sed 替换操作。</p>
+<h2 id="图形化"><a href="#图形化" class="headerlink" title="图形化"></a>图形化</h2><h3 id="显示服务器"><a href="#显示服务器" class="headerlink" title="显示服务器"></a>显示服务器</h3><blockquote>
+<p>显示服务器是一个程序，它是图形用户界面（GUI）的基本组件，位于图形界面和内核之间。其主要任务是协调客户端与其他操作系统，硬件以及彼此之间的输入和输出。因此，借助显示服务器，您可以将计算机与GUI一起使用。没有它，您将只能使用命令行界面。</p>
+<p><a target="_blank" rel="noopener" href="https://www.linuxmi.com/xorg-x11-wayland-linux.html">Linux 迷：Xorg，X11，Wayland？Linux显示服务器和协议介绍</a></p>
+</blockquote>
+<p><strong>Linux中提供了三种显示服务器协议。X11和Wayland是其中两个。第三个Mir（不常用）请自行搜索。</strong></p>
+<p><img src="/images/2021-03-10-Arch-Linux/3319a06bd8a44503bed0b64a62a6225a.png" alt="img"></p>
+<p><strong>X Window System</strong>（通常仅称为X或X11）确实很古老。它最初起源于1984年，最终成为大多数类似UNIX的操作系统（包括Linux）的默认窗口系统。</p>
+<ul>
+<li>Xorg基于客户端/服务器模型，因此允许客户端在另一台计算机上本地或远程运行。</li>
+<li>X.Org服务器是X.Org基金会管理的X Window System显示服务器的免费开放源代码实现。</li>
+<li>X server运行在工作站上，而用户在具有更强处理能力的远程计算机上运行应用程序是很常见的。</li>
+</ul>
+<p><img src="/images/2021-03-10-Arch-Linux/d4666a373f3c432aaa4e5c31cbfb1c51.png" alt="img"></p>
+<p><strong>Wayland</strong>由X.Org开发人员Kristian Hogsberg于2008年作为个人项目开始。</p>
+<ul>
+<li>与X相比的主要优势在于它是从头开始的。X的复杂性的主要原因之一。</li>
+<li>与X情况一样，客户端在接收到事件时会作为响应更新用户界面（UI）。但是，在Wayland中，渲染发生在客户端中，并且客户端只是向合成器发送请求以指示已更新的区域。</li>
+<li>Wayland在安全性方面也很出色。使用X11，可以通过允许任何程序在后台存在并读取X11区域中打开的其他窗口所发生的事情来执行称为“键盘记录”的操作。使用Wayland，这根本不会发生，因为每个程序都是独立工作的。</li>
+</ul>
+<p><strong>安全</strong>：允许任何程序在后台存在并读取X11区域中打开的其他窗口所发生的事情来执行称为“键盘记录”的操作，使用Wayland，各个程序键盘记录相互独立</p>
+<p>。</p>
+<p><strong>目前</strong>：X server协议提供的大部分功能不再使用。但大多数用于Linux的视频游戏和图形密集型应用程序仍为X11编写，X11所做的几乎所有工作都重新分配给了各个应用程序和窗口管理器。许多封闭源代码的图形驱动程序，例如NVIDIA GPU的驱动程序，都尚未完全提供对Wayland的支持。然而，所有这些旧特性仍然存在，给所有这些应用程序带来了压力，损害了性能和安全性。</p>
+<h2 id="dolphin文件管理器"><a href="#dolphin文件管理器" class="headerlink" title="dolphin文件管理器"></a>dolphin文件管理器</h2><blockquote>
+<p>连接sftp命令</p>
+</blockquote>
+<p>打开Dolphin文件管理器地址栏上直接输入，按回车会进行用户名密码的校验：</p>
+<pre class="line-numbers language-none"><code class="language-none">sftp:&#x2F;&#x2F;&lt;用户名&gt;@&lt;主机地址&#x2F;域名&gt;:&lt;端口号&gt;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="常用-amp-实用命令总结"><a href="#常用-amp-实用命令总结" class="headerlink" title="常用&amp;实用命令总结"></a>常用&amp;实用命令总结</h2><h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Sudo">ArchLinux-WiKi：Sudo</a></p>
+</blockquote>
+<p><strong>密码验证</strong></p>
+<p>每次sudo的时候都会询问密码是令Archer使用非常烦的，除非单纯为了系统安全。于是去除密码验证。</p>
+<p><code>/etc/sudoers</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">## Uncomment to allow members of group wheel to execute any command</span>
+<span class="token comment"># 取消注释允许wheel组下所有成员执行任何命令</span>
+%wheel <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span> ALL
+%wheel <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL:ALL<span class="token punctuation">)</span> ALL
+
+<span class="token comment">## Same thing without a password</span>
+<span class="token comment"># 相同命令不需要密码</span>
+%wheel <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span> NOPASSWD: ALL
+%wheel <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL:ALL<span class="token punctuation">)</span> NOPASSWD: ALL
+
+<span class="token comment"># 取消询问某个用户的密码（关键）</span>
+Defaults:USER_NAME      <span class="token operator">!</span>authenticate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意：曾在Manjaro上取消sudo密码验证，必须加上最后一句命令才生效。</p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><blockquote>
+<p>内部命令：linux系统加载运行时shell就被加载并驻留在系统内存中，比如：exit，history，cd，echo等<br>外部命令：在系统加载时并不随系统一起被加载到内存中，而是在需要时才将其调用内存，外部命令是在bash之外额外安装的，通常放在/bin，/usr/bin，/sbin，/usr/sbin……等等。可通过“echo $PATH”命令查看外部命令的存储路径，比如：ls、vi等。</p>
+</blockquote>
+<p>语法：<code>type(选项)(参数)</code></p>
+<p>选项：</p>
+<ul>
+<li>-p：如果给出的指令为外部指令，则显示其绝对路径</li>
+<li>-a：在环境变量“PATH”指定的路径中，显示给定指令的信息，包括命令别名</li>
+</ul>
+<p>参数：指给出的命令</p>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/guo_guo_cai/article/details/78499477">CSDN-葛伦儿：Linux 的 Kill -9命令</a></p>
+</blockquote>
+<p><strong>语法：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><p><strong>-n</strong> signum信号量</p>
+<ul>
+<li>输入<code>kill -n</code>打印所有kill可用信号量</li>
+</ul>
+</li>
+</ul>
+<p><strong>常用：</strong></p>
+<ul>
+<li><code>kill -9 &lt;pid&gt;</code> 9 (SIGKILL)，强行杀死一个进程</li>
+<li><code>kill -15 &lt;pid&gt;</code> 15 (SIGTERM)信号后，先释放自己的资源，然后在停止</li>
+</ul>
+<p><strong>信号量表格：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Signal Name</th>
+<th>Signal Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIGTERM</td>
+<td>15</td>
+<td>Termination (ANSI)</td>
+</tr>
+<tr>
+<td>Termination (ANSI)</td>
+<td>9</td>
+<td>Kill(can’t be caught or ignored) (POSIX)</td>
+</tr>
+<tr>
+<td>SIGHUP</td>
+<td>1</td>
+<td>Hangup (POSIX)</td>
+</tr>
+</tbody></table>
+<h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><blockquote>
+<p>ps(Process Status) ,它所提供的查看结果并不动态连续的；如果想对进程时间监控，应用 top 工具。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/z13546335640/article/details/115645029#:~:text=ps,-ef%7Cgrep%20mysql%E7%9A%84%E6%84%8F%E6%80%9D%E6%98%AF%E6%98%BE%E7%A4%BA%E6%9C%89%E5%85%B3mysql%E7%9A%84%E8%BF%9B%E7%A8%8B%E3%80%82">CSDN-趙妏斌：ps -ef | grep mysql命令详解</a></p>
+</blockquote>
+<p><strong>参数：</strong></p>
+<ul>
+<li><strong>-A</strong> 　显示所有程序</li>
+<li><strong>-e</strong> 　此参数的效果和指定”A”参数相同</li>
+<li><strong>-f</strong> 　显示UID,PPIP,C与STIME栏位</li>
+<li><strong>j</strong>    BSD job control format.</li>
+<li><strong>a</strong>    Lift the BSD-style “only yourself” restriction, which is imposed upon the set of all processes when some BSD-style (without “-“) options are used or when the <strong>ps</strong> personality setting is BSD-like.  The set of processes selected in this manner is in addition to the set of processes selected by other means.  An alternate description is that this option causes <strong>ps</strong> to list all processes with a terminal (tty), or to list all processes when used together with the <strong>x</strong> option.</li>
+<li>u   user     user name</li>
+<li><strong>x</strong>    Lift the BSD-style “must have a tty” restriction, which is imposed upon the set of all processes when some BSD-style (without “-“) options are used or when the <strong>ps</strong> personality setting is BSD-like.  The set of processes selected in this manner is in addition to the set of processes selected by other means.  An alternate description is that this option causes <strong>ps</strong> to list all processes owned by you (same EUID as <strong>ps</strong>), or to list all processes when used together with the <strong>a</strong> option.</li>
+<li><strong>f</strong>    ASCII art process hierarchy (forest).</li>
+</ul>
+<p><strong>常用：</strong></p>
+<ul>
+<li>ps -ef | grep &lt;程序名称&gt;，根据程序名称查找正在运行的程序</li>
+<li>ps au ，仅显示命令行进程，用户、cpu占用、内存占用 …</li>
+<li>ps aux/auxf(树) ，显示所有进程，用户、cpu占用、内存占用 …</li>
+<li>ps axjf ，BSD格式显示所有进程树</li>
+</ul>
+<p><strong>执行ps打印：</strong></p>
+<table>
+<thead>
+<tr>
+<th>UID</th>
+<th>PID</th>
+<th>PPID</th>
+<th>C</th>
+<th>STIME</th>
+<th>TTY</th>
+<th>TIME</th>
+<th>CMD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>root</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>17:34</td>
+<td>?</td>
+<td>00:00:01</td>
+<td>/sbin/init</td>
+</tr>
+<tr>
+<td>root</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>17:34</td>
+<td>?</td>
+<td>00:00:00</td>
+<td>[kthreadd]</td>
+</tr>
+</tbody></table>
+<ul>
+<li>UID 程序被该 UID 所拥有</li>
+<li>PID 就是这个程序的 ID</li>
+<li>PPID 则是其上级父程序的ID</li>
+<li>C CPU 使用的资源百分比</li>
+<li>STIME 系统启动时间</li>
+<li>TTY 登入者的终端机位置(某个命令行)</li>
+<li>TIME 使用掉的 CPU 时间</li>
+<li>CMD 所下达的指令为何</li>
+</ul>
+<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><blockquote>
+<p>The which utility takes a list of command names and searches the path for each executable file that would be run had these commands actually been invoked.</p>
+<p>which实用程序获取一个命令名称列表，并搜索每个命令的路径 </p>
+<p>如果调用这些命令，将会运行的可执行文件。</p>
+</blockquote>
+<p><strong>语法：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">which [-as] program ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>示例：</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> /usr/bin/ <span class="token function">which</span> -s mysql
+/usr/local/bin/mysql -<span class="token operator">></span> /usr/local/Cellar/mysql/8.0.31/bin/mysql
+ /usr/bin/ <span class="token function">which</span> -a <span class="token function">docker</span>
+/usr/local/bin/docker
+/usr/local/bin/docker
+ /usr/bin/ <span class="token function">which</span> <span class="token function">docker</span>   
+/usr/local/bin/docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h3><p><strong>列出所有enable进程</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">list-unit-files --state<span class="token operator">=</span>enabled<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><h3 id="OpenSSH-（请点击标签-Linux软件）"><a href="#OpenSSH-（请点击标签-Linux软件）" class="headerlink" title="OpenSSH （请点击标签: Linux软件）"></a>OpenSSH （请点击标签: Linux软件）</h3><h3 id="APFS-FUSE-Driver-for-Linux"><a href="#APFS-FUSE-Driver-for-Linux" class="headerlink" title="APFS FUSE Driver for Linux"></a>APFS FUSE Driver for Linux</h3><blockquote>
+<p>Linux上读取apfs的工具，常应用于Mac Linux双系统，Mac系统出问题，切换Linux上读取Mac文系统资料。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sgan81/apfs-fuse">GitHub-sgan81:APFS FUSE Driver for Linux</a></p>
+</blockquote>
+<h4 id="挂载apfs分区"><a href="#挂载apfs分区" class="headerlink" title="挂载apfs分区"></a>挂载apfs分区</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将apfs分区挂载至~/Desktop/MacOS目录下</span>
+<span class="token function">sudo</span> apfs-fuse /dev/sda3 ~/Desktop/MacOS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="卸载分区"><a href="#卸载分区" class="headerlink" title="卸载分区"></a>卸载分区</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 卸载apfs分区</span>
+<span class="token function">sudo</span> <span class="token function">umount</span> ~/Desktop/MacOS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ding-f.gitee.io/2021/03/10/arch-linux.html">https://ding-f.gitee.io/2021/03/10/arch-linux.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">鼎</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ArchLinux/">
+                                    <span class="chip bg-color">ArchLinux</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        
+                    </ul>
+                    <div id="alipay_red">
+                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        📣
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<!-- 直达评论 -->
+<div id="to_comment" class="comment-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
+        <i class="fas fa-comments"></i>
+    </a>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '留下你的足迹..',
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["fu_ding@126.com"],
+        master: ["fu_ding@126.com"],
+        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/04/06/mysql.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/mariadb/mysql-mariadb.png" class="responsive-img" alt="MySQL">
+                        
+                        <span class="card-title">MySQL</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">运维</span>
+                    </a>
+                    
+                    <a href="/tags/Mysql/">
+                        <span class="chip bg-color">Mysql</span>
+                    </a>
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/08/spring.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/java_ee/spring.jpeg" class="responsive-img" alt="Spring">
+                        
+                        <span class="card-title">Spring</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JavaWeb/">
+                        <span class="chip bg-color">JavaWeb</span>
+                    </a>
+                    
+                    <a href="/tags/JavaEE/">
+                        <span class="chip bg-color">JavaEE</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: 铸鼎_<br />'
+                + '文章作者: 鼎<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+<!-- 高亮CSS-->
+<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+</main>
+
+
+
+
+<!--是否开启暗黑模式-->
+
+<!--footer-->
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        
+        <div class="col s12 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">鼎</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            <br/>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">141.6k</span>&nbsp;
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
+                                                                        class="white-color"></span>&nbsp;
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                           class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+                <span id="sitetime">载入运行时间...</span>
+                <script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "2";
+                        var startDate = "1";
+                        var startHour = "23";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
+                                " h " + diffMinutes + " m " + diffSeconds + " s";
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
+                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
+                        }
+                    }
+
+                    setInterval(siteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m3 l3 social-link social-statis social-statis">
+    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+        
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!--search-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        searchFunc("/search.xml", 'searchInput', 'searchResult')
+    })
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll" title="回到顶部">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/islu.js"></script>
+<script src="/libs/search/search.js"></script>
+
+<!--谷歌广告接入点-->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

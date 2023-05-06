@@ -1,0 +1,1499 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="微服务, 铸鼎_">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>微服务 | 铸鼎_</title>
+    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/islu.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    
+
+    
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <!--  加载动画，强制加载0.5s  -->
+    <div id="loading-container">
+    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+
+
+<!--    顶部导航栏   -->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <div>
+                        
+                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
+                        
+                        <span class="logo-span">铸鼎_</span>
+                    </div>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>博主</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" id="contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li id="fullscreen_li" class="fullscreen">
+      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
+          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
+      </a>
+  </li>
+
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">铸鼎_</div>
+        <div class="logo-desc">
+            
+                Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        文章
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/tags "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-tags"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>标签</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/categories "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-bookmark"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>分类</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        关于
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/about "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-user-circle"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>博主</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+
+                        留言
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        链接
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/friends "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-address-book"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>友情链接</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('禁止访问，仅内部授权！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">微服务</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                                    <span class="chip bg-color">后端</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+                                    <span class="chip bg-color">微服务</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        <span id="publishDate">
+                            2022-06-18
+                        </span>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        2023-02-08 11:02:58
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        5.3k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        19 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <!--    添加更新时间截    -->
+        
+            <div class="uk-alert">
+                <p id="thisTime">
+                    <span id="timeLag"></span>
+                </p>
+            </div>
+            <script>
+                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
+                let date2 = new Date();    /*当前时间*/
+                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
+
+                /*计算出相差天数*/
+                let days = Math.floor(date3 / (24 * 3600 * 1000));
+
+                let thisTime = document.getElementById("thisTime");
+                let timeLag = document.getElementById("timeLag");
+                if (days <= 7) {
+                    thisTime.classList.add("uk-alert-success");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
+                } else if (7 < days && days <= 30) {
+                    thisTime.classList.add("uk-alert-warning");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
+                } else {
+                    thisTime.classList.add("uk-alert-danger");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
+                }
+            </script>
+        
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/">
+        
+
+        
+            <!-- 代码块折行 -->
+            <style type="text/css">
+                code[class*="language-"], pre[class*="language-"] {
+                    white-space: pre-wrap !important;
+                }
+            </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>维基上对其定义为：一种软件开发技术- 面向服务的体系结构（SOA）架构样式的一种变体，它提倡将单一应用程序划分成一组小的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相沟通（通常是基于HTTP的RESTful API）。每个服务都围绕着具体业务进行构建，并且能够独立地部署到生产环境、类生产环境等。另外，应尽量避免统一的、集中式的服务管理机制，对具体的一个服务而言，应根据上下文，选择合适的语言、工具对其进行构建。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BE%AE%E6%9C%8D%E5%8A%A1/18758759">百度百科：微服务</a></p>
+</blockquote>
+<h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><blockquote>
+<p>现阶段首先提及到微服务一定离不开虚拟化，现阶段的微服务实现基本上都是基于虚拟化和容器进行开展的。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.sumologic.com/blog/lxc-lxd-linux-containers/">LXC and LXD: Explaining Linux Containers</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/276054509">知乎：IaaS、PaaS、SaaS的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1541194">腾讯云：四种正确的微服务部署方式</a></p>
+</blockquote>
+<h3 id="了解LXC-amp-LXD和Docker-amp-CoreOS"><a href="#了解LXC-amp-LXD和Docker-amp-CoreOS" class="headerlink" title="了解LXC&amp;LXD和Docker&amp;CoreOS"></a>了解LXC&amp;LXD和Docker&amp;CoreOS</h3><p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/Containers.png" alt="LXC Vs Docker"></p>
+<p><strong>除了以上的对比，重要的还有：</strong></p>
+<ul>
+<li><p>This means you should consider the type of deployment you will have to manage before making a choice regarding LXD or Docker (or CoreOS, which is similar to Docker in this regard). Are you going to be spinning up large numbers of containers quickly based on generic app images? If so, go with Docker or CoreOS. Alternatively, if you intend to virtualize an entire OS, or to run a persistent virtual app for a long period, LXD will likely prove a better solution.</p>
+<p>这意味着在选择LXD或Docker(或CoreOS，在这方面与Docker类似)之前，应该考虑必须管理的部署类型。你是否打算基于通用的应用图像快速旋转大量容器?如果是，请使用Docker或CoreOS。另外，如果您打算虚拟化整个操作系统，或者长时间运行持久的虚拟应用程序，那么LXD可能是更好的解决方案。</p>
+</li>
+<li><p>The second factor to consider is your host environment. LXD only supports Linux—and, at least for now, it’s really only documented for use with Ubuntu. So if your servers run another flavor of Linux or Windows, LXD won’t work well for you. In contrast, Docker and CoreOS are pretty portable across almost any Linux-based OS, and you can now even run Docker natively on Windows and OS X.</p>
+<p>第二个要考虑的因素是宿主环境。LXD只支持Linux，至少目前，它只在文档中描述了与Ubuntu一起使用。因此，如果您的服务器运行另一种类型的Linux或Windows, LXD将不能很好地为您工作。相比之下，Docker和CoreOS在几乎所有基于linux的操作系统上都是非常可移植的，你现在甚至可以在Windows和OS X上本机运行Docker。</p>
+</li>
+</ul>
+<h3 id="了解云计算三种服务模型"><a href="#了解云计算三种服务模型" class="headerlink" title="了解云计算三种服务模型"></a>了解云计算三种服务模型</h3><p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-7f0bfa7aa952a47c7f1a180ff9a2c687_r.jpg" alt="preview"></p>
+<p><strong>云服务三种类别：</strong></p>
+<ul>
+<li><p>IaaS (Infrastructure as a Service),基础架构即服务</p>
+<ul>
+<li>说白了就是公司不用直接买硬件搞硬件维护了和系统维安全维护等，直接找IaaS提供商，直接购买虚拟机按需购买虚拟机配置。</li>
+<li>例如：AWS，阿里云，腾讯云，华为云</li>
+</ul>
+</li>
+<li><p>PaaS(Platform as a Service).平台即服务</p>
+<ul>
+<li>PaaS主要由构建软件或应用程序的开发人员使用，PaaS解决方案为开发人员提供了创建独特的、可定制软件的平台。</li>
+<li>例如：Spring Cloud、Microsoft Windows Azure，百度BAE、新浪SAE、京东云擎JAE</li>
+</ul>
+</li>
+<li><p>SaaS(Software as a Service),软件即服务</p>
+<ul>
+<li>租用已开发好的软件，开发、维护、升级换代都不用考虑，更方便、更安全。</li>
+<li>例如：企业微信、Microsoft Office 365</li>
+</ul>
+</li>
+</ul>
+<h3 id="发展阶段"><a href="#发展阶段" class="headerlink" title="发展阶段"></a>发展阶段</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnnews/article/details/79441488">CDSN-kimmking：如何向小白讲述软件架构发展历程？</a></p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/">凤凰架构</a></p>
+</blockquote>
+<p><strong>四大发展阶段</strong></p>
+<ul>
+<li>单体架构阶段<ul>
+<li>简单单体模式</li>
+<li>单体架构MVC模式</li>
+</ul>
+</li>
+<li>分布式架构阶段<ul>
+<li>SOA 架构阶段</li>
+<li>微服务架构阶段（MSA）</li>
+</ul>
+</li>
+</ul>
+<h4 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h4><p><strong>简单单体模式</strong></p>
+<blockquote>
+<p>严重影响开发效率。如果一个使用 Java 的简单单体项目代码超过 100 万行，那么在一台笔记本电脑上修改了代码后执行自动编译，可能需要等待十分钟以上，并且内存可能不够编译过程使用，这是非常难以忍受的。</p>
+</blockquote>
+<ul>
+<li>适用于规模较小的系统开发。</li>
+<li>项目开发，直接上手，质量换速度。</li>
+<li>项目的依赖关系混乱，修改一处代码，可能影响一大片的功能无法正常使用。</li>
+<li>项目的任何业务逻辑调整都会导致整个系统的重新打包、部署、停机、再启动。</li>
+<li>扩展性受限，业务存在性能问题，就要部署几个完整的实例集群，或加上负载均衡，才能保障系统性能可以支撑用户的使用。</li>
+</ul>
+<p><strong>MVC模式</strong></p>
+<blockquote>
+<p>由于简单单体存在诸多问题，MVC模式很好的将简单单体模式直接分为三层模型，模型层（Model Layer）、视图层（View Layer）、控制器层（Controller Layer）。发展的同时出现了ORM简化数据操作层，相比于简单单体模式的开发效率提升了，但也存在未解决的问题，可用性、扩展性等问题依旧存在。</p>
+</blockquote>
+<ul>
+<li>把整个系统拆解成了很多粒度较小的零件，简单、直观、可以非常有效的上手。</li>
+<li>有利于分配开发工作，投入大量的后端工程师进行大规模工程的开发。</li>
+<li>基于MVC模式，发展了ORM等简化数据操作层，以及响应的代码生成工具等，提升软件开发效率。</li>
+</ul>
+<p><strong>前后端分离模式</strong></p>
+<blockquote>
+<p>JSP或页面Tag技术，比如FreeMaker、Velocity等模板技术，导致前端技术和后端技术处理的逻辑和数据耦合到一起，使得前后端开发工程师很难只处于各自独立的领域进行开发。随着富网络应用程序（Rich Internet Application，RIA）概念的兴起，比如Ajax 和 JQuery 框架，越来越多的业务逻辑需要在浏览器端实现，此时前端技术发展到了一个百花齐放的阶段，特别是NodeJS前端技术成功应用，使前端技术成为了一个与后端技术领域并驾齐驱的阶段。</p>
+</blockquote>
+<ul>
+<li>Web 系统就由原来的 BS 系统，变成了提供 UI 和交互的前端 B 系统，提供数据接口的后端 S 系统。</li>
+<li>前后端开发人员可进行并行开发工作，前端团队负责前端系统开发，后端团队负责后端系统开发，两个团队一起制定前后端系统的数据接口。</li>
+<li>前后端系统可以各自独立发展和维护。这一条准则不仅仅是单体架构独有的，所有的 Web 系统都可以按照这种方式进行设计。</li>
+</ul>
+<h4 id="分布式架构阶段"><a href="#分布式架构阶段" class="headerlink" title="分布式架构阶段"></a>分布式架构阶段</h4><p><strong>SOA 架构阶段</strong></p>
+<blockquote>
+<p>SOA 在 21 世纪最初的十年里曾经盛行一时，有 IBM 等一众行业巨头厂商为其呐喊冲锋，吸引了不少软件开发商、尤其是企业级软件的开发商的跟随，最终却还是偃旗息鼓，沉寂了下去。本质原因：过于严格的规范定义带来过度的复杂性。而构建在 SOAP 基础之上的 ESB、BPM、SCA、SDO 等诸多上层建筑，进一步加剧了这种复杂性。开发信息系统毕竟不是作八股文章，过于精密的流程和理论也需要懂得复杂概念的专业人员才能够驾驭。SOA 诞生的那一天起，就已经注定了它只能是少数系统阳春白雪式的精致奢侈品，它可以实现多个异构大型系统之间的复杂集成交互，却很难作为一种具有广泛普适性的软件架构风格来推广。SOA 最终没有获得成功的致命伤与当年的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/EJB">EJB</a>如出一辙，尽管有 Sun Microsystems 和 IBM 等一众巨头在背后力挺，EJB 仍然败于以 Spring、Hibernate 为代表的“草根框架”，可见一旦脱离人民群众，终究会淹没在群众的海洋之中，连信息技术也不曾例外过。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/soa.html">凤凰架构：SOA 时代</a></p>
+</blockquote>
+<p><strong>微服务架构（MSA）</strong></p>
+<blockquote>
+<p>微服务是一种通过多个小型服务组合来构建单个应用的架构风格，这些服务围绕业务能力而非特定的技术标准来构建。各个服务可以采用不同的编程语言，不同的数据存储技术，运行在不同的进程之中。服务采取轻量级的通信机制和自动化的部署机制实现通信与运维。</p>
+<p>虽有诸多的优点，比如测试阶段，一个全流程的测试跨8-10个系统。数据的一致性、系统监控等都会因为拆分太细，复杂度大幅度增加。如果代码设计上有一个涉及到多个不同的微服务，那么团队协调配合也会增加。合理的组件边界应该如何确定，这是非常困难的。</p>
+<p>Martin Fowler 建议：不要一上来就以微服务架构作为系统设计的起点。相反地，要用一个单块系统作为起点，并保持其模块化。当这个单块系统出现了问题后，再将其分解为微服务。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/microservices.html">凤凰架构：微服务时代</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/667399.html">51CTO-老_张：微服务架构超强讲解，通俗易懂，写得太好了！</a></p>
+</blockquote>
+<ul>
+<li>更加彻底的组件化，系统内部各个组件之间解耦的比较干脆，单个系统的规模小很多；</li>
+<li>可以组建每个服务独立的维护团队，利于各自团队独立的开发和维护；</li>
+<li>每个微服务独立部署，只要服务间的接口稳定，各系统可以相互之间互不干扰的独立发展；</li>
+<li>微服务架构使得每个服务本身可以独立的扩展，性能出现瓶颈，优化或增加这个服务的配置即可。</li>
+</ul>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/329ac3e0b9a967d6a063384d245aa3d0.jpg" alt="传统开发模式"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/6e84190e6ec0481de7e2b58c2bb8e356.jpg" alt="微服务架构的设计"></p>
+<p>越来越多的论坛、社区、blog以及互联网行业巨头开始对微服务进行讨论、实践，可以说这样更近一步推动了微服务的发展和创新。而微服务的流行，Martin Fowler功不可没。</p>
+<p>这老头是个奇人，特别擅长抽象归纳和制造概念。特别是微服务这种新生的名词，都有一个特点： <strong>一解释就懂，一问就不知，一讨论就打架。</strong></p>
+<p>Martin Fowler是国际著名的OO专家，敏捷开发方法的创始人之一，现为ThoughtWorks公司的首席科学家。在面向对象分析设计、UML、模式、软件开发方法学、XP、重构等方面，都是世界顶级的专家，现为Thought Works公司的首席科学家。Thought Works是一家从事企业应用开发和——集成的公司。早在20世纪80年代，Fowler就是使用对象技术构建多层企业应用的倡导者，他著有几本经典书籍：《企业应用架构模式》、《UML精粹》和《重构》等。             </p>
+<p>—— 百度百科</p>
+<p>This common manifestation of SOA has led some microservice advocates to reject the SOA label entirely, although others consider microservices to be one form of SOA , perhaps service orientation done right. Either way, the fact that SOA means such different things means it’s valuable to have a term that more crisply defines this architectural style</p>
+<p>由于与 SOA 具有一致的表现形式，这让微服务的支持者更加迫切地拒绝再被打上 SOA 的标签，尽管有一些人坚持认为微服务就是 SOA 的一种变体形式，也许从面向服务方面这个方面来说是对的，但无论如何，SOA 与微服务都是两种不同的东西，正因如此，使用一个别的名称来简明地定义这种架构风格就显得更有必要。</p>
+<p>—— Martin Fowler / James Lewis，<a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html">Microservices</a></p>
+<p><strong>无服务时代</strong></p>
+<blockquote>
+<p>如果说微服务架构是分布式系统这条路的极致，那无服务架构，也许就是“不分布式”的云端系统这条路的起点。</p>
+<p>大家看看就好，是一种预言新技术发展的架构。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/serverless.html">凤凰架构：无服务时代</a></p>
+</blockquote>
+<h2 id="微服务部署方式"><a href="#微服务部署方式" class="headerlink" title="微服务部署方式"></a>微服务部署方式</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.kubernetes.org.cn/2250.html">K8s中文社区-雷伟:CoreOS VS Docker容器大战，之容器引擎</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1035241">腾讯云-DevOps时代：DevOps 三剑客：Dev，Ops and Jenkins</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Andya/p/12402674.html">博客园-Andya：OpenShift-介绍 </a></p>
+<p>OpenShift可以安装在RHEL（Red Hat Enterprise Linux）和RHELAH（Red Hat Eneterprise Linux Atomic Host）、CentOS和Fedora上；K8S最好在Unbuntu、Fedora和Debian上运行，可部署在任何主要的IaaS上，如IBM、AWS、Azure、GCP和阿里云等云平台上。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266873694">腾讯云-互联网老辛：【DevOps】持续集成的流程及jenkins的介绍</a></p>
+<p>Jenkins是一个开源的、可扩展的持续集成、交付、部署（软件/代码的编译、打包、部署）的基于web界面的平台。允许持续集成和持续交付项目，无论用的是什么平台，可以处理任何类型的构建或持续集成。jenkins 是用java开发的，一款开源的自动化服务器，我们只需要通过界面或者jenkinsfile告诉jenkins，执行什么任务，什么时间执行，就可以</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/column/2176">腾讯云-Linyb极客之路 四种正确的微服务部署方式</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110249846">知乎哈-喽沃德先生：一篇文章搞懂 Spring Cloud 是什么</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/667399.html">51CTO-老_张：微服务架构超强讲解，通俗易懂，写得太好了！</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huanglitao0912/article/details/82314123">CSDN-爱码三疯：Spring Cloud与Docker的完美结合，运维可以不用拜菩萨啦</a></p>
+</blockquote>
+<h3 id="Java微服务方案"><a href="#Java微服务方案" class="headerlink" title="Java微服务方案"></a>Java微服务方案</h3><h4 id="采用Swarm将多台安装Docker的物理机统一管理"><a href="#采用Swarm将多台安装Docker的物理机统一管理" class="headerlink" title="采用Swarm将多台安装Docker的物理机统一管理"></a>采用Swarm将多台安装Docker的物理机统一管理</h4><blockquote>
+<p>Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。<strong>它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。</strong></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6946421472499859487">稀土掘金-code泷：Docker Swarm 搭建集群环境(高可用)</a></p>
+</blockquote>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/83b8d14a86b0413a8295b485b6528b8a~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="Swarm的基本架构"></p>
+<p>假如公司有多台物理主机或者云服务主机，我们的主机中都安装了Docker，为了方便统一管理运行的容器和将这些主机视为一个大的Docker主机，或者将分布在不同物理/虚拟机主机的容器之间形成一个大的子网，供所有的容器进行之间跨主机跨容器互访提供了便捷。</p>
+<h4 id="将服务打包成镜像"><a href="#将服务打包成镜像" class="headerlink" title="将服务打包成镜像"></a>将服务打包成镜像</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1589863">腾讯云-louiezhou001：Dockerfile究竟是做什么的</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/docker-library/mysql/blob/275e9822858884a85434448cb6777683692365e6/8.0/Dockerfile.oracle">GitHub：Mysql8.0 Dockerfile</a></p>
+</blockquote>
+<p> Docker一般采用“一个容器一个进程”的方式，而我们每个微服务也都是一个spring boot应用单进程，直接采用java -jar的形式即可运行应用，那么我们只需将我们的一个服务打包到一个镜像中即可。每个<a href="#docker-compose%E8%BF%9B%E8%A1%8C%E6%9C%8D%E5%8A%A1%E7%BC%96%E6%8E%92">服务</a>下面都会有一个专门的Docker目录，里面放置了Dockerfile及镜像中需要用到的文件，说白了Dockerfile就是为了使用Maven的插件docker-maven-plugin构建镜像时指挥此插件构建镜像时候需要拿什么资源，就比如，Java项目就必须拿JDK，我的镜像需要运行在什么样的系统，比如Linux，就会拿相应的Linux内核等。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70.png" alt="maven的docker打包的插件"></p>
+<h4 id="配置Jenkins"><a href="#配置Jenkins" class="headerlink" title="配置Jenkins"></a>配置Jenkins</h4><blockquote>
+<p>参考： </p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266873694">腾讯云-互联网老辛：【DevOps】持续集成的流程及jenkins的介绍</a></p>
+<p>Jenkins是一个开源的、可扩展的持续集成、交付、部署（软件/代码的编译、打包、部署）的基于web界面的平台。允许持续集成和持续交付项目，无论用的是什么平台，可以处理任何类型的构建或持续集成。jenkins 是用java开发的，一款开源的自动化服务器，我们只需要通过界面或者jenkinsfile告诉jenkins，执行什么任务，什么时间执行，就可以。</p>
+</blockquote>
+<p>有人可能有疑问，通过上面的Maven进行打包镜像不就可以，其实通过Jenkins批量进行更为方便，可以更方便进行交付、编译、打包、部署的工具，且是一个基于web界面的平台，通过下图shell操作后Jenkins会将打好的镜像包批量推送到比如阿里云容器服务中的镜像库中（没部署，只是上传了）。参考资料发现Jenkins会通过GitHub等发现代码改动自动进行打包部署上线。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220619182845035.png" alt="Jenkins批量打包推送到自己的镜像库"></p>
+<h4 id="docker-compose进行服务编排"><a href="#docker-compose进行服务编排" class="headerlink" title="docker-compose进行服务编排"></a>docker-compose进行服务编排</h4><blockquote>
+<p>微服务架构的应用系统中一般包含若干个微服务，每个微服务一般都会部署多个实例，如果每个微服务都要手动启停，维护的工作量会很大。Docker Compose可以轻松的管理容器，降低维护工作量。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1373786eff75">简书-AaronSimon：Docker Compose编排微服务</a></p>
+</blockquote>
+<p><strong>Compose 中有两个重要的概念：</strong></p>
+<ul>
+<li>服务 ( service )：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例</li>
+<li>项目 ( project )：由一组关联的应用容器组成的一个完整业务单元，在 dockercompose.yml 文件中定义。<br> Compose 的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理。可见，一个项目可以由多个服务（容器）关联而成， Compose 面向项目进行管理</li>
+</ul>
+<p><strong>基本步骤</strong></p>
+<ol>
+<li>在 Dockfile 中定义你的应用环境，使其可以在任何地方重现该环境。</li>
+<li>在 <code>docker-compose.yml</code> 中定义组成应用程序的服务，以便它们可以在隔离的环境中一起运行。</li>
+<li>运行<code>dcoker-compose up</code>，Compose 将启动并运行整个应用程序。</li>
+</ol>
+<p><strong>部署服务示例，请查看本节参考（使用docker compose部署spring cloud项目）。</strong></p>
+<p>部署前项目中的maven配置文件必须先满足含有<code>docker-maven-plugin</code>，且每个Module已经含有docker文件夹，其中包含Dockerfile和镜像中需要用到的文件。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/image-20220619220553226.png" alt="像这样"></p>
+<p><strong>编排示例</strong></p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>端口</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eureka-server</td>
+<td>1111,1112</td>
+<td>服务注册与发现中心（高可用部署）</td>
+</tr>
+<tr>
+<td>demo</td>
+<td>8102</td>
+<td>服务1</td>
+</tr>
+<tr>
+<td>feign-upload_first</td>
+<td>8100</td>
+<td>服务2</td>
+</tr>
+<tr>
+<td>feign_upload_second</td>
+<td>8101</td>
+<td>服务</td>
+</tr>
+</tbody></table>
+<p>首先要在两个服务中编写好配置，这里演示配置方式为.properties文件：</p>
+<ul>
+<li>application-peer1.properties</li>
+</ul>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">server.port</span><span class="token punctuation">=</span><span class="token value attr-value">1111</span>
+<span class="token key attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token value attr-value">eureka-server</span>
+<span class="token key attr-name">eureka.instance.hostname</span><span class="token punctuation">=</span><span class="token value attr-value">peer1</span>
+<span class="token key attr-name">eureka.client.service-url.defaultZone</span><span class="token punctuation">=</span><span class="token value attr-value">http://peer2:1112/eureka/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>application-peer2.properties</li>
+</ul>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">server.port</span><span class="token punctuation">=</span><span class="token value attr-value">1112</span>
+<span class="token key attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token value attr-value">eureka-server</span>
+<span class="token key attr-name">eureka.instance.hostname</span><span class="token punctuation">=</span><span class="token value attr-value">peer2</span>
+<span class="token key attr-name">eureka.client.service-url.defaultZone</span><span class="token punctuation">=</span><span class="token value attr-value">http://peer1:1111/eureka/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>写入docker-compose-manage.yml，目的是将这两个服务直接可以运行起来，并设置好正确的端口映射到物理主机：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"2"</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token comment"># 指定服务名称</span>
+  <span class="token key atrule">peer1</span><span class="token punctuation">:</span>
+ 		<span class="token comment">#指定Eureka镜像地址</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> ibase/eureka<span class="token punctuation">-</span>server<span class="token punctuation">:</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT			
+    <span class="token comment">#映射端口到物理主机</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"1111:1111"</span>		
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> spring.profiles.active=peer1
+  <span class="token key atrule">peer2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> ibase/eureka<span class="token punctuation">-</span>server<span class="token punctuation">:</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> peer2
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"1112:1112"</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> spring.profiles.active=peer2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>自己写的服务，将使用docker-compose-services.yml，一样是上面的道理，直接就可以配置端口并运行起来服务：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"2"</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token comment"># 指定服务名称</span>
+  <span class="token key atrule">feign_upload_first</span><span class="token punctuation">:</span>
+    <span class="token comment">#指定服务所使用的镜像名称</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> ibase/feign_upload_first<span class="token punctuation">:</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">"8100:8100"</span>
+  <span class="token key atrule">feign_upload_second</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> ibase/feign_upload_second<span class="token punctuation">:</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">"8101:8101"</span>
+  <span class="token key atrule">demo</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> ibase/demo<span class="token punctuation">:</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">"8102:8102"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>启动</strong></p>
+<p>执行如下命令执行以上编排配置文件来批量启动服务，但后面的直接可以用Swarm启动即可。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker-compose</span> docker-compose-manage.yml up<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker-compose</span> docker-compose-services.yml up<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>再附上一个docker-compose编排配置代码：</strong></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620002539559.png" alt="img"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620002643990.png" alt="其中数据卷映射配置"></p>
+<p>以上指定了该服务启动时的运行环境、运行数量、数据卷映射（可以创建NAS数据卷做为通用数据存储）、指向的阿里云SLB等，结合着spring cloud的统一配置服务，我们可以通过采用不同的docker-compose编排来区分不同环境。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620002751555.png" alt="img"></p>
+<h4 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h4><p>此步骤直接可以用Docker-compose命令可以进行，但是Docker的 Swarm直接就可以操作图形化进行编排。</p>
+<ol>
+<li><p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620003630280.png" alt="创建一个应用基本信息填写"></p>
+</li>
+<li><p>将之前maven配置的编排模板号填入：</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/image-20220620004131132.png" alt="之前定义的系统模板版本号"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620003804107.png" alt="点击使用已有编排模板"></p>
+<p>比如我之前的模板版本号是2.5.0</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620004236250.png" alt="填入镜像版本号"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620004259975.png" alt="完成"></p>
+</li>
+</ol>
+<h4 id="部署到生产环境"><a href="#部署到生产环境" class="headerlink" title="部署到生产环境"></a>部署到生产环境</h4><p>测试通过之后需要部署到生产环境，传统的部署方式要么是通过对测试通过的代码包进行拷贝，并对配置文件进行更改；要么就是通过svn/git中的版本控制从测试到生产的迁移，再进行jenkins的预生产环境测试，但是无论哪种部署方式都很容易出问题：</p>
+<ul>
+<li>漏改、错改配置文件；</li>
+<li>代码合并/迁移过程中产生新的问题；</li>
+<li>生产、测试服务器环境不同，环境差异造成的问题。但docker镜像是一个单进程的应用，而且只要宿主机运行docker没问题，那么docker重的环境也不会出现任何问题，我们将通过测试的应用从测试环境迁移到生产环境就很简单了，只用提供不同的docker-compose服务编排，生产环境直接通过变更配置更改镜像版本号即可。</li>
+</ul>
+<p><strong>日志采集</strong>详见参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/huanglitao0912/article/details/82314123">CSDN-爱码三疯：Spring Cloud与Docker的完美结合，运维可以不用拜菩萨啦</a>。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ding-f.gitee.io/2022/06/18/wei-fu-wu.html">https://ding-f.gitee.io/2022/06/18/wei-fu-wu.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">鼎</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                                    <span class="chip bg-color">后端</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+                                    <span class="chip bg-color">微服务</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        
+                    </ul>
+                    <div id="alipay_red">
+                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        📣
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<!-- 直达评论 -->
+<div id="to_comment" class="comment-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
+        <i class="fas fa-comments"></i>
+    </a>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '留下你的足迹..',
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["fu_ding@126.com"],
+        master: ["fu_ding@126.com"],
+        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/06/28/swagger3.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/2022-06-28-Swagger3/spring-boot-swagger.jpg" class="responsive-img" alt="SpringBoot Swagger3">
+                        
+                        <span class="card-title">SpringBoot Swagger3</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/06/07/typora.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/2022-06-07-Typora/R.905fcd3e7557ba81dbb4cf09d49b0528?rik=5L%252fG2%252fdBZas4yw&riu=http%253a%252f%252fi0.hdslb.com%252fbfs%252farchive%252fe825965680ffbbd90b6b6020d2c532615da01a47-20220607172319241.jpg&ehk=fLB9OTtJ4q18g2mpZMmAayh3E800D6vxcBhWVaJAR0M%253d&risl=&pid=ImgRaw&r=0" class="responsive-img" alt="Typora">
+                        
+                        <span class="card-title">Typora</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    开发工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/">
+                        <span class="chip bg-color">Linux软件</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: 铸鼎_<br />'
+                + '文章作者: 鼎<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+<!-- 高亮CSS-->
+<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+</main>
+
+
+
+
+<!--是否开启暗黑模式-->
+
+<!--footer-->
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        
+        <div class="col s12 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">鼎</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            <br/>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">141.6k</span>&nbsp;
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
+                                                                        class="white-color"></span>&nbsp;
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                           class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+                <span id="sitetime">载入运行时间...</span>
+                <script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "2";
+                        var startDate = "1";
+                        var startHour = "23";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
+                                " h " + diffMinutes + " m " + diffSeconds + " s";
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
+                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
+                        }
+                    }
+
+                    setInterval(siteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m3 l3 social-link social-statis social-statis">
+    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+        
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!--search-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        searchFunc("/search.xml", 'searchInput', 'searchResult')
+    })
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll" title="回到顶部">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/islu.js"></script>
+<script src="/libs/search/search.js"></script>
+
+<!--谷歌广告接入点-->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

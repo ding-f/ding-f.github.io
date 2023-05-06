@@ -1,0 +1,1558 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="uni-app, 铸鼎_">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>uni-app | 铸鼎_</title>
+    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/islu.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    
+
+    
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <!--  加载动画，强制加载0.5s  -->
+    <div id="loading-container">
+    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+
+
+<!--    顶部导航栏   -->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <div>
+                        
+                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
+                        
+                        <span class="logo-span">铸鼎_</span>
+                    </div>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>博主</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" id="contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li id="fullscreen_li" class="fullscreen">
+      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
+          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
+      </a>
+  </li>
+
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">铸鼎_</div>
+        <div class="logo-desc">
+            
+                Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        文章
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/tags "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-tags"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>标签</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/categories "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-bookmark"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>分类</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        关于
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/about "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-user-circle"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>博主</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+
+                        留言
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        链接
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/friends "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-address-book"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>友情链接</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('禁止访问，仅内部授权！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">uni-app</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%90%86%E8%AE%BA/">
+                                    <span class="chip bg-color">理论</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                                    <span class="chip bg-color">小程序</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                        <div class="post-cate">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                                <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        <span id="publishDate">
+                            2023-02-16
+                        </span>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        2023-05-06 17:05:76
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.9k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        11 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <!--    添加更新时间截    -->
+        
+            <div class="uk-alert">
+                <p id="thisTime">
+                    <span id="timeLag"></span>
+                </p>
+            </div>
+            <script>
+                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
+                let date2 = new Date();    /*当前时间*/
+                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
+
+                /*计算出相差天数*/
+                let days = Math.floor(date3 / (24 * 3600 * 1000));
+
+                let thisTime = document.getElementById("thisTime");
+                let timeLag = document.getElementById("timeLag");
+                if (days <= 7) {
+                    thisTime.classList.add("uk-alert-success");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
+                } else if (7 < days && days <= 30) {
+                    thisTime.classList.add("uk-alert-warning");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
+                } else {
+                    thisTime.classList.add("uk-alert-danger");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
+                }
+            </script>
+        
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/">
+        
+
+        
+            <!-- 代码块折行 -->
+            <style type="text/css">
+                code[class*="language-"], pre[class*="language-"] {
+                    white-space: pre-wrap !important;
+                }
+            </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/">uni-app</a> 是一个使用 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue.js</a> 开发所有前端应用的框架，开发者编写一套代码，可发布到 H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉/淘宝）、快应用等多个平台，并且在 <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">HBuilderX</a> 中可直接打包生成 Android、iOS App。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.dcloud.io/">DCLOUD-官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/docs/">DCLOUD社区：DCloud_heavensoft：DCloud产品综述</a></p>
+<p><a href="">DCLOUD：uni小程序 SDK</a></p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/uniCloud/">DCLOUD：uniCloud</a></p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/serverless.html">凤凰架构：无服务时代</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37916164/article/details/113885999">CSDN树洞菇凉：weex、nvue、uni-app 和 nvue开发与vue开发的常见区别</a></p>
+</blockquote>
+<h3 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h3><p><strong>uniCloud</strong></p>
+<p>uniCloud 是 DCloud 联合阿里云、腾讯云，为开发者提供的基于 serverless 模式和 js 编程的云开发平台。</p>
+<ul>
+<li>免运维，无需关心扩容和攻击</li>
+<li>比传统服务器更便宜</li>
+<li>全栈，js开发前后端</li>
+<li>与uni-app搭配有更高的开发效率</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/serverless.html">凤凰架构：无服务时代</a> 无服务架构对一些适合的应用确实能够降低开发和运维环节的成本，譬如不需要交互的离线大规模计算，又譬如多数 Web 资讯类网站、小程序、公共 API 服务、移动应用服务端等都契合于无服务架构所擅长的短链接、无状态、适合事件驱动的交互形式；但另一方面，对于那些信息管理系统、网络游戏等应用，又或者说所有具有业务逻辑复杂，依赖服务端状态，响应速度要求较高，需要长连接等这些特征的应用，至少目前是相对并不适合的。</p>
+<p>综合以上个人的理解使用serverless（无服务）这个说的有些夸张了，serverless目前来说是一个未来的蓝图，其并不成熟，uniCloud所谓的serverless也没仔细看，时间紧迫先不深究。</p>
+<p><strong>uni小程序SDK</strong></p>
+<ul>
+<li>uni小程序sdk 使用场景是你已经有原生App，在此基础上扩展宿主App的小程序能力，或者用小程序替换原生App的部分功能模块，仅支持uni-app并使用v3编译器</li>
+<li>App离线sdk 使用场景是你没有原生App，用DCloud的工具来开发App，又不想使用云打包，则可以使用App离线sdk打包发布为原生App，App离线sdk支持5+ App、uni-app，不支持wap2app。虽然App离线sdk也可以集成到已有原生App中，但自从uni小程序sdk推出后，将不再推荐这种用法</li>
+</ul>
+<h3 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/listenMao/p/15949870.html">博客园-这样就好了：uniapp之nvue</a></p>
+</blockquote>
+<p><strong>nvue（native vue）</strong></p>
+<p>weex的Uniapp升级版</p>
+<ul>
+<li>不开发App，那么不需要使用nvue</li>
+<li>实现app页面的性能优化，使用原生渲染，原生更快</li>
+<li>解决前端控件无法覆盖原生控件的层级问题</li>
+<li>原生组件问题</li>
+<li>等…</li>
+</ul>
+<p>除了一些特殊考虑，涉及到app的东西，最好就是看下vue支不支持，不得已再用nvue。</p>
+<p><strong>快应用</strong></p>
+<p>说白了就是反 微信、支付宝、百度、字节跳动等各家小程序 的垄断，搞了一个支持两种渲染方式的android程序。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>准备好NodeJS、Npm</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/quickstart-cli.html">DCLOUD-Uniapp文档：快手上手</a></p>
+</blockquote>
+<p><strong>安装Vue cli</strong></p>
+<p>Vue CLI是用来创建Vue项目的工具，目前新的Vue3版本项目创建工具是Vite CLI</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g @vue/cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>创建模板</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">vue create -p dcloudio/uni-preset-vue <span class="token punctuation">[</span>项目名<span class="token punctuation">]</span>-frontend<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>默认模板有两个，其中带<code>（typescript）</code>即可用typescript开发逻辑</li>
+<li><code>hello uniapp</code>是Uniapp组件库示例模板</li>
+<li>自定义模板，需要填写 uni-app 模板地址，这个地址其实就是托管在云端的仓库地址。以 GitHub 为例，地址格式为 <code>userName/repositoryName</code></li>
+</ul>
+<p><strong>编译&amp;运行</strong></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>app-plus</td>
+<td>app平台生成打包资源（支持npm run build:app-plus，可用于持续集成。不支持run，运行调试仍需在HBuilderX中操作）</td>
+</tr>
+<tr>
+<td>h5</td>
+<td>H5</td>
+</tr>
+<tr>
+<td>mp-alipay</td>
+<td>支付宝小程序</td>
+</tr>
+<tr>
+<td>mp-baidu</td>
+<td>百度小程序</td>
+</tr>
+<tr>
+<td>mp-weixin</td>
+<td>微信小程序</td>
+</tr>
+<tr>
+<td>mp-toutiao</td>
+<td>字节跳动小程序</td>
+</tr>
+<tr>
+<td>mp-lark</td>
+<td>飞书小程序</td>
+</tr>
+<tr>
+<td>mp-qq</td>
+<td>qq 小程序</td>
+</tr>
+<tr>
+<td>mp-360</td>
+<td>360 小程序</td>
+</tr>
+<tr>
+<td>mp-kuaishou</td>
+<td>快手小程序</td>
+</tr>
+<tr>
+<td>mp-jd</td>
+<td>京东小程序</td>
+</tr>
+<tr>
+<td>mp-xhs</td>
+<td>小红书小程序</td>
+</tr>
+<tr>
+<td>quickapp-webview</td>
+<td>快应用(webview)</td>
+</tr>
+<tr>
+<td>quickapp-webview-union</td>
+<td>快应用联盟</td>
+</tr>
+<tr>
+<td>quickapp-webview-huawei</td>
+<td>快应用华为</td>
+</tr>
+</tbody></table>
+<h2 id="芝士"><a href="#芝士" class="headerlink" title="芝士"></a>芝士</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/vernacular.html">DCLOUD：白话uni-app</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dcloudio/hello-uniapp">GitHub：dcloudio：hello-uniapp</a></p>
+<p><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=4941">DCLOUD插件市场-DCloud前端团队：hello-uniapp 示例工程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.uviewui.com/">uView官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=1593">DCLOUD插件市场-uViewUI：uView2.0重磅发布，利剑出鞘，一统江湖</a></p>
+</blockquote>
+<p><strong>目录结构</strong></p>
+<p>一个uni-app工程，默认包含如下目录及文件(来自Uniap官网)，其中标注<code>*</code>的是Hello uni-app的模板所包含的文件夹/目录，此项目是官方uni-app框架演示示例，编译运行后如下所示。</p>
+<pre class="line-numbers language-none"><code class="language-none">┌─uniCloud              云空间目录，阿里云为uniCloud-aliyun,腾讯云为uniCloud-tcb（详见uniCloud）
+│─src&#x2F;components            *符合vue组件规范的uni-app组件目(同Vue)
+│     	└─comp-a.vue         可复用的a组件
+├─utssdk                存放uts文件(移动原生开发相关)
+├─src&#x2F;pages                 *业务页面文件存放的目录(Vue为views)
+│  		├─index
+│  		│  	└─index.vue       index页面
+│  		└─list
+│     		└─list.vue        list页面
+├─src&#x2F;static                *存放应用引用的本地静态资源（如图片、视频等）的目录，注意：静态资源只能存放于此(同Vue)
+├─src&#x2F;uni_modules           *存放[uni_module](&#x2F;uni_modules)。
+├─src&#x2F;platforms             *存放各平台专用页面的目录，详见
+├─nativeplugins         App原生语言插件 详见
+├─nativeResources       App端原生资源目录
+│  └─android            Android原生资源目录 详见
+├─hybrid                *App端存放本地html文件的目录，详见
+├─src&#x2F;wxcomponents          *存放小程序组件的目录，详见
+├─unpackage             非工程代码，一般存放运行或发行的编译结果
+├─AndroidManifest.xml   Android原生应用清单文件 详见
+├─src&#x2F;main.js               *Vue初始化入口文件(同Vue)
+├─src&#x2F;App.vue               *应用配置，用来配置App全局样式以及监听 应用生命周期
+├─src&#x2F;manifest.json         *配置应用名称、appid、logo、版本等打包信息，详见
+├─src&#x2F;pages.json            *配置页面路由、导航条、选项卡等页面类信息，详见
+└─uni.scss              *这里是uni-app内置的常用样式变量 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果你熟悉小程序开发的话，对比变化如下：</p>
+<ul>
+<li>原来app.json被一拆为二。<ul>
+<li>页面管理，被挪入了uni-app的pages.json；</li>
+<li>非页面管理，挪入了manifest.jso</li>
+</ul>
+</li>
+<li>原来的app.js和app.wxss被合并到了app.vue中</li>
+</ul>
+<h2 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h2><blockquote>
+<p>分析一个基于前端Uniapp开发的开源项目，名为RF商城，其前后端均开源，后端PHP开发。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/stavyan/TinyShop-UniApp">GitHub-stavyan：TinyShop-UniApp</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jianyan74/TinyShop">GitHub-stavyan：TinyShop</a></p>
+</blockquote>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><h4 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h4><blockquote>
+<p>不多介绍</p>
+</blockquote>
+<h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><blockquote>
+<p>Vuex 可以帮助我们管理共享状态，并附带了更多的概念和框架。说白了就是页面中的一个状态定义到Vuex的Store中其他地方也同时被共享过去，比如全局主题中的配置参数就需要共享状态。但小程序似乎多了一个步骤，即<code>setStorage</code>、<code>getStorage</code>。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/">Vue官网：Vuex</a></p>
+</blockquote>
+<p>/TinyShop-UniApp/src/store/index.js</p>
+<p><img src="/images/2023-02-16-uni-app/image-20230222110326398.png" alt="image-20230222110326398"></p>
+<ul>
+<li><p><code>state</code>（存储介质）：Vuex 使用单一状态树，用一个对象就包含了全部的应用层级状态。每个应用将仅仅包含一个 store 实例。存储在 Vuex 中的数据和 Vue 实例中的 <code>data</code> 遵循相同的规则</p>
+</li>
+<li><p><code>getters</code>（获取）：获取state中的参数，一般用三种种方式传参，<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">详见</a></p>
+<ul>
+<li>属性访问</li>
+<li>方法访问</li>
+<li>mapGetters 辅助函数</li>
+</ul>
+</li>
+<li><p><code>mutations</code>（修改）：更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的事件类型 (type)和一个回调函数 (handler)。<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/mutations.html">详见</a></p>
+<ul>
+<li>事件类型 (type)，<code>store.commit(&#39;&lt;mutations中的函数&gt;&#39;)</code></li>
+<li>回调函数 (handler)，<code>store.commit(&#39;increment&#39;, 10)</code>/<code>store.commit(&#39;increment&#39;, &#123;amount: 10&#125;)</code>大多数情况下，载荷应该是一个对象</li>
+</ul>
+</li>
+<li><p>Action 类似于 mutation，不同在于：</p>
+<ul>
+<li>Action 提交的是 mutation，而不是直接变更状态。</li>
+<li>Action 可以包含任意异步操作。</li>
+</ul>
+</li>
+</ul>
+<h4 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h4><blockquote>
+<p>查官网的时候一共有两种sass-loader，分别为 <a target="_blank" rel="noopener" href="https://github.com/sass/dart-sass">Dart Sass</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sass/node-sass">Node Sass</a>，其中Dart Sass是官方推荐的，也是本项目所用。它们的作用是将Sass代码经打包转化为css代码，乍一想其实就是安装在devDependencies下的依赖，无需安装在dependencies中，其实几乎所有Node开发的依赖，在使用文档中有安装命令的，无需考虑安装在dependencies/devDependencies，按照依赖包的说明安装基本就没啥大的问题。</p>
+<p>官网上声明装一个就好，但此项目<a target="_blank" rel="noopener" href="https://github.com/sass/dart-sass">Dart Sass</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sass/node-sass">Node Sass</a>两个都装了。。。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders/sass-loader/">webpack:sass-loader</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 装为开发环境依赖</span>
+<span class="token function">yarn</span> <span class="token function">add</span> sass-loader sass -D <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="flyio"><a href="#flyio" class="headerlink" title="flyio"></a>flyio</h4><blockquote>
+<p>官网在网络请求中有提及，如果选用三方拦截器即可选择flyio/axios。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/request/request.html#request">DCLOUD-uni-app文档：网络 发起请求</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wendux/fly">GitHub-wendux：fly</a></p>
+</blockquote>
+<p>此项目中好像没有用到flyio的拦截器，倒是又导入了一个axios,也是没有用到，本来也想着用axios来实现请求API操作，不过 uni.request 是Uniapp官网提供的，axios可能还不支持多种移动端http请求，看了flyio请求方式支持好多端（官方：目前Fly.js支持的平台包括：<a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a> 、<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/cgi-bin/wx">微信小程序</a> 、<a target="_blank" rel="noopener" href="http://weex.apache.org/">Weex</a> 、<a target="_blank" rel="noopener" href="http://facebook.github.io/react-native/">React Native</a> 、<a target="_blank" rel="noopener" href="https://www.quickapp.cn/">Quick App</a> 和浏览器，这些平台的 JavaScript 运行时都是不同的。）。</p>
+<h4 id="其他依赖"><a href="#其他依赖" class="headerlink" title="其他依赖"></a>其他依赖</h4><p>有些非常底层的依赖注释没写，可自行研究。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> 
+    ...
+   <span class="token comment">// TS语言规范工具（官网说明安装在devDependencies即可）</span>
+    <span class="token property">"@typescript-eslint/eslint-plugin"</span><span class="token operator">:</span> <span class="token string">"^2.27.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"@typescript-eslint/parser"</span><span class="token operator">:</span> <span class="token string">"^2.27.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"axios"</span><span class="token operator">:</span> <span class="token string">"^0.19.0"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 官网在网络请求中有提及，如果选用三方拦截器即可选择flyio/axios</span>
+    <span class="token property">"flyio"</span><span class="token operator">:</span> <span class="token string">"^0.6.2"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 这个包实现了一个全功能的源代码转换，它采用 ECMAScript 2015 或 ES2015 的生成器/收益语法和异步迭代提议，并吐出行为相同的高效 JS-of-today (ES5)。</span>
+    <span class="token property">"regenerator-runtime"</span><span class="token operator">:</span> <span class="token string">"^0.12.1"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 此处的依赖可能有一个是多余，来自https://webpack.docschina.org/loaders/sass-loader/（webpack官方） sass-loader 需要预先安装 Dart Sass 或 Node Sass（可以在这两个链接中找到更多的资料）。这可以控制所有依赖的版本， 并自由的选择使用的 Sass 实现。</span>
+    <span class="token property">"node-sass"</span><span class="token operator">:</span> <span class="token string">"^4.13.0"</span><span class="token punctuation">,</span>
+    ...
+<span class="token punctuation">&#125;</span>
+
+<span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    ...
+    <span class="token comment">// 规范Git提交说明</span>
+    <span class="token property">"commitizen"</span><span class="token operator">:</span> <span class="token string">"^3.1.2"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 从 git 元数据生成变更日志</span>
+    <span class="token property">"conventional-changelog-cli"</span><span class="token operator">:</span> <span class="token string">"^2.0.23"</span><span class="token punctuation">,</span>
+    <span class="token property">"cz-conventional-changelog"</span><span class="token operator">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 现代原生 git 钩子变得简单，在使用git hooks的时候，我们一般会使用husky工具，它可以使本地git hooks变的更加的简单,我们一般会这样使用;</span>
+    <span class="token property">"husky"</span><span class="token operator">:</span> <span class="token string">"^3.0.0"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 针对暂存的 git 文件运行 linters，不要让它溜进你的代码库！</span>
+    <span class="token property">"lint-staged"</span><span class="token operator">:</span> <span class="token string">"^8.0.0"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 支付宝小程序的 TypeScript 声明文件。</span>
+    <span class="token property">"mini-types"</span><span class="token operator">:</span> <span class="token string">"0.0.5"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 自动化版本控制和包发布，使用release-it自动管理版本号和生成CHANGELOG</span>
+    <span class="token property">"release-it"</span><span class="token operator">:</span> <span class="token string">"^10.0.0"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 微信小程序 API 的 TypeScript 类型定义文件</span>
+    <span class="token property">"miniprogram-api-typings"</span><span class="token operator">:</span> <span class="token string">"^2.9.4"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Allow postcss to support inline comments，官方文档说明需要安装postcss才可以使用，说明这个依赖没用</span>
+    <span class="token property">"postcss-comment"</span><span class="token operator">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
+    ...
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="MyProject"><a href="#MyProject" class="headerlink" title="MyProject"></a>MyProject</h2><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><blockquote>
+<p>除上述开源介绍依赖之外，展示本项目独有依赖。</p>
+<p>参考：</p>
+</blockquote>
+<h4 id="uView"><a href="#uView" class="headerlink" title="uView"></a>uView</h4><blockquote>
+<p>uView依赖SCSS，您必须要安装此插件，否则无法正常运行。</p>
+<p>至于为什么不使用Uniapp原生，这个火，更好看。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.uviewui.com/">uView官方文档</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> uview-ui@2.0.31  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ding-f.gitee.io/2023/02/16/uni-app.html">https://ding-f.gitee.io/2023/02/16/uni-app.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">鼎</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%90%86%E8%AE%BA/">
+                                    <span class="chip bg-color">理论</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                                    <span class="chip bg-color">小程序</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        
+                    </ul>
+                    <div id="alipay_red">
+                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        📣
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<!-- 直达评论 -->
+<div id="to_comment" class="comment-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
+        <i class="fas fa-comments"></i>
+    </a>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '留下你的足迹..',
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["fu_ding@126.com"],
+        master: ["fu_ding@126.com"],
+        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/04/27/javascript.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/2023-04-27-JavaScript/R-C.3833d4b070ca7c198ebc5a2ba765a32erik=z7tex%252bOSycssNQ&riu=http%253a%252f%252fwww.techsors.com%252fwp-content%252fuploads%252f2016%252f02%252fJavascript.jpeg" class="responsive-img" alt="JavaScript">
+                        
+                        <span class="card-title">JavaScript</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/01/30/diy-bian-xi-xian-shi-qi.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/2023-01-30-DIY-%E4%BE%BF%E6%90%BA%E6%98%BE%E7%A4%BA%E5%99%A8/14292-portable-display-monitor-M156-details-6-800x800.jpg" class="responsive-img" alt="DIY 便携显示器">
+                        
+                        <span class="card-title">DIY 便携显示器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="post-category">
+                                    硬件
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DIY/">
+                        <span class="chip bg-color">DIY</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: 铸鼎_<br />'
+                + '文章作者: 鼎<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+<!-- 高亮CSS-->
+<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+</main>
+
+
+
+
+<!--是否开启暗黑模式-->
+
+<!--footer-->
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        
+        <div class="col s12 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">鼎</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            <br/>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">141.6k</span>&nbsp;
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
+                                                                        class="white-color"></span>&nbsp;
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                           class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+                <span id="sitetime">载入运行时间...</span>
+                <script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "2";
+                        var startDate = "1";
+                        var startHour = "23";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
+                                " h " + diffMinutes + " m " + diffSeconds + " s";
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
+                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
+                        }
+                    }
+
+                    setInterval(siteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m3 l3 social-link social-statis social-statis">
+    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+        
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!--search-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        searchFunc("/search.xml", 'searchInput', 'searchResult')
+    })
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll" title="回到顶部">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/islu.js"></script>
+<script src="/libs/search/search.js"></script>
+
+<!--谷歌广告接入点-->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>
