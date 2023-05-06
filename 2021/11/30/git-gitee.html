@@ -463,14 +463,14 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-06 19:05:65
+                        2023-05-06 20:05:06
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        6.5k
+                        6.6k
                     </div>
                 
 
@@ -1073,7 +1073,7 @@ System.out.println<span class="token punctuation">(</span><span class="token str
 <span class="token comment"># 参看远程仓库别名设置</span>
 <span class="token function">git</span> remote -v
 <span class="token comment"># 添加别名远程仓库连接</span>
-<span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token operator">&lt;</span>别名地址<span class="token operator">></span>
+<span class="token function">git</span> remote <span class="token function">add</span> <span class="token operator">&lt;</span>别名,默认origin<span class="token operator">></span> <span class="token operator">&lt;</span>别名地址<span class="token operator">></span>
 <span class="token comment"># 所有文件添加至暂存区</span>
 <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
 <span class="token comment"># 提交本地库</span>
@@ -1327,12 +1327,23 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 
 
 
+<h2 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h2><ul>
+<li><p>可能使用了代理，我猜是DNS漏了啥的，报错如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">kex_exchange_identification: Connection closed by remote host
+Connection closed by 20.27.177.113 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>也可能是<code>~/.gitconfig</code>添加了如下：</p>
+<p>不清楚这个是干啥的，后面查</p>
+<pre class="line-numbers language-none"><code class="language-none">[safe]		<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-
-
-
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -1817,7 +1828,7 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">141.6k</span>&nbsp;
+                        class="white-color">141.7k</span>&nbsp;
             
             
             
