@@ -463,21 +463,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-06 21:05:93
+                        2023-05-29 18:05:68
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        7k
+                        7.4k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        32 分
+                        34 分
                     </div>
                 
 
@@ -653,7 +653,7 @@ nothing added to commit but untracked files present <span class="token punctuati
 
 <h3 id="将代码添加到暂存区"><a href="#将代码添加到暂存区" class="headerlink" title="将代码添加到暂存区"></a>将代码添加到暂存区</h3><blockquote>
 <p>此处无新版本的创建</p>
-<p>添加到暂存区可理解为添加到内存空间（RAM）</p>
+<p>添加到暂存区可理解为添加到内存空间（RAM），实际上这相当于把你的代码（包括新添加的文件、修改或删除的文件）告诉Git：请跟踪这些变化，即将它们加入Git的版本控制管理中。</p>
 <p>__注意__：如果只是git add理解为只是保存在了RAM中，如果要切换代码一定要注意git commit，不然切换不回只add的部分！！</p>
 </blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> <span class="token function">add</span> new.java 	<span class="token comment">#空代码文件添加到暂存区</span>
@@ -666,6 +666,7 @@ Changes to be committed:		<span class="token comment">#已添加到暂存区</sp
   <span class="token punctuation">(</span>use <span class="token string">"git rm --cached &lt;file>..."</span> to unstage<span class="token punctuation">)</span>		
 	new file:   new.java<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><code>git add</code>：将写在<strong>工作树</strong>中的修改，存储到 <strong>Git 暂存区</strong>，从而将更改<strong>加入到下一次提交</strong>中。当你运行 <code>git add</code> 命令时，Git会将指定文件的修改保存到一个名为“index”（也称为“暂存区”）的区域中，类似于一个临时的存储区域。</p>
 <h3 id="提交本地库"><a href="#提交本地库" class="headerlink" title="提交本地库"></a>提交本地库</h3><blockquote>
 <p>提交本地库可理解为添加到储存空间（ROM）</p>
 <p>__注意__：提交本地库也意味着新版本的创建,切换版本一定要进行git commit，不然git add的部分代码将丢失！！</p>
@@ -702,6 +703,7 @@ Untracked files:
 
 no changes added to commit <span class="token punctuation">(</span>use <span class="token string">"git add"</span> and/or <span class="token string">"git commit -a"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><code>git commit</code>：将暂存区保存的所有更改（使用 <code>git add</code> 命令添加的更改）捆绑为一次新的提交并保存到本地Git仓库中。Git会创建一个新的提交对象来保存这些更改，并根据时间戳和作者等其他元数据信息来标记提交。Git还会将这个新的提交对象链接到先前的提交对象上，形成一个提交历史记录。</p>
 <h3 id="查看历史版本"><a href="#查看历史版本" class="headerlink" title="查看历史版本"></a>查看历史版本</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master*<span class="token punctuation">]</span> <span class="token function">git</span> reflog		<span class="token comment">#查看版本信息</span>
 6ed6d5c <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> master<span class="token punctuation">)</span> HEAD@<span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: 我的helloword代码。
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
@@ -874,6 +876,17 @@ new.java
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>以上操作说明两个分支之间的操作不会互相影响。</p>
+<p>2023-5-16实验：</p>
+<ol>
+<li>此时有一个未进行<code>git add .</code>和<code>git commit</code>代码的主分支<code>master</code></li>
+<li>创建一个新的分支，名为<code>feature</code>，此时在<code>feature</code>分支下也是显示未<code>git add</code>&amp;<code>git commit</code></li>
+<li>切换到<code>master</code>，进行了<code>git add .</code>和<code>git commit</code>代码</li>
+<li>再次切换到<code>feature</code>，此时一样显示没有需要<code>git add .</code>和<code>git commit</code>的代码</li>
+<li>切换到<code>feature</code>，是<code>master</code>的前一个版本</li>
+<li>查看VScode依旧是<code>feature</code>版本，查看代码是<code>master</code>的前一个版本</li>
+<li>如果在VScode命令行下切换分支，VScode显示的代码瞬间改变另一个分支。</li>
+</ol>
 <h4 id="修改分支"><a href="#修改分支" class="headerlink" title="修改分支"></a>修改分支</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">######以下证实两个分支上的最新版本内容都相同######</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>		<span class="token comment">#处于master分区的新版本上</span>
 Hello.class new.java
@@ -1283,7 +1296,7 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 
 
 
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><blockquote>
+<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><blockquote>
 <p>推荐使用SSH公私钥对进行对仓库的一系列操作，就不需要自己的设备每次都要输入密码啥的，现在的github已经不支持使用密码验证了，直接就是SSH/PGP密钥进行对仓库的管理，推荐这篇文章：<a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4181#article-header0">Gitee帮助中心：生成/添加SSH公钥</a>，每台机器只需设置一对非对称加密公私密钥，公钥放gitee/github,私钥放置在本机<code>~/.ssh</code>(linux)，该机器上的所有项目均可进行提交，理论上也可以只设置一对公私钥实现所有设备提交gitee/github。</p>
 <p>值得注意的是，如果使用SSH密钥方式，提交一定要SSH的远程连接，例如<code>git@github.com:ding-f/hexo-code.git</code>，如果使用https方式，那依旧要使用用户名密码来验证提交。</p>
 <p>建议生成的私密钥对每台设备生成一对，可以给多个可以使用Git工具的网站使用，只需要复制公钥到github/gitee网站指定设置SSH密钥的地方添加进去公钥，再进行一个验证：命令行输入<code>ssh -T git@gitee.com</code>，提示<code>Hi **ding-f**! You&#39;ve successfully authenticated</code>就成功了。</p>
@@ -1292,13 +1305,15 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">GitHub：Generating a new SSH key and adding it to the ssh-agent</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">GitHub：Adding a new SSH key to your GitHub account</a></p>
 </blockquote>
-<p>签名：</p>
+<p><strong>签名</strong></p>
+<p>签名</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global user.name fuding
 <span class="token function">git</span> config --global user.email f_ding@126.com
 <span class="token function">cat</span> ~/.gitconfig		<span class="token comment">#设置之后就可以在这个配置文件里找到</span>
 <span class="token punctuation">[</span>user<span class="token punctuation">]</span>
-	name <span class="token operator">=</span> fuding
-	email <span class="token operator">=</span> f_ding@126.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	name <span class="token operator">=</span> ding-f
+	email <span class="token operator">=</span> f_ding@126.com
+<span class="token function">git</span> config --list	<span class="token comment"># 显示已设置的配置</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -1306,7 +1321,7 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init		<span class="token comment">#首先要进入对应要提交的文件夹</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>新加远程仓库：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> gitee git@gitee.com:ding-f/hexo-code.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> gitee git@gitee.com:ding-f/hexo-code.git		<span class="token comment"># 如果设置了密钥对，建议使用ssh连接</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>移除远程仓库：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote remove gitee<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1317,17 +1332,12 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 
 
 <p>提交所有本项目下所有内容到暂存区：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span> 		<span class="token comment">#初始化未提交过到暂存区时使用</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span> 		<span class="token comment"># 初始化未提交过到暂存区时使用（首次提交必须执行的命令）</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <p>提交所有代码到本地仓库：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit -m <span class="token string">"项目整合基本完成"</span> -a <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p>为仓库地址起别名：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> gitee-push git@gitee.com:ding-f/school-wall-backend.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -1837,7 +1847,7 @@ and the repository exists.<span aria-hidden="true" class="line-numbers-rows"><sp
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             

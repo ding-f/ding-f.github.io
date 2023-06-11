@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-06 17:05:69
+                        2023-06-11 11:06:87
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.2k
+                        1.9k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        8 分
                     </div>
                 
 
@@ -527,12 +527,123 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="传统异步和async-await异步"><a href="#传统异步和async-await异步" class="headerlink" title="传统异步和async/await异步"></a>传统异步和async/await异步</h2><blockquote>
+                <h2 id="开发常用"><a href="#开发常用" class="headerlink" title="开发常用"></a>开发常用</h2><h3 id="JS数组合并"><a href="#JS数组合并" class="headerlink" title="JS数组合并"></a>JS数组合并</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/github_35780607/article/details/110528481">CSDN-IMJCW：JS数组合并(5种)</a></p>
+</blockquote>
+<ul>
+<li><p><code>ES6</code> 的语法，简单实用</p>
+  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
+
+<span class="token comment">// ...可去除对象大括号、数组中括号</span>
+arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">,</span> <span class="token operator">...</span>arr2<span class="token punctuation">]</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+<span class="token comment">// [1, 2, 3, 4]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><code>push</code> 结合 <code>...[]</code></p>
+<p><code>arr.push.apply(arr, arr2)</code> 的作用是将 <code>arr2</code> 数组中的元素依次添加到 <code>arr</code> 数组中。这里使用了 <code>push</code> 方法来向 <code>arr</code> 数组中添加元素，<code>apply</code> 方法将 <code>arr2</code> 数组中的元素作为参数传递给 <code>push</code> 方法，并使用 <code>arr</code> 数组作为 <code>this</code> 值绑定到 <code>push</code> 方法中。这样就可以将 <code>arr2</code> 数组中的元素添加到 <code>arr</code> 数组中了。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
+
+arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr2<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+<span class="token comment">// [1, 2, 3, 4]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
+
+arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span>arr2<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+<span class="token comment">// [1, 2, 3, 4]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+</li>
+</ul>
+<h3 id="在-Javascript-的字符串作用"><a href="#在-Javascript-的字符串作用" class="headerlink" title="${}在 Javascript 的字符串作用"></a>${}在 Javascript 的字符串作用</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.likecs.com/ask-420230.html">爱码网：${}（美元符号和花括号）在 Javascript 中的字符串中是什么意思？</a></p>
+</blockquote>
+<h2 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a><strong>字符串插值</strong></h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Let's meet at the </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>foo<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Let's meet at the bar</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> one <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> two <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">One add two is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>one <span class="token operator">+</span> two<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// output: One add two is 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>打印多行</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">foo
+bar</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// foo</span>
+<span class="token comment">// bar</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>模板文字执行隐式类型转换</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"mango"</span><span class="token punctuation">,</span><span class="token string">"orange"</span><span class="token punctuation">,</span><span class="token string">"pineapple"</span><span class="token punctuation">,</span><span class="token string">"papaya"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">My favourite fruits are </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>fruits<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// My favourite fruits are mango,orange,pineapple,papaya</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="find-修改对象属性"><a href="#find-修改对象属性" class="headerlink" title="find()修改对象属性"></a>find()修改对象属性</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"> <span class="token keyword">var</span> u <span class="token operator">=</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'andy'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">18</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+                <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'bob'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">19</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">]</span>
+ 
+ <span class="token keyword">var</span> p <span class="token operator">=</span> u<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">curr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> curr<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'bob'</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    p<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">20</span>
+ 
+<span class="token comment">//也可以这样写</span>
+u<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span> <span class="token parameter">curr</span> <span class="token operator">=></span> curr<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'bob'</span> <span class="token punctuation">)</span><span class="token operator">?.</span>age <span class="token operator">=</span> <span class="token number">20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>find找到了数组中符合条件的对象后返回给p,直接更改p即可准确更改元素中的值。</p>
+<h3 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h3><p>some方法同样用于检测是否有满足条件的元素，如果有，则不继续检索后面的元素，直接返回true，如果都不符合，则返回一个false。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">58</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">69</span><span class="token punctuation">,</span><span class="token number">36</span><span class="token punctuation">,</span><span class="token number">45</span><span class="token punctuation">,</span><span class="token number">78</span><span class="token punctuation">,</span><span class="token number">66</span><span class="token punctuation">,</span><span class="token number">45</span><span class="token punctuation">]</span>
+<span class="token comment">// some</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token parameter">ele</span> <span class="token operator">=></span> ele <span class="token operator">===</span> <span class="token number">45</span><span class="token punctuation">)</span> <span class="token comment">//true</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token comment">//do something...</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="数组添加元素"><a href="#数组添加元素" class="headerlink" title="数组添加元素"></a>数组添加元素</h3><p><strong>splice()</strong></p>
+<p>它用于在数组中添加或删除元素，并返回被删除的元素。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 从下标为 2 的位置开始删除 2 个元素，然后插入 'a', 'b'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 'a', 'b', 5]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">array.splice(start[, deleteCount[, item1[, item2[, ...]]]])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><code>start</code>：指定添加或删除元素的起始位置，可以为负数，表示从数组末尾开始算起的位置。</li>
+<li><code>deleteCount</code>：可选参数，表示要删除的元素个数，如果省略该参数或为 0，则不删除任何元素。</li>
+<li><code>item1, item2, ...</code>：可选参数，表示要添加到数组中的元素。</li>
+</ul>
+<h2 id="传统异步和async-await异步"><a href="#传统异步和async-await异步" class="headerlink" title="传统异步和async/await异步"></a>传统异步和async/await异步</h2><blockquote>
 <p>传统异步会导致两个主要的问题分别是：</p>
 <ol>
 <li>代码的可读性：通过使用 <code>async/await</code>，代码的结构会更加清晰，易于理解，易于<code>try...catch</code>。传统嵌套在<code>then()</code>的方式复杂可读性差。</li>
 <li>一般情况下传统方式只能返回Promise状态，不能返回Promise对象，特殊情况看最后<strong>传统方式返回Promise对象</strong>的代码。</li>
 </ol>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jsgoshu/p/11444404.html">博客园-jsgoshu：深入理解await与async</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7073001554365644808">掘金-噜噜彩：promise的三种状态解析</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fb1da22f335d">简书-没了提心吊胆的稗子：async/await</a></p>
 </blockquote>
 <h3 id="传统方式异步"><a href="#传统方式异步" class="headerlink" title="传统方式异步"></a>传统方式异步</h3><p>假设我们要实现一个异步操作，首先发起 HTTP 请求，然后再将请求结果传递给另一个异步操作处理，最后返回最终的处理结果。这个过程涉及到异步回调函数的嵌套，一般会使用 Promise 的 then 方法来处理。下面是一个简单的示例代码：</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -584,7 +695,7 @@
 <p>可见以上情况 Promise 对象有可能会变成 reject 状态，如果不是 Promise 对象，无法利用 Promise 所带来的传播性质来有效地抛出错误。</p>
 <h3 id="async-await异步"><a href="#async-await异步" class="headerlink" title="async/await异步"></a>async/await异步</h3><blockquote>
 <ul>
-<li>async：当一个函数被标记为 <code>async</code> 时，它就会返回一个 Promise 对象。</li>
+<li>async：当一个函数被标记为 <code>async</code> 时，它就没了提心吊胆的稗子会返回一个 Promise 对象。</li>
 <li>await：如果有需要等待异步操作完成的代码，可以使用 <code>await</code> 关键字来等待结果。在等待的过程中，函数的执行会暂停(处于异步，即另一个线程，不会影响主线程继续执行)，直到异步操作完成并返回结果后再继续执行。</li>
 </ul>
 </blockquote>
@@ -1192,7 +1303,7 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             

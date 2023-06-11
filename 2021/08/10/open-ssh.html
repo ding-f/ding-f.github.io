@@ -459,21 +459,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:57
+                        2023-05-25 22:05:52
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.6k
+                        1.7k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        7 分
                     </div>
                 
 
@@ -542,9 +542,27 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span>      <span class="token comment">#此方式与更改linux当前登录用户密码是一样的，由于ssh连接主机一般使用主机用户名&amp;密码</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="通过公私钥方式连接"><a href="#通过公私钥方式连接" class="headerlink" title="通过公私钥方式连接"></a>通过公私钥方式连接</h3><blockquote>
+<p>腾讯云需要额外特殊配置</p>
+<p>阿里云正常配置</p>
 <p>技巧：拿私钥的一定是连接方，拿公钥的一定是被连接方</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/213/35700">腾讯云：使用 SSH 登录 Linux 实例</a></p>
+<p><a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/ssh-permission-denied-publickey">phoenixnap：How to Fix SSH Failed Permission Denied (publickey,gssapi-keyex,gssapi-with-mic)</a></p>
 </blockquote>
-<p>用户端&amp;服务器端都要生成密钥对</p>
+<p><strong>配置</strong><code>/etc/ssh/sshd_config</code>（非root 命令前加sudo）</p>
+<pre class="line-numbers language-none"><code class="language-none">PermitRootLogin yes		#开启密钥验证
+PubkeyAuthentication yes	# 开启密钥验证
+AuthorizedKeysFile .ssh&#x2F;authorized_keys		# 公钥文件位置
+PasswordAuthentication no	# 密钥验证可选关闭密码验证方式
+ChallengeResponseAuthentication no	
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+UsePAM yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>配置完成执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> systemctl restart sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用户端/服务器端<strong>生成密钥对</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen      <span class="token comment">#生成后连接时的默认密钥对</span>
 
 ssh-keygen -f .ssh/centos		<span class="token comment">#指定文件路径名称名称，会生成centos(私) centos.pub(公)</span>
@@ -555,7 +573,7 @@ id_rsa  id_rsa.pub  known_hosts
 <span class="token comment"># id_rsa.pub，公钥</span>
 <span class="token comment"># known_hosts，已经连接过的主机记录，可进行删除来解决一部分问题</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>复制公钥到服务器</p>
+<p><strong>复制公钥到</strong>服务器</p>
 <blockquote>
 <p>由于复制的公钥，只能决定被连接方，黑客截取到公钥也没什么用，除非他喜欢定义自己的服务器为被连接方给你玩。</p>
 <p>复制公钥到服务器的authorized_keys文件/删除某个客户端的公钥都是立即生效的。</p>
@@ -563,13 +581,14 @@ id_rsa  id_rsa.pub  known_hosts
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 一定先要在客户端生成id_rsa.pub，再将其拷贝到被连接方</span>
 <span class="token comment">#此处是被连接端</span>
 
-<span class="token function">cat</span> ~/.ssh
+<span class="token function">ls</span> ~/.ssh
 id_rsa.pub authorized_keys  id_rsa  id_rsa.pub  known_hosts     <span class="token comment">#id_rsa.pub是拷贝过来的</span>
 
 <span class="token function">cat</span> id_rsa.pub <span class="token operator">>></span> authorized_keys        <span class="token comment">#写入连接方的公钥,>>增量写入（写入到原有内容之后），>替换写入（删除内容并写入）</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>复制私钥到服务器</p>
+<span class="token function">chmod</span> <span class="token number">600</span> authorized_keys		<span class="token comment"># 如果是腾讯云请执行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>复制私钥</strong>到服务器</p>
 <blockquote>
 <p>不建议的方式，由于私钥可以决定哪个是连接方，如果公私钥的方式未设置密码，那么在传递的过程中易受到黑客对私钥的截取，从而黑客的电脑也可以作为连接方连接你的服务器</p>
 </blockquote>
@@ -1186,7 +1205,7 @@ version                            Show SFTP version        <span class="token c
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             

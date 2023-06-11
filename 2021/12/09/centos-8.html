@@ -459,14 +459,14 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:59
+                        2023-06-07 22:06:21
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        2.3k
                     </div>
                 
 
@@ -635,37 +635,32 @@ Metadata cache created.<span aria-hidden="true" class="line-numbers-rows"><span>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnf check-update		<span class="token comment">#首先更新需要更新的软件列表</span>
 dnf update		<span class="token comment">#更新所有软件（包括内核更新）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="dnf方式"><a href="#dnf方式" class="headerlink" title="dnf方式"></a>dnf方式</h3><p><strong>更改源配置文件</strong></p>
-<p><code>file: /etc/yum.repos.d/CentOS-AppStream.repo</code></p>
-<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby"><span class="token punctuation">[</span>AppStream<span class="token punctuation">]</span>
-name<span class="token operator">=</span>CentOS<span class="token operator">-</span><span class="token variable">$releasever</span> <span class="token operator">-</span> AppStream
-baseurl<span class="token operator">=</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>mirrors<span class="token punctuation">.</span>aliyun<span class="token punctuation">.</span>com<span class="token operator">/</span>centos<span class="token operator">/</span><span class="token variable">$releasever</span><span class="token operator">/</span>AppStream<span class="token operator">/</span><span class="token variable">$basearch</span><span class="token regex-literal"><span class="token regex">/os/</span></span>
-gpgcheck<span class="token operator">=</span><span class="token number">1</span>
-enabled<span class="token operator">=</span><span class="token number">1</span>
-gpgkey<span class="token operator">=</span>file<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">/</span>etc<span class="token operator">/</span>pki<span class="token operator">/</span>rpm<span class="token operator">-</span>gpg<span class="token operator">/</span><span class="token constant">RPM</span><span class="token operator">-</span><span class="token constant">GPG</span><span class="token operator">-</span><span class="token constant">KEY</span><span class="token operator">-</span>centosofficial<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="软件仓库"><a href="#软件仓库" class="headerlink" title="软件仓库"></a>软件仓库</h3><p><strong>在 CentOS 系统中，有多种方法可以添加软件仓库</strong></p>
+<ol>
+<li>使用 yum-config-manager 添加仓库：</li>
+</ol>
+<p>可以使用 yum-config-manager 工具添加新的仓库。这需要先安装 yum-utils 软件包。以下是添加仓库的命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum-config-manager --add-repo <span class="token operator">&lt;</span>repository_url<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><code>file: /etc/yum.repos.d/CentOS-Base.repo</code></p>
-<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby"><span class="token punctuation">[</span>BaseOS<span class="token punctuation">]</span>
-name<span class="token operator">=</span>CentOS<span class="token operator">-</span><span class="token variable">$releasever</span> <span class="token operator">-</span> Base
-baseurl<span class="token operator">=</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>mirrors<span class="token punctuation">.</span>aliyun<span class="token punctuation">.</span>com<span class="token operator">/</span>centos<span class="token operator">/</span><span class="token variable">$releasever</span><span class="token operator">/</span>BaseOS<span class="token operator">/</span><span class="token variable">$basearch</span><span class="token regex-literal"><span class="token regex">/os/</span></span>
-gpgcheck<span class="token operator">=</span><span class="token number">1</span>
-enabled<span class="token operator">=</span><span class="token number">1</span>
-gpgkey<span class="token operator">=</span>file<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">/</span>etc<span class="token operator">/</span>pki<span class="token operator">/</span>rpm<span class="token operator">-</span>gpg<span class="token operator">/</span><span class="token constant">RPM</span><span class="token operator">-</span><span class="token constant">GPG</span><span class="token operator">-</span><span class="token constant">KEY</span><span class="token operator">-</span>centosofficial<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将 <repository_url> 替换为您要添加的仓库的 URL。</p>
+<ol start="2">
+<li>手动创建仓库文件：</li>
+</ol>
+<p>在 /etc/yum.repos.d/ 目录下，您可以手动创建一个以 .repo 结尾的文件，例如 myrepo.repo。在这个文件中，您需要提供仓库的相关信息。一个简单的示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">[myrepo]
+name&#x3D;My Repository
+baseurl&#x3D;http:&#x2F;&#x2F;example.com&#x2F;myrepo&#x2F;
+enabled&#x3D;1
+gpgcheck&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><code>file: /etc/yum.repos.d/CentOS-Epel.repo</code></p>
-<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby"><span class="token punctuation">[</span>epel<span class="token punctuation">]</span>
-name<span class="token operator">=</span>CentOS<span class="token operator">-</span><span class="token variable">$releasever</span> <span class="token operator">-</span> Epel
-baseurl<span class="token operator">=</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>mirrors<span class="token punctuation">.</span>aliyun<span class="token punctuation">.</span>com<span class="token operator">/</span>epel<span class="token operator">/</span><span class="token number">8</span><span class="token operator">/</span>Everything<span class="token operator">/</span><span class="token variable">$basearch</span>
-enabled<span class="token operator">=</span><span class="token number">1</span>
-gpgcheck<span class="token operator">=</span><span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>使用 RPM 包添加仓库：</li>
+</ol>
+<p>有时，软件提供商会提供一个 RPM 包，用于自动添加仓库和安装相关密钥。要使用 RPM 包添加仓库，您可以运行以下命令：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo yum install &lt;rpm_package_url&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>清除所有的元数据缓存</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnf clean all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>制作元数据缓存</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnf makecache<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>效果</strong></p>
+<p>将 <rpm_package_url> 替换为 RPM 包的 URL。</p>
+<p>这些方法中的任何一种都可以用于在 CentOS 系统中添加软件仓库。添加仓库后，您可以使用 yum 或 dnf（在 CentOS 8 及更高版本中）来安装、更新和管理来自这些仓库的软件包。</p>
 <h2 id="dnf-包管理"><a href="#dnf-包管理" class="headerlink" title="dnf 包管理"></a>dnf 包管理</h2><blockquote>
 <p>首先Cent OS的DNF 和 YUM 均是 rpm 软件包管理工具，但是 DFN 替代 YUM 的说法由来已久，因为 YUM 包管理工具有一些问题长期得不到解决。<br>这些问题包括性能低下、内存占用高以及依赖包解决方案不佳等。<br>而 DNF 在依赖包解决方案中采用了由 SUSE 开发的”libsolv”库，用以提升依赖包解析性能。<br>YUM 是一个管理 RPM 软件依赖包和软件库的前端工具，可以下载 RPM 软件包并安装，最后删除下载的软件包。<br>至于为什么要开发一个新的工具来替代 YUM，而不是解决 YUM 现有的问题，其原因在于想要解决 YUM 现有的问题技术上存在很多问题，并且 YUM 团队也不能很快适应更新带来的改变。</p>
 <p>另外，更重要的原因是 YUM 的源代码有大概56000行，修改起来工作量巨大。</p>
@@ -728,6 +723,8 @@ dnf update
 dnf list installed
 <span class="token comment">#搜索镜像源内的包</span>
 dnf search httpd
+<span class="token comment"># </span>
+
 <span class="token comment">#安装一个http的包</span>
 dnf <span class="token function">install</span> httpd
 <span class="token comment">#重新安装一个http的包</span>
@@ -748,7 +745,7 @@ dnf groupupdate <span class="token string">'System Tools'</span>
 dnf repolist all
 <span class="token comment">#列出系统所有被开了的软件库</span>
 dnf repolist
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -1260,7 +1257,7 @@ yum info <span class="token operator">&lt;</span>package_name<span class="token 
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             

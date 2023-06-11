@@ -1,11 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ding-f.gitee.io/2021/02/16/hexo.html</loc>
-    <lastmod>2023-05-06</lastmod>
+    <loc>https://ding-f.gitee.io/2023/06/11/pip-yi-lai-guan-li.html</loc>
+    <lastmod>2023-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2023/06/07/chatgpt.html</loc>
+    <lastmod>2023-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2022/05/09/docker.html</loc>
+    <lastmod>2023-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/04/06/mysql.html</loc>
+    <lastmod>2023-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2023/04/27/javascript.html</loc>
+    <lastmod>2023-06-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/03/10/arch-linux.html</loc>
+    <lastmod>2023-06-08</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/12/09/centos-8.html</loc>
+    <lastmod>2023-06-07</lastmod>
   </url>
   <url>
     <loc>https://ding-f.gitee.io/2021/11/30/git-gitee.html</loc>
+    <lastmod>2023-05-29</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2022/11/28/vscode.html</loc>
+    <lastmod>2023-05-29</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/06/27/idea.html</loc>
+    <lastmod>2023-05-26</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji.html</loc>
+    <lastmod>2023-05-26</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/08/10/shell.html</loc>
+    <lastmod>2023-05-26</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2022/01/19/vue.html</loc>
+    <lastmod>2023-05-26</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/08/10/open-ssh.html</loc>
+    <lastmod>2023-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/08/10/vim-bian-ji-qi.html</loc>
+    <lastmod>2023-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2023/02/16/uni-app.html</loc>
+    <lastmod>2023-05-24</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2022/12/23/nginx.html</loc>
+    <lastmod>2023-05-12</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji.html</loc>
+    <lastmod>2023-05-11</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.gitee.io/2021/02/16/hexo.html</loc>
     <lastmod>2023-05-06</lastmod>
   </url>
   <url>
@@ -17,19 +85,7 @@
     <lastmod>2023-05-06</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.gitee.io/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.gitee.io/2022/11/15/sqlserver.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2022/11/28/vscode.html</loc>
     <lastmod>2023-05-06</lastmod>
   </url>
   <url>
@@ -37,19 +93,7 @@
     <lastmod>2023-05-06</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.gitee.io/2022/12/23/nginx.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.gitee.io/2023/01/30/diy-bian-xi-xian-shi-qi.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2023/02/16/uni-app.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2023/04/27/javascript.html</loc>
     <lastmod>2023-05-06</lastmod>
   </url>
   <url>
@@ -63,14 +107,6 @@
   <url>
     <loc>https://ding-f.gitee.io/2021/03/05/android.html</loc>
     <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2021/03/10/arch-linux.html</loc>
-    <lastmod>2023-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2022/01/19/vue.html</loc>
-    <lastmod>2023-04-27</lastmod>
   </url>
   <url>
     <loc>https://ding-f.gitee.io/2022/01/12/ipv6.html</loc>
@@ -101,14 +137,6 @@
     <lastmod>2023-02-08</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.gitee.io/2021/12/09/centos-8.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2021/08/10/shell.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.gitee.io/2021/08/15/proxmox-ve.html</loc>
     <lastmod>2023-02-08</lastmod>
   </url>
@@ -122,10 +150,6 @@
   </url>
   <url>
     <loc>https://ding-f.gitee.io/2022/04/17/http-xie-yi.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2022/05/09/docker.html</loc>
     <lastmod>2023-02-08</lastmod>
   </url>
   <url>
@@ -157,18 +181,6 @@
     <lastmod>2023-02-08</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.gitee.io/2021/04/06/mysql.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2021/08/10/open-ssh.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2021/08/10/vim-bian-ji-qi.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.gitee.io/2021/03/07/kali-liunx.html</loc>
     <lastmod>2023-02-08</lastmod>
   </url>
@@ -178,10 +190,6 @@
   </url>
   <url>
     <loc>https://ding-f.gitee.io/2021/04/12/wang-luo-an-quan.html</loc>
-    <lastmod>2023-02-08</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.gitee.io/2021/06/27/idea.html</loc>
     <lastmod>2023-02-08</lastmod>
   </url>
   <url>

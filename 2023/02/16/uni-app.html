@@ -459,14 +459,14 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-06 17:05:76
+                        2023-05-24 16:05:62
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.9k
+                        3k
                     </div>
                 
 
@@ -721,7 +721,7 @@
 <ul>
 <li><p><code>state</code>（存储介质）：Vuex 使用单一状态树，用一个对象就包含了全部的应用层级状态。每个应用将仅仅包含一个 store 实例。存储在 Vuex 中的数据和 Vue 实例中的 <code>data</code> 遵循相同的规则</p>
 </li>
-<li><p><code>getters</code>（获取）：获取state中的参数，一般用三种种方式传参，<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">详见</a></p>
+<li><p><code>getters</code>（获取）：获取state中的参数，一般用三种种方式传参，成员中可以加入计算代码，计算后以缓存方式存入，存入后只要state/传入数据不变就不会再次计算，从而提高性能，<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">详见</a></p>
 <ul>
 <li>属性访问</li>
 <li>方法访问</li>
@@ -736,10 +736,32 @@
 </li>
 <li><p>Action 类似于 mutation，不同在于：</p>
 <ul>
-<li>Action 提交的是 mutation，而不是直接变更状态。</li>
-<li>Action 可以包含任意异步操作。</li>
+<li><p>Action 提交的是 mutation，而不是直接变更状态。</p>
+</li>
+<li><p>Action 可以包含任意<strong>异步操作</strong>。</p>
+<p>例如：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 假设 getData() 和 getOtherData() 返回的是 Promise</span>
+
+actions<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  async actionA <span class="token punctuation">(</span><span class="token punctuation">&#123;</span> commit <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">commit</span><span class="token punctuation">(</span>'gotData'<span class="token punctuation">,</span> await <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  async actionB <span class="token punctuation">(</span><span class="token punctuation">&#123;</span> dispatch<span class="token punctuation">,</span> commit <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    await <span class="token function">dispatch</span><span class="token punctuation">(</span>'actionA'<span class="token punctuation">)</span> <span class="token comment">// 等待 actionA 完成</span>
+    <span class="token function">commit</span><span class="token punctuation">(</span>'gotOtherData'<span class="token punctuation">,</span> await <span class="token function">getOtherData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+</li>
 </ul>
 </li>
+</ul>
+<p>以上常见的访问方式：</p>
+<ul>
+<li><code>this.$store</code>前提挂载<code>store</code>全局访问<code>Vue.prototype.$mStore = store</code></li>
+<li>mapGetters、mapMutations、mapActions等辅助函数访问</li>
 </ul>
 <h4 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h4><blockquote>
 <p>查官网的时候一共有两种sass-loader，分别为 <a target="_blank" rel="noopener" href="https://github.com/sass/dart-sass">Dart Sass</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sass/node-sass">Node Sass</a>，其中Dart Sass是官方推荐的，也是本项目所用。它们的作用是将Sass代码经打包转化为css代码，乍一想其实就是安装在devDependencies下的依赖，无需安装在dependencies中，其实几乎所有Node开发的依赖，在使用文档中有安装命令的，无需考虑安装在dependencies/devDependencies，按照依赖包的说明安装基本就没啥大的问题。</p>
@@ -1365,7 +1387,7 @@
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             

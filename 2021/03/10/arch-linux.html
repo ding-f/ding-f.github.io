@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Arch Linux, 铸鼎_">
+    <meta name="keywords" content="Arch Linux 神技能, 铸鼎_">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Arch Linux | 铸鼎_</title>
+    <title>Arch Linux 神技能 | 铸鼎_</title>
     <link rel="icon" type="image/png" href="/medias/detail/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -392,7 +392,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Arch Linux</h1>
+                    <h1 class="description center-align post-title">Arch Linux 神技能</h1>
                 </div>
             </div>
         </div>
@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-05 09:05:42
+                        2023-06-08 11:06:66
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        4.9k
+                        6.1k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        20 分
+                        25 分
                     </div>
                 
 
@@ -781,9 +781,98 @@ pacman -Udd /var/cache/pacman/pkg/xxx<span aria-hidden="true" class="line-number
 <p><strong>特殊解决方案</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S archlinux-keyring <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> pacman -Syu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h3 id="软件包缓存"><a href="#软件包缓存" class="headerlink" title="软件包缓存"></a>软件包缓存</h3><blockquote>
+<p>pacman 升级或安装下载的包的地址位于<code>/var/cache/pacman/pkg/</code>目录<br>yay 升级或安装下载的包的地址位于<code>~/.cache/yay/</code><br>可使用命令清除，也可以手动清除</p>
+</blockquote>
+<p><strong>常用</strong></p>
+<ul>
+<li><p><code>sudo pacman -Scc</code>清理所有<code>pacman</code>软件包管理缓存</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">6151</span> ◯  <span class="token function">sudo</span> pacman -Scc                                 
+
+Cache directory: /var/cache/pacman/pkg/
+:: Do you want to remove ALL files from cache? <span class="token punctuation">[</span>y/N<span class="token punctuation">]</span> y
+removing all files from cache<span class="token punctuation">..</span>.
+
+Database directory: /var/lib/pacman/
+:: Do you want to remove unused repositories? <span class="token punctuation">[</span>Y/n<span class="token punctuation">]</span> Y
+removing unused <span class="token function">sync</span> repositories<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以上清理<code>/var/cache/pacman/pkg/</code>所有缓存文件，清理<code>/var/lib/pacman/</code>未使用的同步仓库。</p>
+</li>
+<li><p><code>yay -Scc</code>清理所有<code>yay</code>软件包管理缓存</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Cache directory: /var/cache/pacman/pkg/
+:: Do you want to remove ALL files from cache? <span class="token punctuation">[</span>y/N<span class="token punctuation">]</span> y
+removing all files from cache<span class="token punctuation">..</span>.
+
+Database directory: /var/lib/pacman/
+:: Do you want to remove unused repositories? <span class="token punctuation">[</span>Y/n<span class="token punctuation">]</span> Y
+removing unused <span class="token function">sync</span> repositories<span class="token punctuation">..</span>.
+
+Build directory: /home/fuding/.cache/yay
+:: Do you want to remove ALL AUR packages from cache? <span class="token punctuation">[</span>Y/n<span class="token punctuation">]</span> Y
+removing AUR packages from cache<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以上清理比<code>pacman</code>多清理一个<code>~/.cache/yay</code>代表AUR的包缓存。</p>
+</li>
+<li><p><code>yay -Sc</code></p>
+</li>
+</ul>
+<p><strong>参数</strong></p>
+<ul>
+<li><code>-c</code>, <code>--clean</code> remove old packages from cache directory (-cc for all)，<code>-Sc</code>只会清楚老旧的缓存包，<code>-Scc</code>清除所有软件包缓存。</li>
+</ul>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013197629/article/details/73608613">CSDN-林20：Linux权限详解（chmod、600、644、700、711、755、777、4755、6755、7755）</a></p>
+</blockquote>
+<h4 id="权限划分"><a href="#权限划分" class="headerlink" title="权限划分"></a>权限划分</h4><p><strong>系统权限3种</strong></p>
+<ul>
+<li><code>r</code> 读取，权限数<code>4</code></li>
+<li><code>w</code> 写入，权限数<code>2</code></li>
+<li><code>x</code> 执行，权限数<code>1</code></li>
+</ul>
+<p><strong>系统用户划分3种</strong></p>
+<p><img src="/images/2021-03-10-Arch-Linux/image-20230525143555149.png" alt="image-20230525143555149"></p>
+<ul>
+<li>白色列代表是否是目录，目录用<code>d</code>表示</li>
+<li>8进制<code>u</code>代表红色列，拥有者</li>
+<li>8进制<code>g</code>代表蓝色列，群组</li>
+<li>8进制<code>o</code>代表黄色列，其他组</li>
+</ul>
+<p><strong>常用文件权限</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-rw------- <span class="token punctuation">(</span><span class="token number">600</span><span class="token punctuation">)</span>    <span class="token comment">#只有拥有者有读写权限。</span>
+-rw-r--r-- <span class="token punctuation">(</span><span class="token number">644</span><span class="token punctuation">)</span>    <span class="token comment">#只有拥有者有读写权限；而属组用户和其他用户只有读权限。</span>
+-rwx------ <span class="token punctuation">(</span><span class="token number">700</span><span class="token punctuation">)</span>    <span class="token comment">#只有拥有者有读、写、执行权限。</span>
+-rwxr-xr-x <span class="token punctuation">(</span><span class="token number">755</span><span class="token punctuation">)</span>    <span class="token comment">#拥有者有读、写、执行权限；而属组用户和其他用户只有读、执行权限。</span>
+-rwx--x--x <span class="token punctuation">(</span><span class="token number">711</span><span class="token punctuation">)</span>    <span class="token comment">#拥有者有读、写、执行权限；而属组用户和其他用户只有执行权限。</span>
+-rw-rw-rw- <span class="token punctuation">(</span><span class="token number">666</span><span class="token punctuation">)</span>    <span class="token comment">#所有用户都有文件读、写权限。</span>
+-rwxrwxrwx <span class="token punctuation">(</span><span class="token number">777</span><span class="token punctuation">)</span>    <span class="token comment">#所有用户都有读、写、执行权限。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所有人可读写执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">777</span> <span class="token function">file</span> 
+<span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rwx,o<span class="token operator">=</span>rwx <span class="token function">file</span>
+<span class="token function">chmod</span> <span class="token assign-left variable">a</span><span class="token operator">=</span>rwx <span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>拥有者可读写</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">600</span> <span class="token function">file</span> 
+<span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rw,g<span class="token operator">=</span>---,o<span class="token operator">=</span>--- <span class="token function">file</span>
+<span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rw,go-rwx <span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="文件拥有者"><a href="#文件拥有者" class="headerlink" title="文件拥有者"></a>文件拥有者</h4><blockquote>
+<p>root权限才可以更改文件拥有者</p>
+</blockquote>
+<p><strong>更改文件拥有者</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">chown [可选项] user[:group] file...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>更改d.key e.scrt文件拥有者为所属组users的tom</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chown</span> tom:users <span class="token function">file</span> d.key e.scrt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>更改当前目录下与子目录下的所有文件的拥有者为 users 群体的 James</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chown</span> -R James:users  *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="sed-grep批量修改文件内容"><a href="#sed-grep批量修改文件内容" class="headerlink" title="sed|grep批量修改文件内容"></a>sed|grep批量修改文件内容</h3><blockquote>
+
+<h3 id="sed-grep批量修改文件内容"><a href="#sed-grep批量修改文件内容" class="headerlink" title="sed|grep批量修改文件内容"></a>sed|grep批量修改文件内容</h3><blockquote>
 <p>Linux sed 命令是利用脚本来处理文本文件。<br>sed 可依照脚本的指令来处理、编辑文本文件。<br>Sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。<br>详情请参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">https://www.runoob.com/linux/linux-comm-sed.html</a></p>
 </blockquote>
 <p>使用sed命令来修改文件内容：</p>
@@ -1026,8 +1115,41 @@ Defaults:USER_NAME      <span class="token operator">!</span>authenticate<span a
 <h3 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h3><p><strong>列出所有enable进程</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">list-unit-files --state<span class="token operator">=</span>enabled<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h3 id="du"><a href="#du" class="headerlink" title="du"></a>du</h3><blockquote>
+<p><code>du</code> 命令（磁盘使用）是 Linux 系统中用于查看磁盘空间使用情况的命令，常用于检查文件或目录的磁盘使用情况，以及查找磁盘空间占用过多的文件或目录。</p>
+</blockquote>
+<p><strong>常用</strong></p>
+<ul>
+<li><p><code>du -sh *</code>：显示当前目录下所有文件/目录的大小，并以易读的方式显示目录下所有文件/目录总大小。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">arch-linux ॐ  ~/Desktop:
+<span class="token number">6123</span> ◯  <span class="token function">du</span> -sh *            
+<span class="token number">4</span>.2G    大来智能科技1.2G    大来智能科技.tar.gz
+<span class="token number">4</span>.0K    日志.md
+109M    Dailyfresh-B2C
+897M    hexo-code
+arch-linux ॐ  ~/Desktop:
+<span class="token number">6124</span> ◯  <span class="token function">ls</span>
+大来智能科技  大来智能科技.tar.gz  日志.md  Dailyfresh-B2C  hexo-code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+</li>
+<li><p><code>du -sh</code>当前所在目录的总大小。</p>
+</li>
+<li><p><code>du -sh /path/to/directory</code>：显示指定目录内所有文件总的大小，并以易读的方式显示总大小；如果指定目录写成<code>/path/to/directory/*</code>，则显示目录下所有文件/目录总大小。</p>
+</li>
+<li><p><code>du -h --max-depth=1 /path/to/directory</code>：显示指定目录下一级子目录或文件的大小，等同于指定目录写成<code>/path/to/directory/*</code>，并以易读的方式显示总大小。</p>
+</li>
+<li><p><code>du -sh ~/.cache/yay/*| sort -hr</code>：显示指定目录下一级子目录或文件的大小，并按照大小进行逆序排序。</p>
+</li>
+</ul>
+<p><strong>参数</strong></p>
+<ul>
+<li><code>-h</code>：以易读的方式显示文件大小，单位为 KB、MB、GB 等。</li>
+<li><code>-s</code>：仅显示总大小，不显示子目录或文件的详细信息。</li>
+<li><code>--max-depth=1</code>：限制显示深度为 1 级，即仅显示子目录或文件的大小，不显示其子目录或文件的大小。</li>
+<li><code>-a</code>：显示目录中所有文件和子目录的大小，包括隐藏文件。</li>
+<li><code>| sort -hr</code>：将 <code>du -ah</code> 命令的输出结果通过管道符传递给 <code>sort</code> 命令进行排序，其中 <code>-h</code> 选项表示以易读的方式排序，<code>-r</code> 选项表示逆序排序。</li>
+</ul>
 <h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><h3 id="OpenSSH-（请点击标签-Linux软件）"><a href="#OpenSSH-（请点击标签-Linux软件）" class="headerlink" title="OpenSSH （请点击标签: Linux软件）"></a>OpenSSH （请点击标签: Linux软件）</h3><h3 id="APFS-FUSE-Driver-for-Linux"><a href="#APFS-FUSE-Driver-for-Linux" class="headerlink" title="APFS FUSE Driver for Linux"></a>APFS FUSE Driver for Linux</h3><blockquote>
 <p>Linux上读取apfs的工具，常应用于Mac Linux双系统，Mac系统出问题，切换Linux上读取Mac文系统资料。</p>
 <p>参考：</p>
@@ -1041,22 +1163,15 @@ Defaults:USER_NAME      <span class="token operator">!</span>authenticate<span a
 
 
 
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="桌面卡顿"><a href="#桌面卡顿" class="headerlink" title="桌面卡顿"></a>桌面卡顿</h3><p><strong>按<code>alt+ctrl+f2</code></strong></p>
+<p>切换另一个用户命令行</p>
+<p><strong>root登陆</strong></p>
+<p>尝试执行以下命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart sddm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart display-manager<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>其实就是重启桌面的关键程序，原理后面再研究，应急手段</p>
 
             </div>
             <hr/>
@@ -1537,7 +1652,7 @@ Defaults:USER_NAME      <span class="token operator">!</span>authenticate<span a
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             

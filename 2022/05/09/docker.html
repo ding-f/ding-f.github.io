@@ -459,21 +459,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:58
+                        2023-06-11 18:06:98
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.3k
+                        3.1k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        9 分
+                        12 分
                     </div>
                 
 
@@ -536,26 +536,42 @@
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.php.cn/docker/488462.html">Docker CE是什么</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shooke/article/details/84697726">CSDN-shooke：linux下docker安装，以及配置不使用sudo命令执行docker</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/centos-docker-install.html">菜鸟教程：Docker安装</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/113603497">知乎：CentOS 8 dnf 安装 docker</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">Doker官网：Install Docker Engine on CentOS</a></p>
 </blockquote>
 <h3 id="Docker仓库进行安装"><a href="#Docker仓库进行安装" class="headerlink" title="Docker仓库进行安装"></a>Docker仓库进行安装</h3><h4 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h4><blockquote>
 <p>建议的安装方式直接去阿里云开发者社区中找到Docker相应的镜像网页，里面的安装方式还是很官方的。</p>
+<p>2023-6-7：对比官方、ChatGPT提供安装方式，搜索各个包的作用后，总结以下安装流程。</p>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.6d7f1b11lXsN6k">阿里云-开发者社区：Docker CE 镜像</a></p>
 </blockquote>
+<p><strong>必备工具安装</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装必要的一些系统工具</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> -y yum-utils device-mapper-persistent-data lvm2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>device-mapper-persistent-data：这个软件包提供了 Device Mapper 的持久数据存储库。Device Mapper 是 Linux 内核的一个框架，用于实现基于块设备的存储虚拟化。在 Docker 中，Device Mapper 可以用作存储驱动程序，用于管理 Docker 容器的文件系统。device-mapper-persistent-data 包含了一些实用程序，如 thin_check 和 thin_restore，这些实用程序用于管理和维护 Device Mapper 的持久数据存储。</p>
+</li>
+<li><p>lvm2：这个软件包提供了逻辑卷管理（LVM）工具。LVM 是一种用于管理磁盘空间的技术，它允许您更灵活地管理磁盘分区和存储。在 Docker 中，LVM 可以与 Device Mapper 配合使用，以便更有效地管理容器的存储需求。</p>
+</li>
+</ul>
 <p><strong>添加国内Docker软件仓库</strong></p>
-<p>菜鸟教程中使用yum，博主喜欢新技术，直接就使用CentOS最新的软件包管理器dnf进行安装，基本上yum支持的命令dnf同样支持。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnf config-manager --add-repo<span class="token operator">=</span>http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo		<span class="token comment">#添加国内阿里云软件仓库，使用yum替换也可以</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment"># 添加软件源信息</span>
+<span class="token function">sudo</span> yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+<span class="token comment"># 或者使用dnf</span>
+dnf config-manager --add-repo<span class="token operator">=</span>http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo		<span class="token comment">#添加国内阿里云软件仓库</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <p><strong>安装Docker</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnf <span class="token function">install</span> docker-ce -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnf <span class="token function">install</span>  docker-ce docker-ce-cli containerd.io -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-
+<ol>
+<li>docker-ce-cli：这个软件包提供了 Docker 命令行界面（CLI）。Docker CLI 是一个用于与 Docker 引擎进行交互的命令行工具。它允许您执行各种操作，如运行容器、管理镜像、查看容器日志等。安装此软件包后，您可以在终端中使用 docker 命令来管理 Docker 容器和服务。</li>
+<li>containerd.io：这个软件包提供了 containerd 容器运行时。containerd 是一个用于管理容器生命周期的守护程序，它是 Docker 引擎的一部分。containerd 负责从镜像创建容器、启动和停止容器、管理容器的存储和网络等。安装此软件包后，Docker 将使用 containerd 作为其底层容器运行时。</li>
+</ol>
 <p><strong>Docker启动</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -619,7 +635,7 @@
 <ul>
 <li>删除了镜像，但如果之前用此镜像创建过容器容器不会被删除</li>
 </ul>
-<h3 id="创建（run）容器"><a href="#创建（run）容器" class="headerlink" title="创建（run）容器"></a>创建（run）容器</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d --name <span class="token operator">&lt;</span>容器名<span class="token operator">></span> -p <span class="token operator">&lt;</span>系统端口:容器端口<span class="token operator">></span> <span class="token operator">&lt;</span>镜像名:版本号<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="创建（run）容器"><a href="#创建（run）容器" class="headerlink" title="创建（run）容器"></a>创建（run）容器</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d --name <span class="token operator">&lt;</span>容器名<span class="token operator">></span> -p <span class="token operator">&lt;</span>系统端口:容器端口<span class="token operator">></span> <span class="token operator">&lt;</span>镜像名:版本号<span class="token operator">></span>/<span class="token operator">&lt;</span>镜像ID<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>创建容器前一定要下载到创建相关的镜像，命令中 <code>--name &lt;容器名&gt;</code> </li>
@@ -630,8 +646,13 @@
 
 
 
-<h3 id="查看容器信息"><a href="#查看容器信息" class="headerlink" title="查看容器信息"></a>查看容器信息</h3><p>很重要，可以查看到容器的所有配置信息，比如端口、映射文件、地址等…</p>
+<h3 id="查看容器配置信息"><a href="#查看容器配置信息" class="headerlink" title="查看容器配置信息"></a>查看容器配置信息</h3><p>很重要，可以查看到容器的所有配置信息，比如端口、映射文件、地址等…</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> inspect <span class="token operator">&lt;</span>容器ID<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h3><p>打印后的容器日志按照时间的顺序升序（最新在后）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> logs <span class="token operator">&lt;</span>container_id<span class="token operator">></span>
+<span class="token comment"># 显示最后10行日志</span>
+<span class="token function">docker</span> logs -n <span class="token number">10</span> <span class="token operator">&lt;</span>container_id<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -718,6 +739,23 @@ a807ee80fd3e   mysql:8.0.29   <span class="token string">"docker-entrypoint.s…
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wkh___/article/details/114879500">CSDN-954L（转载）：运行中的Docker容器添加映射端口</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Victor2code/article/details/113269092">CSDN-T型人小付:docker多种创建volume操作详解</a></p>
 </blockquote>
+<h4 id="修改容器配置-1"><a href="#修改容器配置-1" class="headerlink" title="修改容器配置"></a>修改容器配置</h4><h5 id="容器自启"><a href="#容器自启" class="headerlink" title="容器自启"></a>容器自启</h5><p>设置某容器自启</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> update --restart<span class="token operator">=</span>always <span class="token operator">&lt;</span>容器名<span class="token operator">|</span>容器ID<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查看自启配置</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> inspect <span class="token operator">&lt;</span>容器名称或容器ID<span class="token operator">></span> --format<span class="token operator">=</span><span class="token string">'&#123;&#123;.HostConfig.RestartPolicy.Name&#125;&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><code>&quot;always&quot;</code>，则表示该容器已经设置为自启动。</li>
+<li><code>&quot;no&quot;</code>、<code>&quot;on-failure&quot;</code> 等，则表示容器不会自动重启。</li>
+</ul>
+<h5 id="内存配置"><a href="#内存配置" class="headerlink" title="内存配置"></a>内存配置</h5><p>使用镜像<code>mysql:5.7</code>时，意外的发现，我的<code>Arch Linux</code>内存占满了，不只是前10个月运行过的容器还是新pull过来的<code>mysql：5.7</code>，都会出现一样的问题，导致系统异常卡顿，于是使用如下的方法解决这个问题。</p>
+<p>设置内存 2g，swap 2g，不能只单独设置内存，会报错，请确保新的内存交换限制大于或等于新的内存限制。</p>
+<p>设置之后内存太小又不能使其正常运行，可能是我的Docker版本是最新的原因，果断换成<code>mysql:8.0.33-debian</code>,没有出现内存占满的情况了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 修改某容器内存使用限制</span>
+<span class="token function">docker</span> update --memory <span class="token operator">&lt;</span>new_memory_limit<span class="token operator">></span> --memory-swap <span class="token operator">&lt;</span>new_memory_swap_limit<span class="token operator">></span> <span class="token operator">&lt;</span>container_id_or_name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><code>docker update</code>命令只能更新一些限制，如内存、CPU等。如果你需要修改其他容器的配置，例如网络设置、环境变量等，你可能需要停止并重新启动容器，使用新的参数来运行容器。</p>
 <h4 id="添加容器文件映射"><a href="#添加容器文件映射" class="headerlink" title="添加容器文件映射"></a>添加容器文件映射</h4><p><strong>首先查看容器Id:</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> inspect 921ea8860660 <span class="token operator">|</span><span class="token function">grep</span> Id <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -823,10 +861,6 @@ Options:
 <h3 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> restart <span class="token operator">&lt;</span>容器ID<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-
-
-
-<h3 id="容器自启"><a href="#容器自启" class="headerlink" title="容器自启"></a>容器自启</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> update --restart<span class="token operator">=</span>always <span class="token operator">&lt;</span>容器名<span class="token operator">|</span>容器ID<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -1341,7 +1375,7 @@ Options:
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.2k</span>&nbsp;
+                        class="white-color">148.3k</span>&nbsp;
             
             
             
