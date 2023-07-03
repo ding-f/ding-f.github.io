@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:58
+                        2023-07-03 16:07:81
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2k
+                        2.3k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        9 分
                     </div>
                 
 
@@ -527,7 +527,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
+                <h2 id="Java-Spring"><a href="#Java-Spring" class="headerlink" title="Java Spring"></a>Java Spring</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><blockquote>
 <p>Swagger 是一套基于 OpenAPI 规范（OpenAPI Specification，OAS）构建的开源工具，后来成为了 Open API 标准的主要定义者，现在最新的版本为17年发布的 Swagger3（Open Api3）。 国内绝大部分人还在用过时的swagger2（17年停止维护并更名为swagger3） 对于 Rest API 来说很重要的一部分内容就是文档，Swagger 为我们提供了一套通过代码和注解自动生成文档的方法，这一点对于保证API 文档的及时性将有很大的帮助。</p>
 <ul>
 <li><strong>OpenAPI</strong> = Specification</li>
@@ -543,17 +543,17 @@
 <p><a target="_blank" rel="noopener" href="https://www.dariawan.com/tutorials/spring/documenting-spring-boot-rest-api-springdoc-openapi-3/">ARIAWAN-Documenting Spring Boot REST API with SpringDoc + OpenAPI 3</a></p>
 <p><a target="_blank" rel="noopener" href="https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/">Swagger Logo-Ryan Pinkham：What Is the Difference Between Swagger and OpenAPI?</a></p>
 </blockquote>
-<h3 id="共包含三部分"><a href="#共包含三部分" class="headerlink" title="共包含三部分"></a>共包含三部分</h3><p><img src="/images/2022-06-28-Swagger3/image-20220628151738631.png" alt="Swagger官方简介"></p>
+<h4 id="共包含三部分"><a href="#共包含三部分" class="headerlink" title="共包含三部分"></a>共包含三部分</h4><p><img src="/images/2022-06-28-Swagger3/image-20220628151738631.png" alt="Swagger官方简介"></p>
 <ul>
 <li>Swagger Editor：基于浏览器的编辑器，我们可以使用它编写我们 OpenAPI 规范。</li>
 <li>Swagger UI：它会将我们编写的 OpenAPI 规范呈现为交互式的 API 文档，后文我将使用浏览器来查看并且操作我们的 Rest API。</li>
 <li>Swagger Codegen：它可以通过为 OpenAPI（以前称为 Swagger）规范定义的任何 API 生成服务器存根和客户端 SDK 来简化构建过程。</li>
 </ul>
-<h3 id="Spring-Fox"><a href="#Spring-Fox" class="headerlink" title="Spring Fox"></a>Spring Fox</h3><p>由于Spring的流行，Marty Pitt编写了一个基于Spring的组件swagger-springmvc，用于将swagger集成到springmvc中来，而springfox则是从这个组件发展而来。</p>
+<h4 id="Spring-Fox"><a href="#Spring-Fox" class="headerlink" title="Spring Fox"></a>Spring Fox</h4><p>由于Spring的流行，Marty Pitt编写了一个基于Spring的组件swagger-springmvc，用于将swagger集成到springmvc中来，而springfox则是从这个组件发展而来。</p>
 <p><img src="/images/2022-06-28-Swagger3/image-20220628153933219.png" alt="SpringFox依赖"></p>
 <p>上图可观察到SpringFox已经引入Spring Boot中，并且支持Swagger3，但不知道为什么铸鼎在使用过程中，使用的Swagger3注解不能在Swagger-UI中显示，最后才发现又在其他网站上发现了一个即支持Swagger3 又支持UI显示Swagger3 的项目<code>springdoc-openapi</code>，可惜我已经用上SpringFox了，至于为什么不想换，就一句话，又不是不能用。</p>
 <p><img src="/images/2022-06-28-Swagger3/image-20220628161534549.png" alt="Documenting Spring Boot REST API with SpringDoc + OpenAPI 3"></p>
-<h2 id="导入所需依赖"><a href="#导入所需依赖" class="headerlink" title="导入所需依赖"></a>导入所需依赖</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>直接使用SpringFox 3.0.0 ，就相当于使用Swagger2的注解才能显示在UI中，虽然可以使用Swagger3注解，但比配置Swagger2要方便，只需导入一个依赖即可使用。</p>
+<h3 id="导入所需依赖"><a href="#导入所需依赖" class="headerlink" title="导入所需依赖"></a>导入所需依赖</h3><h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><p>直接使用SpringFox 3.0.0 ，就相当于使用Swagger2的注解才能显示在UI中，虽然可以使用Swagger3注解，但比配置Swagger2要方便，只需导入一个依赖即可使用。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span> 
 				<span class="token comment">&lt;!--      swagger3  --></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -565,7 +565,7 @@
 
 
 
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>使用springdoc-openapi 可直接使用Swagger3注解，且可以直接显示在UI中。</p>
+<h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><p>使用springdoc-openapi 可直接使用Swagger3注解，且可以直接显示在UI中。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span> 
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springdoc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -576,14 +576,14 @@
 
 
 
-<h2 id="Swagger2与Swagger3对比"><a href="#Swagger2与Swagger3对比" class="headerlink" title="Swagger2与Swagger3对比"></a>Swagger2与Swagger3对比</h2><blockquote>
+<h3 id="Swagger2与Swagger3对比"><a href="#Swagger2与Swagger3对比" class="headerlink" title="Swagger2与Swagger3对比"></a>Swagger2与Swagger3对比</h3><blockquote>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3004bb90f330">简书-fzhyzamt：swagger2与swagger3的注解对应表</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59291371/migrating-from-springfox-swagger-2-to-springdoc-open-api">STACK OVERFLOW-：Migrating from Springfox Swagger 2 to Springdoc Open API</a></p>
 <p><a target="_blank" rel="noopener" href="https://cunyu1943.site/posts/b7a128a8/">村雨遥-Spring Boot 使用 Swagger3 生成 API 接口文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-boot-swagger-jwt">Baeldung-Sallo Szrajbman：Set JWT with Spring Boot and Swagger UI</a></p>
 </blockquote>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p>Swagger2注解使用以及常用参数说明：</p>
+<h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><p>Swagger2注解使用以及常用参数说明：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//用在被请求的类上，表示对类的说明</span>
 <span class="token annotation punctuation">@Api</span><span class="token punctuation">(</span>
 			<span class="token comment">//可以在UI界面列表项看到该注解tages定义的说明</span>
@@ -704,7 +704,7 @@
 <td>api端口方法</td>
 </tr>
 </tbody></table>
-<h3 id="Spring-Boot方式配置"><a href="#Spring-Boot方式配置" class="headerlink" title="Spring Boot方式配置"></a>Spring Boot方式配置</h3><p>参考了Swagger2的配置方式，Swagger3配置方式以及两者配置对比，还请前往<a target="_blank" rel="noopener" href="https://www.dariawan.com/tutorials/spring/documenting-spring-boot-rest-api-springdoc-openapi-3/">ARIAWAN-Documenting Spring Boot REST API with SpringDoc + OpenAPI 3</a>。</p>
+<h4 id="Spring-Boot方式配置"><a href="#Spring-Boot方式配置" class="headerlink" title="Spring Boot方式配置"></a>Spring Boot方式配置</h4><p>参考了Swagger2的配置方式，Swagger3配置方式以及两者配置对比，还请前往<a target="_blank" rel="noopener" href="https://www.dariawan.com/tutorials/spring/documenting-spring-boot-rest-api-springdoc-openapi-3/">ARIAWAN-Documenting Spring Boot REST API with SpringDoc + OpenAPI 3</a>。</p>
 <p>以下信息中，配置了Jwt方式认证，主要添加两个，定义界面显示配置JWT 和 定义请求Header中的Authorization从哪获取JWT，详细请参考：<a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-boot-swagger-jwt">Baeldung-Sallo Szrajbman：Set JWT with Spring Boot and Swagger UI</a>，但其中有错误自己给改过来了：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">io<span class="token punctuation">.</span>swagger<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">ApiOperation</span></span><span class="token punctuation">;</span>
@@ -802,7 +802,7 @@
 
 
 
-<h2 id="测试实现"><a href="#测试实现" class="headerlink" title="测试实现"></a>测试实现</h2><p>将以上不超过10个的注解加入项目代码的相应位置，即可实现自动生成API文档：</p>
+<h3 id="测试实现"><a href="#测试实现" class="headerlink" title="测试实现"></a>测试实现</h3><p>将以上不超过10个的注解加入项目代码的相应位置，即可实现自动生成API文档：</p>
 <p><img src="/images/2022-06-28-Swagger3/image-20220628175846035.png" alt="效果图"></p>
 <p><img src="/images/2022-06-28-Swagger3/image-20220628180308766.png" alt="展开效果"></p>
 <p>实现JWT添加效果：</p>
@@ -810,6 +810,53 @@
 <p><img src="/images/2022-06-28-Swagger3/image-20220628180137681.png" alt="添加JWT成功"></p>
 <p>并且可在网页上对每一个API进行手动测试：</p>
 <p><img src="/images/2022-06-28-Swagger3/image-20220628180423980.png" alt="image-20220628180423980"></p>
+<h2 id="Python-Django"><a href="#Python-Django" class="headerlink" title="Python Django"></a>Python Django</h2><blockquote>
+<p>自动文档必须使用Django rest framework（DRF）框架，因此需要Django框架、基于Django框架开发的DRF框架，此外需要两个关键依赖实现Swagger的自动文档。</p>
+</blockquote>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># coreapi: 这是DRF项目所需的核心API库，Swagger使用它来生成API文档。</span>
+pip <span class="token function">install</span> coreapi    
+<span class="token comment"># drf-yasg: 这是一个用于在DRF项目中集成Swagger的库。</span>
+pip <span class="token function">install</span> drf-yasg <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="加入路由"><a href="#加入路由" class="headerlink" title="加入路由"></a>加入路由</h3><p>需要在总路由文件<code>urls.py</code>，中添加<code>/</code>路由拦截，使得访问<code>localhots：8000</code>时被Swagger网页服务处理成自动API文档。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> drf_yasg <span class="token keyword">import</span> openapi
+<span class="token keyword">from</span> drf_yasg<span class="token punctuation">.</span>views <span class="token keyword">import</span> get_schema_view
+
+schema_view <span class="token operator">=</span> get_schema_view<span class="token punctuation">(</span>
+    openapi<span class="token punctuation">.</span>Info<span class="token punctuation">(</span>
+        title<span class="token operator">=</span><span class="token string">"****后端"</span><span class="token punctuation">,</span>
+        default_version<span class="token operator">=</span><span class="token string">"v1"</span><span class="token punctuation">,</span>
+        description<span class="token operator">=</span><span class="token string">"西安**智能科技-物业管理后端API"</span><span class="token punctuation">,</span>
+        <span class="token comment"># terms_of_service="https://www.google.com/policies/terms/",</span>
+        contact<span class="token operator">=</span>openapi<span class="token punctuation">.</span>Contact<span class="token punctuation">(</span>email<span class="token operator">=</span><span class="token string">"f_ding@126.com"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        license<span class="token operator">=</span>openapi<span class="token punctuation">.</span>License<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"BSD License"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    public<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    permission_classes<span class="token operator">=</span><span class="token punctuation">(</span>permissions<span class="token punctuation">.</span>AllowAny<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    generator_class<span class="token operator">=</span>OpenAPISchemaGenerator<span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token comment"># 根部路由</span>
+    path<span class="token punctuation">(</span>
+        <span class="token string">""</span><span class="token punctuation">,</span>
+        schema_view<span class="token punctuation">.</span>with_ui<span class="token punctuation">(</span><span class="token string">"swagger"</span><span class="token punctuation">,</span> cache_timeout<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        name<span class="token operator">=</span><span class="token string">"schema-swagger-ui"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment"># 自动生成接口文档</span>
+    path<span class="token punctuation">(</span>
+        <span class="token string">r"redoc/"</span><span class="token punctuation">,</span>
+        schema_view<span class="token punctuation">.</span>with_ui<span class="token punctuation">(</span><span class="token string">"redoc"</span><span class="token punctuation">,</span> cache_timeout<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        name<span class="token operator">=</span><span class="token string">"schema-redoc"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最后注册相关应用到Django总配置文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'drf_yasg'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="访问测试"><a href="#访问测试" class="headerlink" title="访问测试"></a>访问测试</h3><p>打开浏览器访问<code>localhost:8080</code> 你会发现已经正常工作，如果没有显示任何接口可能是你的项目未使用DRF开发接口。</p>
+<p><img src="/images/2022-06-28-Swagger3/image-20230703112934111.png" alt="image-20230703112934111"></p>
 
             </div>
             <hr/>
@@ -1286,7 +1333,7 @@
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

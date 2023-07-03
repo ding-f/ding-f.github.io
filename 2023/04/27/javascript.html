@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-06-11 11:06:87
+                        2023-06-13 23:06:71
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.9k
+                        2.6k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        11 分
                     </div>
                 
 
@@ -527,7 +527,127 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="开发常用"><a href="#开发常用" class="headerlink" title="开发常用"></a>开发常用</h2><h3 id="JS数组合并"><a href="#JS数组合并" class="headerlink" title="JS数组合并"></a>JS数组合并</h3><blockquote>
+                <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="var、let、const"><a href="#var、let、const" class="headerlink" title="var、let、const"></a>var、let、const</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/forcheng/p/13033976.html">深入理解JS：var、let、const的异同</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-let-const.html">菜鸟教程：JavaScript let 和 const</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const">MDN web docs：const</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>作用域</th>
+<th>同一作用域重复声明</th>
+<th>绑定全局对象</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>var</strong></td>
+<td>如果：函数内，则只作用于函数内，跟随函数生命周期<br />如果：函数外，则脚本内全局，跟随脚本生命周期<br /></td>
+<td>允许，将覆盖之前的定义。</td>
+<td>绑定</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>let</strong></td>
+<td>所处的代码块<code>&#123;&#125;</code>内有效，外代码块与被包含代码块内外不互相影响，内的let只有效内，外let只有效外。</td>
+<td>不允许</td>
+<td>不绑定<br />（即：console.log(this.[let变量]) // undefined）</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>const</strong>（声明只读，声明必须初始化）</td>
+<td>与let相同</td>
+<td>不允许，不可被改写覆盖</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>需要注意的是，<code>const</code> 和 <code>let</code> 是在 ES6 (ECMAScript 2015) 中引入的，而 <code>var</code> 是旧版本 JavaScript 中使用的声明变量的方式。在现代的 JavaScript 开发中，推荐使用 <code>const</code> 和 <code>let</code> 来声明变量，根据具体的需求选择合适的关键字。<code>const</code> 适用于声明不需要重新赋值的常量或引用类型，而 <code>let</code> 适用于需要重新赋值的变量，同时提供了更好的作用域控制。<code>var</code> 在大多数情况下已经不推荐使用，但在特定情况下仍然可以使用，例如需要兼容旧版本 JavaScript 或在全局作用域中声明变量。</p>
+<p><strong>var 与 let作用域：</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">varTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 函数块中，同一个变量</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+  <span class="token punctuation">&#125;</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">letTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 代码块中，新的变量</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+  <span class="token punctuation">&#125;</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">varTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">letTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>var与let同一作用域：</strong></p>
+<ul>
+<li><p>var示例：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+
+<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 4</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>let示例：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// SyntaxError: Identifier 'a' has already been declared</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+</li>
+</ul>
+<p><strong>let 与 const ：</strong></p>
+<ul>
+<li><p>相同</p>
+<ul>
+<li>二者都是块级作用域</li>
+<li>都不能和它所在作用域内的其他变量或函数拥有相同的名称</li>
+</ul>
+</li>
+<li><p>异同</p>
+<ul>
+<li><p><code>const</code>声明的常量必须初始化，而<code>let</code>声明的变量不用</p>
+</li>
+<li><p>const 定义常量的值不能通过再赋值修改，也不能再次声明（数组、对象内部数据可修改）。而 let 定义的变量值可以修改。</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> a<span class="token punctuation">;</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">"constant"</span>
+
+a <span class="token operator">=</span> <span class="token string">"variable"</span>
+b <span class="token operator">=</span> <span class="token string">'change'</span> <span class="token comment">// TypeError: Assignment to constant variable</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="开发常用"><a href="#开发常用" class="headerlink" title="开发常用"></a>开发常用</h2><h3 id="JS数组合并"><a href="#JS数组合并" class="headerlink" title="JS数组合并"></a>JS数组合并</h3><blockquote>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/github_35780607/article/details/110528481">CSDN-IMJCW：JS数组合并(5种)</a></p>
 </blockquote>
@@ -569,7 +689,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.likecs.com/ask-420230.html">爱码网：${}（美元符号和花括号）在 Javascript 中的字符串中是什么意思？</a></p>
 </blockquote>
-<h2 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a><strong>字符串插值</strong></h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span><span class="token punctuation">;</span>
+<h3 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Let's meet at the </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>foo<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// Let's meet at the bar</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
@@ -634,6 +754,27 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><code>deleteCount</code>：可选参数，表示要删除的元素个数，如果省略该参数或为 0，则不删除任何元素。</li>
 <li><code>item1, item2, ...</code>：可选参数，表示要添加到数组中的元素。</li>
 </ul>
+<h3 id="过滤数组空元素"><a href="#过滤数组空元素" class="headerlink" title="过滤数组空元素"></a>过滤数组空元素</h3><blockquote>
+<p>过滤去除数组的空元素，返回false会删除，即null或者undefine。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37796017/article/details/90229667">CSDN：js去除数组中的null空值</a></p>
+</blockquote>
+<p>例：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'2'</span><span class="token punctuation">,</span><span class="token string">'3'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token keyword">undefined</span><span class="token punctuation">,</span><span class="token string">'7'</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">'9'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> r <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> s <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 注：IE9(不包含IE9)以下的版本没有trim()方法</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 将会返回非空元素：[‘2’,‘3’,‘7’,‘9’]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
 <h2 id="传统异步和async-await异步"><a href="#传统异步和async-await异步" class="headerlink" title="传统异步和async/await异步"></a>传统异步和async/await异步</h2><blockquote>
 <p>传统异步会导致两个主要的问题分别是：</p>
 <ol>
@@ -1303,7 +1444,7 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

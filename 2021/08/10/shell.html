@@ -455,14 +455,14 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-05-26 17:05:24
+                        2023-06-16 11:06:88
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2k
+                        2.2k
                     </div>
                 
 
@@ -724,6 +724,21 @@ Immortal-Arch ॐ  ~:
 <h2 id="管道符"><a href="#管道符" class="headerlink" title="管道符"></a>管道符</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> aaa <span class="token operator">&amp;&amp;</span> <span class="token function">ls</span>        <span class="token comment">#前面的执行成功后面的才可以执行</span>
 <span class="token builtin class-name">cd</span> aaa <span class="token operator">||</span> <span class="token function">ls</span>        <span class="token comment">#前面的执行不成功，后面的才执行，f反之后不执行</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="软著"><a href="#软著" class="headerlink" title="软著"></a>软著</h3><p><strong>代码文件</strong></p>
+<p>申请软著需要一份.doc文档,将项目中所有文件(指定文件类型),正则匹配满足条件的文件类型去除空行输出到<code>output.txt</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> -type f <span class="token punctuation">\</span><span class="token punctuation">(</span> -name <span class="token string">"*.vue"</span> -o -name <span class="token string">"*.js"</span> <span class="token punctuation">\</span><span class="token punctuation">)</span>  -exec <span class="token function">sed</span> <span class="token string">'/^\s*$/d'</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> + <span class="token operator">>></span> output.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><code>find .</code>找出所有本目录包含子目录<code>-type f</code>中的所有文件</li>
+<li><code>&#123;&#125; +</code>将查找到的所有文件放到<code>&#123;&#125;</code>处,<code>+</code> 表示将多个文件一次传递给 <code>sed</code> 命令以提高效率。</li>
+<li><code>-exec</code>执行指令<code>sed &#39;/^\s*$/d&#39;</code>去除<code>&#123;&#125;</code>中文件所有空格</li>
+<li><code>&gt;&gt;</code>将所有内容追加到output.txt文件</li>
+</ul>
+<p><strong>代码总行</strong></p>
+<p>统计所有代码行数</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">wc <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">find . -name '*.js' -o -name '*.vue' -o -name '*.json'</span><span class="token template-punctuation string">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
             </div>
             <hr/>
@@ -1200,7 +1215,7 @@ Immortal-Arch ॐ  ~:
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

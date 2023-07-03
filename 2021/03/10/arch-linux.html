@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-06-08 11:06:66
+                        2023-06-16 17:06:85
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        6.1k
+                        6.3k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        25 分
+                        26 分
                     </div>
                 
 
@@ -951,7 +951,7 @@ abcd 0005.txt efgh 0005.md
 <p>打开Dolphin文件管理器地址栏上直接输入，按回车会进行用户名密码的校验：</p>
 <pre class="line-numbers language-none"><code class="language-none">sftp:&#x2F;&#x2F;&lt;用户名&gt;@&lt;主机地址&#x2F;域名&gt;:&lt;端口号&gt;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="常用-amp-实用命令总结"><a href="#常用-amp-实用命令总结" class="headerlink" title="常用&amp;实用命令总结"></a>常用&amp;实用命令总结</h2><h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h3><blockquote>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h3><blockquote>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Sudo">ArchLinux-WiKi：Sudo</a></p>
 </blockquote>
@@ -1149,6 +1149,22 @@ arch-linux ॐ  ~/Desktop:
 <li><code>--max-depth=1</code>：限制显示深度为 1 级，即仅显示子目录或文件的大小，不显示其子目录或文件的大小。</li>
 <li><code>-a</code>：显示目录中所有文件和子目录的大小，包括隐藏文件。</li>
 <li><code>| sort -hr</code>：将 <code>du -ah</code> 命令的输出结果通过管道符传递给 <code>sort</code> 命令进行排序，其中 <code>-h</code> 选项表示以易读的方式排序，<code>-r</code> 选项表示逆序排序。</li>
+</ul>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>列出所有当前监听的TCP端口</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">netstat</span> -tln<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将显示所有当前活动的网络连接，包括TCP和UDP连接，以及监听的端口号</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">netstat</span> -tuln<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将显示当前所有正在使用的端口以及它们对应的进程ID（PID）和进程名称</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">netstat</span> -tulpn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><code>-t</code> 选项表示只显示TCP协议相关的连接和监听状态。</li>
+<li><code>-u</code> 选项表示只显示UDP协议相关的连接和监听状态。</li>
+<li><code>-l</code> 选项表示只显示监听状态（被本地主机监听的端口）。</li>
+<li><code>-p</code> 选项表示显示与端口相关的进程信息，包括进程ID（PID）和进程名称。</li>
+<li><code>-n</code> 选项表示以数值形式显示IP地址和端口号，而不进行主机和端口的反向解析。</li>
 </ul>
 <h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><h3 id="OpenSSH-（请点击标签-Linux软件）"><a href="#OpenSSH-（请点击标签-Linux软件）" class="headerlink" title="OpenSSH （请点击标签: Linux软件）"></a>OpenSSH （请点击标签: Linux软件）</h3><h3 id="APFS-FUSE-Driver-for-Linux"><a href="#APFS-FUSE-Driver-for-Linux" class="headerlink" title="APFS FUSE Driver for Linux"></a>APFS FUSE Driver for Linux</h3><blockquote>
 <p>Linux上读取apfs的工具，常应用于Mac Linux双系统，Mac系统出问题，切换Linux上读取Mac文系统资料。</p>
@@ -1652,7 +1668,7 @@ arch-linux ॐ  ~/Desktop:
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

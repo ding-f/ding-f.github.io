@@ -1,0 +1,1556 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Django Rest Framework, 铸鼎_">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Django Rest Framework | 铸鼎_</title>
+    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/islu.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    
+
+    
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <!--  加载动画，强制加载0.5s  -->
+    <div id="loading-container">
+    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+
+
+<!--    顶部导航栏   -->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <div>
+                        
+                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
+                        
+                        <span class="logo-span">铸鼎_</span>
+                    </div>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" id="" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>博主</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" id="contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" id="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li id="fullscreen_li" class="fullscreen">
+      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
+          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
+      </a>
+  </li>
+
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">铸鼎_</div>
+        <div class="logo-desc">
+            
+                Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+            <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+
+                        首页
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        文章
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/tags "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-tags"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>标签</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="/categories "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-bookmark"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>分类</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+
+                        归档
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        关于
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/about "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-user-circle"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>博主</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+
+                        留言
+                    </a>
+                
+            </li>
+        
+            <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+
+                        链接
+                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <ul
+                    
+                        style="background:  ;"
+                            
+                    >
+                        
+                            <li>
+                                <a href="/friends "
+                                   style="margin-left:0px">
+                                    
+                                        <i class="fa fas fa-address-book"
+                                           style="position: absolute;left:28px">
+                                        </i>
+                                    
+                                    <span>友情链接</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('禁止访问，仅内部授权！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/error.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Django Rest Framework</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                        <span id="publishDate">
+                            2023-06-15
+                        </span>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        2023-06-30 17:06:21
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        5.1k
+                    </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        20 分
+                    </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <!--    添加更新时间截    -->
+        
+            <div class="uk-alert">
+                <p id="thisTime">
+                    <span id="timeLag"></span>
+                </p>
+            </div>
+            <script>
+                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
+                let date2 = new Date();    /*当前时间*/
+                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
+
+                /*计算出相差天数*/
+                let days = Math.floor(date3 / (24 * 3600 * 1000));
+
+                let thisTime = document.getElementById("thisTime");
+                let timeLag = document.getElementById("timeLag");
+                if (days <= 7) {
+                    thisTime.classList.add("uk-alert-success");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
+                } else if (7 < days && days <= 30) {
+                    thisTime.classList.add("uk-alert-warning");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
+                } else {
+                    thisTime.classList.add("uk-alert-danger");
+                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
+                }
+            </script>
+        
+        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/">
+        
+
+        
+            <!-- 代码块折行 -->
+            <style type="text/css">
+                code[class*="language-"], pre[class*="language-"] {
+                    white-space: pre-wrap !important;
+                }
+            </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Django REST Framework（简称DRF）是一个用于构建Web API的强大框架，基于Django开发。它提供了许多工具和库，使得构建和管理Web API变得简单和高效。DRF结合了Django的强大特性和灵活性，使开发人员能够轻松地创建功能强大、安全和可扩展的API。</p>
+<p>Django REST Framework（DRF）是基于Django框架构建的，并且依赖于Django的核心功能。DRF扩展了Django，提供了用于构建Web API的额外功能和工具。要使用Django REST Framework，需要首先安装和配置Django。DRF是作为Django的一个扩展包提供的，可以在Django项目中引入DRF，以便利用其提供的API构建功能和特性。</p>
+</blockquote>
+<p>以下是一些Django REST Framework的主要特性：</p>
+<ol>
+<li>序列化：DRF提供了一个强大的序列化系统，用于将数据库模型和其他数据类型转换为JSON、XML或其他格式的数据。它使得数据的转换和传输变得简单，并且可以轻松地处理数据验证和反序列化。</li>
+<li>视图：DRF提供了一组视图类，用于处理API请求和生成响应。它支持基于函数的视图和基于类的视图，并提供了一些常用的视图类，如通用视图和混合视图，以帮助开发人员更轻松地构建API。</li>
+<li>路由：DRF的路由系统使得定义API的URL变得简单和可维护。它允许开发人员将URL模式与视图类关联起来，从而实现API的映射。</li>
+<li>认证和权限控制：DRF提供了可配置的认证和权限控制系统，用于保护API的安全性。开发人员可以选择使用基于令牌、基于Session、基于OAuth等不同的认证方式，并且可以定义细粒度的权限控制规则。</li>
+<li>流量限制和缓存：DRF支持流量限制和缓存机制，可以帮助开发人员管理API的流量和性能。它允许设置访问频率限制，以避免滥用和DDoS攻击，并提供了缓存机制，以减少对数据库的频繁访问。</li>
+<li>文档生成：DRF自带了一个强大的文档生成工具，可以自动生成API的交互式文档。开发人员可以轻松地查看API的细节、参数和示例，并通过文档进行API的测试和调试。</li>
+</ol>
+<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><blockquote>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.1/">Django官网文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.django.cn/forum/forum-5.html">django中文网-3756404@qq.com :Django常用 命令</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1642134">腾讯云-老齐：彻底搞懂Django中的数据迁移</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33243661/startapp-with-manage-py-to-create-app-in-another-directory">stack Overflow-Liondancer：startapp with manage.py to create app in another directory</a></p>
+</blockquote>
+<h3 id="基础项目"><a href="#基础项目" class="headerlink" title="基础项目"></a>基础项目</h3><p><strong>虚拟环境</strong></p>
+<p>项目中的依赖全部包含在venv,此时选用的Python3.8进虚拟环境</p>
+<pre class="line-numbers language-none"><code class="language-none">python3.8 -m venv venv <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>激活虚拟环境</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> venv/bin/activate     <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>激活成功后打印<code>python --version</code>即是你已经激活的虚拟环境</p>
+<p><strong>安装Django</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> django<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>创建项目</strong></p>
+<p>进入你的项目根目录,如果你不加<code>./</code>它会创建<code>application</code>文件夹包裹<code>/application</code>+<code>manage.py</code></p>
+<pre class="line-numbers language-none"><code class="language-none">django-admin startproject application .&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此命令创建了一个项目到项目根目录</p>
+<pre class="line-numbers language-none"><code class="language-none">$ ls
+application  manage.py  venv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>创建应用模块</strong></p>
+<p>我的习惯是将所有的应用模块放在项目根目录中专门放置应用模块的一个文件夹<code>/modules</code>,以下先创建<code>sms</code>项目模块的目录,再执行以下</p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py startapp msm .&#x2F;modules&#x2F;msm <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建了一个名为sms的应用模块到<code>./modules/msm</code> </p>
+<p><strong>尝试启动服务</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python manage.py runserver 
+Watching <span class="token keyword">for</span> <span class="token function">file</span> changes with StatReloader
+Performing system checks<span class="token punctuation">..</span>.
+
+System check identified no issues <span class="token punctuation">(</span><span class="token number">0</span> silenced<span class="token punctuation">)</span>.
+
+You have <span class="token number">18</span> unapplied migration<span class="token punctuation">(</span>s<span class="token punctuation">)</span>. Your project may not work properly <span class="token keyword">until</span> you apply the migrations <span class="token keyword">for</span> app<span class="token punctuation">(</span>s<span class="token punctuation">)</span>: admin, auth, contenttypes, sessions.
+Run <span class="token string">'python manage.py migrate'</span> to apply them.
+June <span class="token number">16</span>, <span class="token number">2023</span> - 09:06:27
+Django version <span class="token number">4.2</span>.2, using settings <span class="token string">'application.settings'</span>
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的意思是你的项目中存在18个迁移文件尚未应用到数据库中的相关应用程序</p>
+<p>这些迁移是由Django内置的应用程序（admin、auth、contenttypes和sessions）生成的。</p>
+<p>数据库迁移是Django用于管理数据库模式更改的机制。当你在Django应用程序中修改了模型（Model）的定义时，你需要生成迁移文件来记录这些变更。然后，通过应用这些迁移，可以将数据库模式与你的模型定义同步。</p>
+<p><strong>数据迁移</strong></p>
+<p>一般情况下更改了某个模块的models.py,就需要进行生成migrations文件夹与models.py对应的表结构</p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但这次只需要进行这个操作,原因是这个是Django内部模块已经执行过以上步骤了</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial<span class="token punctuation">..</span>. OK
+  Applying auth.0001_initial<span class="token punctuation">..</span>. OK
+  Applying admin.0001_initial<span class="token punctuation">..</span>. OK
+  Applying admin.0002_logentry_remove_auto_add<span class="token punctuation">..</span>. OK
+  Applying admin.0003_logentry_add_action_flag_choices<span class="token punctuation">..</span>. OK
+  Applying contenttypes.0002_remove_content_type_name<span class="token punctuation">..</span>. OK
+  Applying auth.0002_alter_permission_name_max_length<span class="token punctuation">..</span>. OK
+  Applying auth.0003_alter_user_email_max_length<span class="token punctuation">..</span>. OK
+  Applying auth.0004_alter_user_username_opts<span class="token punctuation">..</span>. OK
+  Applying auth.0005_alter_user_last_login_null<span class="token punctuation">..</span>. OK
+  Applying auth.0006_require_contenttypes_0002<span class="token punctuation">..</span>. OK
+  Applying auth.0007_alter_validators_add_error_messages<span class="token punctuation">..</span>. OK
+  Applying auth.0008_alter_user_username_max_length<span class="token punctuation">..</span>. OK
+  Applying auth.0009_alter_user_last_name_max_length<span class="token punctuation">..</span>. OK
+  Applying auth.0010_alter_group_name_max_length<span class="token punctuation">..</span>. OK
+  Applying auth.0011_update_proxy_permissions<span class="token punctuation">..</span>. OK
+  Applying auth.0012_alter_user_first_name_max_length<span class="token punctuation">..</span>. OK
+  Applying sessions.0001_initial<span class="token punctuation">..</span>. OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>默认情况下,数据会被迁移到项目根目录下的<code>db.sqlite3</code>文件中,此文件使用<code>sqlite3 db.sqlite3</code>命令访问数据库,图形化使用<code>sqlitebrowser</code>。</p>
+<p>数据迁移就是按照模型只是将表结构(无数据)导入到了数据库,如图所示</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616221501144.png" alt="DB Browser for SQLite"></p>
+<p>数据库中的数据可以使用Json方式/sql文件导入</p>
+<p><strong>再次启动服务</strong></p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616222823449.png" alt="image-20230616222823449"></p>
+<p><strong>Django管理界面</strong></p>
+<p>访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/admin/,%E5%87%BA%E7%8E%B0Django">http://127.0.0.1:8000/admin/,出现Django</a> administration登陆对话框</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616232256024.png" alt="image-20230616232256024"></p>
+<p>用户名&amp;密码需要运行:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ python manage.py createsuperuser 
+Username <span class="token punctuation">(</span>leave blank to use <span class="token string">'fuding'</span><span class="token punctuation">)</span>: admin
+Email address: f_ding@126.com
+Password: <span class="token punctuation">[</span>admin<span class="token punctuation">]</span>
+Password <span class="token punctuation">(</span>again<span class="token punctuation">)</span>: <span class="token punctuation">[</span>admin<span class="token punctuation">]</span>
+The password is too similar to the username.
+This password is too short. It must contain at least <span class="token number">8</span> characters.
+This password is too common.
+Bypass password validation and create user anyway? <span class="token punctuation">[</span>y/N<span class="token punctuation">]</span>: y
+Superuser created successfully.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>创建了用户admin,密码admin,即可登陆</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616231851504.png" alt="image-20230616231851504"></p>
+<h3 id="manage-py"><a href="#manage-py" class="headerlink" title="manage.py"></a>manage.py</h3><blockquote>
+<p>可执行命令行操作Django项目的相关命令,它们涵盖了开发、测试、数据库管理和部署等方面的常用操作。</p>
+</blockquote>
+<p><strong>常用</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py &lt;options&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol>
+<li><code>runserver</code>：启动开发服务器，用于在本地运行Django应用程序。</li>
+<li><code>startapp &lt;app_name&gt;</code>：创建一个新的Django应用程序。</li>
+<li><code>makemigrations</code>：根据模型的更改生成数据库迁移文件。</li>
+<li><code>migrate</code>：应用数据库迁移，将数据库模式与模型定义同步。</li>
+<li><code>createsuperuser</code>：创建超级用户，用于管理Django管理界面。</li>
+<li><code>shell</code>：启动Django的交互式Python Shell，可以在其中执行Python代码和与数据库交互。</li>
+<li><code>test</code>：运行应用程序的测试套件，执行单元测试和集成测试。</li>
+<li><code>collectstatic</code>：收集静态文件到指定的静态文件目录，用于生产环境的部署。</li>
+<li><code>flush</code>：清空数据库中的所有数据，包括所有应用程序的表格和数据。</li>
+<li><code>dbshell</code>：通过命令行进入数据库的交互式Shell，用于执行原生的SQL查询和操作。</li>
+<li><code>dumpdata</code>：将数据库中的数据导出为JSON或XML格式，用于备份或数据迁移。</li>
+<li><code>loaddata</code>：从JSON或XML文件中加载数据到数据库中，用于恢复备份或导入数据。</li>
+<li><code>check</code>：检查项目的完整性和一致性，包括模型的验证和配置问题。</li>
+<li><code>showmigrations</code>：显示每个应用程序中的迁移状态，包括已应用和未应用的迁移文件。</li>
+</ol>
+<h3 id="setting-py"><a href="#setting-py" class="headerlink" title="setting.py"></a>setting.py</h3><blockquote>
+<p>Django项目的总配置文件</p>
+</blockquote>
+<h4 id="INSTALLED-APPS"><a href="#INSTALLED-APPS" class="headerlink" title="INSTALLED_APPS"></a>INSTALLED_APPS</h4><p><strong>作用</strong></p>
+<p>这个配置项告诉Django（如果你是在Django项目中使用<code>settings.py</code>）需要启用哪些应用程序，并将它们添加到项目中。这样，Django会自动加载这些应用程序并为你提供它们所提供的功能。</p>
+<p><strong>实例</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">INSTALLED_APPS &#x3D; [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+    &#39;rest_framework&#39;,
+    &#39;modules.sms&#39;,
+    &#39;drf_yasg&#39;,
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol>
+<li>项目内部应用程序：这些应用程序是你自己在项目中开发的应用程序，可以通过相对路径或模块路径指定，如<code>&#39;myapp&#39;</code>或<code>&#39;myproject.myapp&#39;</code>。</li>
+<li>第三方应用程序：这些应用程序是由其他开发者或组织开发的，用于提供特定的功能或服务。你可以通过包名称指定它们，如<code>&#39;django.contrib.admin&#39;</code>或<code>&#39;rest_framework&#39;</code>。</li>
+<li>Django内置应用程序：Django本身提供了一些内置应用程序，用于处理常见的任务和功能，如用户认证、管理后台等。你可以通过包名称指定它们，如<code>&#39;django.contrib.auth&#39;</code>或<code>&#39;django.contrib.contenttypes&#39;</code>。</li>
+</ol>
+<h2 id="DjangoRestFramework"><a href="#DjangoRestFramework" class="headerlink" title="DjangoRestFramework"></a>DjangoRestFramework</h2><blockquote>
+</blockquote>
+<p><strong>简单总结</strong> 2023-6-20</p>
+<ul>
+<li><p>models.py</p>
+<ul>
+<li>类名对应数据库中的数据表,其中属性用于定义数据库表结构中的字段,迁移时将models.py中的代码可生成各种数据库中的表[Django提供]</li>
+</ul>
+</li>
+<li><p>serializers.py</p>
+<ul>
+<li><p>Serializer设置内部类中设置<code>model = &lt;某个models&gt;</code>用于查询数据在数据库中是那个表,<code>fields = &lt;字段范围&gt;</code>可理解为存取数据的位置</p>
+</li>
+<li><p><code>code = serializers.CharField()</code>,提供了一些配置选项，如最大长度、是否唯一、是否必填、默认值等,请求的时候这个参数是用来接收&amp;验证请求中的Json字段<code>code</code></p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="路由（Router）"><a href="#路由（Router）" class="headerlink" title="路由（Router）"></a>路由（Router）</h3><p><strong>DefaultRouter()/SimpleRouter()</strong></p>
+<p>无论默认路由/简单路由都会有一个常用的方法：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">system_url <span class="token operator">=</span> routers<span class="token punctuation">.</span>SimpleRouter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+system_url<span class="token punctuation">.</span>register<span class="token punctuation">(</span><span class="token string">r'user'</span><span class="token punctuation">,</span> UserViewSet<span class="token punctuation">)</span>
+<span class="token comment"># 需要将生成的Django路由添加到 urlpatterns</span>
+urlpatterns <span class="token operator">+=</span> system_url<span class="token punctuation">.</span>urls<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此方法可根据View中Djangorestframework提供的增删改查方法自动生成CURD接口路由提供给Django传统路由<code>urlpatterns</code>。</p>
+<p>UserViewSet中如果继承常用的</p>
+<ul>
+<li>mixins.CreateModelMixin — POST</li>
+<li>mixins.RetrieveModelMixin — GET</li>
+<li>mixins.UpdateModelMixin — PUT / PATCH</li>
+<li>mixins.DestroyModelMixin — DELETE</li>
+<li>mixins.ListModelMixin — GET</li>
+</ul>
+<p>使用<code>system_url.register(r&#39;user&#39;, UserViewSet)</code>会自动注册相关以上对应的RestFull接口5大方法，如图所示（来自一个开源项目）。</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230628123154489.png" alt="image-20230628123154489"></p>
+<p>Django中的<code>urlpatterns</code>例如需要手动添加路由映射到增删改查的方法。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">UserViewSet<span class="token punctuation">.</span>as_view<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'get'</span><span class="token punctuation">:</span> <span class="token string">'import_data'</span><span class="token punctuation">,</span> <span class="token string">'post'</span><span class="token punctuation">:</span> <span class="token string">'import_data'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+<h3 id="视图（View）"><a href="#视图（View）" class="headerlink" title="视图（View）"></a>视图（View）</h3><h4 id="ModelViewSet"><a href="#ModelViewSet" class="headerlink" title="ModelViewSet"></a>ModelViewSet</h4><p>综合常用操作的视图，通过阅读以下源码可知，DRF已经将 增删改查 &amp;  GenericViewSet 已经继承到ModelViewSet中，等于说一般增删改查只需继承这一个类就可实现对数据库表的常用基础操作。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> rest_framework<span class="token punctuation">.</span>viewsets <span class="token keyword">import</span> ModelViewSet
+
+<span class="token keyword">class</span> <span class="token class-name">ModelViewSet</span><span class="token punctuation">(</span>mixins<span class="token punctuation">.</span>CreateModelMixin<span class="token punctuation">,</span>
+                   mixins<span class="token punctuation">.</span>RetrieveModelMixin<span class="token punctuation">,</span>
+                   mixins<span class="token punctuation">.</span>UpdateModelMixin<span class="token punctuation">,</span>
+                   mixins<span class="token punctuation">.</span>DestroyModelMixin<span class="token punctuation">,</span>
+                   mixins<span class="token punctuation">.</span>ListModelMixin<span class="token punctuation">,</span>
+                   GenericViewSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    A viewset that provides default `create()`, `retrieve()`, `update()`,
+    `partial_update()`, `destroy()` and `list()` actions.
+    """</span>
+    <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>混合类<ul>
+<li><code>mixins.CreateModelMixin</code>：该混合类提供了创建模型实例的功能。它包含了一个 <code>create</code> 方法，用于处理 POST 请求并创建新的模型实例。</li>
+<li><code>mixins.UpdateModelMixin</code>：该混合类提供了更新模型实例的功能。它包含了一个 <code>update</code> 方法，用于处理 PUT 或 PATCH 请求并更新现有的模型实例。</li>
+<li><code>mixins.DestroyModelMixin</code>：该混合类提供了删除模型实例的功能。它包含了一个 <code>destroy</code> 方法，用于处理 DELETE 请求并删除指定的模型实例。</li>
+<li><code>mixins.ListModelMixin</code>：这是DRF提供的一个混合类，用于实现获取列表数据的功能。它添加了<code>list()</code>方法，用于处理 GET 请求并返回模型实例的列表。</li>
+<li><code>mixins.RetrieveModelMixin</code>：这是DRF提供的另一个混合类，用于实现获取单个数据对象的功能。它添加了<code>retrieve()</code>方法，处理 GET 请求并返回指定模型实例的详细信息。</li>
+</ul>
+</li>
+<li>通用视图基类<ul>
+<li><code>viewsets.GenericViewSet</code>：这是DRF提供的通用视图集基类，它结合了不同的混合类，并提供了默认的视图行为。通过继承<code>GenericViewSet</code>，可以创建具有常用CRUD（创建、读取、更新、删除）操作的视图集。</li>
+</ul>
+</li>
+</ul>
+<h4 id="queryset"><a href="#queryset" class="headerlink" title="queryset"></a>queryset</h4><p><strong>作用</strong></p>
+<ul>
+<li>数据范围控制：通过指定 <code>queryset</code>，可以明确指定视图操作的数据范围。这样可以确保只在特定的数据集上执行操作，而不会影响其他数据。例如，可以使用 <code>queryset</code> 仅查询特定用户的数据或特定时间范围内的数据。</li>
+<li>数据过滤：<code>queryset</code> 允许你使用过滤器和查询条件对数据进行过滤。这样可以根据特定的条件从数据集中筛选出满足条件的记录。例如，可以使用 <code>queryset</code> 来仅获取状态为已发布的文章或价格在特定范围内的商品。</li>
+<li>数据排序：<code>queryset</code> 允许对数据进行排序。你可以根据某个字段对数据进行升序或降序排序。这样可以确保在返回给客户端或进行后续处理时，数据以特定的顺序呈现。</li>
+<li>数据性能优化：通过使用 <code>queryset</code>，可以利用数据库的查询优化功能，提高数据访问和操作的性能。数据库可以针对 <code>queryset</code> 执行适当的索引和优化操作，从而提供更高效的查询和操作速度。</li>
+</ul>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p><strong>常见报错</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">VerySMSViewSet</span><span class="token punctuation">(</span>viewsets<span class="token punctuation">.</span>GenericViewSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+    <span class="token comment"># 加上以下就会解决</span>
+    <span class="token comment"># queryset = VerifyCode.objects.all() </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-none"><code class="language-none">assert queryset is not None, &#39;&#96;basename&#96; argument not specified, and could &#39; \
+AssertionError: &#96;basename&#96; argument not specified, and could not automatically determine the name from the viewset, as it does not have a &#96;.queryset&#96; attribute.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这个错误是由于在使用 Django REST Framework (DRF) 中的视图集（Viewset）时，没有指定视图集的 <code>basename</code> 参数，并且 DRF 无法自动从视图集中确定名称，因为它没有 <code>.queryset</code> 属性。</p>
+<p>在 DRF 的视图集中，需要提供一个 <code>basename</code> 参数，用于指定视图集的名称。<code>basename</code> 用于在路由中生成 URL 名称，以确保正确地匹配视图集的操作。</p>
+<p>解决这个错误的方法是在视图集中指定 <code>basename</code> 参数，例如：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pythonCopy codeclass MyViewSet<span class="token punctuation">(</span>viewsets<span class="token punctuation">.</span>ViewSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    queryset <span class="token operator">=</span> MyModel<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serializer_class <span class="token operator">=</span> MySerializer
+    basename <span class="token operator">=</span> <span class="token string">'my-model'</span>  <span class="token comment"># 指定视图集的名称</span>
+
+    <span class="token comment"># 其他视图集的代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>确保将 <code>basename</code> 参数设置为适当的名称，并与视图集的其他配置一起使用。</p>
+<p>如果视图集没有 <code>.queryset</code> 属性，你还可以考虑重写视图集的 <code>get_queryset()</code> 方法来提供查询集。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pythonCopy codeclass MyViewSet<span class="token punctuation">(</span>viewsets<span class="token punctuation">.</span>ViewSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    serializer_class <span class="token operator">=</span> MySerializer
+    basename <span class="token operator">=</span> <span class="token string">'my-model'</span>  <span class="token comment"># 指定视图集的名称</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_queryset</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 返回适当的查询集</span>
+        <span class="token keyword">return</span> MyModel<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 其他视图集的代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>请根据你的视图集的具体配置进行相应的调整，确保提供正确的 <code>basename</code> 参数或重写 <code>get_queryset()</code> 方法。</p>
+<p><strong>源码</strong></p>
+<p>/rest_framework/viewsets.py</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">GenericViewSet</span><span class="token punctuation">(</span>ViewSetMixin<span class="token punctuation">,</span> generics<span class="token punctuation">.</span>GenericAPIView<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    The GenericViewSet class does not provide any actions by default,
+    but does include the base set of generic view behavior, such as
+    the `get_object` and `get_queryset` methods.
+    """</span>
+    <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>/rest_framework/generics.py</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">GenericAPIView</span><span class="token punctuation">(</span>views<span class="token punctuation">.</span>APIView<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Base class for all other generic views.
+    """</span>
+    <span class="token comment"># You'll need to either set these attributes,</span>
+    <span class="token comment"># or override `get_queryset()`/`get_serializer_class()`.</span>
+    <span class="token comment"># If you are overriding a view method, it is important that you call</span>
+    <span class="token comment"># `get_queryset()` instead of accessing the `queryset` property directly,</span>
+    <span class="token comment"># as `queryset` will get evaluated only once, and those results are cached</span>
+    <span class="token comment"># for all subsequent requests.</span>
+    queryset <span class="token operator">=</span> <span class="token boolean">None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>总结：<code>queryset = MyModel.objects.all()</code>加上就会解决，指定 <code>queryset</code> 是为了限定视图操作的数据范围和条件。在 Django 或 Django REST Framework 中，<code>queryset</code> 参数用于指定要在视图中查询、过滤和操作的数据集。</p>
+<h3 id="序列化器（Serializer）"><a href="#序列化器（Serializer）" class="headerlink" title="序列化器（Serializer）"></a>序列化器（Serializer）</h3><h4 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h4><blockquote>
+<p>设置与数据库字段相关名称的Field,才可以使用RestFul接口向设置的Field属性传值,Field参数可以设置限制输入值的一些参数（如下）限制条件。</p>
+</blockquote>
+<ul>
+<li><code>CharField</code>: 用于表示字符类型的字段，如字符串。可用于输入和输出数据。</li>
+<li><code>IntegerField</code>: 用于表示整数类型的字段。可用于输入和输出数据。</li>
+<li><code>FloatField</code>: 用于表示浮点数类型的字段。可用于输入和输出数据。</li>
+<li><code>Boolea nField</code>: 用于表示布尔类型的字段。可用于输入和输出数据。</li>
+<li><code>DateTimeField</code>: 用于表示日期和时间类型的字段。可用于输入和输出数据。</li>
+<li><code>DateField</code>: 用于表示日期类型的字段。可用于输入和输出数据。</li>
+<li><code>TimeField</code>: 用于表示时间类型的字段。可用于输入和输出数据。</li>
+<li><code>EmailField</code>: 用于表示电子邮件地址类型的字段。可用于输入和输出数据。</li>
+<li><code>URLField</code>: 用于表示 URL 类型的字段。可用于输入和输出数据。</li>
+<li><code>SerializerMethodField</code>: 用于表示计算属性或自定义方法的字段。通常用于输出数据，可以根据其他字段的值动态生成字段的值。</li>
+<li><code>ListField</code>: 用于表示列表类型的字段。可用于输入和输出数据。</li>
+<li><code>DictField</code>: 用于表示字典类型的字段。可用于输入和输出数据。</li>
+<li><code>FileField</code>: 用于表示上传文件类型的字段。可用于输入和输出数据。</li>
+<li><code>ImageField</code>: 用于表示上传图像类型的字段。可用于输入和输出数据。</li>
+</ul>
+<p><strong>配置</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">code <span class="token operator">=</span> serializers<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> 
+                              write_only<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> 
+                              max_length<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> min_length<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"验证码"</span><span class="token punctuation">,</span>
+                              error_messages<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+                                     <span class="token string">"blank"</span><span class="token punctuation">:</span> <span class="token string">"请输入验证码"</span><span class="token punctuation">,</span>
+                                     <span class="token string">"required"</span><span class="token punctuation">:</span> <span class="token string">"请输入验证码"</span><span class="token punctuation">,</span>
+                                     <span class="token string">"max_length"</span><span class="token punctuation">:</span> <span class="token string">"验证码格式错误"</span><span class="token punctuation">,</span>
+                                     <span class="token string">"min_length"</span><span class="token punctuation">:</span> <span class="token string">"验证码格式错误"</span>
+                                 <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                               help_text<span class="token operator">=</span><span class="token string">"验证码"</span><span class="token punctuation">)</span>
+username <span class="token operator">=</span> serializers<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>label<span class="token operator">=</span><span class="token string">"用户名"</span><span class="token punctuation">,</span> 
+                                 help_text<span class="token operator">=</span><span class="token string">"用户名"</span><span class="token punctuation">,</span> 
+                                 required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> 
+                                 allow_blank<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+                                 validators<span class="token operator">=</span><span class="token punctuation">[</span>UniqueValidator<span class="token punctuation">(</span>queryset<span class="token operator">=</span>User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> message<span class="token operator">=</span><span class="token string">"用户已经存在"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+password <span class="token operator">=</span> serializers<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>style<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'input_type'</span><span class="token punctuation">:</span> <span class="token string">'password'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                                 help_text<span class="token operator">=</span><span class="token string">"密码"</span><span class="token punctuation">,</span> 
+                                 label<span class="token operator">=</span><span class="token string">"密码"</span><span class="token punctuation">,</span> 
+                                 write_only<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>常用的配置参数</p>
+<ul>
+<li><code>required</code>: 指定字段是否为必填字段，接受布尔值（<code>True</code> 或 <code>False</code>）。默认为 <code>True</code>。</li>
+<li><code>default</code>: 指定字段的默认值，当字段未提供值时将使用该默认值。</li>
+<li><code>allow_null</code>: 指定字段是否允许为 <code>None</code>，接受布尔值。默认为 <code>False</code>。</li>
+<li><code>read_only</code>: 指定字段是否只用于输出，不允许输入。接受布尔值。默认为 <code>False</code>。</li>
+<li><code>write_only</code>: 指定字段是否只用于输入，不会在输出中显示。接受布尔值。默认为 <code>False</code>。</li>
+<li><code>max_length</code>: 用于 <code>CharField</code> 的选项，指定字符字段的最大长度。</li>
+<li><code>min_length</code>: 用于 <code>CharField</code> 的选项，指定字符字段的最小长度。</li>
+<li><code>validators</code>: 指定字段的验证器列表，用于验证字段的值的有效性。</li>
+<li><code>choices</code>: 指定字段的可选值列表或可选值元组，用于限制字段的值。</li>
+<li><code>label</code>: 指定字段的标签，用于显示在序列化输出中或表单中。</li>
+<li><code>help_text</code>: 指定字段的帮助文本，用于显示在表单或 API 文档中。</li>
+</ul>
+<h4 id="Serializer"><a href="#Serializer" class="headerlink" title="Serializer"></a>Serializer</h4><ul>
+<li><code>Serializer</code> 是 DRF 中的基础序列化类，用于将数据转换为<strong>可传输</strong>或<strong>可存储</strong>的格式（如JSON）。</li>
+<li><code>Serializer</code> 提供了灵活的字段定义，可以<strong>手动定义</strong>每个<strong>字段的类型</strong>、<strong>验证规则</strong>和<strong>序列化/反序列化方法</strong>。</li>
+<li><code>Serializer</code> <strong>不直接与数据库模型关联</strong>，因此需要<strong>手动编写字段定义</strong>和数据<strong>操作逻辑</strong>。</li>
+<li><code>Serializer</code> 适用于<strong>处理非模型数据</strong>或需要更多<strong>自定义逻辑</strong>的场景。</li>
+</ul>
+<h4 id="ModelSerializer"><a href="#ModelSerializer" class="headerlink" title="ModelSerializer"></a>ModelSerializer</h4><blockquote>
+<p>如果将本Serializer放入了一个继承ModelViewSet中的View中，设置的对每个输入字段的限制将会互相影响需要上传Body数据的Restful接口，比如，PUT、PATCH，所以需要单独设置PUT、PATCH动作的Serializer，通过动作限制使用的Serializer，从而不会互相干扰上传数据检测。</p>
+</blockquote>
+<ul>
+<li><code>ModelSerializer</code> 是 <code>Serializer</code> 的<strong>子类</strong>，专门<strong>用于与数据库模型进行交互</strong>的序列化器。</li>
+<li><code>ModelSerializer</code> <strong>自动根据模型定义生成字段</strong>，并提供了一些默认的序列化/反序列化逻辑。</li>
+<li><code>ModelSerializer</code> <strong>自动关联模型的字段</strong>和<strong>验证规则</strong>，<strong>简化</strong>了序列化器的编写。</li>
+<li><code>ModelSerializer</code> <strong>自动处理</strong>与数据库模型的<strong>创建、更新和查询等操作</strong>，减少了手动编写数据操作逻辑的工作量。</li>
+<li><code>ModelSerializer</code> <strong>适用于简单的数据库模型交互场景</strong>，能够快速创建符合模型结构的序列化器。</li>
+</ul>
+<p><strong>示例代码</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">VerySMSSerializer</span><span class="token punctuation">(</span>ModelSerializer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    code <span class="token operator">=</span> serializers<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> write_only<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> max_length<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> min_length<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"验证码"</span><span class="token punctuation">,</span>
+                                 error_messages<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+                                     <span class="token string">"blank"</span><span class="token punctuation">:</span> <span class="token string">"请输入验证码"</span><span class="token punctuation">,</span>
+                                     <span class="token string">"required"</span><span class="token punctuation">:</span> <span class="token string">"请输入验证码"</span><span class="token punctuation">,</span>
+                                     <span class="token string">"max_length"</span><span class="token punctuation">:</span> <span class="token string">"验证码格式错误"</span><span class="token punctuation">,</span>
+                                     <span class="token string">"min_length"</span><span class="token punctuation">:</span> <span class="token string">"验证码格式错误"</span>
+                                 <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                                 help_text<span class="token operator">=</span><span class="token string">"验证码"</span><span class="token punctuation">)</span>
+    mobile <span class="token operator">=</span> serializers<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">11</span><span class="token punctuation">,</span>
+                                   error_messages<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+                                       <span class="token string">"max_length"</span><span class="token punctuation">:</span> <span class="token string">"手机号码长度超出"</span>
+                                   <span class="token punctuation">&#125;</span>
+                                   <span class="token punctuation">)</span>
+    add_time <span class="token operator">=</span> serializers<span class="token punctuation">.</span>DateTimeField<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">validate_mobile</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> mobile<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">if</span> <span class="token keyword">not</span> re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span>REGEX_MOBILE<span class="token punctuation">,</span>mobile<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> serializers<span class="token punctuation">.</span>ValidationError<span class="token punctuation">(</span><span class="token string">'手机号码格式不正确'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> mobile
+
+    <span class="token keyword">def</span> <span class="token function">check_code</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> mobile<span class="token punctuation">,</span> code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        code_obj <span class="token operator">=</span> VerifyCode<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>mobile<span class="token operator">=</span>mobile<span class="token punctuation">)</span><span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">"-add_time"</span><span class="token punctuation">)</span>
+        v_time <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> timedelta<span class="token punctuation">(</span>minutes<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>code_obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> code_obj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>add_time <span class="token operator">></span> v_time<span class="token punctuation">:</span>
+                <span class="token keyword">raise</span> serializers<span class="token punctuation">.</span>ValidationError<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'code'</span><span class="token punctuation">:</span> <span class="token string">'验证码过期'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> code_obj<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>code <span class="token operator">!=</span> code<span class="token punctuation">:</span>
+                <span class="token keyword">raise</span> serializers<span class="token punctuation">.</span>ValidationError<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'code'</span><span class="token punctuation">:</span> <span class="token string">'验证码错误'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> serializers<span class="token punctuation">.</span>ValidationError<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'code'</span><span class="token punctuation">:</span> <span class="token string">'未生成验证码'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">validate</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        mobile <span class="token operator">=</span> attrs<span class="token punctuation">[</span><span class="token string">'mobile'</span><span class="token punctuation">]</span>
+        code <span class="token operator">=</span> attrs<span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>check_code<span class="token punctuation">(</span>mobile<span class="token punctuation">,</span> code<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> attrs
+
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        model <span class="token operator">=</span> VerifyCode
+        fields <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'code'</span><span class="token punctuation">,</span> <span class="token string">'mobile'</span><span class="token punctuation">,</span> <span class="token string">'add_time'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>实验</strong></p>
+<ul>
+<li><p>Field 属性作用，在调用接口的时候，对传入数据进行检测，设置参数限制传入数据的合法性</p>
+</li>
+<li><p>Meta 中 fields属性定义参与查询和传入字段</p>
+</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ding-f.gitee.io/2023/06/15/django-rest-framework.html">https://ding-f.gitee.io/2023/06/15/django-rest-framework.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">鼎</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share"
+                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        
+                    </ul>
+                    <div id="alipay_red">
+                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        📣
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<!-- 直达评论 -->
+<div id="to_comment" class="comment-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
+        <i class="fas fa-comments"></i>
+    </a>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '留下你的足迹..',
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["fu_ding@126.com"],
+        master: ["fu_ding@126.com"],
+        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/06/15/django-rest-framework.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/error.jpg" class="responsive-img" alt="Django Rest Framework">
+                        
+                        <span class="card-title">Django Rest Framework</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鼎
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/13/websocket-xie-yi.html">
+                    <div class="card-image">
+                        
+                        <img src="/images/error.jpg" class="responsive-img" alt="WebSocket协议">
+                        
+                        <span class="card-title">WebSocket协议</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            鼎
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+    <script>
+        $('#articleContent').on('copy', function (e) {
+            // IE8 or earlier browser is 'undefined'
+            if (typeof window.getSelection === 'undefined') return;
+
+            var selection = window.getSelection();
+            // if the selection is short let's not annoy our users.
+            if (('' + selection).length < Number.parseInt('120')) {
+                return;
+            }
+
+            // create a div outside of the visible area and fill it with the selected text.
+            var bodyElement = document.getElementsByTagName('body')[0];
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            bodyElement.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            // we need a <pre> tag workaround.
+            // otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            var url = document.location.href;
+            newdiv.innerHTML += '<br />'
+                + '来源: 铸鼎_<br />'
+                + '文章作者: 鼎<br />'
+                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                bodyElement.removeChild(newdiv);
+            }, 200);
+        });
+    </script>
+
+<!-- 高亮CSS-->
+<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
+<!-- 代码块功能依赖 -->
+<script type="text/javascript"
+        src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript"
+            src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+</main>
+
+
+
+
+<!--是否开启暗黑模式-->
+
+<!--footer-->
+<footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        
+        <div class="col s12 m6 l6 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">鼎</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            <br/>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">159.7k</span>&nbsp;
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
+                                                                        class="white-color"></span>&nbsp;
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                                                                           class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+                <span id="sitetime">载入运行时间...</span>
+                <script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "2";
+                        var startDate = "1";
+                        var startHour = "23";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
+                                " h " + diffMinutes + " m " + diffSeconds + " s";
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
+                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
+                        }
+                    }
+
+                    setInterval(siteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m3 l3 social-link social-statis social-statis">
+    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+        
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!--search-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        searchFunc("/search.xml", 'searchInput', 'searchResult')
+    })
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll" title="回到顶部">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/islu.js"></script>
+<script src="/libs/search/search.js"></script>
+
+<!--谷歌广告接入点-->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/libs/others/clicklove.js" async="async"></script>
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+
+
+</body>
+
+</html>

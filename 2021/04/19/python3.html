@@ -418,12 +418,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                    <span class="chip bg-color">基础</span>
-                                </a>
-                            
                                 <a href="/tags/Python/">
                                     <span class="chip bg-color">Python</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">基础</span>
                                 </a>
                             
                         </div>
@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:60
+                        2023-06-30 16:06:88
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        7k
+                        7.6k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        28 分
+                        30 分
                     </div>
                 
 
@@ -1341,10 +1341,36 @@ Guido van Rossum
 
 
 
+<h3 id="内部类-函数"><a href="#内部类-函数" class="headerlink" title="内部类 函数"></a>内部类 函数</h3><p><strong>类</strong></p>
+<blockquote>
+<p>内部类在Python中常用于提供附加的元数据或配置选项，它们通常嵌套在其他类或函数中。在上述代码中，<code>Meta</code>是一个内部类，用于提供模型的元数据配置。</p>
+<p>以下是Django项目中的总结。</p>
+</blockquote>
+<ol>
+<li>指定数据库表名：通过设置<code>db_table</code>属性，可以指定模型在数据库中对应的表名。这对于自定义表名或与现有数据库表进行映射非常有用。</li>
+<li>设置后台管理界面显示名称：通过设置<code>verbose_name</code>属性，可以指定模型在后台管理界面中的显示名称。这对于使后台管理界面更加友好和易于理解非常有用。</li>
+<li>设置复数显示名称：通过设置<code>verbose_name_plural</code>属性，可以指定模型的复数显示名称。通常，它与<code>verbose_name</code>属性的值相同。它在后台管理界面中的一些地方使用，如显示模型的复数名称的列表标题。</li>
+<li>添加额外的配置选项：内部类还可以包含其他配置选项，用于控制模型的行为。例如，可以添加<code>ordering</code>属性来指定模型查询结果的默认排序方式。</li>
+</ol>
+<p><strong>函数</strong></p>
+<blockquote>
+<p>装饰器代码中有内部类，关于装饰器，查看本文装饰器部分</p>
+</blockquote>
+<p>在Python中，可以在一个函数的内部定义另一个函数，这被称为内部函数（inner function）或嵌套函数（nested function）。以下是一个示例：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pythonCopy codedef outer_function<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"This is the inner function."</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"This is the outer function."</span><span class="token punctuation">)</span>
+    inner_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
+<span class="token comment"># 调用外部函数</span>
+outer_function<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<p>在上面的例子中，<code>outer_function</code>是外部函数，<code>inner_function</code>是内部函数。内部函数被定义在外部函数的代码块中，并且只能在外部函数内部访问。</p>
+<p>当外部函数被调用时，它会打印出 “This is the outer function.” 的消息，并立即调用内部函数 <code>inner_function</code>，这将打印出 “This is the inner function.” 的消息。</p>
+<p>通过在函数内部定义另一个函数，可以将内部函数用作外部函数的辅助功能，或者根据需要在特定范围内封装一些逻辑。</p>
+<p>需要注意的是，内部函数的作用域被限制在外部函数的范围内。这意味着内部函数只能在外部函数内部被调用，而无法在外部函数之外的地方直接调用。</p>
 
             </div>
             <hr/>
@@ -1408,12 +1434,12 @@ Guido van Rossum
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                    <span class="chip bg-color">基础</span>
-                                </a>
-                            
                                 <a href="/tags/Python/">
                                     <span class="chip bg-color">Python</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">基础</span>
                                 </a>
                             
                         </div>
@@ -1533,12 +1559,12 @@ Guido van Rossum
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/27/idea.html">
+                <a href="/2021/06/27/jetbrains-quan-jia-tong.html">
                     <div class="card-image">
                         
-                        <img src="/images/idea_intllij/idea_intellij.jpeg" class="responsive-img" alt="IDEA教程">
+                        <img src="/images/idea_intllij/idea_intellij.jpeg" class="responsive-img" alt="JetBrains全家桶">
                         
-                        <span class="card-title">IDEA教程</span>
+                        <span class="card-title">JetBrains全家桶</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1817,7 +1843,7 @@ Guido van Rossum
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

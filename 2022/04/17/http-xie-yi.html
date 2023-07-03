@@ -463,21 +463,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:58
+                        2023-06-14 22:06:35
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        727
+                        1.7k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        5 分
                     </div>
                 
 
@@ -554,30 +554,32 @@
 <p><strong>无状态协议缺点</strong></p>
 <p>无状态协议的主要缺点在于：单个请求需要的所有信息都必须要包含在请求中一次发送到服务端，这导致<strong>单个消息的结构需要比较复杂，必须能够支持大量元数据</strong>，因此 HTTP 消息的解析要比其他许多协议都要复杂得多。同时，这也导致了<strong>相同的数据在多个请求上往往需要反复传输</strong>，例如同一个连接上的每个请求都需要传输 <code>Host</code>、<code>Authentication</code>、 <code>Cookies</code>、 <code>Server</code> 等往往是完全重复的元数据，在一定程度上<strong>降低了协议的效率</strong>。</p>
 <p>一句话来说：请求头太大，还要反复传输。</p>
-<h2 id="HTTP消息结构"><a href="#HTTP消息结构" class="headerlink" title="HTTP消息结构"></a>HTTP消息结构</h2><table>
-<thead>
-<tr>
-<th>客户端请求消息</th>
-<th>服务端响应消息</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>请求行（request line）</td>
-<td>状态行</td>
-</tr>
-<tr>
-<td>请求头部（header）</td>
-<td>消息报头</td>
-</tr>
-<tr>
-<td>空行</td>
-<td>空行</td>
-</tr>
-<tr>
-<td>请求数据</td>
-<td>响应正文</td>
-</tr>
-</tbody></table>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><blockquote>
+<p>再一次偶然的使用手机搭建服务器的过程中发现，服务端软件被请求时候打印出的结果是好多请求数据来自不同的端口，而且这些端口是不断动态变化的，猜测是因为HTTP协议的无状态导致TCP协议不停的断开和连接，所以导致客户端的源端口不停的变化，但问了ChatGPT之后才发现不完全是这个原因。</p>
+</blockquote>
+<p><strong>TCP</strong></p>
+<p>TCP连接的建立过程中，客户端会选择一个空闲的本地端口作为源端口，并将其包含在连接请求中发送给服务器。服务器收到连接请求后，会分配一个本地端口作为目标端口，并将其发送回客户端以建立连接。这样，源端口和目标端口在连接建立后就确定下来，并且<strong>在连接的生命周期内保持不变</strong>。</p>
+<p>需要注意的是，在客户端与服务器之间的每个TCP连接中，源端口和目标端口都是独立的。这意味着，<strong>当多个连接同时存在时</strong>，每个连接都可以使用不同的端口号，而不会产生冲突。</p>
+<p>因此，虽然TCP端口在连接建立前是动态分配的，但在<strong>连接建立后，源端口和目标端口通常保持不变</strong>。这有助于确保数据能够正确地传递到正确的连接和应用程序中。</p>
+<p><strong>动态变化的原因</strong></p>
+<p><strong>我</strong>：您说的：HTTP协议的无状态性与客户端端口的动态变化之间没有直接的因果关系。客户端端口的动态变化是操作系统的行为，而HTTP的无状态性是协议设计的特点。这句话难道说HTTP协议的无状态到底会不会导致TCP端口的动态变化，没有关系吗</p>
+<p><strong>ChatGPT</strong>：我向您道歉，之前的回答可能不够清晰。我会尝试更清楚地解释。</p>
+<p>HTTP协议的无状态性与TCP端口的动态变化之间没有直接因果关系。这两个概念在网络通信中是独立的。</p>
+<p>HTTP协议的无状态性是指每个HTTP请求与响应之间是相互独立的，服务器不会保留任何关于客户端的状态信息。每个请求都是独立的事务，服务器只根据请求中的信息进行处理，而不依赖之前的请求或客户端的状态。</p>
+<p>而TCP端口的动态变化是操作系统的行为，用于避免端口冲突和管理网络连接。操作系统会动态分配空闲的本地端口给客户端使用，确保每个连接具有唯一的源端口。</p>
+<p>虽然在建立HTTP连接时客户端会使用动态分配的源端口，但这是因为操作系统的行为，而不是HTTP协议本身的特性。无状态性和端口动态分配是两个独立的概念，它们之间没有直接的因果关系。</p>
+<p>因此，<strong>HTTP协议的无状态性并不直接导致TCP端口的动态变化</strong>。无状态性是HTTP协议的设计特点，而<strong>端口的动态分配是操作系统在处理网络连接时的行为</strong>。</p>
+<h2 id="HTTP消息结构"><a href="#HTTP消息结构" class="headerlink" title="HTTP消息结构"></a>HTTP消息结构</h2><h3 id="请求-amp-响应"><a href="#请求-amp-响应" class="headerlink" title="请求&amp;响应"></a>请求&amp;响应</h3><blockquote>
+<p>某次实验在axiso的请求响应拦截器上分别定义了打印请求数据和打印响应数据,结果如下:</p>
+</blockquote>
+<p><img src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/image-20230614223504502.png" alt="image-20230614223504502"></p>
+<p>以上数据是一个登陆接口请求和响应</p>
+<p><strong>GET请求</strong></p>
+<p><img src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/image-20230614222252420.png" alt="image-20230614222252420"></p>
+<p>以上分别请求网页配置状态接口 和 网页右侧树状导航栏接口 </p>
+<p><strong>GET响应</strong></p>
+<p><img src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/image-20230614223959815.png" alt="image-20230614223959815"></p>
+<p>以上分别响应网页配置状态接口 和 网页右侧树状导航栏接口 </p>
 
             </div>
             <hr/>
@@ -1062,7 +1064,7 @@
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

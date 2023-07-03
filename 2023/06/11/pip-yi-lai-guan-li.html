@@ -438,21 +438,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-06-11 22:06:28
+                        2023-06-21 10:06:34
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        545
+                        986
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        4 分
                     </div>
                 
 
@@ -510,7 +510,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="pip简介"><a href="#pip简介" class="headerlink" title="pip简介"></a>pip简介</h2><h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><blockquote>
+                <h2 id="pip简介"><a href="#pip简介" class="headerlink" title="pip简介"></a>pip简介</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> package_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于安装指定名称的依赖包。</p>
+<h3 id="安装指定版本的依赖包"><a href="#安装指定版本的依赖包" class="headerlink" title="安装指定版本的依赖包"></a>安装指定版本的依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">package_name</span><span class="token operator">==</span>version_number<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于安装指定名称和版本号的依赖包。</p>
+<h3 id="升级依赖包"><a href="#升级依赖包" class="headerlink" title="升级依赖包"></a>升级依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> --upgrade package_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于升级已安装的依赖包至最新版本。</p>
+<h3 id="列出已安装的依赖包"><a href="#列出已安装的依赖包" class="headerlink" title="列出已安装的依赖包"></a>列出已安装的依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于列出当前环境中已安装的所有依赖包及其版本号。</p>
+<h3 id="卸载依赖包"><a href="#卸载依赖包" class="headerlink" title="卸载依赖包"></a>卸载依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip uninstall package_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于卸载指定名称的依赖包。</p>
+<h3 id="导出依赖包列表"><a href="#导出依赖包列表" class="headerlink" title="导出依赖包列表"></a>导出依赖包列表</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip freeze <span class="token operator">></span> requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于将当前环境中已安装的依赖包及其版本号导出到一个文本文件（一般命名为<code>requirements.txt</code>），方便在其他环境中重现相同的依赖包配置。</p>
+<h3 id="从requirements-txt文件安装依赖包："><a href="#从requirements-txt文件安装依赖包：" class="headerlink" title="从requirements.txt文件安装依赖包："></a>从requirements.txt文件安装依赖包：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> -r requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用于从指定的requirements.txt文件中安装所有依赖包及其版本号。</p>
+<h3 id="搜索依赖包"><a href="#搜索依赖包" class="headerlink" title="搜索依赖包"></a>搜索依赖包</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip search search_term<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><blockquote>
 <p>如果你使用的是Linux环境，会满足多个Python版本的兼容：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> /usr/bin/python*  
 
@@ -536,7 +559,7 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
 <p><strong>激活虚拟环境</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> venv/bin/activate     <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>此时你会发现你的命令行提示标题的前面会有<code>(venv)</code> </p>
+<p>激活成功后打印<code>python --version</code>即是你已经激活的虚拟环境,此时你会发现你的命令行提示标题的前面会有<code>(venv)</code> </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>venv<span class="token punctuation">)</span> arch-linux ॐ  ~/Desktop/Dailyfresh-B2C/Backend:<span class="token punctuation">(</span>13d1h41m<span class="token operator">|</span>git@master<span class="token operator">!</span><span class="token punctuation">)</span>
 <span class="token number">6455</span> ±  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -547,7 +570,36 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
 
 <h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="pip国内源"><a href="#pip国内源" class="headerlink" title="pip国内源"></a>pip国内源</h2><h3 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="pip国内源"><a href="#pip国内源" class="headerlink" title="pip国内源"></a>pip国内源</h2><blockquote>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="http://fuding.qicp.vip:8899/c/6aa1c9a4-8faa-4dd0-8017-12e2138e0121">CSDN-SoloLinux:PIP 更换国内安装源</a></p>
+</blockquote>
+<p><strong>pip国内的一些镜像</strong></p>
+<ul>
+<li>阿里云 <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a> </li>
+<li>中国科技大学 <a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a> </li>
+<li>豆瓣(douban) <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> </li>
+<li>清华大学 <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a> </li>
+<li>中国科学技术大学 <a target="_blank" rel="noopener" href="http://pypi.mirrors.ustc.edu.cn/simple/">http://pypi.mirrors.ustc.edu.cn/simple/</a></li>
+</ul>
+<h3 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="永久方式"><a href="#永久方式" class="headerlink" title="永久方式"></a>永久方式</h3><p><strong>Linux</strong></p>
+<p>首先如果<code>~/.pip/pip.conf</code>文件目录不存在,创建目录和文件,编辑文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.pip/pip.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>添加以下</p>
+<pre class="line-numbers language-none"><code class="language-none">[global]
+index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>如果需要更换新的url</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config <span class="token builtin class-name">set</span> global.index-url new_source_url<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>验证更换结果</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config get global.index-url<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>mybe你需要还原默认的官方源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config <span class="token builtin class-name">unset</span> global.index-url<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -564,7 +616,7 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
 
 
 
-<h2 id="不小心安装依赖到真实环境"><a href="#不小心安装依赖到真实环境" class="headerlink" title="不小心安装依赖到真实环境"></a>不小心安装依赖到真实环境</h2><p>尝试依旧使用原项目的<code>requirements.txt</code>卸载即可</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="不小心安装依赖到真实环境"><a href="#不小心安装依赖到真实环境" class="headerlink" title="不小心安装依赖到真实环境"></a>不小心安装依赖到真实环境</h3><p>尝试依旧使用原项目的<code>requirements.txt</code>卸载即可</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pip uninstall -r requirements.txt -y <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -743,17 +795,16 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/06/11/pip-yi-lai-guan-li.html">
+                <a href="/2023/06/12/yan-zheng-ma.html">
                     <div class="card-image">
                         
-                        <img src="/images/2023-06-11-PIP%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/OIP-C.jpeg" class="responsive-img" alt="PIP依赖管理">
+                        <img src="/images/error.jpg" class="responsive-img" alt="验证码">
                         
-                        <span class="card-title">PIP依赖管理</span>
+                        <span class="card-title">验证码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -763,9 +814,9 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -774,7 +825,6 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1001,7 +1051,7 @@ activate  activate.csh  activate.fish  Activate.ps1  pip  pip3  pip3.8  python  
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

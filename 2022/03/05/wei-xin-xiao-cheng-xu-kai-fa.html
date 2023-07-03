@@ -451,21 +451,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-02-08 11:02:60
+                        2023-06-13 23:06:20
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.6k
+                        2.4k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        13 分
+                        9 分
                     </div>
                 
 
@@ -767,125 +767,6 @@
     <span class="token keyword">return</span> url<span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="var、let、const"><a href="#var、let、const" class="headerlink" title="var、let、const"></a>var、let、const</h3><blockquote>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/forcheng/p/13033976.html">深入理解JS：var、let、const的异同</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-let-const.html">菜鸟教程：JavaScript let 和 const</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const">MDN web docs：const</a></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>关键字</th>
-<th>作用域</th>
-<th>同一作用域重复声明</th>
-<th>绑定全局对象</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>var</strong></td>
-<td>如果：函数内，则只作用于函数内，跟随函数生命周期<br />如果：函数外，则脚本内全局，跟随脚本生命周期<br /></td>
-<td>允许，将覆盖之前的定义。</td>
-<td>绑定</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>let</strong></td>
-<td>所处的代码块<code>&#123;&#125;</code>内有效，外代码块与被包含代码块内外不互相影响，内的let只有效内，外let只有效外。</td>
-<td>不允许</td>
-<td>不绑定<br />（即：console.log(this.[let变量]) // undefined）</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>const</strong>（声明只读，声明必须初始化）</td>
-<td>与let相同</td>
-<td>不允许，不可被改写覆盖</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p><strong>var 与 let作用域：</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">varTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-  <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 函数块中，同一个变量</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-  <span class="token punctuation">&#125;</span>
-
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">function</span> <span class="token function">letTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-  <span class="token punctuation">&#123;</span>
-    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 代码块中，新的变量</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-  <span class="token punctuation">&#125;</span>
-
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token function">varTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">letTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>var与let同一作用域：</strong></p>
-<ul>
-<li><p>var示例：</p>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 2</span>
-
-<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 4</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>let示例：</p>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// SyntaxError: Identifier 'a' has already been declared</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-</li>
-</ul>
-<p><strong>let 与 const ：</strong></p>
-<ul>
-<li><p>相同</p>
-<ul>
-<li>二者都是块级作用域</li>
-<li>都不能和它所在作用域内的其他变量或函数拥有相同的名称</li>
-</ul>
-</li>
-<li><p>异同</p>
-<ul>
-<li><p><code>const</code>声明的常量必须初始化，而<code>let</code>声明的变量不用</p>
-</li>
-<li><p>const 定义常量的值不能通过再赋值修改，也不能再次声明（数组、对象内部数据可修改）。而 let 定义的变量值可以修改。</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> a<span class="token punctuation">;</span>
-<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">"constant"</span>
-
-a <span class="token operator">=</span> <span class="token string">"variable"</span>
-b <span class="token operator">=</span> <span class="token string">'change'</span> <span class="token comment">// TypeError: Assignment to constant variable</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-
 
 
 <p>调用一个Api.js脚本中的函数：</p>
@@ -932,71 +813,6 @@ Api<span class="token punctuation">.</span><span class="token function">get_home
 
 
 
-<h3 id="lt-Array-gt-splice"><a href="#lt-Array-gt-splice" class="headerlink" title="&lt;Array&gt;.splice()"></a>&lt;Array&gt;.splice()</h3><blockquote>
-<p>向数组指定位置添加或者删除指定数目的元素。</p>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/jsref-splice.html">菜鸟教程：JavaScript splice() 方法</a></p>
-</blockquote>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">array<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span>howmany<span class="token punctuation">,</span>item1<span class="token punctuation">,</span><span class="token operator">...</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>itemX<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><em>index</em></td>
-<td align="left">必需。规定从何处添加/删除元素。 该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
-</tr>
-<tr>
-<td align="left"><em>howmany</em></td>
-<td align="left">可选。规定应该删除多少元素。必须是数字，但可以是 “0”。 如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
-</tr>
-<tr>
-<td align="left"><em>item1</em>, …, <em>itemX</em></td>
-<td align="left">可选。要添加到数组的新元素</td>
-</tr>
-</tbody></table>
-<h3 id="lt-Array-gt-filter"><a href="#lt-Array-gt-filter" class="headerlink" title="&lt;Array&gt;.filter()"></a>&lt;Array&gt;.filter()</h3><blockquote>
-<p>过滤去除数组的空元素，返回false会删除，即null或者undefine。</p>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37796017/article/details/90229667">CSDN：js去除数组中的null空值</a></p>
-</blockquote>
-<p>例：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'2'</span><span class="token punctuation">,</span><span class="token string">'3'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token keyword">undefined</span><span class="token punctuation">,</span><span class="token string">'7'</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">'9'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> r <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> s <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 注：IE9(不包含IE9)以下的版本没有trim()方法</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 将会返回非空元素：[‘2’,‘3’,‘7’,‘9’]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><blockquote>
-<p>WebSocket 是一种网络通信协议，很多高级功能都需要它。</p>
-<p>初次接触 WebSocket 的人，都会问同样的问题：我们已经有了 HTTP 协议，为什么还需要另一个协议？它能带来什么好处？</p>
-<p>答案很简单，因为 HTTP 协议有一个缺陷：通信只能由客户端发起。</p>
-<p>举例来说，我们想了解今天的天气，只能是客户端向服务器发出请求，服务器返回查询结果。HTTP 协议做不到服务器主动向客户端推送信息。</p>
-<p>这种单向请求的特点，注定了如果服务器有连续的状态变化，客户端要获知就非常麻烦。我们只能使用“轮询”：每隔一段时候，就发出一个询问，了解服务器有没有新的信息。最典型的场景就是聊天室。</p>
-<p>轮询的效率低，非常浪费资源（因为必须不停连接，或者 HTTP 连接始终打开）。因此，工程师们一直在思考，有没有更好的方法。WebSocket 就是这样发明的。</p>
-<p>WebSocket 协议在2008年诞生，2011年成为国际标准。所有浏览器都已经支持了。</p>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/javascript_guide/javascript_guide-4u6q26aj.html">W3Cschool：JavaScript WebSocket</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.dev2qa.com/how-to-use-websocket-in-javascript-with-examples/">How To Use WebSocket In Javascript With Examples</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.dev2qa.com/how-to-use-python-to-create-websocket-server-client-example/">How To Use Python To Create WebSocket Server &amp; Client Example</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/llljpf/p/10830651.html">博客园-雷雨天的雷胖子：js中WebSocket</a></p>
-</blockquote>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>其他特点包括：</p>
-<ol>
-<li>建立在 TCP 协议之上，服务器端的实现比较容易。</li>
-<li>与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
-<li>数据格式比较轻量，性能开销小，通信高效。</li>
-<li>可以发送文本，也可以发送二进制数据。</li>
-<li>没有同源限制，客户端可以与任意服务器通信，完全可以取代 Ajax。</li>
-<li>协议标识符是<code>ws</code>（如果加密，则为<code>wss</code>，对应 HTTPS 协议），服务器网址就是 URL。</li>
-</ol>
 <h2 id="参考-amp-分析"><a href="#参考-amp-分析" class="headerlink" title="参考 &amp; 分析"></a>参考 &amp; 分析</h2><blockquote>
 <p>为了稳定性，选择了vue2作为本项目的前端框架。</p>
 <p>参考：</p>
@@ -1532,7 +1348,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             

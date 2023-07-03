@@ -455,21 +455,21 @@
 
                 
                     <div class="post-date info-break-policy">
-                        2023-04-06 16:04:41
+                        2023-06-12 15:06:05
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        910
+                        1.2k
                     </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        5 分
                     </div>
                 
 
@@ -544,9 +544,37 @@ brew <span class="token function">install</span> <span class="token function">no
 <p>安装完成后自带npm，用来管理下载Node依赖软包。</p>
 <p>注意：不要删除<code>~</code>目录下的node_modules文件夹。</p>
 <h3 id="exports-require"><a href="#exports-require" class="headerlink" title="exports require"></a>exports require</h3><blockquote>
+<p>在 Node.js 中，使用 ECMAScript 模块语法的文件( <code>export</code> 和 <code>import</code> 关键字)，不能直接在 Node.js 的命令行模式下执行。当你在 Node.js 命令行模式中运行包含 <code>export</code> 关键字的文件时，会导致 <code>SyntaxError: Unexpected token &#39;export&#39;</code> 错误。</p>
+<p>原因是 Node.js 默认使用的是 CommonJS (服务器)模块系统，而不是 ECMAScript (浏览器)模块系统。在 CommonJS 模块中，没有 <code>export</code> 和 <code>import</code> 关键字，而是使用 <code>module.exports</code> 和 <code>require</code> 来导出和导入模块。</p>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2f8d097a681a">简书-江疏影子：module.exports与exports的区别</a></p>
 </blockquote>
+<p>比如我想测试某个函数，在<code>vue-cli-service serve</code>模式下没有启动NodeJS提供的服务器，换而言之没进行Babel转换(CommonJS 转 ECMAScript)。</p>
+<p><strong>示例</strong></p>
+<p>被测函数</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">genToken</span><span class="token punctuation">(</span><span class="token parameter">corpId<span class="token punctuation">,</span> useCode<span class="token punctuation">,</span> timeStr<span class="token punctuation">,</span> passwd</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> _crjs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../../node_modules/crypto-js'</span><span class="token punctuation">)</span>
+  <span class="token comment">// const _crjs = require('crypto-js')</span>
+  <span class="token comment">// const myDateSamp = new Date().getTime()</span>
+  <span class="token keyword">let</span> md5Pass <span class="token operator">=</span> _crjs<span class="token punctuation">.</span><span class="token constant">MD5</span><span class="token punctuation">(</span>passwd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> hexMD5 <span class="token operator">=</span> _crjs<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Hex<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>md5Pass<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> to <span class="token operator">=</span> _crjs<span class="token punctuation">.</span><span class="token function">HmacSHA256</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">corpcode=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>corpId<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">&amp;timestamp=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>timeStr<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">&amp;usercode=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>useCode<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> hexMD5<span class="token punctuation">)</span>
+  <span class="token keyword">let</span> token <span class="token operator">=</span> _crjs<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Hex<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"时间戳："</span> <span class="token operator">+</span> timeStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Token："</span> <span class="token operator">+</span> token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  genToken
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>调用函数</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> genToken <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./token.js'</span><span class="token punctuation">)</span>
+
+<span class="token function">genToken</span><span class="token punctuation">(</span><span class="token number">17002</span><span class="token punctuation">,</span> <span class="token string">'dladmin'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="REPL-交互式解释器"><a href="#REPL-交互式解释器" class="headerlink" title="REPL 交互式解释器"></a>REPL 交互式解释器</h2><blockquote>
 <p>Read Eval Print Loop:交互式解释器</p>
 <p>Node.js REPL(Read Eval Print Loop:交互式解释器) 表示一个电脑的环境，类似 Windows 系统的终端或 Unix/Linux shell，我们可以在终端中输入命令，并接收系统的响应。</p>
@@ -1116,7 +1144,7 @@ registry <span class="token operator">=</span> <span class="token string">"http:
             <br/>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">148.3k</span>&nbsp;
+                        class="white-color">159.7k</span>&nbsp;
             
             
             
