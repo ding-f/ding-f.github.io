@@ -1,592 +1,274 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="铸鼎_">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>铸鼎_</title>
-    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/islu.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>铸鼎_ - 『生命不息 探索不止』</title><meta name="author" content="鼎"><meta name="copyright" content="鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="铸鼎_">
+<meta property="og:url" content="https://ding-f.gitee.io/page/4/index.html">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="鼎">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.gitee.io/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '铸鼎_',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-02-20 16:51:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
     
-        <link rel="stylesheet" type="text/css" href="/css/loading.css">
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
     
-
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
     
-
-    <script src="/libs/jquery/jquery.min.js"></script>
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-
-    <!--  加载动画，强制加载0.5s  -->
-    <div id="loading-container">
-    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
-    <div class="loading-image">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-<script>
-    (function () {
-        const loaded = function () {
-            setTimeout(function () {
-                const loader = document.getElementById("loading-container");
-                loader.className = "fadeout";
-                setTimeout(function () {
-                    loader.style.display = "none";
-                }, 500);
-            }, 500);
-        };
-        loaded();
-    })();
-</script>
-
-
-<!--    顶部导航栏   -->
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    <div>
-                        
-                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
-                        
-                        <span class="logo-span">铸鼎_</span>
-                    </div>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-    <a href="/" id="" class="waves-effect waves-light">
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
       
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">铸鼎_</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/06/07/typora.html" title="Typora">Typora</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-07T08:04:39.000Z" title="发表于 2022-06-07 16:04:39">2022-06-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></span></div><div class="content">Typora图片插入技巧
+铸鼎用来写MarkDown文本的神器，之前经常使用VSCode，最后使用Typora写笔记更加方便，作为程序猿，使用MarkDown写笔记还是很方便的，加上Typora写起笔记更是如虎添翼的感觉，推荐大家使用。
 
-      
-      <i class="fas fa-book" style="zoom: 0.6;"></i>
-      
-      <span>文章</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/tags">
-          
-          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>标签</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/categories">
-          
-          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>分类</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" id="" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
+静态博客
+铸鼎使用的是Hexo博客，使用Typora书写MarkDown，Hexo生成静态网页，访问网页链接才可以进行访问，但是有一点使用起来非常麻烦，那就是当你需要插入一张图片，就会发现Hexo生成的网页不能显示图片，或者你会聪明的将这张图片的路径修改为Hexo网站可以进行访问的路径，但你也会发现Typora中的图片不能正常显示。
+今天突然想到Typora既然被称为神器也不是没有道理的，于是就翻阅文档发现，可以进行相应的设置使得静态博客和Typora编辑器同时显示图片的方式。
+参考：
+Typora 官方文档：When insert images…
 
-      
-      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/about">
-          
-          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>博主</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" id="contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
+配置一下Typora
 
-      
-      <i class="fas fa-link" style="zoom: 0.6;"></i>
-      
-      <span>链接</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/friends">
-          
-          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>友情链接</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li id="fullscreen_li" class="fullscreen">
-      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
-          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
-      </a>
-  </li>
+Typora &gt; 偏好设置 &gt; 图像 
 
-</ul>
+Hexo填入路径：./../images/$&#123;filename&#125;，建议4个选项都打钩。
+
+格式 &gt; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/05/09/docker.html" title="Docker">Docker</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-05-09T08:21:41.000Z" title="发表于 2022-05-09 16:21:41">2022-05-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a></span></div><div class="content">简介
+
+安装
+参考：
+Docker CE是什么
+菜鸟教程：Docker安装
+Doker官网：Install Docker Engine on CentOS
+
+Docker仓库进行安装CentOS
+建议的安装方式直接去阿里云开发者社区中找到Docker相应的镜像网页，里面的安装方式还是很官方的。
+2023-6-7：对比官方、ChatGPT提供安装方式，搜索各个包的作用后，总结以下安装流程。
+参考：
+阿里云-开发者社区：Docker CE 镜像
+
+必备工具安装
+# 安装必要的一些系统工具
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 
 
-<div id="mobile-nav" class="side-nav sidenav">
+device-mapper-persistent-data：这个软件包提供了 Device Mapper 的持久数据存储库。Device Mapper 是 Linux 内核的一个框架，用于实现基于块设备的存储虚拟化。在 Docker 中，Device Mapper 可以用作存储驱动程序，用于管理 Docker 容器的文件系统。device-mapper-persistent ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/04/17/http-xie-yi.html" title="Http协议">Http协议</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-17T02:44:42.000Z" title="发表于 2022-04-17 10:44:42">2022-04-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="content">概述
+HTTP 协议一般指 HTTP（超文本传输协议）。
+超文本传输协议（英语：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议，是因特网上应用最为广泛的一种网络传输协议，所有的 WWW 文件都必须遵守这个标准。
+HTTP 是为 Web 浏览器与 Web 服务器之间的通信而设计的，但也可以用于其他目的。
+HTTP 是一个基于 TCP/IP 通信协议来传递数据的（HTML 文件、图片文件、查询结果等）。
+参考：
+菜鸟教程：HTTP教程
+程序员栈：说一下什么是http协议无状态以及怎么解决？
 
-    <div class="mobile-head bg-color">
-        
-            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">铸鼎_</div>
-        <div class="logo-desc">
-            
-                Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
 
-    
+HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
+HTTP是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。
+HTTP是无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/04/11/redis.html" title="Redis">Redis</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-11T03:23:54.000Z" title="发表于 2022-04-11 11:23:54">2022-04-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a></span></div><div class="content">Redis简介
+2008年，意大利的一家创业公司Merzia推出了一款基于MySQL的网站实时统计系统LLOOGG，然而没过多久该公司的创始人 Salvatore Sanfilippo便对MySQL的性能感到失望，于是他决定亲自为LLOOGG量身定做一个数据库，并于2009年开发完成，这个数据库就是Redis。 不过Salvatore Sanfilippo并不满足只将Redis用于LLOOGG这一款产品，而是希望更多的人使用它，于是在同一年Salvatore Sanfilippo将Redis开源发布，并开始和Redis的另一名主要的代码贡献者Pieter Noordhuis一起继续着Redis的开发，直到今天。  SalvatoreSanfilippo自己也没有想到，短短的几年时间，Redis就拥有了庞大的用户群体。HackerNews在2012年发布了一份数据库的使用情况调查，结果显示有近12%的公司在使用Redis。国内如新浪微博、街旁网、知乎网，国外如GitHub、Stack Overflow、Flickr等都是Redis的用户。  VMware公司从2010年开始赞助Redis ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/04/11/apache-shiro-jwt.html" title="Apache Shiro + JWT">Apache Shiro + JWT</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-11T03:23:22.000Z" title="发表于 2022-04-11 11:23:22">2022-04-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="content">JWT
+来自：
+铸鼎__ &gt; Java毕业设计开发笔记 &gt; 后端开发 &gt; shiro+JWT
 
-    <ul class="menu-list mobile-menu-list">
-        
-            <li class="m-nav-item">
-                
-                    <a href="/" class="waves-effect waves-light">
+JWT 的原理
+参考：
+简书：什么是 JWT – JSON WEB TOKEN
+RESTful API:JWT 认证
+JWT官网
+知乎：Base64编码详解
+CSDN:从零入门HMAC-SHA256
 
-                        首页
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        文章
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/tags "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-tags"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>标签</span>
-                                </a>
-                            </li>
-                        
-                            <li>
-                                <a href="/categories "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-bookmark"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>分类</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/archives" class="waves-effect waves-light">
-
-                        归档
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        关于
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/about "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-user-circle"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>博主</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/contact" class="waves-effect waves-light">
-
-                        留言
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        链接
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/friends "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-address-book"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>友情链接</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
-</header>
+服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。
+&#123;
+ &quot;姓名&quot;: &quot;张三&quot;,
+ &quot;角色&quot;: &quot;管理员&quot;,
+ &quot;到期时间&quot;: &quot;2018年7月1日0点0分&quot;
+&#125;
 
 
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                    『生命不息 探索不止』
-                
-            </div>
+以后，用户与服务端通信的时候，都要发回这个 JSON 对象。服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会加上签名（详见后文）。
+服务器就不保存任何 session 数据了，也就是说，服务器变成无状态了，从而比较容易实现扩展。
+JWT 的数据结构：
+实际的 JWT 大概就像下面这样。
 
-            <div class="description center-align">
-                
-                    
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <script>
-        $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
-    </script>
-
-
-    </div>
-</div>
-
-<main class="content">
-
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/mini_app/mini_app.png" class="responsive-img" alt="微信小程序开发">
-                                
-                                <span class="card-title">微信小程序开发</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    JavaScript 基础DOM &amp; BOM
+它是一个很长的字符串，中间 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa.html" title="微信小程序开发">微信小程序开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-05T02:45:44.000Z" title="发表于 2022-03-05 10:45:44">2022-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a></span></div><div class="content">JavaScript 基础DOM &amp; BOM
 参考：
 PHP中文网-长期闲置：深入了解JavaScript中的DOM与BOM
 
 JavaScript 三大部件组成：
 
-ECMAscript，ECMAscript更像一个规定，规定了各
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-05
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
-                                    小程序
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
+ECMAscript，ECMAscript更像一个规定，规定了各个浏览器怎么样去执行JavaScript的语法
+DOM（Document Object Model ，文档对象模型）一种独立于语言，用于操作xml，html文档的应用编程接口，为了能使JavaScript操作Html
+BOM 是 Browser Object Model，浏览器对象模型。BOM 是为了控制浏览器的行为而出现的接口，BOM为JavaScript提供了一种控制浏览器行为的”方法”
 
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                        <span class="chip bg-color">基础</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2022/03/02/networkmanager-xin-ban-te-xing.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/network_manager/network_m.jpeg" class="responsive-img" alt="NetWorkManager新版特性">
-                                
-                                <span class="card-title">NetWorkManager新版特性</span>
-                            </div>
-                        </a>
+DOM及其相关操作一目明了DOM树：
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;title>DOM_demo&lt;/title>
+&lt;/head>
+&lt;body>
+    &lt;p>
+        &lt;a hre ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/03/02/networkmanager-xin-ban-te-xing.html" title="NetWorkManager新版特性">NetWorkManager新版特性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-02T08:19:46.000Z" title="发表于 2022-03-02 16:19:46">2022-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span></div><div class="content">
+Linux网络管理软件，默认加上了一个新的功能那就是扫描网络不使用真实的Mac地址和网线/无线连接自由切换Mac地址，加上这个功能想必对好多热衷Linux的非专业人士造成了好多困扰，比如连接校园网认证，认证后不停的切换Mac导致需要不停的认证才可以联网，或者对于开发/运维专业人士比如网络中追踪一个主机，导致无法固定IP地址。
+参考：
+MAC Address Spoofing in NetworkManager 1.4.0
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    
-Linux网络管理软件，默认加上了一个新的功能那就是扫描网络不使用真实的Mac地址和网线/无线连接自由切换Mac地址，加上这个功能想必对好多热衷Linux的非专业人士造成了好多困扰，比如连接校园网认证，认证后不停的切换Mac导致需要不停的
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-02
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
+首先要有效准确的解决这个问题，一定要找到自己系统对应的NetWorkManager的配置文件，比如我的配置文件路径/etc/NetworkManager/NetworkManager.conf ：
+vim /etc/NetworkManager/NetworkManager.conf           #建议使用sudo权限进行编辑
 
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/">
-                                        <span class="chip bg-color">Linux软件</span>
-                                    </a>
-                                
-                                    <a href="/tags/ArchLinux/">
-                                        <span class="chip bg-color">ArchLinux</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                                        <span class="chip bg-color">运维</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2022/02/21/maven.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/maven/apache-maven.png" class="responsive-img" alt="Maven">
-                                
-                                <span class="card-title">Maven</span>
-                            </div>
-                        </a>
+默认文件内容：
+# Configuration file for NetworkManager.
+# See "man 5 NetworkManager.conf" for details.
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    什么是Maven
+修改为：
+# Configurati ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/02/21/maven.html" title="Maven">Maven</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-21T09:11:34.000Z" title="发表于 2022-02-21 17:11:34">2022-02-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="content">什么是Maven
 Maven是一款服务于Java平台自动化构建工具。
 自动化构建工具发展趋势：make-&gt;Ant-&gt;Maven-&gt;Gradle
 参考：
 知乎：Maven最全教程，看了必懂
 知乎：IDEA+MAVEN踩坑指南
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-21
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
+博客园：2021年Maven国内源配置大全
+博客园-佩奇er：maven配置多个镜像 
+博客园-QiaoZhi：Maven的默认中央仓库以及修改默认仓库&amp;配置第三方jar包从私服下载
+脚本之家-itprobie-菜鸟程序员：maven 配置多个仓库的方法
+maven依赖项版本查询
 
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/JavaEE/">
-                                        <span class="chip bg-color">JavaEE</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                        <span class="chip bg-color">基础</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/java_dev/graduate.jpg" class="responsive-img" alt="安康学院校园墙小程序（全栈）">
-                                
-                                <span class="card-title">安康学院校园墙小程序（全栈）</span>
-                            </div>
-                        </a>
+配置国内源
+首先要想在国内顺利的使用Maven，我们首先要进行一些配置，才可以进行各种Maven所需Jar包的下载，当然无论是IDEA自带的Maven或者是自己替换一个Maven（不建议这么做），但始终都有一个问题就是在国内因为wall封锁，导致自己写入POM配置不能很快的更新jar，我们首先要做的就是解决这个问题：
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    开放源代码
+找到自己intellij-idea的存储路径，我的Arch Linux上的路径为：/opt/intellij-idea-ultimate-edi ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji.html" title="安康学院校园墙小程序（全栈）"><i class="fas fa-thumbtack sticky"></i>安康学院校园墙小程序（全栈）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-02-13T14:04:33.000Z" title="发表于 2022-02-13 22:04:33">2022-02-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="content">开放源代码
 本项目，由于工作没时间折腾，它的前后端代码已经在Gitee上开源，但最重要的是为了共同学习为目的，互相学习。
 源码:
 school_wall（前端）
@@ -594,596 +276,21 @@ school_wall（后端）
 
 推荐阅读
 参考：
-MarkerHub： Ja
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-13
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/Java/">
-                                        <span class="chip bg-color">Java</span>
-                                    </a>
-                                
-                                    <a href="/tags/JavaEE/">
-                                        <span class="chip bg-color">JavaEE</span>
-                                    </a>
-                                
-                                    <a href="/tags/SQL/">
-                                        <span class="chip bg-color">SQL</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E7%90%86%E8%AE%BA/">
-                                        <span class="chip bg-color">理论</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                        <span class="chip bg-color">前端</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                        <span class="chip bg-color">后端</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                                        <span class="chip bg-color">微服务</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                                        <span class="chip bg-color">小程序</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2022/01/19/vue.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/vue/vue.webp" class="responsive-img" alt="Vue.JS">
-                                
-                                <span class="card-title">Vue.JS</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    
-在 Web 的世界中从来就没有可以适配所有场景、解决所有问题的银弹。正因如此，Vue 被设计成一个灵活的、可以渐进式集成的框架。根据使用场景的不同需要，相应地有多种不同的方式来使用 Vue，以此在技术栈复杂度、开发体验和性能表现间取得最佳
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-19
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/vue/">
-                                        <span class="chip bg-color">vue</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2022/01/12/ipv6.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/ipv6/ipv6-earth-2021-1-1280x720.jpg" class="responsive-img" alt="IPv6">
-                                
-                                <span class="card-title">IPv6</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    
-参考：
-知乎:ipv6地址分类知识
-BiliBili: Cisco路由交换IPv6-1
-BiliBili: Cisco路由交换IPv6-2
-
-IPv6 特性
-无状态自动配置（链路本地地址）
-
-配置在路由器端口上的IPv6地址会每隔2s发给
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    网络
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/%E7%90%86%E8%AE%BA/">
-                                        <span class="chip bg-color">理论</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                        <span class="chip bg-color">基础</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2021/12/17/mac-os.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/mac_os/macos.jpg" class="responsive-img" alt="Mac OS">
-                                
-                                <span class="card-title">Mac OS</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    常用快捷键
-⌘  Command () win键
-⌃  Control ctrl键
-⌥  Option (alt)
-⇧  Shift
-⇪  Caps Lock
-⌫  表示删除（对应 Windows 中的「Backspace退格键」）
-⌦ 
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-17
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/Hackintosh/" class="post-category">
-                                    Hackintosh
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/Mac-OS/">
-                                        <span class="chip bg-color">Mac OS</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2021/12/09/centos-8.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/cent_os/CentOS-8.0.png" class="responsive-img" alt="CentOS 8">
-                                
-                                <span class="card-title">CentOS 8</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    配置国内源
-更新国内软件源使得系统更新更迅速
-参考：
-菜鸟教程 Linux sed 命令
-阿里云 Cent OS 国内源配置
-清华大学开源镜像站
-网易开源镜像站
-稀土掘金 常用的yum源整理
-博客园-DevBlog by WS：CentOS
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-09
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                                        <span class="chip bg-color">运维</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                        <span class="chip bg-color">基础</span>
-                                    </a>
-                                
-                                    <a href="/tags/Cent-OS/">
-                                        <span class="chip bg-color">Cent OS</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2021/11/30/git-gitee.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/git_github/gitgithub.jpeg" class="responsive-img" alt="git&amp;github教程">
-                                
-                                <span class="card-title">git&amp;github教程</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    gitgit常用命令基础命令
-
-
-命令名称
-作用
-
-
-
-git –version
-查看当前git版本
-
-
-git config –global user.name &lt;用户名&gt;
-设置用户签名
-
-
-git config –globa
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发工具
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/">
-                                        <span class="chip bg-color">Linux软件</span>
-                                    </a>
-                                
-                                    <a href="/tags/Git/">
-                                        <span class="chip bg-color">Git</span>
-                                    </a>
-                                
-                                    <a href="/tags/Gitee/">
-                                        <span class="chip bg-color">Gitee</span>
-                                    </a>
-                                
-                                    <a href="/tags/Github/">
-                                        <span class="chip bg-color">Github</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-        </div>
-    </article>
-</main>
-
-
-    <div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/3/"
-               class="left btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">4 / 6</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/5/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
-
-
-<!--是否开启暗黑模式-->
-
-<!--footer-->
-<footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        
-        <div class="col s12 m6 l6 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2021-2023</span>
-            
-            <a href="/about" target="_blank">鼎</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            <br/>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.7k</span>&nbsp;
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
-                                                                        class="white-color"></span>&nbsp;
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                                                                           class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-                <span id="sitetime">载入运行时间...</span>
-                <script>
-                    function siteTime() {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2021";
-                        var startMonth = "2";
-                        var startDate = "1";
-                        var startHour = "23";
-                        var startMinute = "0";
-                        var startSecond = "0";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                            minutes);
-                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                            diffMinutes * minutes) / seconds);
-                        if (startYear == todayYear) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
-                                " h " + diffMinutes + " m " + diffSeconds + " s";
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
-                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
-                        }
-                    }
-
-                    setInterval(siteTime, 1000);
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m3 l3 social-link social-statis social-statis">
-    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
-        
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-<!--search-->
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(function () {
-        searchFunc("/search.xml", 'searchInput', 'searchResult')
-    })
-</script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll" title="回到顶部">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/islu.js"></script>
-<script src="/libs/search/search.js"></script>
-
-<!--谷歌广告接入点-->
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-<!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-<!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
-    <script src="/libs/others/clicklove.js" async="async"></script>
-
-
-
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-
-
-</body>
-
-</html>
+MarkerHub： Java 代码的14个好习惯
+
+API规划RESTful API
+REST （英文：Representational State Transfer ，简称 REST ）
+一种互联网软件架构设计的风格，但它并不是标准，它只是提出了一组客户端和服务器交互时的架构理念和设计原则，基于这种理念和原则设计的接口可以更简洁，更有层次，REST这个词，是 Roy Thomas Fielding 在他 2000 年的博士论文中提出的。
+任何的技术都可以实现这种理念，如果一个架构符合 REST 原则，就称它为 RESTFul 架构。
+REST 是 Representational State Transfer的缩写，如果一个架构符合REST原则，就称它为RESTful架构。
+RESTful 架构可以充分的利用 HTTP 协议的各种功能，是 HTTP 协议的最佳实践。
+RE ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/20/nvm.html" title="NVM">NVM</a><time datetime="2024-02-20T02:45:30.000Z" title="发表于 2024-02-20 10:45:30">2024-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/26/mongodb.html" title="MongoDB">MongoDB</a><time datetime="2023-08-26T15:11:57.000Z" title="发表于 2023-08-26 23:11:57">2023-08-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao.html" title="浅谈Node-Vue-ES6-调试-编译-前端原理">浅谈Node-Vue-ES6-调试-编译-前端原理</a><time datetime="2023-08-10T03:10:14.000Z" title="发表于 2023-08-10 11:10:14">2023-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/08/xiang-liang-shu-ju-ku.html" title="向量数据库">向量数据库</a><time datetime="2023-08-07T16:01:24.000Z" title="发表于 2023-08-08 00:01:24">2023-08-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/07/mi-ma-xue.html" title="密码学">密码学</a><time datetime="2023-08-07T14:29:28.000Z" title="发表于 2023-08-07 22:29:28">2023-08-07</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hackintosh/"><span class="card-category-list-name">Hackintosh</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"><span class="card-category-list-name">云计算</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">信息安全</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><span class="card-category-list-name">小程序</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">开发</span><span class="card-category-list-count">12</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Python/" style="font-size: 1.1em; color: #999">Python</a> <a href="/tags/vue/" style="font-size: 1.1em; color: #999">vue</a> <a href="/tags/Android/" style="font-size: 1.1em; color: #999">Android</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.5em; color: #99a9bf">基础</a> <a href="/tags/Github/" style="font-size: 1.1em; color: #999">Github</a> <a href="/tags/%E7%90%86%E8%AE%BA/" style="font-size: 1.41em; color: #99a5b7">理论</a> <a href="/tags/Gitee/" style="font-size: 1.1em; color: #999">Gitee</a> <a href="/tags/Git/" style="font-size: 1.1em; color: #999">Git</a> <a href="/tags/KaliLinux/" style="font-size: 1.1em; color: #999">KaliLinux</a> <a href="/tags/JavaEE/" style="font-size: 1.28em; color: #99a0aa">JavaEE</a> <a href="/tags/Mysql/" style="font-size: 1.1em; color: #999">Mysql</a> <a href="/tags/Mac-OS/" style="font-size: 1.1em; color: #999">Mac OS</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.32em; color: #99a2ae">后端</a> <a href="/tags/SQL/" style="font-size: 1.14em; color: #999b9d">SQL</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">测试</a> <a href="/tags/ArchLinux/" style="font-size: 1.19em; color: #999da1">ArchLinux</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/" style="font-size: 1.19em; color: #999da1">安全运维</a> <a href="/tags/Cent-OS/" style="font-size: 1.1em; color: #999">Cent OS</a> <a href="/tags/JavaWeb/" style="font-size: 1.1em; color: #999">JavaWeb</a> <a href="/tags/Java/" style="font-size: 1.23em; color: #999ea6">Java</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.14em; color: #999b9d">小程序</a> <a href="/tags/DIY/" style="font-size: 1.1em; color: #999">DIY</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.46em; color: #99a7bb">运维</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">协议</a> <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/" style="font-size: 1.37em; color: #99a4b2">Linux软件</a> <a href="/tags/ProxmoxVE/" style="font-size: 1.1em; color: #999">ProxmoxVE</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.41em; color: #99a5b7">前端</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 1.19em; color: #999da1">微服务</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-02-20T08:51:45.964Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

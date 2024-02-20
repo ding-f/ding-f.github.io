@@ -1,541 +1,162 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="git&amp;github教程, 铸鼎_">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>git&amp;github教程 | 铸鼎_</title>
-    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/islu.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-
-    
-        <link rel="stylesheet" type="text/css" href="/css/loading.css">
-    
-
-    
-
-    <script src="/libs/jquery/jquery.min.js"></script>
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-
-    <!--  加载动画，强制加载0.5s  -->
-    <div id="loading-container">
-    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
-    <div class="loading-image">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-<script>
-    (function () {
-        const loaded = function () {
-            setTimeout(function () {
-                const loader = document.getElementById("loading-container");
-                loader.className = "fadeout";
-                setTimeout(function () {
-                    loader.style.display = "none";
-                }, 500);
-            }, 500);
-        };
-        loaded();
-    })();
-</script>
-
-
-<!--    顶部导航栏   -->
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    <div>
-                        
-                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
-                        
-                        <span class="logo-span">铸鼎_</span>
-                    </div>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" id="" class="waves-effect waves-light">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>git&amp;github教程 | 铸鼎_</title><meta name="author" content="鼎"><meta name="copyright" content="鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="gitgit常用命令基础命令   命令名称 作用    git init 初始化本地库   git status 查看本地库状态有哪些改动   git config –global user.name &lt;用户名&gt; 设置用户签名   git config –global user.email &lt;邮箱&gt; 设置用户签名   git add &lt;文件名&gt; 添加到索引（.代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git&amp;github教程">
+<meta property="og:url" content="https://ding-f.gitee.io/2021/11/30/git-gitee.html">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="gitgit常用命令基础命令   命令名称 作用    git init 初始化本地库   git status 查看本地库状态有哪些改动   git config –global user.name &lt;用户名&gt; 设置用户签名   git config –global user.email &lt;邮箱&gt; 设置用户签名   git add &lt;文件名&gt; 添加到索引（.代">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2021-11-29T17:51:53.000Z">
+<meta property="article:modified_time" content="2024-01-24T10:34:39.962Z">
+<meta property="article:author" content="鼎">
+<meta property="article:tag" content="Linux软件">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Gitee">
+<meta property="article:tag" content="Github">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.gitee.io/2021/11/30/git-gitee.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'git&github教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-24 18:34:39'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
       
-      <i class="fas fa-book" style="zoom: 0.6;"></i>
-      
-      <span>文章</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/tags">
-          
-          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>标签</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/categories">
-          
-          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>分类</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" id="" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/about">
-          
-          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>博主</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" id="contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-link" style="zoom: 0.6;"></i>
-      
-      <span>链接</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/friends">
-          
-          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>友情链接</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li id="fullscreen_li" class="fullscreen">
-      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
-          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
-      </a>
-  </li>
-
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">铸鼎_</div>
-        <div class="logo-desc">
-            
-                Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
-
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-            <li class="m-nav-item">
-                
-                    <a href="/" class="waves-effect waves-light">
-
-                        首页
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        文章
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/tags "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-tags"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>标签</span>
-                                </a>
-                            </li>
-                        
-                            <li>
-                                <a href="/categories "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-bookmark"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>分类</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/archives" class="waves-effect waves-light">
-
-                        归档
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        关于
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/about "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-user-circle"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>博主</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/contact" class="waves-effect waves-light">
-
-                        留言
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        链接
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/friends "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-address-book"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>友情链接</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-
-
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('禁止访问，仅内部授权！');
-                location.href = '/';
-            }
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-    })();
-</script>
-
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/git_github/gitgithub.jpeg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">git&amp;github教程</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
+      }
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/">
-                                    <span class="chip bg-color">Linux软件</span>
-                                </a>
-                            
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
-                                <a href="/tags/Gitee/">
-                                    <span class="chip bg-color">Gitee</span>
-                                </a>
-                            
-                                <a href="/tags/Github/">
-                                    <span class="chip bg-color">Github</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                        <div class="post-cate">
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                                <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    开发工具
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-            </div>
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-            <div class="post-info">
-                
-                    <div class="post-date info-break-policy">
-                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                        <span id="publishDate">
-                            2021-11-30
-                        </span>
-                    </div>
-                
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
 
-                
-                    <div class="post-date info-break-policy">
-                        2023-05-29 18:05:68
-                    </div>
-                
-
-                
-                    <div class="info-break-policy">
-                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        7.4k
-                    </div>
-                
-
-                
-                    <div class="info-break-policy">
-                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        34 分
-                    </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-                
-            </div>
-        </div>
-        <hr class="clearfix">
-        <!--    添加更新时间截    -->
-        
-            <div class="uk-alert">
-                <p id="thisTime">
-                    <span id="timeLag"></span>
-                </p>
-            </div>
-            <script>
-                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
-                let date2 = new Date();    /*当前时间*/
-                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
-
-                /*计算出相差天数*/
-                let days = Math.floor(date3 / (24 * 3600 * 1000));
-
-                let thisTime = document.getElementById("thisTime");
-                let timeLag = document.getElementById("timeLag");
-                if (days <= 7) {
-                    thisTime.classList.add("uk-alert-success");
-                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
-                } else if (7 < days && days <= 30) {
-                    thisTime.classList.add("uk-alert-warning");
-                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
-                } else {
-                    thisTime.classList.add("uk-alert-danger");
-                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
-                }
-            </script>
-        
-        
-            <!-- 是否加载使用自带的 prismjs. -->
-            <link rel="stylesheet" href="/">
-        
-
-        
-            <!-- 代码块折行 -->
-            <style type="text/css">
-                code[class*="language-"], pre[class*="language-"] {
-                    white-space: pre-wrap !important;
-                }
-            </style>
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><h3 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><table>
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git&amp;github教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-29T17:51:53.000Z" title="发表于 2021-11-30 01:51:53">2021-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-24T10:34:39.962Z" title="更新于 2024-01-24 18:34:39">2024-01-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git&amp;github教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><h3 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><table>
 <thead>
 <tr>
 <th>命令名称</th>
@@ -543,8 +164,12 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>git –version</td>
-<td>查看当前git版本</td>
+<td>git init</td>
+<td>初始化本地库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看本地库状态有哪些改动</td>
 </tr>
 <tr>
 <td>git config –global user.name &lt;用户名&gt;</td>
@@ -555,28 +180,16 @@
 <td>设置用户签名</td>
 </tr>
 <tr>
-<td>git init</td>
-<td>初始化本地库</td>
-</tr>
-<tr>
-<td>git status</td>
-<td>查看本地库状态</td>
-</tr>
-<tr>
 <td>git add &lt;文件名&gt;</td>
-<td>添加到暂存区</td>
+<td>添加到索引（.代表当前文件夹中所有）</td>
 </tr>
 <tr>
-<td>git commit -m [日志信息] &lt;文件名&gt;</td>
-<td>提交到本地库</td>
-</tr>
-<tr>
-<td>git commit -a</td>
-<td>即进行add又进行commit</td>
+<td>git commit -m [说明] -a</td>
+<td>记录变更到仓库，附带提交说明，对未进行git add文件无效</td>
 </tr>
 <tr>
 <td>git reflog</td>
-<td>查看历史记录</td>
+<td>查看commit历史记录</td>
 </tr>
 <tr>
 <td>git log</td>
@@ -585,6 +198,10 @@
 <tr>
 <td>git reset –hard &lt;版本号&gt;</td>
 <td>版本穿梭</td>
+</tr>
+<tr>
+<td>git –version</td>
+<td>查看当前git版本</td>
 </tr>
 </tbody></table>
 <h4 id="分支命令"><a href="#分支命令" class="headerlink" title="分支命令"></a>分支命令</h4><table>
@@ -610,24 +227,28 @@
 <td>git merge &lt;分支名&gt;</td>
 <td>把指定的分支合并到当前分支上</td>
 </tr>
+<tr>
+<td>git branch -d [-D 强制] &lt;分支名&gt;</td>
+<td>删除本地分支</td>
+</tr>
 </tbody></table>
 <h3 id="git签名"><a href="#git签名" class="headerlink" title="git签名"></a>git签名</h3><blockquote>
 <p>签名的作用是区分不同操作者身份。用户的签名信息在每一个版本的提交信息中能够看到，以此确认本次提交是谁做的。Git首次安装必须设置一下用户签名，否则无法提交代码。</p>
 <p>注意：这里设置用户签名和将来登录GitHub（或其他代码托管中心）的账号没有任何关系。</p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/ <span class="token function">git</span> config --global user.name fuding
- ~/ <span class="token function">git</span> config --global user.email f_ding@126.com
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/ <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name fuding
+ ~/ <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email f_ding@126.com
  ~/ <span class="token function">cat</span> ~/.gitconfig		<span class="token comment">#设置之后就可以在这个配置文件里找到</span>
 <span class="token punctuation">[</span>user<span class="token punctuation">]</span>
 	name <span class="token operator">=</span> fuding
 	email <span class="token operator">=</span> f_ding@126.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="git初始化本地库"><a href="#git初始化本地库" class="headerlink" title="git初始化本地库"></a>git初始化本地库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token function">ls</span> -al	
+<h3 id="git初始化本地库"><a href="#git初始化本地库" class="headerlink" title="git初始化本地库"></a>git初始化本地库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token function">ls</span> <span class="token parameter variable">-al</span>	
 drwxr-xr-x@ <span class="token number">4</span> fuding  staff   <span class="token number">128</span> Nov <span class="token number">29</span> <span class="token number">19</span>:18 <span class="token builtin class-name">.</span>
 drwxr-xr-x@ <span class="token number">6</span> fuding  staff   <span class="token number">192</span> Nov <span class="token number">29</span> <span class="token number">19</span>:18 <span class="token punctuation">..</span>
  ~/Desktop/笔记/git_demo/ <span class="token function">git</span> init		<span class="token comment">#此命令生成.git文件夹 即：初始化本地库</span>
 Initialized empty Git repository <span class="token keyword">in</span> /Users/fuding/Desktop/笔记/git_demo/.git/
- ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span> -al
+ ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span> <span class="token parameter variable">-al</span>
 drwxr-xr-x@ <span class="token number">4</span> fuding  staff   <span class="token number">128</span> Nov <span class="token number">29</span> <span class="token number">19</span>:18 <span class="token builtin class-name">.</span>
 drwxr-xr-x@ <span class="token number">6</span> fuding  staff   <span class="token number">192</span> Nov <span class="token number">29</span> <span class="token number">19</span>:18 <span class="token punctuation">..</span>
 drwxr-xr-x@ <span class="token number">9</span> fuding  staff   <span class="token number">288</span> Nov <span class="token number">29</span> <span class="token number">19</span>:18 .git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -651,12 +272,11 @@ Untracked files:		<span class="token comment">#此处监测到git未追踪的文
 
 nothing added to commit but untracked files present <span class="token punctuation">(</span>use <span class="token string">"git add"</span> to track<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="将代码添加到暂存区"><a href="#将代码添加到暂存区" class="headerlink" title="将代码添加到暂存区"></a>将代码添加到暂存区</h3><blockquote>
+<h3 id="将代码添加到索引"><a href="#将代码添加到索引" class="headerlink" title="将代码添加到索引"></a>将代码添加到索引</h3><blockquote>
 <p>此处无新版本的创建</p>
-<p>添加到暂存区可理解为添加到内存空间（RAM），实际上这相当于把你的代码（包括新添加的文件、修改或删除的文件）告诉Git：请跟踪这些变化，即将它们加入Git的版本控制管理中。</p>
-<p>__注意__：如果只是git add理解为只是保存在了RAM中，如果要切换代码一定要注意git commit，不然切换不回只add的部分！！</p>
+<p>添加到索引（Index）可理解为将文件内容添加至git工作树，即Git的版本控制管理中跟踪它们。</p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> <span class="token function">add</span> new.java 	<span class="token comment">#空代码文件添加到暂存区</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> <span class="token function">add</span> new.java 	<span class="token comment">#空代码文件添加到索引</span>
  ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> status 	<span class="token comment">#+号代表已add未commit</span>
 On branch master
 
@@ -666,12 +286,11 @@ Changes to be committed:		<span class="token comment">#已添加到暂存区</sp
   <span class="token punctuation">(</span>use <span class="token string">"git rm --cached &lt;file>..."</span> to unstage<span class="token punctuation">)</span>		
 	new file:   new.java<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><code>git add</code>：将写在<strong>工作树</strong>中的修改，存储到 <strong>Git 暂存区</strong>，从而将更改<strong>加入到下一次提交</strong>中。当你运行 <code>git add</code> 命令时，Git会将指定文件的修改保存到一个名为“index”（也称为“暂存区”）的区域中，类似于一个临时的存储区域。</p>
+<p><code>git add</code>：将写在<strong>工作树</strong>中的修改，存储到 <strong>Git 暂存区</strong>，从而将更改<strong>加入到下一次提交</strong>中。当你运行 <code>git add</code> 命令时，Git会将指定文件的修改保存到一个名为“index”的区域中，类似于一个临时的存储区域。</p>
 <h3 id="提交本地库"><a href="#提交本地库" class="headerlink" title="提交本地库"></a>提交本地库</h3><blockquote>
-<p>提交本地库可理解为添加到储存空间（ROM）</p>
 <p>__注意__：提交本地库也意味着新版本的创建,切换版本一定要进行git commit，不然git add的部分代码将丢失！！</p>
 </blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"我的helloword代码。"</span> new.java <span class="token comment"># -m 【定义日志信息】文件名称一定要与之前一致</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"我的helloword代码。"</span> new.java <span class="token comment"># -m 【定义日志信息】文件名称一定要与之前一致</span>
 <span class="token punctuation">[</span>master <span class="token punctuation">(</span>root-commit<span class="token punctuation">)</span> 6ed6d5c<span class="token punctuation">]</span> 我的helloword代码。
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">0</span> insertions<span class="token punctuation">(</span>+<span class="token punctuation">)</span>, <span class="token number">0</span> deletions<span class="token punctuation">(</span>-<span class="token punctuation">)</span>
  create mode <span class="token number">100644</span> new.java
@@ -722,7 +341,7 @@ Date:   Mon Nov <span class="token number">29</span> <span class="token number">
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master*<span class="token punctuation">]</span> <span class="token function">git</span> reflog		<span class="token comment">#查看版本信息</span>
 6ed6d5c <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> master<span class="token punctuation">)</span> HEAD@<span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: 我的helloword代码。		<span class="token comment">#最初的版本（未切换到此版本状态）</span>
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
- ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 6ed6d5c		<span class="token comment">#切换到最初版本</span>
+ ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 6ed6d5c		<span class="token comment">#切换到最初版本</span>
  ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reflog 
 HEAD is now at 6ed6d5c 我的helloword代码。
 6ed6d5c <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> master<span class="token punctuation">)</span> HEAD@<span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span>: reset: moving to 6ed6d5c		<span class="token comment">#说明已经切换到最初版本</span>
@@ -736,10 +355,10 @@ Initialized empty Git repository <span class="token keyword">in</span> /Users/fu
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">vim</span> new.java  
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reflog
 fatal: your current branch <span class="token string">'master'</span> does not have any commits yet
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"我的helloword代码。"</span> new.java
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"我的helloword代码。"</span> new.java
 error: pathspec <span class="token string">'new.java'</span> did not match any file<span class="token punctuation">(</span>s<span class="token punctuation">)</span> known to <span class="token function">git</span>		<span class="token comment">#此处说明不进行add不能commit</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> <span class="token function">add</span> new.java		<span class="token comment">#准备添加到暂存区进行commit</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"我的helloword代码。"</span> new.java	<span class="token comment">#成功添加到本地库</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"我的helloword代码。"</span> new.java	<span class="token comment">#成功添加到本地库</span>
 <span class="token punctuation">[</span>master <span class="token punctuation">(</span>root-commit<span class="token punctuation">)</span> 9ec2632<span class="token punctuation">]</span> 我的helloword代码。
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">5</span> insertions<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
  create mode <span class="token number">100644</span> new.java
@@ -764,7 +383,7 @@ Hello       Hello.class new.java
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">vim</span> Hello          <span class="token comment">#修改Hello（未添加到暂存区）看是否会出现+号</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit Hello.class 
 Aborting commit due to empty commit message.
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"去掉+测试"</span> Hello.class
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"去掉+测试"</span> Hello.class
 <span class="token punctuation">[</span>master 560c08b<span class="token punctuation">]</span> 去掉+测试
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">1</span> insertion<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
  create mode <span class="token number">100644</span> Hello.class
@@ -772,7 +391,7 @@ Aborting commit due to empty commit message.
 Hello       Hello.class new.java
                         
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reflog	<span class="token comment">#查看commit版本</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 560c08b       <span class="token comment">#切换版本，为了证明untracked files会不会消失</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 560c08b       <span class="token comment">#切换版本，为了证明untracked files会不会消失</span>
 HEAD is now at 560c08b 去掉+测试
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>	<span class="token comment">#切换版本不会使untracked files消失</span>
 Hello       Hello.class new.java           
@@ -780,7 +399,7 @@ Hello       Hello.class new.java
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">ls</span>
 Hello       Hello.class new.java
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> reflog
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 560c08b		<span class="token comment">#再次切换版本，就会丢失add文件但未commit的文件</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 560c08b		<span class="token comment">#再次切换版本，就会丢失add文件但未commit的文件</span>
 HEAD is now at 560c08b 去掉+测试
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>		<span class="token comment">#丢失Hello文件！！</span>
 Hello.class new.java
@@ -790,7 +409,7 @@ Hello.class new.java
 560c08b HEAD@<span class="token punctuation">&#123;</span><span class="token number">3</span><span class="token punctuation">&#125;</span>: commit: 去掉+测试
 9ec2632 <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> master<span class="token punctuation">)</span> HEAD@<span class="token punctuation">&#123;</span><span class="token number">4</span><span class="token punctuation">&#125;</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: 我的helloword代码。
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 9ec2632       
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 9ec2632       
 HEAD is now at 9ec2632 我的helloword代码。
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 new.java
@@ -808,7 +427,7 @@ public static void main <span class="token punctuation">(</span>String args<span
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 new.java
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 560c08b
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 560c08b
 HEAD is now at 560c08b 去掉+测试
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 Hello.class new.java<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -826,7 +445,7 @@ Hello.class new.java<span aria-hidden="true" class="line-numbers-rows"><span></s
 <li><p>分工进行代码的开发、测试、运维、上线</p>
 </li>
 </ul>
-<h4 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master+*<span class="token punctuation">]</span> <span class="token function">git</span> branch -v	<span class="token comment">#既有+又有*代表有新的代码文件未进行add &amp; 有add后的文件进行了修改且未进行add,从未进行过add的代码修改不会出现*号，add之前add过的文件后*消失，add新文件后+消失。</span>
+<h4 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/Desktop/笔记/git_demo/ <span class="token punctuation">[</span>master+*<span class="token punctuation">]</span> <span class="token function">git</span> branch <span class="token parameter variable">-v</span>	<span class="token comment">#既有+又有*代表有新的代码文件未进行add &amp; 有add后的文件进行了修改且未进行add,从未进行过add的代码修改不会出现*号，add之前add过的文件后*消失，add新文件后+消失。</span>
 * master 6ed6d5c 我的helloword代码。		<span class="token comment">#星号表示在当前分支上</span>
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -837,22 +456,22 @@ Hello.class new.java<span aria-hidden="true" class="line-numbers-rows"><span></s
 560c08b HEAD@<span class="token punctuation">&#123;</span><span class="token number">3</span><span class="token punctuation">&#125;</span>: commit: 去掉+测试		<span class="token comment">#新版本560c08b</span>
 9ec2632 <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> master<span class="token punctuation">)</span> HEAD@<span class="token punctuation">&#123;</span><span class="token number">4</span><span class="token punctuation">&#125;</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: 我的helloword代码。		<span class="token comment">#旧版本9ec2632</span>
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 9ec2632		<span class="token comment">#切换到旧版本,此处为了证明切换到旧版本时创建分支会不会将新版本也copy到新的分支当中</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 9ec2632		<span class="token comment">#切换到旧版本,此处为了证明切换到旧版本时创建分支会不会将新版本也copy到新的分支当中</span>
 HEAD is now at 9ec2632 我的helloword代码。
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 new.java
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> branch hot-fix     <span class="token comment">#创建分支 hot-fix </span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> branch -v     
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> branch <span class="token parameter variable">-v</span>     
   hot-fix 560c08b 去掉+测试
 * master  560c08b 去掉+测试
 <span class="token punctuation">(</span>END<span class="token punctuation">)</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>       <span class="token comment">#处于master旧版本</span>
 new.java
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 560c08b	<span class="token comment">#切换到master新版</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 560c08b	<span class="token comment">#切换到master新版</span>
 HEAD is now at 560c08b 去掉+测试
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 Hello.class new.java
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 9ec2632	<span class="token comment">#mastet旧版</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 9ec2632	<span class="token comment">#mastet旧版</span>
 HEAD is now at 9ec2632 我的helloword代码。
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 new.java
@@ -865,7 +484,7 @@ Switched to branch <span class="token string">'master'</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 new.java
 
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard 560c08b		<span class="token comment">#切换到master新版</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 560c08b		<span class="token comment">#切换到master新版</span>
 HEAD is now at 560c08b 去掉+测试
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 Hello.class new.java
@@ -897,10 +516,10 @@ public static void main <span class="token punctuation">(</span>String args<span
 		System.out.println<span class="token punctuation">(</span><span class="token string">"master 分区上做修改。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master*<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"master的新版本上做修改"</span> new.java 		<span class="token comment">#由于之前在master上已经add过new.java 所以此时不用直接add，*</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master*<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"master的新版本上做修改"</span> new.java 		<span class="token comment">#由于之前在master上已经add过new.java 所以此时不用直接add，*</span>
 <span class="token punctuation">[</span>master f9d4193<span class="token punctuation">]</span> master的新版本上做修改
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">1</span> insertion<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> branch -v
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> branch <span class="token parameter variable">-v</span>
   hot-fix 560c08b 去掉+测试
 * master  f9d4193 master的新版本上做修		<span class="token comment">#处于master的最新版本上</span>
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> reflog 
@@ -913,7 +532,7 @@ f9d4193 <span class="token punctuation">(</span>HEAD -<span class="token operato
 
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">git</span> checkout hot-fix		<span class="token comment">#	切换另一个分支</span>
 Switched to branch <span class="token string">'hot-fix'</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>hot-fix<span class="token punctuation">]</span> <span class="token function">git</span> reset --hard f9d4193       <span class="token comment">#hot-fix也出现更新版本</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>hot-fix<span class="token punctuation">]</span> <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> f9d4193       <span class="token comment">#hot-fix也出现更新版本</span>
 HEAD is now at f9d4193 master的新版本上做修改
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>hot-fix<span class="token punctuation">]</span> <span class="token function">ls</span>
 Hello.class new.java
@@ -938,7 +557,7 @@ public static void main <span class="token punctuation">(</span>String args<span
 System.out.println<span class="token punctuation">(</span><span class="token string">"master分支最新版本上对new.java做修改。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master*<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"master分支的新版本上的new.java做修改"</span> new.java
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master*<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"master分支的新版本上的new.java做修改"</span> new.java
 <span class="token punctuation">[</span>master 69d7418<span class="token punctuation">]</span> master分支的新版本上的new.java做修改
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">1</span> insertion<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
  
@@ -955,7 +574,7 @@ public static void main <span class="token punctuation">(</span>String args<span
 System.out.println<span class="token punctuation">(</span><span class="token string">"hot-fix分支最新版本上对new.java做修改。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>hot-fix*<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"hot-fix分支的新版本上的new.java做修改"</span> new.java
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>hot-fix*<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"hot-fix分支的新版本上的new.java做修改"</span> new.java
 <span class="token punctuation">[</span>hot-fix bdc5af2<span class="token punctuation">]</span> hot-fix分支的新版本上的new.java做修改
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">1</span> insertion<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
 
@@ -1007,9 +626,9 @@ System.out.println<span class="token punctuation">(</span><span class="token str
 ~                                                                                                                                                                                                                                  
 -- INSERT --
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token operator">|</span>merge+*<span class="token punctuation">]</span> <span class="token function">git</span> <span class="token function">add</span> new.java 	<span class="token comment">#合并分支生成新的文件new.java 于是显示+，new.java 文件且未进行add</span>
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token operator">|</span>merge+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"nerge hot-fix"</span> new.java		<span class="token comment">#一定要进行add，毕竟有新文件</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token operator">|</span>merge+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"nerge hot-fix"</span> new.java		<span class="token comment">#一定要进行add，毕竟有新文件</span>
 fatal: cannot <span class="token keyword">do</span> a partial commit during a merge.
- ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token operator">|</span>merge+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"nerge hot-fix"</span> 		<span class="token comment">#一定要进行commit，毕竟有原文件进行了更改</span>
+ ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token operator">|</span>merge+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"nerge hot-fix"</span> 		<span class="token comment">#一定要进行commit，毕竟有原文件进行了更改</span>
 <span class="token punctuation">[</span>master ace2e5d<span class="token punctuation">]</span> nerge hot-fix
  ~/Desktop/笔记/hello word/ <span class="token punctuation">[</span>master<span class="token punctuation">]</span> <span class="token function">ls</span>
 Hello.class new.java
@@ -1074,8 +693,8 @@ System.out.println<span class="token punctuation">(</span><span class="token str
 <td>将远程仓库的内容克隆到本地仓库</td>
 </tr>
 <tr>
-<td>git pull &lt;远程仓库地址别&gt; &lt;远程分支名&gt;</td>
-<td>将远程分支仓库的分支最新内容与本地仓库分支进行合并</td>
+<td>git pull &lt;远程仓库地址别名&gt; &lt;远程分支名&gt;</td>
+<td>将远程仓库某分支的最新内容与本地当前分支代码进行合并</td>
 </tr>
 </tbody></table>
 <h4 id="模板项目初始化"><a href="#模板项目初始化" class="headerlink" title="模板项目初始化"></a>模板项目初始化</h4><blockquote>
@@ -1084,13 +703,13 @@ System.out.println<span class="token punctuation">(</span><span class="token str
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 重新初始化</span>
 <span class="token function">git</span> init
 <span class="token comment"># 参看远程仓库别名设置</span>
-<span class="token function">git</span> remote -v
+<span class="token function">git</span> remote <span class="token parameter variable">-v</span>
 <span class="token comment"># 添加别名远程仓库连接</span>
 <span class="token function">git</span> remote <span class="token function">add</span> <span class="token operator">&lt;</span>别名,默认origin<span class="token operator">></span> <span class="token operator">&lt;</span>别名地址<span class="token operator">></span>
 <span class="token comment"># 所有文件添加至暂存区</span>
 <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
 <span class="token comment"># 提交本地库</span>
-<span class="token function">git</span> commit -m <span class="token string">"网页制作"</span> -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"网页制作"</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -1099,19 +718,19 @@ System.out.println<span class="token punctuation">(</span><span class="token str
 提示：使用 <span class="token string">'master'</span> 作为初始分支的名称。这个默认分支名称可能会更改。要在新仓库中
 提示：配置使用初始分支名，并消除这条警告，请执行：
 提示：
-提示：  <span class="token function">git</span> config --global init.defaultBranch <span class="token operator">&lt;</span>名称<span class="token operator">></span>
+提示：  <span class="token function">git</span> config <span class="token parameter variable">--global</span> init.defaultBranch <span class="token operator">&lt;</span>名称<span class="token operator">></span>
 提示：
 提示：除了 <span class="token string">'master'</span> 之外，通常选定的名字有 <span class="token string">'main'</span>、<span class="token string">'trunk'</span> 和 <span class="token string">'development'</span>。
 提示：可以通过以下命令重命名刚创建的分支：
 提示：
-提示：  <span class="token function">git</span> branch -m <span class="token operator">&lt;</span>name<span class="token operator">></span>
+提示：  <span class="token function">git</span> branch <span class="token parameter variable">-m</span> <span class="token operator">&lt;</span>name<span class="token operator">></span>
 已初始化空的 Git 仓库于 /home/fuding/桌面/new-mater/.git/
     ~/桌面/new-mater    master  <span class="token function">git</span> reflog                                                                                             ✔  5s  
 fatal: 您的当前分支 <span class="token string">'master'</span> 尚无任何提交<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="设置本地库远程链接别名"><a href="#设置本地库远程链接别名" class="headerlink" title="设置本地库远程链接别名"></a>设置本地库远程链接别名</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">    ~/桌面/new-mater    master  <span class="token function">git</span> remote -v   <span class="token comment">#查看本地库中定义的链接别名，新创建的本地库不含有任何别名链接等信息                                                                                128 ✘ </span>
+<h4 id="设置本地库远程链接别名"><a href="#设置本地库远程链接别名" class="headerlink" title="设置本地库远程链接别名"></a>设置本地库远程链接别名</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">    ~/桌面/new-mater    master  <span class="token function">git</span> remote <span class="token parameter variable">-v</span>   <span class="token comment">#查看本地库中定义的链接别名，新创建的本地库不含有任何别名链接等信息                                                                                128 ✘ </span>
     ~/桌面/new-mater    master  <span class="token function">git</span> remote <span class="token function">add</span> test-git https://gitee.com/ding-f/test-git.git                                         ✔     <span class="token comment">#添加一条别名为test-git的远程库链接   </span>
-    ~/桌面/new-mater    master  <span class="token function">git</span> remote -v                                                                                                 ✔ 		<span class="token comment">#再次显示本地库别名链接配置单</span>
+    ~/桌面/new-mater    master  <span class="token function">git</span> remote <span class="token parameter variable">-v</span>                                                                                                 ✔ 		<span class="token comment">#再次显示本地库别名链接配置单</span>
 test-git        https://gitee.com/ding-f/test-git.git <span class="token punctuation">(</span>fetch<span class="token punctuation">)</span>
 test-git        https://gitee.com/ding-f/test-git.git <span class="token punctuation">(</span>push<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -1120,11 +739,11 @@ test-git        https://gitee.com/ding-f/test-git.git <span class="token punctua
 ~                                                                                
 ~  
     ~/桌面/new-mater    master ?1  <span class="token function">git</span> <span class="token function">add</span> README.md                                                                                  ✔  20s  
-    ~/桌面/new-mater    master +1  <span class="token function">git</span> commit -m <span class="token string">"我的第一个提交！！"</span>                                                                       <span class="token number">1</span> ✘ 
+    ~/桌面/new-mater    master +1  <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"我的第一个提交！！"</span>                                                                       <span class="token number">1</span> ✘ 
 <span class="token punctuation">[</span>master（根提交） 68447e5<span class="token punctuation">]</span> 我的第一个提交！！
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">1</span> insertion<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
  create mode <span class="token number">100644</span> README.md
-    ~/桌面/new-mater    master  <span class="token function">git</span> push -u test-git master                                                                                   ✔ 	<span class="token comment">#新建的远程仓库教程里push多了个-u 其实上面的表格没有也一样可以哦</span>
+    ~/桌面/new-mater    master  <span class="token function">git</span> push <span class="token parameter variable">-u</span> test-git master                                                                                   ✔ 	<span class="token comment">#新建的远程仓库教程里push多了个-u 其实上面的表格没有也一样可以哦</span>
 Username <span class="token keyword">for</span> <span class="token string">'https://gitee.com'</span><span class="token builtin class-name">:</span> ding-f
 Password <span class="token keyword">for</span> <span class="token string">'https://ding-f@gitee.com'</span><span class="token builtin class-name">:</span> 
 枚举对象中: <span class="token number">3</span>, 完成.
@@ -1146,7 +765,7 @@ Username <span class="token keyword">for</span> <span class="token string">'http
 Password <span class="token keyword">for</span> <span class="token string">'https://ding-f@gitee.com'</span><span class="token builtin class-name">:</span> 
 Everything up-to-date		<span class="token comment">#此处说明远程库和本地库是一样的</span>
     ~/桌面/new-mater    master ?1  <span class="token function">git</span> <span class="token function">add</span>                                                                           ✔  20s  
-    ~/桌面/new-mater    master <span class="token operator">!</span><span class="token number">1</span>  <span class="token function">git</span> commit -m <span class="token string">"我的第2个提交！！"</span>  README.md                                                             <span class="token number">1</span> ✘ 
+    ~/桌面/new-mater    master <span class="token operator">!</span><span class="token number">1</span>  <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"我的第2个提交！！"</span>  README.md                                                             <span class="token number">1</span> ✘ 
 <span class="token punctuation">[</span>master 766ac65<span class="token punctuation">]</span> 我的第2个提交！！
  <span class="token number">1</span> <span class="token function">file</span> changed, <span class="token number">1</span> insertion<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
     ~/桌面/new-mater    master ⇡1  <span class="token function">git</span> push  test-git master                                                                                  ✔ 
@@ -1198,7 +817,7 @@ Changes to be committed:
 	new file:   .idea/artifacts/schoolwall.xml
 	<span class="token comment">#此处省略几百行···</span>
 	<span class="token comment">#···</span>
- ~/Desktop/schoolwall/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"1.0"</span>       <span class="token comment">#由于add过就不需要再指定文件路径    </span>
+ ~/Desktop/schoolwall/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"1.0"</span>       <span class="token comment">#由于add过就不需要再指定文件路径    </span>
 <span class="token punctuation">[</span>master <span class="token punctuation">(</span>root-commit<span class="token punctuation">)</span> 5ecd93f<span class="token punctuation">]</span> <span class="token number">1.0</span>
  <span class="token number">219</span> files changed, <span class="token number">23059</span> insertions<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
  create mode <span class="token number">100644</span> .DS_Store
@@ -1252,7 +871,7 @@ Changes to be committed:
 
  ~/Desktop/schoolwall/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit                                   
 Aborting commit due to empty commit message.
- ~/Desktop/schoolwall/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit -m <span class="token string">"1.0"</span> 		<span class="token comment">#虽然一样的评论内容，但不会被git视为同一版本，它将生成第二次commit的不同版本号</span>
+ ~/Desktop/schoolwall/ <span class="token punctuation">[</span>master+<span class="token punctuation">]</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"1.0"</span> 		<span class="token comment">#虽然一样的评论内容，但不会被git视为同一版本，它将生成第二次commit的不同版本号</span>
 <span class="token punctuation">[</span>master 6f83872<span class="token punctuation">]</span> <span class="token number">1.0</span>
  <span class="token number">4</span> files changed, <span class="token number">2</span> insertions<span class="token punctuation">(</span>+<span class="token punctuation">)</span>
  create mode <span class="token number">100644</span> README.md
@@ -1307,13 +926,13 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 </blockquote>
 <p><strong>签名</strong></p>
 <p>签名</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global user.name fuding
-<span class="token function">git</span> config --global user.email f_ding@126.com
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name fuding
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email f_ding@126.com
 <span class="token function">cat</span> ~/.gitconfig		<span class="token comment">#设置之后就可以在这个配置文件里找到</span>
 <span class="token punctuation">[</span>user<span class="token punctuation">]</span>
 	name <span class="token operator">=</span> ding-f
 	email <span class="token operator">=</span> f_ding@126.com
-<span class="token function">git</span> config --list	<span class="token comment"># 显示已设置的配置</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> config <span class="token parameter variable">--list</span>	<span class="token comment"># 显示已设置的配置</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -1327,7 +946,7 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote remove gitee<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>查看本地已设置的仓库别名：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -1337,15 +956,119 @@ schoolwall                  <span aria-hidden="true" class="line-numbers-rows"><
 
 
 <p>提交所有代码到本地仓库：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit -m <span class="token string">"项目整合基本完成"</span> -a <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"项目整合基本完成"</span> <span class="token parameter variable">-a</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <p>提交代码到指定仓库：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> push origin master 		<span class="token comment">#此处直接提交的条件是一定要将ssh公私秘钥配置好，不然只能先按一遍密码才可以提交</span>
-<span class="token function">git</span> push -u github master <span class="token comment">#-u 建立追踪关系。通过追踪关系，我们可以知道当前本地分支和哪个远程分支对应，并可以轻松地推送和拉取更新。这个命令会将本地 main 分支推送到远程仓库的 main 分支，并将本地 main 分支和远程 origin/main 分支建立关联，以后推送时就可以直接使用 git push 命</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> push <span class="token parameter variable">-u</span> github master <span class="token comment">#-u 建立追踪关系。通过追踪关系，我们可以知道当前本地分支和哪个远程分支对应，并可以轻松地推送和拉取更新。这个命令会将本地 main 分支推送到远程仓库的 main 分支，并将本地 main 分支和远程 origin/main 分支建立关联，以后推送时就可以直接使用 git push 命</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>追踪关系通常是由 Git 自动创建的，但是也可以手动设置，例如通过使用 <code>git branch --set-upstream-to</code> 命令来设置本地分支和远程分支的对应关系。在使用 <code>git push -u</code> 命令推送更新时，如果当前分支还没有建立追踪关系，则 Git 会自动帮我们将本地分支与远程分支建立追踪关系，以便我们以后可以轻松地推送和拉取更新。</p>
+<h2 id="IDE集成Git"><a href="#IDE集成Git" class="headerlink" title="IDE集成Git"></a>IDE集成Git</h2><h3 id="Vscode"><a href="#Vscode" class="headerlink" title="Vscode"></a>Vscode</h3><blockquote>
+<p>Vscode 默认自带了一个集成Git，但是如果本机命令行已经安装配置过Git，并且设置了密钥对，就会导致Vscode中的集成Git可能会出现不能提交代码的情况，最好的解决方案就是用命令行的正式Git来替换集成Git。</p>
+</blockquote>
+<ol>
+<li><p>打开VS Code并导航到您的代码项目。</p>
+</li>
+<li><p>在VS Code的顶部菜单栏中，点击”文件”（File）并选择”首选项”（Preferences），然后选择”设置”（Settings）。</p>
+</li>
+<li><p>在设置界面中，搜索”git.path”以找到Git可执行文件的路径设置。</p>
+</li>
+<li><p>在搜索结果中，找到”Git: Path”选项，并点击”编辑设置.json”以编辑JSON配置文件。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token comment">// Linux</span>
+<span class="token property">"git.path"</span><span class="token operator">:</span> <span class="token string">"/usr/bin/git"</span>
+<span class="token comment">// Windows</span>
+<span class="token property">"git.path"</span><span class="token operator">:</span> <span class="token string">"C:\Program Files\Git\bin\git.exe"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p>在配置文件中，您可以设置Git可执行文件的路径，例如：<code>&quot;git.path&quot;: &quot;/usr/bin/git&quot;</code>。请根据您自己的环境修改路径。在大多数Linux系统中，Git的路径通常是<code>/usr/bin/git</code>。</p>
+</li>
+<li><p>保存配置文件并关闭设置界面。</p>
+</li>
+<li><p>在VS Code的顶部菜单栏中，点击”文件”（File）并选择”首选项”（Preferences），然后选择”设置”（Settings）。</p>
+</li>
+<li><p>在设置界面中，搜索”git.enabled”以找到Git集成设置。</p>
+</li>
+<li><p>在搜索结果中，找到”Git: Enabled”选项，并确保它被勾选上，以启用VS Code的Git集成功能。</p>
+</li>
+<li><p>关闭设置界面。</p>
+</li>
+<li><p>现在，您可以在VS Code中使用正式的命令行Git功能，包括提交、推送和拉取代码等操作。</p>
+</li>
+</ol>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><blockquote>
+<p>项目中一共分了两个分支，分别是master feature，其中feature是之前改动过的，master是目前 刚更改过的。分支成两个版本的原因是master中的功能开发了一半，但要立即进行另一个功能的开发，于是分成了两个不同的版本。</p>
+<p>完成了master中的功能，但要将两个分支的所有功能合并到一个分支，于是在master分支下创建了combine分支，切换到combine分支（和master分支的内容一致）。</p>
+</blockquote>
+<p><strong>切换分支</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>创建合并分支</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> branch combine 
+<span class="token comment"># 查看已有分支</span>
+<span class="token function">git</span> branch <span class="token parameter variable">-v</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>切换至新分支</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout combine <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>查看各个分支的提交历史</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 实现进行</span>
+<span class="token function">git</span> log <span class="token punctuation">[</span>分支名<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>合并分支</strong></p>
+<p>使用的是<code>ort</code>合并策略（在Git 2.30版本引入），它采用了一个基于树的合并模型，该模型通过比较和匹配源分支和目标分支的代码树结构来自动解决合并冲突。它可以处理代码移动、重命名和复杂结构变化等情况下的合并冲突。</p>
+<p>以下报告没有指出合并有冲突的文件，代表合并完成。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> merge feature 
+自动合并 src/api/product.js
+自动合并 src/components/kq-goods-item/index.vue
+自动合并 src/components/kq-goods/index.vue
+自动合并 src/pages/product/product.vue
+Merge made by the <span class="token string">'ort'</span> strategy.
+ src/api/order.js                       <span class="token operator">|</span>   <span class="token number">6</span> ++-
+ src/api/product.js                     <span class="token operator">|</span>   <span class="token number">3</span> +-
+ src/components/kq-block/index.vue      <span class="token operator">|</span>  <span class="token number">28</span> +++++++++++---
+ src/components/kq-cart-goods/index.vue <span class="token operator">|</span>  <span class="token number">10</span> ++++-
+ src/components/kq-cart/index.vue       <span class="token operator">|</span>  <span class="token number">15</span> +++++++-
+ src/components/kq-goods-item/index.vue <span class="token operator">|</span> <span class="token number">143</span> +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-------
+ src/components/kq-goods/index.vue      <span class="token operator">|</span>   <span class="token number">6</span> +++
+ src/components/kq-show/index.vue       <span class="token operator">|</span>   <span class="token number">1</span> +
+ src/pages.json                         <span class="token operator">|</span>  <span class="token number">18</span> ++++-----
+ src/pages/order/order.vue              <span class="token operator">|</span>  <span class="token number">42</span> ++++++++++++++++-----
+ src/pages/product/product.vue          <span class="token operator">|</span>   <span class="token number">2</span> +-
+ src/store/index.js                     <span class="token operator">|</span>  <span class="token number">83</span> +++++++++++++++++++++++++++++++++++++++---
+ test_code/mktoken.js                   <span class="token operator">|</span>   <span class="token number">1</span> +
+ <span class="token number">13</span> files changed, <span class="token number">307</span> insertions<span class="token punctuation">(</span>+<span class="token punctuation">)</span>, <span class="token number">51</span> deletions<span class="token punctuation">(</span>-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>+++</code> 表示在目标分支（合并到的分支）中添加的行。</li>
+<li><code>---</code> 表示在源分支（被合并的分支）中删除的行。</li>
+<li><code>+++-</code> 或 <code>--+-</code> 表示有行被修改，既有行添加又有行删除。</li>
+</ul>
+<h4 id="如果有合并冲突"><a href="#如果有合并冲突" class="headerlink" title="如果有合并冲突"></a>如果有合并冲突</h4><ol>
+<li><p>Git会在冲突的文件中标记出冲突的部分。打开包含冲突的文件，你会看到类似下面的内容：</p>
+<pre class="line-numbers language-none"><code class="language-none">bashCopy code&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+&#x2F;&#x2F; 代码来自当前分支（HEAD）
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+&#x2F;&#x2F; 代码来自合并的分支
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>仔细检查冲突标记之间的代码，并根据需要进行修改。你需要决定保留哪些代码，或者如何将两个版本的代码合并在一起。</p>
+</li>
+<li><p>在冲突标记之间做出修改后，保存文件。</p>
+</li>
+<li><p>使用<code>git add</code>命令将已解决冲突的文件标记为已解决。例如，如果你正在解决名为<code>file.txt</code>的文件冲突，可以运行：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>如果合并操作涉及多个文件，重复上述步骤，解决所有的冲突。</p>
+</li>
+<li><p>当所有冲突都解决并且所有文件都被标记为已解决后，运行<code>git commit</code>命令提交合并结果：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"Resolve merge conflicts"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>如果在解决冲突期间有其他的合并冲突提示，按照相同的步骤进行解决，直到所有冲突都被解决。</p>
+</li>
+</ol>
 <h2 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h2><ul>
 <li><p>可能使用了代理，我猜是DNS漏了啥的，报错如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">kex_exchange_identification: Connection closed by remote host
@@ -1363,678 +1086,4 @@ and the repository exists.<span aria-hidden="true" class="line-numbers-rows"><sp
 
 </li>
 </ul>
-
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://ding-f.gitee.io/2021/11/30/git-gitee.html">https://ding-f.gitee.io/2021/11/30/git-gitee.html</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">鼎</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/">
-                                    <span class="chip bg-color">Linux软件</span>
-                                </a>
-                            
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
-                                <a href="/tags/Gitee/">
-                                    <span class="chip bg-color">Gitee</span>
-                                </a>
-                            
-                                <a href="/tags/Github/">
-                                    <span class="chip bg-color">Github</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share"
-                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        
-                    </ul>
-                    <div id="alipay_red">
-                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        📣
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
-</div>
-<!-- 直达评论 -->
-<div id="to_comment" class="comment-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
-        <i class="fas fa-comments"></i>
-    </a>
-</div>
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
-    //这里要换行
-    new Valine({
-        el: '#vcomments',
-        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
-        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
-        notify: 'true' === 'true',
-        verify: 'true' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'monsterid',
-        pageSize: '10',
-        lang: 'zh-CN',
-        placeholder: '留下你的足迹..',
-        meta: ["nick", "mail", "link"],
-        recordIP: 'true' === 'true',
-        enableQQ: 'monsterid',
-        requiredFields: ["fu_ding@126.com"],
-        master: ["fu_ding@126.com"],
-        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
-        tagMeta: ["博主", "小伙伴", "访客"],
-        metaPlaceholder: metaPlaceholder,
-
-    });
-</script>
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2021/12/09/centos-8.html">
-                    <div class="card-image">
-                        
-                        <img src="/images/cent_os/CentOS-8.0.png" class="responsive-img" alt="CentOS 8">
-                        
-                        <span class="card-title">CentOS 8</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-09
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">基础</span>
-                    </a>
-                    
-                    <a href="/tags/Cent-OS/">
-                        <span class="chip bg-color">Cent OS</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/08/15/proxmox-ve.html">
-                    <div class="card-image">
-                        
-                        <img src="/images/proxmoxve/unnamed.jpg" class="responsive-img" alt="Proxmox VE">
-                        
-                        <span class="card-title">Proxmox VE</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    云计算
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">运维</span>
-                    </a>
-                    
-                    <a href="/tags/ProxmoxVE/">
-                        <span class="chip bg-color">ProxmoxVE</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-    <script>
-        $('#articleContent').on('copy', function (e) {
-            // IE8 or earlier browser is 'undefined'
-            if (typeof window.getSelection === 'undefined') return;
-
-            var selection = window.getSelection();
-            // if the selection is short let's not annoy our users.
-            if (('' + selection).length < Number.parseInt('120')) {
-                return;
-            }
-
-            // create a div outside of the visible area and fill it with the selected text.
-            var bodyElement = document.getElementsByTagName('body')[0];
-            var newdiv = document.createElement('div');
-            newdiv.style.position = 'absolute';
-            newdiv.style.left = '-99999px';
-            bodyElement.appendChild(newdiv);
-            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-            // we need a <pre> tag workaround.
-            // otherwise the text inside "pre" loses all the line breaks!
-            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-            }
-
-            var url = document.location.href;
-            newdiv.innerHTML += '<br />'
-                + '来源: 铸鼎_<br />'
-                + '文章作者: 鼎<br />'
-                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-            selection.selectAllChildren(newdiv);
-            window.setTimeout(function () {
-                bodyElement.removeChild(newdiv);
-            }, 200);
-        });
-    </script>
-
-<!-- 高亮CSS-->
-<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
-<!-- 代码块功能依赖 -->
-<script type="text/javascript"
-        src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-    <script type="text/javascript"
-            src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-    <script type="text/javascript"
-            src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-    <script type="text/javascript"
-            src="/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-</main>
-
-
-
-
-<!--是否开启暗黑模式-->
-
-<!--footer-->
-<footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        
-        <div class="col s12 m6 l6 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2021-2023</span>
-            
-            <a href="/about" target="_blank">鼎</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            <br/>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.7k</span>&nbsp;
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
-                                                                        class="white-color"></span>&nbsp;
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                                                                           class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-                <span id="sitetime">载入运行时间...</span>
-                <script>
-                    function siteTime() {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2021";
-                        var startMonth = "2";
-                        var startDate = "1";
-                        var startHour = "23";
-                        var startMinute = "0";
-                        var startSecond = "0";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                            minutes);
-                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                            diffMinutes * minutes) / seconds);
-                        if (startYear == todayYear) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
-                                " h " + diffMinutes + " m " + diffSeconds + " s";
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
-                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
-                        }
-                    }
-
-                    setInterval(siteTime, 1000);
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m3 l3 social-link social-statis social-statis">
-    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
-        
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-<!--search-->
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(function () {
-        searchFunc("/search.xml", 'searchInput', 'searchResult')
-    })
-</script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll" title="回到顶部">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/islu.js"></script>
-<script src="/libs/search/search.js"></script>
-
-<!--谷歌广告接入点-->
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-<!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-<!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
-    <script src="/libs/others/clicklove.js" async="async"></script>
-
-
-
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-
-
-</body>
-
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.gitee.io">鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.gitee.io/2021/11/30/git-gitee.html">https://ding-f.gitee.io/2021/11/30/git-gitee.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.gitee.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux%E8%BD%AF%E4%BB%B6/">Linux软件</a><a class="post-meta__tags" href="/tags/Git/">Git</a><a class="post-meta__tags" href="/tags/Gitee/">Gitee</a><a class="post-meta__tags" href="/tags/Github/">Github</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/09/centos-8.html" title="CentOS 8"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CentOS 8</div></div></a></div><div class="next-post pull-right"><a href="/2021/08/15/proxmox-ve.html" title="Proxmox VE"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Proxmox VE</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/02/24/wine-pei-zhi.html" title="Wine配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-24</div><div class="title">Wine配置</div></div></a></div><div><a href="/2021/08/10/open-ssh.html" title="Open SSH"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/vim-bian-ji-qi.html" title="Vim编辑器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Vim编辑器</div></div></a></div><div><a href="/2022/03/02/networkmanager-xin-ban-te-xing.html" title="NetWorkManager新版特性"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">NetWorkManager新版特性</div></div></a></div><div><a href="/2022/04/11/redis.html" title="Redis"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">Redis</div></div></a></div><div><a href="/2022/05/09/docker.html" title="Docker"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-09</div><div class="title">Docker</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git"><span class="toc-number">1.</span> <span class="toc-text">git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">git常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text">基础命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.2.</span> <span class="toc-text">分支命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E7%AD%BE%E5%90%8D"><span class="toc-number">1.2.</span> <span class="toc-text">git签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">git初始化本地库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E5%BA%93%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.</span> <span class="toc-text">查看本地库状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E6%AC%A1%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.1.</span> <span class="toc-text">首次查看状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6-amp-%E5%86%8D%E6%AC%A1%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">新增代码文件&amp;再次查看状态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E4%BB%A3%E7%A0%81%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%B4%A2%E5%BC%95"><span class="toc-number">1.5.</span> <span class="toc-text">将代码添加到索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">1.6.</span> <span class="toc-text">提交本地库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%86%8D%E6%AC%A1%E6%8F%90%E4%BA%A4"><span class="toc-number">1.6.1.</span> <span class="toc-text">修改文件再次提交</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC"><span class="toc-number">1.7.</span> <span class="toc-text">查看历史版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2%EF%BC%88%E7%89%88%E6%9C%AC%E7%A9%BF%E6%A2%AD%EF%BC%89"><span class="toc-number">1.8.</span> <span class="toc-text">版本切换（版本穿梭）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-commit%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.9.</span> <span class="toc-text">add commit实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">1.10.</span> <span class="toc-text">git分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.10.1.</span> <span class="toc-text">分支的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-number">1.10.2.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF-amp-%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">1.10.3.</span> <span class="toc-text">创建分支&amp;切换分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF"><span class="toc-number">1.10.4.</span> <span class="toc-text">修改分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-number">1.10.5.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="toc-number">1.10.6.</span> <span class="toc-text">解决冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github-amp-gitee"><span class="toc-number">2.</span> <span class="toc-text">github&amp;gitee</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text">远程仓库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.1.1.</span> <span class="toc-text">模板项目初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%BA%93"><span class="toc-number">2.1.2.</span> <span class="toc-text">创建一个新的本地库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%AC%E5%9C%B0%E5%BA%93%E8%BF%9C%E7%A8%8B%E9%93%BE%E6%8E%A5%E5%88%AB%E5%90%8D"><span class="toc-number">2.1.3.</span> <span class="toc-text">设置本地库远程链接别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E8%BF%9C%E7%A8%8B%E5%BA%93%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">2.1.4.</span> <span class="toc-text">向远程库推送代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E5%AE%9E%E9%AA%8C"><span class="toc-number">2.1.5.</span> <span class="toc-text">推送批量文件实验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">2.1.6.</span> <span class="toc-text">克隆远程仓库到本地</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">常用操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDE%E9%9B%86%E6%88%90Git"><span class="toc-number">3.</span> <span class="toc-text">IDE集成Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vscode"><span class="toc-number">3.1.</span> <span class="toc-text">Vscode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.</span> <span class="toc-text">实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6"><span class="toc-number">4.1.</span> <span class="toc-text">分支合并</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%9C%89%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81"><span class="toc-number">4.1.1.</span> <span class="toc-text">如果有合并冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%85%E9%9A%9C"><span class="toc-number">5.</span> <span class="toc-text">故障</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/20/nvm.html" title="NVM">NVM</a><time datetime="2024-02-20T02:45:30.000Z" title="发表于 2024-02-20 10:45:30">2024-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/26/mongodb.html" title="MongoDB">MongoDB</a><time datetime="2023-08-26T15:11:57.000Z" title="发表于 2023-08-26 23:11:57">2023-08-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao.html" title="浅谈Node-Vue-ES6-调试-编译-前端原理">浅谈Node-Vue-ES6-调试-编译-前端原理</a><time datetime="2023-08-10T03:10:14.000Z" title="发表于 2023-08-10 11:10:14">2023-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/08/xiang-liang-shu-ju-ku.html" title="向量数据库">向量数据库</a><time datetime="2023-08-07T16:01:24.000Z" title="发表于 2023-08-08 00:01:24">2023-08-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/07/mi-ma-xue.html" title="密码学">密码学</a><time datetime="2023-08-07T14:29:28.000Z" title="发表于 2023-08-07 22:29:28">2023-08-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

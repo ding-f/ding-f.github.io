@@ -1,1300 +1,274 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="铸鼎_">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>铸鼎_</title>
-    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/islu.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-
-    
-        <link rel="stylesheet" type="text/css" href="/css/loading.css">
-    
-
-    
-
-    <script src="/libs/jquery/jquery.min.js"></script>
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-
-    <!--  加载动画，强制加载0.5s  -->
-    <div id="loading-container">
-    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
-    <div class="loading-image">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-<script>
-    (function () {
-        const loaded = function () {
-            setTimeout(function () {
-                const loader = document.getElementById("loading-container");
-                loader.className = "fadeout";
-                setTimeout(function () {
-                    loader.style.display = "none";
-                }, 500);
-            }, 500);
-        };
-        loaded();
-    })();
-</script>
-
-
-<!--    顶部导航栏   -->
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    <div>
-                        
-                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
-                        
-                        <span class="logo-span">铸鼎_</span>
-                    </div>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" id="" class="waves-effect waves-light">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>铸鼎_ - 『生命不息 探索不止』</title><meta name="author" content="鼎"><meta name="copyright" content="鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="铸鼎_">
+<meta property="og:url" content="https://ding-f.gitee.io/index.html">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="鼎">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.gitee.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '铸鼎_',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-02-20 16:51:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
-      <span>首页</span>
-    </a>
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
     
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-book" style="zoom: 0.6;"></i>
-      
-      <span>文章</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/tags">
-          
-          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>标签</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/categories">
-          
-          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>分类</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" id="" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/about">
-          
-          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>博主</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" id="contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-link" style="zoom: 0.6;"></i>
-      
-      <span>链接</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/friends">
-          
-          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>友情链接</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li id="fullscreen_li" class="fullscreen">
-      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
-          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
-      </a>
-  </li>
-
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">铸鼎_</div>
-        <div class="logo-desc">
-            
-                Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
-
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-            <li class="m-nav-item">
-                
-                    <a href="/" class="waves-effect waves-light">
-
-                        首页
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        文章
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/tags "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-tags"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>标签</span>
-                                </a>
-                            </li>
-                        
-                            <li>
-                                <a href="/categories "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-bookmark"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>分类</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/archives" class="waves-effect waves-light">
-
-                        归档
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        关于
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/about "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-user-circle"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>博主</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/contact" class="waves-effect waves-light">
-
-                        留言
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        链接
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/friends "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-address-book"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>友情链接</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-
-
-    
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                    『生命不息 探索不止』
-                
-            </div>
-
-            <div class="description center-align">
-                
-                    
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <script>
-        $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
-    </script>
-
-
-
-            <div class="cover-btns" id="scroll">
-                <a href="#indexCard" class="waves-effect waves-light scroll-down-effects">
-                    <i class="fa fa-angle-double-down"></i>
-                </a>
-            </div>
-            
-                <div class="cover-social-link">
-    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
-            
-        </div>
-    </div>
-
-    
-</div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
         }
 
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
         })
 
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
-<main class="content">
-
+        document.head.appendChild(script)
+      })
     
-        <div id="indexCard" class="index-card">
-            <div class="container ">
-                <div class="card">
-                    <div class="card-content">
-                        
-                            <div class="dream">
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
     
-    <div class="title center-align">
-       💪 人生格言
-    </div>
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            理想主义的花，终将会盛开在浪漫主义的土壤里，我的热情永远不会消失在现实的平凡当中；如果有一天 我变得和普通人一样，请让我曾经的热情把我烧成灰烬。
-        </div>
-    </div>
-</div>
-
-                        
-
-                        
-
-                        
-
-                        
-                            <div id="recommend-sections" class="recommend">
-                                
-
-
-
-
-
-<div class="title"><img src="/medias/detail/love.png" alt="欢迎阅读">推荐文章<img src="/medias/detail/love.png" alt="欢迎阅读"></div>
-
-<div class="row">
-
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-    
-    <div class="col s12" >
-        
-             <div class="post-card" style="background-image: url('/images/git_github/gitgithub.jpeg')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="category">开发工具</a>
-                        
-                    
-                </div>
-                <a href="/2021/11/30/git-gitee.html">
-                    <h3 class="post-title">git&amp;github教程</h3>
-                </a>
-                <p class="post-description">gitgit常用命令基础命令
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">铸鼎_</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/20/nvm.html" title="NVM">NVM</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-20T02:45:30.000Z" title="发表于 2024-02-20 10:45:30">2024-02-20</time></span></div><div class="content">简述
+NVM (Node Version Manager) Node 版本管理器
+参考:
+Github:nvm
+Akamai:Installing and Using NVM
+
+安装
+nvm 可工作在任何 POSIX-compliant shell (sh, dash, ksh, zsh, bash), 特别是以下平台: unix, macOS, and windows WSL(Windows Subsystem for Linux).
+需提前安装curl/wget
+
+install.sh二选一执行:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 
-命令名称
-作用
+安装完成后的NVM一般情况下会安装在~/.nvm
+
+执行完成后会提示重新打开Shell或执行重载shell环境的命令,建议重新打开Shell
 
 
+常用命令列出可用N ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/26/mongodb.html" title="MongoDB">MongoDB</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-26T15:11:57.000Z" title="发表于 2023-08-26 23:11:57">2023-08-26</time></span></div><div class="content">初识
+我们可以将MongoDB看作是一个非常强大的文件存储器，类似于一个巨大的文件夹，可以存储各种各样的文档。这些文档可以是JSON格式的，就像我们在编程中使用的数据结构，其中包含键值对、数组和嵌套的子文档。
+MongoDB适用于需要存储大量非结构化数据并具备高度灵活性和可扩展性的应用场景。
 
-git –version
-查看当前git版本
+MongoDB的用途非常广泛，下面列举几个常见的应用场景：
 
+Web应用程序的数据存储：MongoDB非常适合存储Web应用程序中的数据。它可以存储用户信息、文章、评论、日志等等。由于MongoDB具有灵活的数据模型，可以轻松地修改和扩展数据结构，这对于快速迭代和开发新功能非常有帮助。
+实时分析和日志处理：MongoDB支持高度可扩展的数据处理能力，可以用于实时数据分析和日志处理。它可以存储大量的日志数据，并且可以使用强大的查询和聚合功能，从中提取有用的信息和统计数据。
+物联网（IoT）应用程序：随着物联网的发展，越来越多的设备生成大量的数据。MongoDB可以作为物联网应用程序的数据存储解决方案，存储设备传感器数据、监控数据、设备状态等信息，并支持快速查询和实时数据处理。
+缓存数据存储：Mon ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao.html" title="浅谈Node-Vue-ES6-调试-编译-前端原理">浅谈Node-Vue-ES6-调试-编译-前端原理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-10T03:10:14.000Z" title="发表于 2023-08-10 11:10:14">2023-08-10</time></span></div><div class="content">引入话题
+我在使用Vue2开发一个前端项目，由于在代码中经常使用console.log()打印输出某些重要的参数，不过有一个地方忘记注释掉console.log()，此时浏览器正处于开发者模式，打印输出以下数据，这些数据是前端请求后端，我进行了console.log()打印。上线环境中这种console.log()打印肯定是要注释掉的，因为浏览器打印出来的同时后面会标明
 
-git config –global user.name &amp;lt</p>
-                <a href="/2021/11/30/git-gitee.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
-                    👁阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('/images/ipv6/ipv6-earth-2021-1-1280x720.jpg')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="category">网络</a>
-                        
-                    
-                </div>
-                <a href="/2022/01/12/ipv6.html">
-                    <h3 class="post-title">IPv6</h3>
-                </a>
-                <p class="post-description">
-参考：
-知乎:ipv6地址分类知识
-BiliBili: Cisco路由交换IPv6-1
-BiliBili: Cisco路由交换IPv6-2</p>
-                <a href="/2022/01/12/ipv6.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    👁阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('/images/java_dev/graduate.jpg')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="category">开发</a>
-                        
-                    
-                </div>
-                <a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji.html">
-                    <h3 class="post-title">安康学院校园墙小程序（全栈）</h3>
-                </a>
-                <p class="post-description">开放源代码
-本项目，由于工作没时间折腾，它的前后端代码已经在Gitee上开源，但最重要的是为了共同学习为目的，互相学习。
-源码:
-schoo</p>
-                <a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
-                    👁阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
+运行方式
 
-</div>
+console.log()打印输出
 
+如果将相关index.vue:159 处的代码在VSCode中注释掉就会出现VM1634 94736:177，这是因为 index.vue:159 处的代码已经注释掉了，浏览器中的此处源代码也会注释，我还以为会剩下编译打包后的静态代码
 
-                            </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+为了验证VM1634 94736:177是否为编译打包后的静态代码，我重新打包为H5的方式，使用Python自带的HTTP服务器重新部署了一个服务
 
-    
+再次运行到之前的console.log()
 
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/06/15/django-rest-framework.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/error.jpg" class="responsive-img" alt="Django Rest Framework">
-                                
-                                <span class="card-title">Django Rest Framework</span>
-                            </div>
-                        </a>
+点进pages-admin-set_conf-index.720cbcbe.js，此文件其实是由源码src/pages/admin/set_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/08/xiang-liang-shu-ju-ku.html" title="向量数据库">向量数据库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-07T16:01:24.000Z" title="发表于 2023-08-08 00:01:24">2023-08-08</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/08/07/mi-ma-xue.html" title="密码学">密码学</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-07T14:29:28.000Z" title="发表于 2023-08-07 22:29:28">2023-08-07</time></span></div><div class="content">RSA
+RSA是1977年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。RSA公开密钥密码体制是一种使用不同的加密密钥与解密密钥，“由已知加密密钥推导出解密密钥在计算上是不可行的”密码体制。
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    简介
-Django REST Framework（简称DRF）是一个用于构建Web API的强大框架，基于Django开发。它提供了许多工具和库，使得构建和管理Web API变得简单和高效。DRF结合了Django的强大特性和灵活性，使开发
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-15
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-user fa-fw"></i>
-                                        鼎
-                                    
-                                </span>
-                            </div>
-                        </div>
+加密解密原理
 
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/06/13/websocket-xie-yi.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/error.jpg" class="responsive-img" alt="WebSocket协议">
-                                
-                                <span class="card-title">WebSocket协议</span>
-                            </div>
-                        </a>
+选取素数p、q，乘积为n
+欧拉公式ꚩ(n)=n-1,由此ꚩ(p)=p-1,ꚩ(q)=q-1,z=ꚩ(pq)=ꚩ(p)ꚩ(q)=(p-1)(q-1)
+选取e【公钥】，在1~z的范围选取公钥参数e，且e满足大公约数ged(ꚩ(n-1),e)=1,此时整数e用做加密钥（注意：e的选取是很容易的，例如，所有大于p和q的素数都可用）
+（e*d）mod z=1,算得d【私钥】
+公开整数n和e，秘密保存d【私钥】（常用作签名）
+加密c=m^e mod n
+解密m=c^d mod n
+以上的fuding字符通过分段后一定是小于n的无符号整数类型
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    WebSocket
+常见问题解答
+非对称密码算法适用于哪种场合？
+答：非对称密码由于算法效率不高，适合传递内容少且比较私密的信息，比如AES算法中的秘钥；数字签名认证发布者身份 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/15/django-rest-framework.html" title="Django Rest Framework">Django Rest Framework</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-15T02:53:46.000Z" title="发表于 2023-06-15 10:53:46">2023-06-15</time></span></div><div class="content">简介
+Django REST Framework（简称DRF）是一个用于构建Web API的强大框架，基于Django开发。它提供了许多工具和库，使得构建和管理Web API变得简单和高效。DRF结合了Django的强大特性和灵活性，使开发人员能够轻松地创建功能强大、安全和可扩展的API。
+Django REST Framework（DRF）是基于Django框架构建的，并且依赖于Django的核心功能。DRF扩展了Django，提供了用于构建Web API的额外功能和工具。要使用Django REST Framework，需要首先安装和配置Django。DRF是作为Django的一个扩展包提供的，可以在Django项目中引入DRF，以便利用其提供的API构建功能和特性。
+
+以下是一些Django REST Framework的主要特性：
+
+序列化：DRF提供了一个强大的序列化系统，用于将数据库模型和其他数据类型转换为JSON、XML或其他格式的数据。它使得数据的转换和传输变得简单，并且可以轻松地处理数据验证和反序列化。
+视图：DRF提供了一组视图类，用于处理API请求和生成响应。它支 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/13/websocket-xie-yi.html" title="WebSocket协议">WebSocket协议</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-13T15:17:45.000Z" title="发表于 2023-06-13 23:17:45">2023-06-13</time></span></div><div class="content">WebSocket
 WebSocket 是一种在Web应用程序中实现全双工通信的协议，建立在HTTP协议之上。
 初次接触 WebSocket 的人，都会问同样的问题：我们已经有了 HTTP 协议，为什么还需要另一个协议？它能带来什么好处？
-
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-13
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-user fa-fw"></i>
-                                        鼎
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/06/13/vue3.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/error.jpg" class="responsive-img" alt="Vue3">
-                                
-                                <span class="card-title">Vue3</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Vue3简介
+答案很简单，因为 HTTP 协议有一个缺陷：通信只能由客户端发起。
+举例来说，我们想了解今天的天气，只能是客户端向服务器发出请求，服务器返回查询结果。HTTP 协议做不到服务器主动向客户端推送信息。
+这种单向请求的特点，注定了如果服务器有连续的状态变化，客户端要获知就非常麻烦。我们只能使用“轮询”：每隔一段时候，就发出一个询问，了解服务器有没有新的信息。最典型的场景就是聊天室。
+轮询的效率低，非常浪费资源（因为必须不停连接，或者 HTTP 连接始终打开）。因此，工程师们一直在思考，有没有更好的方法。WebSocket 就是这样发明的。
+WebSocket 协议在2008年诞生，2011年成为国际标准。所有浏览器都已经支持了。
+参考：
+W3Cschool：JavaScript WebSocket
+How To Use WebSocket In Java ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/13/vue3.html" title="Vue3">Vue3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-13T08:35:31.000Z" title="发表于 2023-06-13 16:35:31">2023-06-13</time></span></div><div class="content">Vue3简介
 Vue3中对比Vue2最大的更新亮点就是组合式API(Composition API),但也保留了选项式API(Options API)
 
 组合式&amp;选项式选项式 API：
 
-选项式 API 是 Vue 2 中使用的传统
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-13
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-user fa-fw"></i>
-                                        鼎
-                                    
-                                </span>
-                            </div>
-                        </div>
+选项式 API 是 Vue 2 中使用的传统方式，它将组件的逻辑分散在不同的选项中，如 data、computed、methods、watch 等。
+使用选项式 API 编写的组件代码相对较为分散，随着组件的复杂度增加，代码可读性和维护性可能会下降。
+选项式 API 使用了基于对象的方式来定义组件，将数据和方法都声明在组件实例的选项中。
+这种方式对于熟悉 Vue 2 的开发者来说更加熟悉和容易上手。
 
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/06/12/yan-zheng-ma.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/error.jpg" class="responsive-img" alt="验证码">
-                                
-                                <span class="card-title">验证码</span>
-                            </div>
-                        </a>
+组合式 API：
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    短信验证
+组合式 API 是 Vue 3 中引入的一种新的组件编写方式，基于函数的组合，通过 setup 函数来组织组件的逻辑。
+使用组合式 API 可以将相关的逻辑代码放在同一个函数内部，使代码更加集中和清晰，提高了代码的可维护性。
+组合式 API 使用了基于函数的方式来定义组件，setup 函数返回一个对象，对象中包含组件的数据、方法等。
+这种方式更加灵活，可以使用任何 JavaS ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/12/yan-zheng-ma.html" title="验证码">验证码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-12T01:35:46.000Z" title="发表于 2023-06-12 09:35:46">2023-06-12</time></span></div><div class="content">短信验证
 需选择一家可靠的短信服务提供商，服务提供商通常提供API来集成短信功能到您的应用程序中，不同的提供商提供不同SDK或库。
 
 后端实现
 
 安装相应的短信SDK或库，以便与短信服务提供商的API进行通信。
 
-创建一个后端API，接收来
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-12
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-user fa-fw"></i>
-                                        鼎
-                                    
-                                </span>
-                            </div>
-                        </div>
+创建一个后端API，接收来自前端的手机号码和其他必要的注册信息。
 
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/06/11/pip-yi-lai-guan-li.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/2023-06-11-PIP%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/OIP-C.jpeg" class="responsive-img" alt="PIP依赖管理">
-                                
-                                <span class="card-title">PIP依赖管理</span>
-                            </div>
-                        </a>
+在后端API中，生成一个随机验证码并将其保存到数据库或缓存中，同时将手机号码和验证码发送到短信服务提供商的API。
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    pip简介常用命令安装依赖包pip install package_name
+验证短信服务提供商的响应，确认短信已成功发送。
 
-用于安装指定名称的依赖包。
-安装指定版本的依赖包pip install package_name==version_number
 
-用于安装指定名称和版本号的依
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-11
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-user fa-fw"></i>
-                                        鼎
-                                    
-                                </span>
-                            </div>
-                        </div>
+协商接口
 
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/06/07/chatgpt.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/2023-06-07-ChatGPT/chatgpt-logo-price.jpg" class="responsive-img" alt="ChatGPT">
-                                
-                                <span class="card-title">ChatGPT</span>
-                            </div>
-                        </a>
+请求需校验信息（图形/数据库已有信息），响应成功后才可进行下一步
+信息正确，请求提交手机号，后端生成发送短信的随机验证码，存储于缓存/数据库，调用短信提供商发送短信API携带手机号&amp;验证码，提供商响应服务器成功与否，再响应客户端短信是否发送
+客户端收到短信，填入所需信息，提交请求携带验证码&amp;所需信息，后端对比验证码成功，才可完成注册/信息插入，响应结果
 
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Docker方式搭建
-使用CentOS、Arch Linux进行实验，无需你懂的方式进行对话。
-参考：
-GitHub-pengzhile：pandora
+前后端交互
 
-安装Docker参考本博客文章Docker
-下拉pengzhile大佬的镜像
-doc
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-07
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-user fa-fw"></i>
-                                        鼎
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/05/05/typescript.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/2023-05-05-TypeScript/R-C.0985ec3bbc58712c69c384d75d089db8rik=aygODZtZRK4%252fsA&riu=http%253a%252f%252fmspoweruser.com%252fwp-content%252fuploads%252f2016%252f07%252ftypescript-cover-image.jpeg" class="responsive-img" alt="TypeScript">
-                                
-                                <span class="card-title">TypeScript</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    简述
-TypeScript 是 JavaScript 的一个超集，它在 JavaScript 的基础上增加了类型系统和更强大的面向对象编程支持。有趣的是它将JS这样的动态类型语言变成了动态类型语言。
-参考：
-TypeScript-文档
-
-优
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-05
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    语言
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                        <span class="chip bg-color">基础</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                        <span class="chip bg-color">前端</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/04/27/javascript.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/2023-04-27-JavaScript/R-C.3833d4b070ca7c198ebc5a2ba765a32erik=z7tex%252bOSycssNQ&riu=http%253a%252f%252fwww.techsors.com%252fwp-content%252fuploads%252f2016%252f02%252fJavascript.jpeg" class="responsive-img" alt="JavaScript">
-                                
-                                <span class="card-title">JavaScript</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    基础var、let、const
-参考：
-深入理解JS：var、let、const的异同
-菜鸟教程：JavaScript let 和 const
-MDN web docs：const
-
-
-
-
-关键字
-作用域
-同一作用域重复声明
-绑定全局对象
-
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-27
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    语言
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                                        <span class="chip bg-color">基础</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                        <span class="chip bg-color">前端</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-                <div class="article col s12 m6 l4" data-aos="zoom-in">
-                    <div class="card">
-                        <a href="/2023/02/16/uni-app.html">
-                            <div class="card-image">
-                                
-                                    <img src="/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png" class="responsive-img" alt="uni-app">
-                                
-                                <span class="card-title">uni-app</span>
-                            </div>
-                        </a>
-
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    概述
-uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉/淘宝）、快应用等多个平台，并且在 HBuilderX 中可直接打包生成 And
-                                
-                            </div>
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                            <div class="card-action article-tags">
-                                
-                                    <a href="/tags/%E7%90%86%E8%AE%BA/">
-                                        <span class="chip bg-color">理论</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                        <span class="chip bg-color">前端</span>
-                                    </a>
-                                
-                                    <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                                        <span class="chip bg-color">小程序</span>
-                                    </a>
-                                
-                            </div>
-                        
-                    </div>
-                </div>
-            
-        </div>
-    </article>
-</main>
-
-
-    <div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 6</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
-
-
-<!--是否开启暗黑模式-->
-
-<!--footer-->
-<footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        
-        <div class="col s12 m6 l6 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2021-2023</span>
-            
-            <a href="/about" target="_blank">鼎</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            <br/>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.7k</span>&nbsp;
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
-                                                                        class="white-color"></span>&nbsp;
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                                                                           class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-                <span id="sitetime">载入运行时间...</span>
-                <script>
-                    function siteTime() {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2021";
-                        var startMonth = "2";
-                        var startDate = "1";
-                        var startHour = "23";
-                        var startMinute = "0";
-                        var startSecond = "0";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                            minutes);
-                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                            diffMinutes * minutes) / seconds);
-                        if (startYear == todayYear) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
-                                " h " + diffMinutes + " m " + diffSeconds + " s";
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
-                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
-                        }
-                    }
-
-                    setInterval(siteTime, 1000);
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m3 l3 social-link social-statis social-statis">
-    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
-        
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-<!--search-->
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(function () {
-        searchFunc("/search.xml", 'searchInput', 'searchResult')
-    })
-</script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll" title="回到顶部">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/islu.js"></script>
-<script src="/libs/search/search.js"></script>
-
-<!--谷歌广告接入点-->
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-<!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-<!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
-    <script src="/libs/others/clicklove.js" async="async"></script>
-
-
-
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-
-
-</body>
-
-</html>
+在注册页面或组件中，添加一个用于输入用户收到的验证码的字段。
+通过AJAX或AXIOS方式，将用户输入的手机号码和验证码包含在请求中，向后端API发 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/20/nvm.html" title="NVM">NVM</a><time datetime="2024-02-20T02:45:30.000Z" title="发表于 2024-02-20 10:45:30">2024-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/26/mongodb.html" title="MongoDB">MongoDB</a><time datetime="2023-08-26T15:11:57.000Z" title="发表于 2023-08-26 23:11:57">2023-08-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao.html" title="浅谈Node-Vue-ES6-调试-编译-前端原理">浅谈Node-Vue-ES6-调试-编译-前端原理</a><time datetime="2023-08-10T03:10:14.000Z" title="发表于 2023-08-10 11:10:14">2023-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/08/xiang-liang-shu-ju-ku.html" title="向量数据库">向量数据库</a><time datetime="2023-08-07T16:01:24.000Z" title="发表于 2023-08-08 00:01:24">2023-08-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/07/mi-ma-xue.html" title="密码学">密码学</a><time datetime="2023-08-07T14:29:28.000Z" title="发表于 2023-08-07 22:29:28">2023-08-07</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hackintosh/"><span class="card-category-list-name">Hackintosh</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"><span class="card-category-list-name">云计算</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">信息安全</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><span class="card-category-list-name">小程序</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">开发</span><span class="card-category-list-count">12</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Python/" style="font-size: 1.1em; color: #999">Python</a> <a href="/tags/vue/" style="font-size: 1.1em; color: #999">vue</a> <a href="/tags/Android/" style="font-size: 1.1em; color: #999">Android</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 1.5em; color: #99a9bf">基础</a> <a href="/tags/Github/" style="font-size: 1.1em; color: #999">Github</a> <a href="/tags/%E7%90%86%E8%AE%BA/" style="font-size: 1.41em; color: #99a5b7">理论</a> <a href="/tags/Gitee/" style="font-size: 1.1em; color: #999">Gitee</a> <a href="/tags/Git/" style="font-size: 1.1em; color: #999">Git</a> <a href="/tags/KaliLinux/" style="font-size: 1.1em; color: #999">KaliLinux</a> <a href="/tags/JavaEE/" style="font-size: 1.28em; color: #99a0aa">JavaEE</a> <a href="/tags/Mysql/" style="font-size: 1.1em; color: #999">Mysql</a> <a href="/tags/Mac-OS/" style="font-size: 1.1em; color: #999">Mac OS</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.32em; color: #99a2ae">后端</a> <a href="/tags/SQL/" style="font-size: 1.14em; color: #999b9d">SQL</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">测试</a> <a href="/tags/ArchLinux/" style="font-size: 1.19em; color: #999da1">ArchLinux</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/" style="font-size: 1.19em; color: #999da1">安全运维</a> <a href="/tags/Cent-OS/" style="font-size: 1.1em; color: #999">Cent OS</a> <a href="/tags/JavaWeb/" style="font-size: 1.1em; color: #999">JavaWeb</a> <a href="/tags/Java/" style="font-size: 1.23em; color: #999ea6">Java</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.14em; color: #999b9d">小程序</a> <a href="/tags/DIY/" style="font-size: 1.1em; color: #999">DIY</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.46em; color: #99a7bb">运维</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">协议</a> <a href="/tags/Linux%E8%BD%AF%E4%BB%B6/" style="font-size: 1.37em; color: #99a4b2">Linux软件</a> <a href="/tags/ProxmoxVE/" style="font-size: 1.1em; color: #999">ProxmoxVE</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.41em; color: #99a5b7">前端</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 1.19em; color: #999da1">微服务</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-02-20T08:51:45.964Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

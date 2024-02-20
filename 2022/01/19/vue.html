@@ -1,529 +1,159 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Vue.JS, 铸鼎_">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Vue.JS | 铸鼎_</title>
-    <link rel="icon" type="image/png" href="/medias/detail/logo.png">
-
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/islu.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-
-    
-        <link rel="stylesheet" type="text/css" href="/css/loading.css">
-    
-
-    
-
-    <script src="/libs/jquery/jquery.min.js"></script>
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-
-    <!--  加载动画，强制加载0.5s  -->
-    <div id="loading-container">
-    <p class="loading-text">嘘 ~ 正在从服务器偷取页面 . . . </p>
-    <div class="loading-image">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-<script>
-    (function () {
-        const loaded = function () {
-            setTimeout(function () {
-                const loader = document.getElementById("loading-container");
-                loader.className = "fadeout";
-                setTimeout(function () {
-                    loader.style.display = "none";
-                }, 500);
-            }, 500);
-        };
-        loaded();
-    })();
-</script>
-
-
-<!--    顶部导航栏   -->
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    <div>
-                        
-                            <img src="/medias/detail/logo.png" class="logo-img" alt="LOGO">
-                        
-                        <span class="logo-span">铸鼎_</span>
-                    </div>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" id="" class="waves-effect waves-light">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Vue.JS | 铸鼎_</title><meta name="author" content="鼎"><meta name="copyright" content="鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在 Web 的世界中从来就没有可以适配所有场景、解决所有问题的银弹。正因如此，Vue 被设计成一个灵活的、可以渐进式集成的框架。根据使用场景的不同需要，相应地有多种不同的方式来使用 Vue，以此在技术栈复杂度、开发体验和性能表现间取得最佳平衡。 Vue 不仅控制整个页面，还负责处理抓取新数据，并在无需重新加载的前提下处理页面切换。这种类型的应用通常称为单页应用 (Single-Page appl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.JS">
+<meta property="og:url" content="https://ding-f.gitee.io/2022/01/19/vue.html">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="在 Web 的世界中从来就没有可以适配所有场景、解决所有问题的银弹。正因如此，Vue 被设计成一个灵活的、可以渐进式集成的框架。根据使用场景的不同需要，相应地有多种不同的方式来使用 Vue，以此在技术栈复杂度、开发体验和性能表现间取得最佳平衡。 Vue 不仅控制整个页面，还负责处理抓取新数据，并在无需重新加载的前提下处理页面切换。这种类型的应用通常称为单页应用 (Single-Page appl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2022-01-19T10:28:20.000Z">
+<meta property="article:modified_time" content="2023-08-08T10:21:45.359Z">
+<meta property="article:author" content="鼎">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.gitee.io/2022/01/19/vue.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue.JS',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-08 18:21:45'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
       
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
+        get: key => {
+          const itemStr = localStorage.getItem(key)
       
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
       
-      <i class="fas fa-book" style="zoom: 0.6;"></i>
-      
-      <span>文章</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/tags">
-          
-          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>标签</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/categories">
-          
-          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>分类</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" id="" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/about">
-          
-          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>博主</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" id="contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" id="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-link" style="zoom: 0.6;"></i>
-      
-      <span>链接</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/friends">
-          
-          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>友情链接</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li id="fullscreen_li" class="fullscreen">
-      <a href="javascript:void(0);" class="modal-trigger waves-effect waves-light">
-          <i id="fullscreen" class="fa fa-expand-arrows-alt" title="全屏" style="zoom: 0.65;"></i>
-      </a>
-  </li>
-
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-            <img src="/medias/detail/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">铸鼎_</div>
-        <div class="logo-desc">
-            
-                Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
-
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-            <li class="m-nav-item">
-                
-                    <a href="/" class="waves-effect waves-light">
-
-                        首页
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        文章
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/tags "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-tags"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>标签</span>
-                                </a>
-                            </li>
-                        
-                            <li>
-                                <a href="/categories "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-bookmark"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>分类</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/archives" class="waves-effect waves-light">
-
-                        归档
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        关于
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/about "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-user-circle"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>博主</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="/contact" class="waves-effect waves-light">
-
-                        留言
-                    </a>
-                
-            </li>
-        
-            <li class="m-nav-item">
-                
-                    <a href="javascript:;">
-
-                        链接
-                        <span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-                    </a>
-                    <ul
-                    
-                        style="background:  ;"
-                            
-                    >
-                        
-                            <li>
-                                <a href="/friends "
-                                   style="margin-left:0px">
-                                    
-                                        <i class="fa fas fa-address-book"
-                                           style="position: absolute;left:28px">
-                                        </i>
-                                    
-                                    <span>友情链接</span>
-                                </a>
-                            </li>
-                        
-                    </ul>
-                
-            </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-
-
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('禁止访问，仅内部授权！');
-                location.href = '/';
-            }
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-    })();
-</script>
-
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/vue/vue.webp')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Vue.JS</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
+      }
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<link rel="stylesheet" type="text/css" href="/css/detail/post-detail-toc.css">
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                        <div class="post-cate">
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-            </div>
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-            <div class="post-info">
-                
-                    <div class="post-date info-break-policy">
-                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                        <span id="publishDate">
-                            2022-01-19
-                        </span>
-                    </div>
-                
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
 
-                
-                    <div class="post-date info-break-policy">
-                        2023-06-14 16:06:66
-                    </div>
-                
-
-                
-                    <div class="info-break-policy">
-                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.2k
-                    </div>
-                
-
-                
-                    <div class="info-break-policy">
-                        <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        13 分
-                    </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-                
-            </div>
-        </div>
-        <hr class="clearfix">
-        <!--    添加更新时间截    -->
-        
-            <div class="uk-alert">
-                <p id="thisTime">
-                    <span id="timeLag"></span>
-                </p>
-            </div>
-            <script>
-                let date1 = new Date(document.getElementById("publishDate").innerHTML);  /*文章发布日期*/
-                let date2 = new Date();    /*当前时间*/
-                let date3 = date2.getTime() - date1.getTime();  /*时间差的毫秒数*/
-
-                /*计算出相差天数*/
-                let days = Math.floor(date3 / (24 * 3600 * 1000));
-
-                let thisTime = document.getElementById("thisTime");
-                let timeLag = document.getElementById("timeLag");
-                if (days <= 7) {
-                    thisTime.classList.add("uk-alert-success");
-                    timeLag.innerText = ("该文章发布于" + days + "天前~热乎中~请放心食用~");
-                } else if (7 < days && days <= 30) {
-                    thisTime.classList.add("uk-alert-warning");
-                    timeLag.innerText = ("该文章发布于" + days + "天前~快凉了~请尽快食用~");
-                } else {
-                    thisTime.classList.add("uk-alert-danger");
-                    timeLag.innerText = ("该文章发布于" + days + "天前~已经凉了~请加热后食用~");
-                }
-            </script>
-        
-        
-            <!-- 是否加载使用自带的 prismjs. -->
-            <link rel="stylesheet" href="/">
-        
-
-        
-            <!-- 代码块折行 -->
-            <style type="text/css">
-                code[class*="language-"], pre[class*="language-"] {
-                    white-space: pre-wrap !important;
-                }
-            </style>
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <blockquote>
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vue.JS</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-19T10:28:20.000Z" title="发表于 2022-01-19 18:28:20">2022-01-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-08T10:21:45.359Z" title="更新于 2023-08-08 18:21:45">2023-08-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue.JS"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p>在 Web 的世界中从来就没有可以适配所有场景、解决所有问题的银弹。正因如此，Vue 被设计成一个灵活的、可以渐进式集成的框架。根据使用场景的不同需要，相应地有多种不同的方式来使用 Vue，以此在技术栈复杂度、开发体验和性能表现间取得最佳平衡。</p>
 <p>Vue 不仅控制整个页面，还负责处理抓取新数据，并在无需重新加载的前提下处理页面切换。这种类型的应用通常称为单页应用 (Single-Page application，缩写为 SPA)。</p>
 <p>参考：</p>
@@ -552,7 +182,7 @@
 </blockquote>
 <p><strong>vue cli 版本</strong></p>
 <p>至于为什么打vue出现 vue cli 其实vue作为前端框架，是一个nodeJS下的一个包，即一个vue项目整体的前端工程化项目，而vue cil作为脚手架工具，仅仅只是做了一个整合各种技术栈的工具，整合了vue全家桶等依赖，这些依赖装在一个项目跟目录下的<code>node_modules/</code>下，具体详见：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jyk/p/16248880.html">博客园-金色海洋工作室：一篇文章说清 webpack、vite、vue-cli、create-vue 的区别</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/ vue --version
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> ~/ vue <span class="token parameter variable">--version</span>
 @vue/cli <span class="token number">4.5</span>.15<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
@@ -706,23 +336,55 @@ VUE_APP_NOT_SECRET_CODE&#x3D;some_value<span aria-hidden="true" class="line-numb
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40323256/article/details/101867706">CSDN-疆~：vue中常用的几种import（模块、文件）引入方式，export，export default，全部/部分文件的导出/导入</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6992722475595333663#heading-4">掘金-何小玍：export和export default的区别</a></p>
 </blockquote>
-<p><strong>导入逻辑代码</strong></p>
-<ul>
-<li><p>其中在<code>export</code> / <code>import</code> 后加上 <code>default</code> 修饰，只能在一个模块中出现一次</p>
-</li>
-<li><p>export方式导出，在 <code>import</code> 的时候需要加{}大括号，<code>export default</code>  在另一个模块 <code>import</code> 就不需要加{}</p>
-</li>
-</ul>
-<p>下面看下区别</p>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 先是 export </span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>axiosfetch<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util'</span><span class="token punctuation">;</span>  <span class="token comment">//需要加花括号  可以一次导入多个也可以一次导入一个，但都要加括号</span>
-<span class="token comment">// 如果是两个方法</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>axiosfetch<span class="token punctuation">,</span>post<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util'</span><span class="token punctuation">;</span> 
-<span class="token comment">// 再是 export default </span>
-<span class="token keyword">import</span> axiosfetch <span class="token keyword">from</span> <span class="token string">'./util'</span><span class="token punctuation">;</span>  <span class="token comment">//不需要加花括号  只能一个一个导入</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ES模块语法"><a href="#ES模块语法" class="headerlink" title="ES模块语法"></a>ES模块语法</h3><h4 id="export-import-default"><a href="#export-import-default" class="headerlink" title="export/import  default"></a><code>export</code>/<code>import</code>  <code>default</code></h4><p>只能在一个模块中出现一次，在另一个模块 <code>import</code> 就不需要加{}</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 在某个js文件中使用export default导出变量</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>导入css文件</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token string">'iview/dist/styles/iview.css'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在其他文件中导入这个默认导出的变量：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">javascriptCopy code<span class="token comment">// 正确的导入方式</span>
+<span class="token keyword">import</span> person <span class="token keyword">from</span> <span class="token string">'./path-to-file.js'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：John</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用<code>export default</code>时，只能将整个默认导出的对象引入，并使用指定的变量名（在这里是<code>person</code>）来访问对象的属性。</p>
+<h4 id="export-import"><a href="#export-import" class="headerlink" title="export/import"></a><code>export</code>/<code>import</code></h4><p><strong>变量</strong></p>
+  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// @/utils/tabbar.js</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> tabInfo <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'home.png'</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> otherVar <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个模块中，有一个<code>tabInfo</code>的常量和一个<code>otherVar</code>的常量。如果你只想导入<code>tabInfo</code>，那么你可以使用解构导入的方式：</p>
+  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> tabInfo <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/utils/tabbar'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tabInfo<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：Home</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tabInfo<span class="token punctuation">.</span>icon<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：home.png</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用解构导入时，你只需要指定你感兴趣的变量名（在这里是<code>tabInfo</code>），而不需要导入整个模块。这样可以提高代码的可读性，并只导入需要的内容，避免了不必要的资源加载和冗余代码。</p>
+<p><strong>函数</strong></p>
+<p>导出</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span>  <span class="token function">getDefTime</span><span class="token punctuation">(</span><span class="token parameter">dayNum</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">setDefTime</span><span class="token punctuation">(</span><span class="token parameter">dayNum</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 大括号内可包含多个</span>
+<span class="token keyword">export</span> <span class="token punctuation">&#123;</span>getDefTime<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>导入</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 大括号内可包含多个</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> getDefTime <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/utils/tabbar'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="导入css"><a href="#导入css" class="headerlink" title="导入css"></a>导入css</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token string">'iview/dist/styles/iview.css'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>如果是在.vue文件中那么在外面套个style</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
@@ -762,12 +424,50 @@ VUE_APP_NOT_SECRET_CODE&#x3D;some_value<span aria-hidden="true" class="line-numb
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="子父间方法调用"><a href="#子父间方法调用" class="headerlink" title="子父间方法调用"></a>子父间方法调用</h3><blockquote>
+<h3 id="组件间调用"><a href="#组件间调用" class="headerlink" title="组件间调用"></a>组件间调用</h3><blockquote>
+<p>组件的<code>name</code>选项设置为<code>&#39;kqShow&#39;</code>，这是你显式地给组件命名的结果。当你在父组件中使用<code>kq-show</code>标签时，这个名称<code>kq-cart</code>实际上就是组件的名称，它由组件的<code>name</code>选项决定。</p>
+</blockquote>
+<h4 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h4><p>组件中</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'kqShow'</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>@/main.js</code></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 挂载 全局组件</span>
+<span class="token keyword">import</span> kqShow <span class="token keyword">from</span> <span class="token string">'@/components/kq-show'</span><span class="token punctuation">;</span>
+Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'kqShow'</span><span class="token punctuation">,</span> kqShow<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>页面中直接可以使用</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kq-show</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kq-show</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h4 id="局部"><a href="#局部" class="headerlink" title="局部"></a>局部</h4><p>组件中</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'kqCart'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>父级调用</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+	&lt;kq-cart&gt;&lt;&#x2F;kq-cart&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    ...
+components: &#123;
+    kqGoods,
+    kqCart,
+  &#125;
+    ...
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="父子间方法调用"><a href="#父子间方法调用" class="headerlink" title="父子间方法调用"></a>父子间方法调用</h3><blockquote>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shenStudy/p/15327718.html">cnblog-柯南。道尔：vue中this.$emit的用法</a></p>
 </blockquote>
-<p><strong>子组件需调用父类</strong></p>
-<p>父类中声明子类需要访问的方法<code>@search=&quot;navToSearch&quot;</code>、<code>@tab=&quot;tabClick&quot;</code></p>
+<p><strong>父组件</strong></p>
+<p>父组件中声明子组件需要访问的方法<code>@search=&quot;navToSearch&quot;</code>、<code>@tab=&quot;tabClick&quot;</code></p>
 <pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;rf-search-bar
                 @search&#x3D;&quot;navToSearch&quot;
                 @tab&#x3D;&quot;tabClick&quot;
@@ -782,13 +482,18 @@ VUE_APP_NOT_SECRET_CODE&#x3D;some_value<span aria-hidden="true" class="line-numb
 
 &lt;script&gt;
     ...
+    	data() &#123;
+        		hotSearchDefault: &#39;请输入关键字&#39;,
+    		&#125;,
 		methods: &#123;
 			navToSearch() &#123;
 				this.$mRouter.push(&#123;
 					&#x2F;&#x2F; stringify 字符串化
+                    &#x2F;&#x2F; this.search 应该是获取从子组件传过来的searchValue
 					route: &#96;&#x2F;pages&#x2F;index&#x2F;search&#x2F;search?data&#x3D;$&#123;JSON.stringify(this.search)&#125;&#96;
 				&#125;);
 			&#125;,
+            &#x2F;&#x2F; 此方法id从子传参
          	tabClick(&#123; id &#125;) &#123;
 				this.currentCate &#x3D; id;
 				if (id &#x3D;&#x3D;&#x3D; 0) return;
@@ -802,11 +507,10 @@ VUE_APP_NOT_SECRET_CODE&#x3D;some_value<span aria-hidden="true" class="line-numb
 
     &#125;
     ...
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-<p>子类中收到<code>&#39;search&#39;</code>、<code>&#39;tab&#39;</code>，分别对应父类中的<code>navToSearch</code>、<code>tabClick</code>，使用<code>this.$emit(&lt;方法名&gt;，[传参])</code>调用父类中给定的方法</p>
+<p><strong>子组件</strong></p>
+<p>子组件中收到<code>&#39;search&#39;</code>、<code>&#39;tab&#39;</code>，分别对应父组件中的<code>navToSearch</code>、<code>tabClick</code>，使用<code>this.$emit(&lt;方法名&gt;，[传参])</code>调用父组件中给定的方法</p>
 <pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;!-- 搜索框 --&gt;
 &lt;view class&#x3D;&quot;input-box&quot; @tap&#x3D;&quot;toSearch&quot;&gt;
 	...
@@ -823,21 +527,34 @@ VUE_APP_NOT_SECRET_CODE&#x3D;some_value<span aria-hidden="true" class="line-numb
 &lt;&#x2F;view&gt;
 
 &lt;script&gt;
-		methods: &#123;
-            	async toSearch() &#123;
-				await this.$emit(&#39;search&#39;, &#123;
-					searchValue: this.searchValue
-				&#125;);
-			&#125;,
-         tabClick(index, id) &#123;
-				this.tabCurrentIndex &#x3D; index;
-				&#x2F;&#x2F; 父级组件事件传递到$emit，tab是其中之一
-				this.$emit(&#39;tab&#39;, &#123;
-					id
-				&#125;);
-			&#125;
+    export default &#123;
+        	props: &#123;
+                placeholder: &#123;
+                type: String,
+                default: &#39;请输入关键字&#39;
+				&#125;,
+            &#125;,
+            data() &#123;
+                return &#123;
+                    searchValue: this.placeholder,
+                &#125;
+            methods: &#123;
+                    async toSearch() &#123;
+                    await this.$emit(&#39;search&#39;, &#123;
+                        searchValue: this.searchValue
+                    &#125;);
+                &#125;,
+                    
+             tabClick(index, id) &#123;
+                    this.tabCurrentIndex &#x3D; index;
+                    &#x2F;&#x2F; 父级组件事件传递到$emit，tab是其中之一
+                    this.$emit(&#39;tab&#39;, &#123;
+                        id
+                    &#125;);
+                &#125;
+            &#125;
         &#125;
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -845,686 +562,48 @@ VUE_APP_NOT_SECRET_CODE&#x3D;some_value<span aria-hidden="true" class="line-numb
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41993525/article/details/109492837">CSDN-页神建辑-思而后学：vue-watch监听功能（侦听器）详解&amp;使用</a></p>
 </blockquote>
+<h3 id="filters"><a href="#filters" class="headerlink" title="filters"></a>filters</h3><blockquote>
+<p>例如常用于：后端字段type返回数据 0、1、2，分别代表三种状态禁用、启用、处理，如何使后端返回的数据显示在前端以状态显示</p>
+</blockquote>
+<p>使用了Vue的过滤器（Filter）功能。在模板中使用管道（<code>|</code>）将<code>status</code>的值传递给过滤器，并在过滤器中将其转换为相应的状态文本。</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Status: &#123;&#123; status | displayStatus &#125;&#125;&lt;&#x2F;p&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
 
-            </div>
-            <hr/>
+&lt;script&gt;
+export default &#123;
+  data() &#123;
+    return &#123;
+      status: 2, &#x2F;&#x2F; 这里假设从后端获取的状态值为2
+    &#125;;
+  &#125;,
+  filters: &#123;
+    displayStatus(value) &#123;
+      switch (value) &#123;
+        case 0:
+          return &#39;禁用&#39;;
+        case 1:
+          return &#39;启用&#39;;
+        case 2:
+          return &#39;处理&#39;;
+        default:
+          return &#39;未知状态&#39;;
+      &#125;
+    &#125;,
+  &#125;,
+&#125;;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-            
 
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">鼎</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://ding-f.gitee.io/2022/01/19/vue.html">https://ding-f.gitee.io/2022/01/19/vue.html</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">鼎</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
 
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share"
-                     style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
 
-    
-    <div class="social-share" data-sites="qq,wechat,qzone" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
 
-    
 
-</div>
 
-                </div>
-            </div>
-            
-                <link rel="stylesheet" type="text/css" href="/css/detail/reward.css">
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay_red">扫红包</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        
-                    </ul>
-                    <div id="alipay_red">
-                        <img src="/medias/reward/alipay_red.png" class="reward-img" alt="支付宝红包二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-        <link rel="stylesheet" type="text/css" href="/css/detail/valine.css">
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        📣
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
-</div>
-<!-- 直达评论 -->
-<div id="to_comment" class="comment-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#vcomments" title="直达评论">
-        <i class="fas fa-comments"></i>
-    </a>
-</div>
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
-    //这里要换行
-    new Valine({
-        el: '#vcomments',
-        appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
-        appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
-        notify: 'true' === 'true',
-        verify: 'true' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'monsterid',
-        pageSize: '10',
-        lang: 'zh-CN',
-        placeholder: '留下你的足迹..',
-        meta: ["nick", "mail", "link"],
-        recordIP: 'true' === 'true',
-        enableQQ: 'monsterid',
-        requiredFields: ["fu_ding@126.com"],
-        master: ["fu_ding@126.com"],
-        friends: ["89ca9fc627d42e188b31660e338bf03f", "7021c3626ea74a66f99a96eb37940cf2", "68c4c9e1b9a3d34317dc6faefe2ea00e"],
-        tagMeta: ["博主", "小伙伴", "访客"],
-        metaPlaceholder: metaPlaceholder,
-
-    });
-</script>
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji.html">
-                    <div class="card-image">
-                        
-                        <img src="/images/java_dev/graduate.jpg" class="responsive-img" alt="安康学院校园墙小程序（全栈）">
-                        
-                        <span class="card-title">安康学院校园墙小程序（全栈）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-13
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
-                                    开发
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/JavaEE/">
-                        <span class="chip bg-color">JavaEE</span>
-                    </a>
-                    
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%90%86%E8%AE%BA/">
-                        <span class="chip bg-color">理论</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">前端</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">后端</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                        <span class="chip bg-color">微服务</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                        <span class="chip bg-color">小程序</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/12/ipv6.html">
-                    <div class="card-image">
-                        
-                        <img src="/images/ipv6/ipv6-earth-2021-1-1280x720.jpg" class="responsive-img" alt="IPv6">
-                        
-                        <span class="card-title">IPv6</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    网络
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%90%86%E8%AE%BA/">
-                        <span class="chip bg-color">理论</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">基础</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-    <script>
-        $('#articleContent').on('copy', function (e) {
-            // IE8 or earlier browser is 'undefined'
-            if (typeof window.getSelection === 'undefined') return;
-
-            var selection = window.getSelection();
-            // if the selection is short let's not annoy our users.
-            if (('' + selection).length < Number.parseInt('120')) {
-                return;
-            }
-
-            // create a div outside of the visible area and fill it with the selected text.
-            var bodyElement = document.getElementsByTagName('body')[0];
-            var newdiv = document.createElement('div');
-            newdiv.style.position = 'absolute';
-            newdiv.style.left = '-99999px';
-            bodyElement.appendChild(newdiv);
-            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-            // we need a <pre> tag workaround.
-            // otherwise the text inside "pre" loses all the line breaks!
-            if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-            }
-
-            var url = document.location.href;
-            newdiv.innerHTML += '<br />'
-                + '来源: 铸鼎_<br />'
-                + '文章作者: 鼎<br />'
-                + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-                + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-            selection.selectAllChildren(newdiv);
-            window.setTimeout(function () {
-                bodyElement.removeChild(newdiv);
-            }, 200);
-        });
-    </script>
-
-<!-- 高亮CSS-->
-<link rel="stylesheet" type="text/css" href="/libs/prism/prism.css">
-<!-- 代码块功能依赖 -->
-<script type="text/javascript"
-        src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-    <script type="text/javascript"
-            src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-    <script type="text/javascript"
-            src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-    <script type="text/javascript"
-            src="/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-</main>
-
-
-
-
-<!--是否开启暗黑模式-->
-
-<!--footer-->
-<footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        
-        <div class="col s12 m6 l6 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2021-2023</span>
-            
-            <a href="/about" target="_blank">鼎</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            <br/>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.7k</span>&nbsp;
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总浏览量:&nbsp;<span id="busuanzi_value_site_pv"
-                                                                        class="white-color"></span>&nbsp;
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                                                                           class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-                <span id="sitetime">载入运行时间...</span>
-                <script>
-                    function siteTime() {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2021";
-                        var startMonth = "2";
-                        var startDate = "1";
-                        var startHour = "23";
-                        var startMinute = "0";
-                        var startSecond = "0";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                            minutes);
-                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                            diffMinutes * minutes) / seconds);
-                        if (startYear == todayYear) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffDays + " y " + diffHours +
-                                " h " + diffMinutes + " m " + diffSeconds + " s";
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            document.getElementById("sitetime").innerHTML = "The site has been running for " + diffYears + " y " + diffDays +
-                                " d " + diffHours + " h " + diffMinutes + " m " + diffSeconds + " s";
-                        }
-                    }
-
-                    setInterval(siteTime, 1000);
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m3 l3 social-link social-statis social-statis">
-    <a href="https://gitee.com/ding-f" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:f_ding@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2577440170" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2577440170" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
-        
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-<!--search-->
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(function () {
-        searchFunc("/search.xml", 'searchInput', 'searchResult')
-    })
-</script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll" title="回到顶部">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/islu.js"></script>
-<script src="/libs/search/search.js"></script>
-
-<!--谷歌广告接入点-->
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-<!-- Baidu Analytics -->
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?5b61d3c66b2ec35234c983975edf1b31";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-<!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
-    <script src="/libs/others/clicklove.js" async="async"></script>
-
-
-
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-
-
-</body>
-
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.gitee.io">鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.gitee.io/2022/01/19/vue.html">https://ding-f.gitee.io/2022/01/19/vue.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.gitee.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/vue/">vue</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji.html" title="安康学院校园墙小程序（全栈）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">安康学院校园墙小程序（全栈）</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/12/ipv6.html" title="IPv6"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">IPv6</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3Vue"><span class="toc-number">1.</span> <span class="toc-text">了解Vue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Cli%E5%88%9D%E5%A7%8B%E5%8C%96Vue%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">Vue Cli初始化Vue项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">模式和环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.2.</span> <span class="toc-text">生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#export-amp-import"><span class="toc-number">2.</span> <span class="toc-text">export &amp; import</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ES%E6%A8%A1%E5%9D%97%E8%AF%AD%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">ES模块语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#export-import-default"><span class="toc-number">2.1.1.</span> <span class="toc-text">export&#x2F;import  default</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#export-import"><span class="toc-number">2.1.2.</span> <span class="toc-text">export&#x2F;import</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5css"><span class="toc-number">2.1.3.</span> <span class="toc-text">导入css</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%96%87%E4%BB%B6%E7%BB%84%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">单文件组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">常用知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-prototype"><span class="toc-number">4.1.</span> <span class="toc-text">Vue.prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E8%B0%83%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text">组件间调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80"><span class="toc-number">4.2.1.</span> <span class="toc-text">全局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8"><span class="toc-number">4.2.2.</span> <span class="toc-text">局部</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E5%AD%90%E9%97%B4%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-number">4.3.</span> <span class="toc-text">父子间方法调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-watch%E7%9B%91%E5%90%AC"><span class="toc-number">4.4.</span> <span class="toc-text">vue-watch监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filters"><span class="toc-number">4.5.</span> <span class="toc-text">filters</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/20/nvm.html" title="NVM">NVM</a><time datetime="2024-02-20T02:45:30.000Z" title="发表于 2024-02-20 10:45:30">2024-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/26/mongodb.html" title="MongoDB">MongoDB</a><time datetime="2023-08-26T15:11:57.000Z" title="发表于 2023-08-26 23:11:57">2023-08-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao.html" title="浅谈Node-Vue-ES6-调试-编译-前端原理">浅谈Node-Vue-ES6-调试-编译-前端原理</a><time datetime="2023-08-10T03:10:14.000Z" title="发表于 2023-08-10 11:10:14">2023-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/08/xiang-liang-shu-ju-ku.html" title="向量数据库">向量数据库</a><time datetime="2023-08-07T16:01:24.000Z" title="发表于 2023-08-08 00:01:24">2023-08-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/07/mi-ma-xue.html" title="密码学">密码学</a><time datetime="2023-08-07T14:29:28.000Z" title="发表于 2023-08-07 22:29:28">2023-08-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
