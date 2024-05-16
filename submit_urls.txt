@@ -1,10 +1,10 @@
+https://ding-f.github.io/2023/06/07/chatgpt
+https://ding-f.github.io/2021/08/10/open-ssh
+https://ding-f.github.io/2023/04/27/javascript
+https://ding-f.github.io/2021/04/19/python3
+https://ding-f.github.io/2024/04/26/golang
 https://ding-f.github.io/2021/11/29/git-gitee
 https://ding-f.github.io/2021/04/06/mysql
 https://ding-f.github.io/2023/06/15/django-rest-framework
 https://ding-f.github.io/2023/06/11/pip-yi-lai-guan-li
 https://ding-f.github.io/2021/08/10/shell
-https://ding-f.github.io/2023/06/12/yan-zheng-ma
-https://ding-f.github.io/2023/06/13/vue3
-https://ding-f.github.io/2023/06/13/websocket-xie-yi
-https://ding-f.github.io/2023/08/07/mi-ma-xue
-https://ding-f.github.io/2023/08/07/xiang-liang-shu-ju-ku

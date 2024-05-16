@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ding-f.github.io/2023/06/07/chatgpt.html</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2021/08/10/open-ssh.html</loc>
+    <lastmod>2024-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2023/04/27/javascript.html</loc>
+    <lastmod>2024-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2021/04/19/python3.html</loc>
+    <lastmod>2024-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2024/04/26/golang.html</loc>
+    <lastmod>2024-05-09</lastmod>
+  </url>
+  <url>
     <loc>https://ding-f.github.io/2021/11/29/git-gitee.html</loc>
-    <lastmod>2024-04-26</lastmod>
+    <lastmod>2024-04-30</lastmod>
   </url>
   <url>
     <loc>https://ding-f.github.io/2021/04/06/mysql.html</loc>
@@ -34,10 +54,6 @@
   </url>
   <url>
     <loc>https://ding-f.github.io/2023/08/07/mi-ma-xue.html</loc>
-    <lastmod>2024-04-25</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2023/08/07/xiang-liang-shu-ju-ku.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
@@ -89,11 +105,11 @@
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2022/05/09/docker.html</loc>
+    <loc>https://ding-f.github.io/2022/06/07/typora.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2022/06/07/typora.html</loc>
+    <loc>https://ding-f.github.io/2022/05/09/docker.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
@@ -121,11 +137,11 @@
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji.html</loc>
+    <loc>https://ding-f.github.io/2022/11/15/sqlserver.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2022/11/15/sqlserver.html</loc>
+    <loc>https://ding-f.github.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
@@ -133,7 +149,7 @@
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji.html</loc>
+    <loc>https://ding-f.github.io/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
@@ -153,15 +169,7 @@
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2023/04/27/javascript.html</loc>
-    <lastmod>2024-04-25</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.github.io/2023/05/05/typescript.html</loc>
-    <lastmod>2024-04-25</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2023/06/07/chatgpt.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
@@ -201,15 +209,7 @@
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2021/04/19/python3.html</loc>
-    <lastmod>2024-04-25</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.github.io/2021/06/27/jetbrains-quan-jia-tong.html</loc>
-    <lastmod>2024-04-25</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2021/08/10/open-ssh.html</loc>
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
