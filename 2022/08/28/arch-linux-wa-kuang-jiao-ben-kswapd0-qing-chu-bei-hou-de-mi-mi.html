@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于本文 国内经常有Linux爱好者经常会认为，装Linux系统只要是内存足够大，直接就不需要Swap分区。作者在这几年Linux使用过程中也证实了这个说法的错误，Swap分区在个人日常使用Linux设备上必须要有Swap,甚至必不可少！！ 网上经常会有网友在讨论Swap对于现代Linux设备有没有用之类的话题，或者Swap分区到底要分区多大，在网上完炒的非常激烈。 参考： Ask Ubuntu:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密">
+<meta property="og:url" content="https://ding-f.github.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="关于本文 国内经常有Linux爱好者经常会认为，装Linux系统只要是内存足够大，直接就不需要Swap分区。作者在这几年Linux使用过程中也证实了这个说法的错误，Swap分区在个人日常使用Linux设备上必须要有Swap,甚至必不可少！！ 网上经常会有网友在讨论Swap对于现代Linux设备有没有用之类的话题，或者Swap分区到底要分区多大，在网上完炒的非常激烈。 参考： Ask Ubuntu:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg">
+<meta property="article:published_time" content="2022-08-27T19:02:19.000Z">
+<meta property="article:modified_time" content="2024-05-17T07:45:24.076Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="安全运维">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Arch Linux "挖矿脚本kswapd0清除" 背后的秘密',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-17 15:45:24'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-27T19:02:19.000Z" title="发表于 2022-08-28 03:02:19">2022-08-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-17T07:45:24.076Z" title="更新于 2024-05-17 15:45:24">2024-05-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi" data-flag-title="Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="关于本文"><a href="#关于本文" class="headerlink" title="关于本文"></a>关于本文</h2><blockquote>
+<p>国内经常有Linux爱好者经常会认为，装Linux系统只要是内存足够大，直接就不需要Swap分区。作者在这几年Linux使用过程中也证实了这个说法的错误，Swap分区在个人日常使用Linux设备上必须要有Swap,甚至必不可少！！</p>
+<p>网上经常会有网友在讨论Swap对于现代Linux设备有没有用之类的话题，或者Swap分区到底要分区多大，在网上完炒的非常激烈。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu">Ask Ubuntu:kswapd0 is taking a lot of cpu</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Swap">Arch Linux-Wiki:Swap</a></p>
+</blockquote>
+<p><strong>Swap</strong>分区作者建议桌个人面版系统的大小就是<strong>实际内存大小的2倍</strong>！但还有个国外的文章说Swap大小 &#x3D; 实际内存 + √实际内存，试了一下，果然不幸！不幸的是休眠直接就恢复不了，估计这篇文章可能是要求服务器Swap分区大小计算方式吧，文章找不到了就不追究了…</p>
+<p>不然会出现类似情形：</p>
+<p><img src="/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/1661010515360.jpg" alt="此时电脑异常卡顿"></p>
+<p>以上的情况出现在开发一公司项目时候，由于公司业务代码前后端均使用的微服务，且所有的服务启动起来至少需要16G内存，但我的Linux笔记本正好适合，刚开始就排除了内存不足，一致认为Linux是不是中了某种挖矿病毒，就刻意的搜索到了这样一篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465487828">kswapd0挖矿病毒的发现与清除</a>，一看这个<code>kswapd0</code>程序的名字就知道，估计和Swap有关系，于是找资料查看此程序到底是个什么作用，在国外找到了一篇这样的文章<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu">kswapd0 is taking a lot of cpu</a>最后才明白原来不是什么挖矿脚本，只是缺少了Swap分区导致,添加上Swap分区就解决了以上问题。</p>
+<h3 id="Swap"><a href="#Swap" class="headerlink" title="Swap"></a>Swap</h3><blockquote>
+<p>制作Swap分区前提：铸鼎建议作为个人使用的Linux笔记本，至少需要腾出内存分区大小相同的空闲磁盘分区，如果需要进行休眠，就需要内存两倍大小的空闲磁盘分区。</p>
+<p>制作Swap文件：如果你满足不了以上的要求，建议制作Swap文件，Swap文件直接可以存储在你的磁盘的任何分区内，详细：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Swap#Swap_file">Arch WiKi：Swap</a>。</p>
+</blockquote>
+<p><strong>查看是否已经存在Swap：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4004 ◯  swapon --show</span><br><span class="line">NAME      TYPE      SIZE USED PRIO</span><br><span class="line">/dev/sda4 partition  32G   0B   -2</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果有，查看内存使用与Swap使用：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4006 ◯  free -h</span><br><span class="line">               total        used        free      shared  buff/cache   available</span><br><span class="line">内存：       15Gi       2.8Gi       9.5Gi       1.2Gi       3.2Gi        11Gi</span><br><span class="line">交换：       31Gi          0B        31Gi</span><br></pre></td></tr></table></figure>
+
+<p>如果没有Swap，建议使用fdisk工具对你的磁盘进行分区，<strong>分区，切记！手下留情！！</strong></p>
+<p><strong>分区成功后查看分区：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">4008 ◯  sudo fdisk -l</span><br><span class="line">Disk /dev/sda：476.94 GiB，512110190592 字节，1000215216 个扇区</span><br><span class="line">磁盘型号：Netac SSD 512GB </span><br><span class="line">单元：扇区 / 1 * 512 = 512 字节</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：gpt</span><br><span class="line">磁盘标识符：F759950E-A159-497B-BF34-95DCFDA09E79</span><br><span class="line"></span><br><span class="line">设备            起点       末尾      扇区   大小 类型</span><br><span class="line">/dev/sda1       2048    1026047   1024000   500M EFI 系统</span><br><span class="line">/dev/sda2    1026048    1288191    262144   128M Microsoft 保留</span><br><span class="line">/dev/sda3    1288192  527675391 526387200   251G Apple APFS</span><br><span class="line">/dev/sda4  527675392  594784255  67108864    32G Linux 文件系统</span><br><span class="line">/dev/sda5  594784256 1000215182 405430927 193.3G Linux 文件系统</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sdb：29.81 GiB，32010928128 字节，62521344 个扇区</span><br><span class="line">磁盘型号：MassStorageClass</span><br><span class="line">单元：扇区 / 1 * 512 = 512 字节</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0xc1db6fd2</span><br><span class="line"></span><br><span class="line">设备       启动     起点     末尾     扇区  大小 Id 类型</span><br><span class="line">/dev/sdb1  *        2048 62455807 62453760 29.8G  7 HPFS/NTFS/exFAT</span><br><span class="line">/dev/sdb2       62455808 62521343    65536   32M ef EFI (FAT-12/16/32)</span><br></pre></td></tr></table></figure>
+
+<p>我来解释一下我的磁盘以及分区情况，一共显示两个设备：</p>
+<ul>
+<li><p>Disk &#x2F;dev&#x2F;sda：476.94 GiB</p>
+<ul>
+<li><p>设备分区：</p>
+<p>&#x2F;dev&#x2F;sda1       2048    1026047   1024000   500M EFI 系统<br>&#x2F;dev&#x2F;sda2    1026048    1288191    262144   128M Microsoft 保留<br>&#x2F;dev&#x2F;sda3    1288192  527675391 526387200   251G Apple APFS<br>&#x2F;dev&#x2F;sda4  527675392  594784255  67108864    32G Linux 文件系统<br>&#x2F;dev&#x2F;sda5  594784256 1000215182 405430927 193.3G Linux 文件系统</p>
+</li>
+</ul>
+</li>
+<li><p>Disk &#x2F;dev&#x2F;sdb：29.81 GiB</p>
+<ul>
+<li><p>此设备分区：</p>
+<p>&#x2F;dev&#x2F;sdb1  *        2048 62455807 62453760 29.8G  7 HPFS&#x2F;NTFS&#x2F;exFAT<br>&#x2F;dev&#x2F;sdb2       62455808 62521343    65536   32M ef EFI (FAT-12&#x2F;16&#x2F;32)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>其中设备Disk &#x2F;dev&#x2F;sda：476.94 GiB就是我电脑的固态硬盘了，显示Swap分区就在那个32G的分区&#x2F;dev&#x2F;sda4上。</p>
+<p><strong>分区好Swap的分区，需要生成Swap分区的格式化：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中的sdxy一定要根据你的分区定</span></span><br><span class="line">mkswap /dev/sdxy</span><br></pre></td></tr></table></figure>
+
+<p><strong>挂载（开启）Swap分区：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /dev/sdxy</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看Swap分区UUID：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lsblk -f                </span><br><span class="line">NAME   FSTYPE FSVER LABEL   UUID                                 FSAVAIL FSUSE% MOUNTPOINTS</span><br><span class="line">sda                                                                             </span><br><span class="line">├─sda1 vfat   FAT32         1E45-250B                             281.1M    44% /boot</span><br><span class="line">├─sda2                                                                          </span><br><span class="line">├─sda3 apfs                 89c01c70-c5dc-40e1-a69f-1280f4c02ad2                </span><br><span class="line">├─sda4 swap   1             f8c6db20-0b66-4928-925d-9c7dd462f67b                [SWAP]</span><br><span class="line">└─sda5 ext4   1.0           1e28352f-2cf3-400e-a3f7-7b5a6d5b2d9c   57.7G    64% /</span><br><span class="line">sdb                                                                             </span><br><span class="line">├─sdb1 exfat  1.0   Ventoy  4E21-0000                                           </span><br><span class="line">└─sdb2 vfat   FAT16 VTOYEFI C52C-B44F    </span><br></pre></td></tr></table></figure>
+
+<p><strong>将Swap分区的UUID填入fstab,每次开机挂载Swap分区：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UUID=device_UUID none swap defaults 0 0</span><br></pre></td></tr></table></figure>
+
+<p>需要编辑<code>/etc/fstab</code>文件，加进去上面的那行，保存即可在每次启动Linux激活Swap分区。</p>
+<h3 id="Arch系统休眠实现"><a href="#Arch系统休眠实现" class="headerlink" title="Arch系统休眠实现"></a>Arch系统休眠实现</h3><blockquote>
+<p>一定要 Swap分区&#x2F;Swap分区文件 大小为内存容量的2倍，不然当内存使用超过一半，就会出现休眠唤醒失败的可能。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation">Arch WiKi：Power management&#x2F;Suspend and hibernate</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Kernel_parameter">Arch WiKi：Kernel parameters</a></p>
+</blockquote>
+<p>In order to use hibernation, you need to create a <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Swap">swap</a> partition or file. You will need to point the kernel to your swap using the <code>resume=</code> kernel parameter, which is configured via the boot loader. You will also need to <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Configure_the_initramfs">configure the initramfs</a>. This tells the kernel to attempt resuming from the specified swap in early userspace. These three steps are described in detail below.</p>
+<p>为了使用休眠，你需要Swap分区或者Swap文件，将需要设置内核参数 <code>resume=</code> ，可以通过boot loader配置，你将需要配置intramfs，此文件会告诉内核企图恢复用户空间的内存数据Swap。以下三步将展示详细步骤：</p>
+<p>Even if your swap partition is smaller than RAM, you still have a big chance of hibernating successfully. See “image_size” in the <a target="_blank" rel="noopener" href="https://docs.kernel.org/admin-guide/pm/sleep-states.html?highlight=image_size#basic-sysfs-interfaces-for-system-suspend-and-hibernation">kernel documentation</a> for information on the <code>image_size</code> <a target="_blank" rel="noopener" href="https://man.archlinux.org/man/sysfs.5">sysfs(5)</a> pseudo-file.</p>
+<p>即使你的Swap分区小于RAM,你仍然有大几率休眠成功，有关镜像大小sysfs(5)伪文件的信息，请参阅内核文档中的“镜像大小”。（不建议这么做，但可以尝试）</p>
+<h4 id="配置intramfs"><a href="#配置intramfs" class="headerlink" title="配置intramfs"></a>配置intramfs</h4><ul>
+<li>When an <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Initramfs">initramfs</a> with the <code>base</code> hook is used, which is the default, the <code>resume</code> hook is required in <code>/etc/mkinitcpio.conf</code>. Whether by label or by UUID, the swap partition is referred to with a udev device node, so the <code>resume</code> hook must go <em>after</em> the <code>udev</code> hook. </li>
+<li>当使用带有base钩子的initramfs（默认），包含休眠Swap分区信息的钩子resume将被需要在<code>/etc/mkinitcpio.conf</code>文件中，无论使用分区的标签&#x2F;UUID，这个Swap分区是udev看作设备的一个节点，所以你在编辑<code>/etc/mkinitcpio.conf</code>文件时，必须将resume钩子放在udev之后，这样才可以加载到 udev(Swap) &#x3D;&gt; resume(原内存数据)。</li>
+<li>When an initramfs with the <code>systemd</code> hook is used, a resume mechanism is already provided, and no further hooks need to be added.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HOOKS=(base udev autodetect keyboard modconf block filesystems resume fsck)</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行<code>mkinitcpio -P</code>：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mkinitcpio -P</span><br><span class="line">==&gt; Building image from preset: /etc/mkinitcpio.d/linux-lts.preset: &#x27;default&#x27;</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">-k /boot/vmlinuz-linux-lts -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-lts.img</span></span><br><span class="line">==&gt; Starting build: 5.15.61-1-lts</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [base]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [udev]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [autodetect]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [modconf]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [block]</span></span><br><span class="line">==&gt; WARNING: Possibly missing firmware for module: xhci_pci</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [keyboard]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [filesystems]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [resume]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [fsck]</span></span><br><span class="line">==&gt; Generating module dependencies</span><br><span class="line">==&gt; Creating zstd-compressed initcpio image: /boot/initramfs-linux-lts.img</span><br><span class="line">==&gt; Image generation successful</span><br><span class="line">==&gt; Building image from preset: /etc/mkinitcpio.d/linux-lts.preset: &#x27;fallback&#x27;</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">-k /boot/vmlinuz-linux-lts -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-lts-fallback.img -S autodetect</span></span><br><span class="line">==&gt; Starting build: 5.15.61-1-lts</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [base]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [udev]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [modconf]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [block]</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: wd719x</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: qla2xxx</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: bfa</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: qla1280</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: qed</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: aic94xx</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: xhci_pci</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [keyboard]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [filesystems]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [resume]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [fsck]</span></span><br><span class="line">==&gt; Generating module dependencies</span><br><span class="line">==&gt; Creating zstd-compressed initcpio image: /boot/initramfs-linux-lts-fallback.img</span><br><span class="line">==&gt; Image generation successful</span><br></pre></td></tr></table></figure>
+
+<p>铸鼎是两个内核，可以看到两个内核分别生成<code>.preset: &#39;default&#39;</code>和.preset: ‘fallback’，原理请查看 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Image_creation_and_activation">Arch WiKi：mkinitcpio &#x3D;&gt; Image_creation_and_activation</a></p>
+<p>以上的<code>WARNING</code>处理就是解决大部分硬件的问题的关键，一定要重视这些<code>WARNING</code>！！尝试修复请看 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Possibly_missing_firmware_for_module_XXXX">Arch WiKi：mkinitcpio</a>。</p>
+<h4 id="添加内核参数"><a href="#添加内核参数" class="headerlink" title="添加内核参数"></a>添加内核参数</h4><p>The <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Kernel_parameter">kernel parameter</a> <code>resume=*swap_device*</code> must be used. Any of the <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Persistent_block_device_naming">persistent block device naming</a> methods can be used as <code>*swap_device*</code>. For example:</p>
+<p>内核参数 <code>resume=*swap_device*</code>必须使用，任何持久块设备命名方法都可以用作<em>交换设备</em>。例如：</p>
+<ul>
+<li><code>resume=UUID=4209c845-f495-4c43-8a03-5363dd433153</code></li>
+<li><code>resume=&quot;PARTLABEL=Swap partition&quot;</code></li>
+</ul>
+<p>添加内核参数方法有分多，主要区别于你的Linux是哪个引导程序来引导启动的，比如说我的使用Grub（大部分Linux都是）引导启动：</p>
+<ul>
+<li>To make the change persistent after reboot, you could <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/GRUB#Custom_grub.cfg">manually edit &#x2F;boot&#x2F;grub&#x2F;grub.cfg</a> with the exact line from above, or if using <em>grub-mkconfig</em>:</li>
+<li>要使重新启动后的更改持续存在，可以使用上面的行或使用grub-mkconfig手动编辑&#x2F;boot&#x2F;grub&#x2F;grub.cfg</li>
+<li>Edit <code>/etc/default/grub</code> and append your kernel options between the quotes in the <code>GRUB_CMDLINE_LINUX_DEFAULT</code> line:</li>
+<li>编辑&#x2F;etc&#x2F;default&#x2F;grub，并将内核选项附加到GRUB CMDLINE LINUX DEFAULT行的引号之间</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;resume=*swap_device*&quot;</span><br></pre></td></tr></table></figure>
+
+<p>以下命令将<code>/etc/default/grub</code>生成到<code>/boot/grub/grub.cfg</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+
+<p><strong>重启生效所有配置</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi">https://ding-f.github.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/">安全运维</a><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a></div><div class="post_share"><div class="social-share" data-image="/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji" title="企业级小程序全栈开发笔记"><img class="cover" src="/images/2022-10-29-%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.0cb0ecbe4912bad8c6abe125e8d056a3rik=XDrLdRz%252fgxsuiw&amp;riu=http%253a%252f%252fstatics.ovopic.com%252fUpload%252fimgs%252fc705055de8881080%252f1.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">企业级小程序全栈开发笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji" title="Arch Linux 系统 WiFi硬件驱动修复折腾笔记"><img class="cover" src="/images/2022-08-28-Arch-Linux-%E7%B3%BB%E7%BB%9F-WiFi%E7%A1%AC%E4%BB%B6%E9%A9%B1%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/OIP-C.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Arch Linux 系统 WiFi硬件驱动修复折腾笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/07/kali-liunx" title="Kali Liunx"><img class="cover" src="/images/kali_linux/kalilinux.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-07</div><div class="title">Kali Liunx</div></div></a></div><div><a href="/2022/04/11/apache-shiro-jwt" title="Apache Shiro + JWT"><img class="cover" src="/images/shir_jwt/shiro_jwt.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">Apache Shiro + JWT</div></div></a></div><div><a href="/2021/03/10/arch-linux" title="Arch Linux"><img class="cover" src="/images/arch_linux/arch-linux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-10</div><div class="title">Arch Linux</div></div></a></div><div><a href="/2021/04/06/mysql" title="MySQL"><img class="cover" src="/images/mariadb/mysql-mariadb.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-06</div><div class="title">MySQL</div></div></a></div><div><a href="/2021/08/10/open-ssh" title="Open SSH"><img class="cover" src="/images/openssh/openssh-logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">关于本文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Swap"><span class="toc-number">1.1.</span> <span class="toc-text">Swap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arch%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.</span> <span class="toc-text">Arch系统休眠实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEintramfs"><span class="toc-number">1.2.1.</span> <span class="toc-text">配置intramfs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">添加内核参数</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/26/golang" title="golang"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang"/></a><div class="content"><a class="title" href="/2024/04/26/golang" title="golang">golang</a><time datetime="2024-04-26T07:01:52.000Z" title="发表于 2024-04-26 15:01:52">2024-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/14/qian-tan-cao-zuo-xi-tong-yin-dao-guo-cheng" title="浅谈操作系统引导过程"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅谈操作系统引导过程"/></a><div class="content"><a class="title" href="/2024/03/14/qian-tan-cao-zuo-xi-tong-yin-dao-guo-cheng" title="浅谈操作系统引导过程">浅谈操作系统引导过程</a><time datetime="2024-03-14T14:57:07.000Z" title="发表于 2024-03-14 22:57:07">2024-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/05/openwrt" title="OpenWrt"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenWrt"/></a><div class="content"><a class="title" href="/2024/03/05/openwrt" title="OpenWrt">OpenWrt</a><time datetime="2024-03-05T07:31:57.000Z" title="发表于 2024-03-05 15:31:57">2024-03-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/20/nvm" title="NVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NVM"/></a><div class="content"><a class="title" href="/2024/02/20/nvm" title="NVM">NVM</a><time datetime="2024-02-20T02:45:30.000Z" title="发表于 2024-02-20 10:45:30">2024-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/26/mongodb" title="MongoDB"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MongoDB"/></a><div class="content"><a class="title" href="/2023/08/26/mongodb" title="MongoDB">MongoDB</a><time datetime="2023-08-26T15:11:57.000Z" title="发表于 2023-08-26 23:11:57">2023-08-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
