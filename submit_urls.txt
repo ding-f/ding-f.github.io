@@ -1,4 +1,5 @@
 https://ding-f.github.io/2024/05/26/qian-tan-duo-xian-cheng
+https://ding-f.github.io/2023/06/15/django-rest-framework
 https://ding-f.github.io/2021/04/19/python3
 https://ding-f.github.io/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao
 https://ding-f.github.io/2023/08/26/mongodb
@@ -7,4 +8,3 @@ https://ding-f.github.io/2024/03/05/openwrt
 https://ding-f.github.io/2024/03/14/qian-tan-cao-zuo-xi-tong-yin-dao-guo-cheng
 https://ding-f.github.io/2024/04/26/golang
 https://ding-f.github.io/2023/06/11/pip-yi-lai-guan-li
-https://ding-f.github.io/2023/06/12/yan-zheng-ma

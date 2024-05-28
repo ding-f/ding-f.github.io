@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ding-f.github.io/2024/05/26/qian-tan-duo-xian-cheng.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2023/06/15/django-rest-framework.html</loc>
+    <lastmod>2024-05-27</lastmod>
   </url>
   <url>
     <loc>https://ding-f.github.io/2021/04/19/python3.html</loc>
@@ -46,10 +50,6 @@
   </url>
   <url>
     <loc>https://ding-f.github.io/2023/06/13/websocket-xie-yi.html</loc>
-    <lastmod>2024-05-26</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2023/06/15/django-rest-framework.html</loc>
     <lastmod>2024-05-26</lastmod>
   </url>
   <url>
