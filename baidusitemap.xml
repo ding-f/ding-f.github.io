@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ding-f.github.io/2021/06/27/jetbrains-quan-jia-tong.html</loc>
+    <lastmod>2024-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2021/03/10/arch-linux.html</loc>
+    <lastmod>2024-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ding-f.github.io/2024/05/26/qian-tan-duo-xian-cheng.html</loc>
+    <lastmod>2024-05-29</lastmod>
+  </url>
+  <url>
     <loc>https://ding-f.github.io/2024/05/28/postgresql.html</loc>
     <lastmod>2024-05-29</lastmod>
   </url>
   <url>
     <loc>https://ding-f.github.io/2024/04/26/golang.html</loc>
-    <lastmod>2024-05-28</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2024/05/26/qian-tan-duo-xian-cheng.html</loc>
     <lastmod>2024-05-28</lastmod>
   </url>
   <url>
@@ -177,10 +185,6 @@
     <lastmod>2024-05-26</lastmod>
   </url>
   <url>
-    <loc>https://ding-f.github.io/2021/06/27/jetbrains-quan-jia-tong.html</loc>
-    <lastmod>2024-05-26</lastmod>
-  </url>
-  <url>
     <loc>https://ding-f.github.io/2021/08/10/open-ssh.html</loc>
     <lastmod>2024-05-26</lastmod>
   </url>
@@ -210,10 +214,6 @@
   </url>
   <url>
     <loc>https://ding-f.github.io/2021/03/08/spring.html</loc>
-    <lastmod>2024-05-26</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2021/03/10/arch-linux.html</loc>
     <lastmod>2024-05-26</lastmod>
   </url>
   <url>
