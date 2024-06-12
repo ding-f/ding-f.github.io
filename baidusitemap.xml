@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ding-f.github.io/2022/04/11/redis.html</loc>
+    <lastmod>2024-06-12</lastmod>
+  </url>
+  <url>
     <loc>https://ding-f.github.io/2024/06/08/dian-zi-yuan-jian.html</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
   </url>
   <url>
     <loc>https://ding-f.github.io/2024/04/26/golang.html</loc>
@@ -162,10 +166,6 @@
   </url>
   <url>
     <loc>https://ding-f.github.io/2022/04/11/apache-shiro-jwt.html</loc>
-    <lastmod>2024-05-26</lastmod>
-  </url>
-  <url>
-    <loc>https://ding-f.github.io/2022/04/11/redis.html</loc>
     <lastmod>2024-05-26</lastmod>
   </url>
   <url>
