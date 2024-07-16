@@ -1,3 +1,5 @@
+https://ding-f.github.io/2024/07/16/lvm
+https://ding-f.github.io/2021/08/15/proxmox-ve
 https://ding-f.github.io/2024/07/08/linux-wang-luo-lu-you
 https://ding-f.github.io/2024/03/14/qian-tan-cao-zuo-xi-tong-yin-dao-guo-cheng
 https://ding-f.github.io/2021/03/10/arch-linux
@@ -6,5 +8,3 @@ https://ding-f.github.io/2024/06/13/kua-yu-qing-qiu
 https://ding-f.github.io/2021/11/29/git-gitee
 https://ding-f.github.io/2024/05/26/qian-tan-duo-xian-cheng
 https://ding-f.github.io/2024/05/28/postgresql
-https://ding-f.github.io/2024/06/08/dian-zi-yuan-jian
-https://ding-f.github.io/2022/04/11/apache-shiro-jwt
