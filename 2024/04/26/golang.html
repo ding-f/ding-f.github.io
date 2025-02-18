@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Golang | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基础数据类型 引用类型是对底层数据结构的引用， 值类型是数据结构的副本。y :&#x3D; x ,如果 x 是一个引用类型，那么 y 将指向与 x 相同的内存地址。但是，如果 x 是一个值类型，那么 y 将获得一个 x 的副本，而不是 x 的地址。   值类型  整数 浮点数 布尔值 数组 结构体 字符串   引用类型  指针 切片 映射 通道 接口    结构体 结构体相当于面向对象中的Class,创建不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang">
+<meta property="og:url" content="https://ding-f.github.io/2024/04/26/golang">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="基础数据类型 引用类型是对底层数据结构的引用， 值类型是数据结构的副本。y :&#x3D; x ,如果 x 是一个引用类型，那么 y 将指向与 x 相同的内存地址。但是，如果 x 是一个值类型，那么 y 将获得一个 x 的副本，而不是 x 的地址。   值类型  整数 浮点数 布尔值 数组 结构体 字符串   引用类型  指针 切片 映射 通道 接口    结构体 结构体相当于面向对象中的Class,创建不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2024-04-26-golang/07vQ8eRc28yz9k__r.png">
+<meta property="article:published_time" content="2024-04-26T07:01:52.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.111Z">
+<meta property="article:author" content="付鼎">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2024-04-26-golang/07vQ8eRc28yz9k__r.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2024/04/26/golang"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Golang',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2024-04-26-golang/07vQ8eRc28yz9k__r.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Golang</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-26T07:01:52.000Z" title="发表于 2024-04-26 15:01:52">2024-04-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.111Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/04/26/golang" data-flag-title="Golang"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/04/26/golang#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/04/26/golang" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><blockquote>
+<p>引用类型是对底层数据结构的引用， 值类型是数据结构的副本。<br><code>y := x</code> ,如果 x 是一个引用类型，那么 y 将指向与 x 相同的内存地址。但是，如果 x 是一个值类型，那么 y 将获得一个 x 的副本，而不是 x 的地址。</p>
+</blockquote>
+<ul>
+<li><p>值类型</p>
+<ul>
+<li>整数</li>
+<li>浮点数</li>
+<li>布尔值</li>
+<li>数组</li>
+<li>结构体</li>
+<li>字符串</li>
+</ul>
+</li>
+<li><p>引用类型</p>
+<ul>
+<li>指针</li>
+<li>切片</li>
+<li>映射</li>
+<li>通道</li>
+<li>接口</li>
+</ul>
+</li>
+</ul>
+<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><blockquote>
+<p>结构体相当于面向对象中的Class,创建不进行new或者创建实例就不能进行使用，换句话说必须进行实例化后才可以使用。</p>
+</blockquote>
+<h5 id="使用未初始化的结构体变量"><a href="#使用未初始化的结构体变量" class="headerlink" title="使用未初始化的结构体变量"></a>使用未初始化的结构体变量</h5><p>这种情况下，p 被声明为一个 Person 类型的变量。即使没有显式初始化，Go 语言会自动将其字段设置为零值。你可以安全地访问这些字段。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> p Person  <span class="comment">// 声明但未初始化，p 是一个零值初始化的结构体实例</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(p.Name)  <span class="comment">// 输出空字符串 &quot;&quot;</span></span><br><span class="line">    fmt.Println(p.Age)   <span class="comment">// 输出 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-new-函数"><a href="#使用-new-函数" class="headerlink" title="使用 new 函数"></a>使用 new 函数</h5><p>使用 new 函数分配内存后，p 是一个指向 Person 类型的新分配实例的指针。可以通过该指针访问和修改结构体字段。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p := <span class="built_in">new</span>(Person)  <span class="comment">// p 是 *Person 类型的指针，指向一个新分配的零值结构体</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(p.Name)  <span class="comment">// 输出空字符串 &quot;&quot;</span></span><br><span class="line">    fmt.Println(p.Age)   <span class="comment">// 输出 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="直接创建结构体实例"><a href="#直接创建结构体实例" class="headerlink" title="直接创建结构体实例"></a>直接创建结构体实例</h5><p>通过字面量创建并初始化一个结构体实例，可以直接访问和使用其字段。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p := Person&#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">30</span>&#125;  <span class="comment">// 创建并初始化结构体实例</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(p.Name)  <span class="comment">// 输出 &quot;Alice&quot;</span></span><br><span class="line">    fmt.Println(p.Age)   <span class="comment">// 输出 30</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+<h4 id="默认赋值"><a href="#默认赋值" class="headerlink" title="默认赋值"></a>默认赋值</h4><p>各种类型被声明但未初始化时的默认值</p>
+<p><strong>数值类型</strong></p>
+<ul>
+<li>整数类型（int, int8, int16, int32, int64）和浮点数类型（float32, float64）的默认值是 0。</li>
+<li>无符号整数类型（uint, uint8, uint16, uint32, uint64, uintptr）的默认值也是 0。</li>
+<li>复数类型（complex64, complex128）的默认值是实部和虚部都为 0 的复数。</li>
+</ul>
+<p><strong>布尔类型</strong></p>
+<ul>
+<li>布尔类型 bool 的默认值是 false。</li>
+</ul>
+<p><strong>字符串类型</strong></p>
+<ul>
+<li>字符串类型 string 的默认值是空字符串 “”。</li>
+</ul>
+<p><strong>数组类型</strong></p>
+<ul>
+<li>数组类型的默认值取决于数组元素的类型<ul>
+<li>如果元素是数值类型，则默认值为 0；</li>
+<li>如果元素是布尔类型，则默认值为 false；</li>
+<li>如果元素是字符串类型，则默认值为 “”；</li>
+<li>如果元素是其他复合类型，则默认值为其对应类型的零值。</li>
+</ul>
+</li>
+</ul>
+<p><strong>切片、映射和通道类型</strong></p>
+<ul>
+<li>切片、映射和通道类型的默认值是 nil。</li>
+</ul>
+<p><strong>指针类型</strong></p>
+<ul>
+<li>指针类型的默认值是 nil。</li>
+</ul>
+<p><strong>结构体类型</strong></p>
+<ul>
+<li>结构体类型的默认值是其所有字段的默认值。</li>
+</ul>
+<p><strong>接口类型</strong></p>
+<ul>
+<li>接口类型的默认值是 nil。</li>
+</ul>
+<h3 id="数组-切片"><a href="#数组-切片" class="headerlink" title="数组&amp;切片"></a>数组&amp;切片</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>数组</th>
+<th>切片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>长度</td>
+<td>固定</td>
+<td>可扩容</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="指针-取值"><a href="#指针-取值" class="headerlink" title="指针&amp;取值"></a>指针&amp;取值</h3><p>符号<code>*</code>在 Go 中作用</p>
+<ul>
+<li>取值操作符：当 * 用作变量前缀时，它表示取指针所指向的值。例如，如果有一个指向 int 类型的指针 ptr，那么 *ptr 就表示指针 ptr 所指向的实际 int 值。</li>
+<li>类型指针：当 * 用于类型前面时，它表示指向该类型的指针。例如，*Account 表示指向 Account 类型的指针。</li>
+<li>取值后赋值：<code>*p=1</code>取出p对应的值后赋值。</li>
+</ul>
+<h3 id="深拷贝-浅拷贝"><a href="#深拷贝-浅拷贝" class="headerlink" title="深拷贝&amp;浅拷贝"></a>深拷贝&amp;浅拷贝</h3><blockquote>
+<p>判断深拷贝和浅拷贝的一个常用方法是修改原始数据后观察副本数据是否受到影响。</p>
+<p>修改原始数据后，副本数据也发生了变化，则是浅拷贝；如果副本数据没有发生变化，则是深拷贝。</p>
+</blockquote>
+<ul>
+<li>深拷贝：对于结构体中的所有字段，它们的值都将被复制，包括指针字段所指向的值。这意味着原始结构体和副本结构体中的指针字段将指向不同的内存地址，但主副本所指向是不同的(值相同)。</li>
+<li>浅拷贝：只有结构体中的值被复制，而不包括指针字段所指向的值。在浅拷贝中，原始结构体和副本结构体中的指针字段将指向相同的内存地址，因此它们共享相同的底层数据。</li>
+</ul>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><blockquote>
+<p>defer defer 语句用于延迟执行一个函数直到包含它的函数执行完毕，即函数返回之前。无论函数是正常结束还是因为出现错误而中止，defer 语句都会被执行。<br>会被用于：关闭数据库连接 关闭文件 等</p>
+</blockquote>
+<p>defer 的执行顺序是按照其在函数中出现的顺序的相反顺序执行的</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Start&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">defer</span> fmt.Println(<span class="string">&quot;Deferred 1&quot;</span>)</span><br><span class="line">    <span class="keyword">defer</span> fmt.Println(<span class="string">&quot;Deferred 2&quot;</span>)</span><br><span class="line">    <span class="keyword">defer</span> fmt.Println(<span class="string">&quot;Deferred 3&quot;</span>)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;End&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Start</span><br><span class="line">End</span><br><span class="line">Deferred 3</span><br><span class="line">Deferred 2</span><br><span class="line">Deferred 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><blockquote>
+<p> new 用于分配基本类型（如 int、float、struct）和组合类型（如数组、指针），并返回这些<strong>类型的指针</strong>。</p>
+</blockquote>
+<p><code>new</code> 作用</p>
+<ol>
+<li><p><strong>分配内存</strong>： <code>new(T)</code> 会为类型 <code>T</code> 分配零值初始化的内存。零值取决于类型，例如，对于数值类型，零值是 <code>0</code>，对于字符串类型，零值是空字符串，对于指针类型，零值是 <code>nil</code>。</p>
+</li>
+<li><p><strong>返回指针</strong>： <code>new(T)</code> 返回一个指向类型 <code>T</code> 的指针，类型是 <code>*T</code>。</p>
+</li>
+</ol>
+<p>例如，对于一个结构体，<code>new(Person)</code> 分配了一块内存用于存储 <code>Person</code> 结构体，并返回指向这块内存的指针 <code>p</code>。然后可以通过 <code>p</code> 来访问和修改 <code>Person</code> 结构体的字段。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 使用 new 分配一个 Person 类型的内存并获取指针</span></span><br><span class="line">    p := <span class="built_in">new</span>(Person)</span><br><span class="line">    fmt.Println(p)  <span class="comment">// 输出：&amp;&#123; 0&#125;</span></span><br><span class="line">    p.Name = <span class="string">&quot;Alice&quot;</span></span><br><span class="line">    p.Age = <span class="number">30</span></span><br><span class="line">    fmt.Println(p)  <span class="comment">// 输出：&amp;&#123;Alice 30&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="make"><a href="#make" class="headerlink" title="make"></a>make</h4><blockquote>
+<p>make 用于分配和初始化内置引用类型（如 slice、map 和 channel），并返回这些<strong>类型的值</strong>。</p>
+</blockquote>
+<p><strong>使用 <code>make</code> 创建切片（slice）</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 使用 make 创建一个长度为 5，容量为 10 的 int 类型切片</span></span><br><span class="line">    slice := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>, <span class="number">10</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出切片的长度和容量</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;len=%d cap=%d slice=%v\n&quot;</span>, <span class="built_in">len</span>(slice), <span class="built_in">cap</span>(slice), slice)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 修改切片中的元素</span></span><br><span class="line">    slice[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    slice[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">    slice[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">    </span><br><span class="line">    fmt.Println(<span class="string">&quot;Modified slice:&quot;</span>, slice)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len=5 cap=10 slice=[0 0 0 0 0]</span><br><span class="line">Modified slice: [1 2 3 0 0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 <code>make</code> 创建映射（map）</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 使用 make 创建一个 string 到 int 的映射</span></span><br><span class="line">    m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 向映射中添加键值对</span></span><br><span class="line">    m[<span class="string">&quot;Alice&quot;</span>] = <span class="number">25</span></span><br><span class="line">    m[<span class="string">&quot;Bob&quot;</span>] = <span class="number">30</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出映射的内容</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;Map:&quot;</span>, m)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 访问映射中的元素</span></span><br><span class="line">    age := m[<span class="string">&quot;Alice&quot;</span>]</span><br><span class="line">    fmt.Println(<span class="string">&quot;Alice&#x27;s age:&quot;</span>, age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Map: map[Alice:25 Bob:30]</span><br><span class="line">Alice&#x27;s age: 25</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 <code>make</code> 创建通道（channel）</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 使用 make 创建一个缓冲区大小为 2 的 int 类型通道</span></span><br><span class="line">    ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 向通道中发送数据</span></span><br><span class="line">    ch &lt;- <span class="number">1</span></span><br><span class="line">    ch &lt;- <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 从通道中接收数据</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;Received from channel:&quot;</span>, &lt;-ch)</span><br><span class="line">    fmt.Println(<span class="string">&quot;Received from channel:&quot;</span>, &lt;-ch)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Received from channel: 1</span><br><span class="line">Received from channel: 2</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><h4 id=""><a href="#" class="headerlink" title="..."></a><code>...</code></h4><p><strong>可变参数</strong></p>
+<p>函数定义中使用 … 时，表示该函数可以接受可变数量的参数。具体来说，这意味着可以将多个参数作为一个切片传递给函数。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(nums ...<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    total := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        total += num</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)) <span class="comment">// 输出: 10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>展开操作符</strong></p>
+<p>函数调用中使用 … 时，表示将一个切片中的元素作为单独的参数传递给函数。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    numbers := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">    fmt.Println(sum(numbers...)) <span class="comment">// 输出: 10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><blockquote>
+<p>在 Go 中，任何类型（包括基本类型、结构体、数组、切片、映射等）都可以实现接口，只要它们定义了接口中所需的方法。</p>
+</blockquote>
+<h3 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h3><blockquote>
+<p>Go中传递参数有两种方式：1. 值传递  2. 引用传递</p>
+</blockquote>
+<h4 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h4><blockquote>
+<p>你希望传递的是结构体的拷贝，函数内部对结构体的修改不会影响到函数外部的原始结构体。</p>
+</blockquote>
+<p><strong>值类型的值传递</strong></p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用值类型传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifyPersonValue</span><span class="params">(person Person)</span></span> &#123;</span><br><span class="line">    person.Age = <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    person := Person&#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">30</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用值类型传递</span></span><br><span class="line">    modifyPersonValue(person)</span><br><span class="line">    fmt.Println(<span class="string">&quot;Person after modifyPersonValue:&quot;</span>, person) <span class="comment">// 输出：Person after modifyPersonValue: &#123;Alice 30&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>引用类型的值传递</strong></p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySlice</span><span class="params">(s []<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    s[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    slice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    modifySlice(slice)</span><br><span class="line">    fmt.Println(slice) <span class="comment">// 输出 [100 2 3]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h4><blockquote>
+<p>你希望函数内部修改结构体等复杂类型的字段并且想要这些修改反映到函数外部的变量上，你需要使用引用传递(指针传递)。</p>
+</blockquote>
+<p><strong>值类型的引用传递</strong></p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用指针类型传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifyPersonPointer</span><span class="params">(person *Person)</span></span> &#123;</span><br><span class="line">    person.Age = <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    person := Person&#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">30</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用指针类型传递</span></span><br><span class="line">    modifyPersonPointer(&amp;person)</span><br><span class="line">    fmt.Println(<span class="string">&quot;Person after modifyPersonPointer:&quot;</span>, person) <span class="comment">// 输出：Person after modifyPersonPointer: &#123;Alice 25&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>引用类型的引用传递</strong></p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySlice</span><span class="params">(s *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    (*s)[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    slice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    modifySlice(&amp;slice)</span><br><span class="line">    fmt.Println(slice) <span class="comment">// 输出 [100 2 3]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="值-指针接收者"><a href="#值-指针接收者" class="headerlink" title="值&#x2F;指针接收者"></a>值&#x2F;指针接收者</h4><p><strong>引用接收者（Pointer Receiver）</strong></p>
+<p>引用接收者的方法是针对指针类型（struct）的操作，即在方法调用时，接收者是原始实例的引用。引用接收者允许方法修改接收者的状态，或者避免在传递大的结构体时产生的性能开销。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="type">string</span></span><br><span class="line">    age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用接收者方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *Person)</span></span> IncrementAge() &#123;</span><br><span class="line">    p.age++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p := Person&#123;name: <span class="string">&quot;Alice&quot;</span>, age: <span class="number">30</span>&#125;</span><br><span class="line">    p.IncrementAge()</span><br><span class="line">    fmt.Println(<span class="string">&quot;Age:&quot;</span>, p.age) <span class="comment">// 输出: Age: 31</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>值接收者（Value Receiver）</strong></p>
+<p>值接收者的方法是针对值类型（struct）的拷贝进行操作，即在方法调用时，接收者是被复制的一份新的实例。值接收者通常用于那些不需要修改接收者状态的方法。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Stringer <span class="keyword">interface</span> &#123;</span><br><span class="line">    String() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="type">string</span></span><br><span class="line">    age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 值接收者实现接口</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span></span> String() <span class="type">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;%s (%d)&quot;</span>, p.name, p.age)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p := Person&#123;name: <span class="string">&quot;Alice&quot;</span>, age: <span class="number">30</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> s Stringer = p <span class="comment">// 可以将结构体值赋给接口</span></span><br><span class="line">    fmt.Println(s.String())</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>选择使用值接收者还是引用接收者</strong></p>
+<ul>
+<li>不需要修改接收者的情况下，使用值接收者。这样可以避免不必要的指针传递，代码会更简洁。</li>
+<li>需要修改接收者的情况下，使用引用接收者。这样可以直接操作原始数据，而不是它的副本。</li>
+<li>涉及较大的结构体时，使用引用接收者可以避免复制结构体带来的性能开销。</li>
+</ul>
+<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><blockquote>
+<p>go的<code>import</code>关键字不仅可以导入包中的 变量 函数 还可以自动执行<code>init()</code></p>
+</blockquote>
+<h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><blockquote>
+<p>Go 语言中，包（package）是管理代码和组织代码的基本单位。每个 Go 源文件都属于某个包，通过 <code>package</code> 关键字定义。包中的代码，包括变量、函数、类型等，可以是包内共享的，也可以是包外可见的，这取决于它们的可见性（visibility）。</p>
+</blockquote>
+<p><strong>可见性规则</strong></p>
+<ol>
+<li><strong>包内共享（内部可见）</strong>：<ul>
+<li>变量、函数、类型等如果以小写字母开头，它们是包私有的，只能在定义它们的包内部访问。即使是同一目录下的其他包的代码也无法访问这些标识符。</li>
+</ul>
+</li>
+<li><strong>包外可见（导出）</strong>：<ul>
+<li>变量、函数、类型等如果以大写字母开头，它们是导出的，这意味着它们不仅在定义它们的包内可见，也在其他导入这个包的包中可见。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> system</span><br><span class="line"></span><br><span class="line"><span class="comment">// 包内共享的变量</span></span><br><span class="line"><span class="keyword">var</span> internalVar = <span class="string">&quot;this is internal&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 包外可见的变量</span></span><br><span class="line"><span class="keyword">var</span> ExportedVar = <span class="string">&quot;this is exported&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 包内共享的函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">internalFunction</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 包外可见的函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ExportedFunction</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在另一个包中使用 <code>system</code> 包时，只能访问到导出的标识符：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;system&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(system.ExportedVar)  <span class="comment">// 正常访问导出的变量</span></span><br><span class="line">    system.ExportedFunction()        <span class="comment">// 正常调用导出的函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// fmt.Println(system.internalVar)  // 错误：无法访问包内共享的变量</span></span><br><span class="line">    <span class="comment">// system.internalFunction()        // 错误：无法调用包内共享的函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="普通导入"><a href="#普通导入" class="headerlink" title="普通导入"></a>普通导入</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mypackage/mypackage.go</span></span><br><span class="line"><span class="keyword">package</span> mypackage</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;mypackage initialized&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>导入时，自动执行mypackage中的init(),并且会导入除了执行<code>init()</code>，还会导入<code>mypackage</code>中包外可见的变量和函数。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;path/to/mypackage&quot;</span></span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;main function executed&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mypackage initialized</span><br><span class="line">main function executed</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="匿名导入"><a href="#匿名导入" class="headerlink" title="匿名导入"></a>匿名导入</h4><blockquote>
+<p>导入一个包却不直接使用它的任何符号（变量、函数等），在正常情况下会引发编译错误。为了避免这种情况，可以使用匿名导入（也叫做空白导入），即在导入路径前加一个下划线 <code>_</code>。</p>
+<p>只执行 <code>init</code> 函数，不导入任何符号，避免了编译器因为未使用导入的符号而报错。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>普通导入</th>
+<th>匿名导入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>导入符号</td>
+<td>导入包中的所有导出符号（函数、变量等）</td>
+<td>不导入任何符号</td>
+</tr>
+<tr>
+<td>执行 <code>init</code> 函数</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>避免编译错误</td>
+<td>不会，如果不使用符号会引发编译错误</td>
+<td>会，即使不使用符号也不会引发编译错误</td>
+</tr>
+<tr>
+<td>用途</td>
+<td>显式使用包中的符号</td>
+<td>触发副作用，执行初始化逻辑</td>
+</tr>
+</tbody></table>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> plugin</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Plugin registered&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;path/to/plugin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Main function executed&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Plugin registered</span><br><span class="line">Main function executed</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/binHome/p/14845617.html">Cnblog-Binb:Go编译工具命令</a></p>
+</blockquote>
+<h4 id="初始化go-mod"><a href="#初始化go-mod" class="headerlink" title="初始化go.mod"></a>初始化go.mod</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化一个go.mod,将本项目定位至&lt;仓库地址&gt;,例： github.com/anthdm/gobank</span></span><br><span class="line">go mod init &lt;仓库地址&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译可执行文件"><a href="#编译可执行文件" class="headerlink" title="编译可执行文件"></a>编译可执行文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译输出bin文件</span></span><br><span class="line">go build -o &lt;bin文件位置&gt;</span><br></pre></td></tr></table></figure>
+
+<p>go build 命令不仅编译项目代码，还负责确保所有需要的依赖项都已下载并可用。</p>
+<ul>
+<li>解析依赖项</li>
+<li>检查本地缓存</li>
+<li>下载缺失的依赖项</li>
+<li>验证和保存</li>
+</ul>
+<h4 id="整理依赖"><a href="#整理依赖" class="headerlink" title="整理依赖"></a>整理依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>移除未使用的依赖</li>
+<li>添加缺失的依赖</li>
+<li>更新 <code>go.sum</code> 文件，添加缺失的哈希值和移除不再需要的哈希值</li>
+<li><code>go mod tidy</code> 会根据项目中实际使用的依赖版本，整理并更新 <code>go.mod</code> 文件中的依赖版本号，确保项目使用的是正确的版本。</li>
+</ul>
+<h4 id="编译添加go包"><a href="#编译添加go包" class="headerlink" title="编译添加go包"></a>编译添加go包</h4><p>这将下拉源码并编译后可在命令行使用go程序，以下是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install github.com/swaggo/swag/cmd/swag@latest</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2024/04/26/golang">https://ding-f.github.io/2024/04/26/golang</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/2024-04-26-golang/07vQ8eRc28yz9k__r.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/05/26/qian-tan-duo-xian-cheng" title="浅谈多线程"><img class="cover" src="/images/2024-05-26-%E6%B5%85%E8%B0%88%E5%A4%9A%E7%BA%BF%E7%A8%8B/cpu-core-not-showing-fix-1-886x590.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">浅谈多线程</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/14/qian-tan-cao-zuo-xi-tong-yin-dao-guo-cheng" title="浅谈操作系统引导过程"><img class="cover" src="/images/2024-03-14-%E6%B5%85%E8%B0%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%BC%95%E5%AF%BC%E8%BF%87%E7%A8%8B/grub-theme-vimix-1716050566360-5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浅谈操作系统引导过程</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">1.1.1.</span> <span class="toc-text">结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">使用未初始化的结构体变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-new-%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">使用 new 函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">直接创建结构体实例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%B5%8B%E5%80%BC"><span class="toc-number">1.1.2.</span> <span class="toc-text">默认赋值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84-%E5%88%87%E7%89%87"><span class="toc-number">1.2.</span> <span class="toc-text">数组&amp;切片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88-%E5%8F%96%E5%80%BC"><span class="toc-number">1.3.</span> <span class="toc-text">指针&amp;取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D-%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.4.</span> <span class="toc-text">深拷贝&amp;浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.5.</span> <span class="toc-text">关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#defer"><span class="toc-number">1.5.1.</span> <span class="toc-text">defer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new"><span class="toc-number">1.5.2.</span> <span class="toc-text">new</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#make"><span class="toc-number">1.5.3.</span> <span class="toc-text">make</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.6.</span> <span class="toc-text">特殊符号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.6.1.</span> <span class="toc-text">...</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6"><span class="toc-number">2.</span> <span class="toc-text">进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.1.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E5%8F%82"><span class="toc-number">2.2.</span> <span class="toc-text">传参</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92"><span class="toc-number">2.2.1.</span> <span class="toc-text">值传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-number">2.2.2.</span> <span class="toc-text">引用传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%BC-%E6%8C%87%E9%92%88%E6%8E%A5%E6%94%B6%E8%80%85"><span class="toc-number">2.2.3.</span> <span class="toc-text">值&#x2F;指针接收者</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-number">2.3.</span> <span class="toc-text">import</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">2.3.1.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AF%BC%E5%85%A5"><span class="toc-number">2.3.2.</span> <span class="toc-text">普通导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%AF%BC%E5%85%A5"><span class="toc-number">2.3.3.</span> <span class="toc-text">匿名导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">3.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96go-mod"><span class="toc-number">3.1.1.</span> <span class="toc-text">初始化go.mod</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.2.</span> <span class="toc-text">编译可执行文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E7%90%86%E4%BE%9D%E8%B5%96"><span class="toc-number">3.1.3.</span> <span class="toc-text">整理依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%B7%BB%E5%8A%A0go%E5%8C%85"><span class="toc-number">3.1.4.</span> <span class="toc-text">编译添加go包</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

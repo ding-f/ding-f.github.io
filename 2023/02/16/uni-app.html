@@ -1,0 +1,504 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>uni-app | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概述 uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 H5、以及各种小程序（微信&#x2F;支付宝&#x2F;百度&#x2F;头条&#x2F;QQ&#x2F;钉钉&#x2F;淘宝）、快应用等多个平台，并且在 HBuilderX 中可直接打包生成 Android、iOS App。 参考： DCLOUD-官网 DCLOUD社区：DCloud_heaven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uni-app">
+<meta property="og:url" content="https://ding-f.github.io/2023/02/16/uni-app">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="概述 uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 H5、以及各种小程序（微信&#x2F;支付宝&#x2F;百度&#x2F;头条&#x2F;QQ&#x2F;钉钉&#x2F;淘宝）、快应用等多个平台，并且在 HBuilderX 中可直接打包生成 Android、iOS App。 参考： DCLOUD-官网 DCLOUD社区：DCloud_heaven">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png">
+<meta property="article:published_time" content="2023-02-16T07:24:08.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.110Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2023/02/16/uni-app"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'uni-app',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">uni-app</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-16T07:24:08.000Z" title="发表于 2023-02-16 15:24:08">2023-02-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.110Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/02/16/uni-app" data-flag-title="uni-app"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/02/16/uni-app#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/02/16/uni-app" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/">uni-app</a> 是一个使用 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue.js</a> 开发所有前端应用的框架，开发者编写一套代码，可发布到 H5、以及各种小程序（微信&#x2F;支付宝&#x2F;百度&#x2F;头条&#x2F;QQ&#x2F;钉钉&#x2F;淘宝）、快应用等多个平台，并且在 <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">HBuilderX</a> 中可直接打包生成 Android、iOS App。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.dcloud.io/">DCLOUD-官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/docs/">DCLOUD社区：DCloud_heavensoft：DCloud产品综述</a></p>
+<p><a href="">DCLOUD：uni小程序 SDK</a></p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/uniCloud/">DCLOUD：uniCloud</a></p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/serverless.html">凤凰架构：无服务时代</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37916164/article/details/113885999">CSDN树洞菇凉：weex、nvue、uni-app 和 nvue开发与vue开发的常见区别</a></p>
+</blockquote>
+<h3 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h3><p><strong>uniCloud</strong></p>
+<p>uniCloud 是 DCloud 联合阿里云、腾讯云，为开发者提供的基于 serverless 模式和 js 编程的云开发平台。</p>
+<ul>
+<li>免运维，无需关心扩容和攻击</li>
+<li>比传统服务器更便宜</li>
+<li>全栈，js开发前后端</li>
+<li>与uni-app搭配有更高的开发效率</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/serverless.html">凤凰架构：无服务时代</a> 无服务架构对一些适合的应用确实能够降低开发和运维环节的成本，譬如不需要交互的离线大规模计算，又譬如多数 Web 资讯类网站、小程序、公共 API 服务、移动应用服务端等都契合于无服务架构所擅长的短链接、无状态、适合事件驱动的交互形式；但另一方面，对于那些信息管理系统、网络游戏等应用，又或者说所有具有业务逻辑复杂，依赖服务端状态，响应速度要求较高，需要长连接等这些特征的应用，至少目前是相对并不适合的。</p>
+<p>综合以上个人的理解使用serverless（无服务）这个说的有些夸张了，serverless目前来说是一个未来的蓝图，其并不成熟，uniCloud所谓的serverless也没仔细看，时间紧迫先不深究。</p>
+<p><strong>uni小程序SDK</strong></p>
+<ul>
+<li>uni小程序sdk 使用场景是你已经有原生App，在此基础上扩展宿主App的小程序能力，或者用小程序替换原生App的部分功能模块，仅支持uni-app并使用v3编译器</li>
+<li>App离线sdk 使用场景是你没有原生App，用DCloud的工具来开发App，又不想使用云打包，则可以使用App离线sdk打包发布为原生App，App离线sdk支持5+ App、uni-app，不支持wap2app。虽然App离线sdk也可以集成到已有原生App中，但自从uni小程序sdk推出后，将不再推荐这种用法</li>
+</ul>
+<h3 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/listenMao/p/15949870.html">博客园-这样就好了：uniapp之nvue</a></p>
+</blockquote>
+<p><strong>nvue（native vue）</strong></p>
+<p>weex的Uniapp升级版</p>
+<ul>
+<li>不开发App，那么不需要使用nvue</li>
+<li>实现app页面的性能优化，使用原生渲染，原生更快</li>
+<li>解决前端控件无法覆盖原生控件的层级问题</li>
+<li>原生组件问题</li>
+<li>等…</li>
+</ul>
+<p>除了一些特殊考虑，涉及到app的东西，最好就是看下vue支不支持，不得已再用nvue。</p>
+<p><strong>快应用</strong></p>
+<p>说白了就是反 微信、支付宝、百度、字节跳动等各家小程序 的垄断，搞了一个支持两种渲染方式的android程序。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>准备好NodeJS、Npm</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/quickstart-cli.html">DCLOUD-Uniapp文档：快手上手</a></p>
+</blockquote>
+<p><strong>安装Vue cli</strong></p>
+<p>Vue CLI是用来创建Vue项目的工具，目前新的Vue3版本项目创建工具是Vite CLI</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建模板</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create -p dcloudio/uni-preset-vue [项目名]-frontend</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>默认模板有两个，其中带<code>（typescript）</code>即可用typescript开发逻辑</li>
+<li><code>hello uniapp</code>是Uniapp组件库示例模板</li>
+<li>自定义模板，需要填写 uni-app 模板地址，这个地址其实就是托管在云端的仓库地址。以 GitHub 为例，地址格式为 <code>userName/repositoryName</code></li>
+</ul>
+<p><strong>编译&amp;运行</strong></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>app-plus</td>
+<td>app平台生成打包资源（支持npm run build:app-plus，可用于持续集成。不支持run，运行调试仍需在HBuilderX中操作）</td>
+</tr>
+<tr>
+<td>h5</td>
+<td>H5</td>
+</tr>
+<tr>
+<td>mp-alipay</td>
+<td>支付宝小程序</td>
+</tr>
+<tr>
+<td>mp-baidu</td>
+<td>百度小程序</td>
+</tr>
+<tr>
+<td>mp-weixin</td>
+<td>微信小程序</td>
+</tr>
+<tr>
+<td>mp-toutiao</td>
+<td>字节跳动小程序</td>
+</tr>
+<tr>
+<td>mp-lark</td>
+<td>飞书小程序</td>
+</tr>
+<tr>
+<td>mp-qq</td>
+<td>qq 小程序</td>
+</tr>
+<tr>
+<td>mp-360</td>
+<td>360 小程序</td>
+</tr>
+<tr>
+<td>mp-kuaishou</td>
+<td>快手小程序</td>
+</tr>
+<tr>
+<td>mp-jd</td>
+<td>京东小程序</td>
+</tr>
+<tr>
+<td>mp-xhs</td>
+<td>小红书小程序</td>
+</tr>
+<tr>
+<td>quickapp-webview</td>
+<td>快应用(webview)</td>
+</tr>
+<tr>
+<td>quickapp-webview-union</td>
+<td>快应用联盟</td>
+</tr>
+<tr>
+<td>quickapp-webview-huawei</td>
+<td>快应用华为</td>
+</tr>
+</tbody></table>
+<h2 id="芝士"><a href="#芝士" class="headerlink" title="芝士"></a>芝士</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/vernacular.html">DCLOUD：白话uni-app</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dcloudio/hello-uniapp">GitHub：dcloudio：hello-uniapp</a></p>
+<p><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=4941">DCLOUD插件市场-DCloud前端团队：hello-uniapp 示例工程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.uviewui.com/">uView官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=1593">DCLOUD插件市场-uViewUI：uView2.0重磅发布，利剑出鞘，一统江湖</a></p>
+</blockquote>
+<p><strong>目录结构</strong></p>
+<p>一个uni-app工程，默认包含如下目录及文件(来自Uniap官网)，其中标注<code>*</code>的是Hello uni-app的模板所包含的文件夹&#x2F;目录，此项目是官方uni-app框架演示示例，编译运行后如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">┌─uniCloud              云空间目录，阿里云为uniCloud-aliyun,腾讯云为uniCloud-tcb（详见uniCloud）</span><br><span class="line">│─src/components            *符合vue组件规范的uni-app组件目(同Vue)</span><br><span class="line">│     	└─comp-a.vue         可复用的a组件</span><br><span class="line">├─utssdk                存放uts文件(移动原生开发相关)</span><br><span class="line">├─src/pages                 *业务页面文件存放的目录(Vue为views)</span><br><span class="line">│  		├─index</span><br><span class="line">│  		│  	└─index.vue       index页面</span><br><span class="line">│  		└─list</span><br><span class="line">│     		└─list.vue        list页面</span><br><span class="line">├─src/static                *存放应用引用的本地静态资源（如图片、视频等）的目录，注意：静态资源只能存放于此(同Vue)</span><br><span class="line">├─src/uni_modules           *存放[uni_module](/uni_modules)。</span><br><span class="line">├─src/platforms             *存放各平台专用页面的目录，详见</span><br><span class="line">├─nativeplugins         App原生语言插件 详见</span><br><span class="line">├─nativeResources       App端原生资源目录</span><br><span class="line">│  └─android            Android原生资源目录 详见</span><br><span class="line">├─hybrid                *App端存放本地html文件的目录，详见</span><br><span class="line">├─src/wxcomponents          *存放小程序组件的目录，详见</span><br><span class="line">├─unpackage             非工程代码，一般存放运行或发行的编译结果</span><br><span class="line">├─AndroidManifest.xml   Android原生应用清单文件 详见</span><br><span class="line">├─src/main.js               *Vue初始化入口文件(同Vue)</span><br><span class="line">├─src/App.vue               *应用配置，用来配置App全局样式以及监听 应用生命周期</span><br><span class="line">├─src/manifest.json         *配置应用名称、appid、logo、版本等打包信息，详见</span><br><span class="line">├─src/pages.json            *配置页面路由、导航条、选项卡等页面类信息，详见</span><br><span class="line">└─uni.scss              *这里是uni-app内置的常用样式变量 </span><br></pre></td></tr></table></figure>
+
+<p>如果你熟悉小程序开发的话，对比变化如下：</p>
+<ul>
+<li>原来app.json被一拆为二。<ul>
+<li>页面管理，被挪入了uni-app的pages.json；</li>
+<li>非页面管理，挪入了manifest.jso</li>
+</ul>
+</li>
+<li>原来的app.js和app.wxss被合并到了app.vue中</li>
+</ul>
+<h2 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h2><blockquote>
+<p>分析一个基于前端Uniapp开发的开源项目，名为RF商城，其前后端均开源，后端PHP开发。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/stavyan/TinyShop-UniApp">GitHub-stavyan：TinyShop-UniApp</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jianyan74/TinyShop">GitHub-stavyan：TinyShop</a></p>
+</blockquote>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><h4 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h4><blockquote>
+<p>不多介绍</p>
+</blockquote>
+<h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><blockquote>
+<p>Vuex 可以帮助我们管理共享状态，并附带了更多的概念和框架。说白了就是页面中的一个状态定义到Vuex的Store中其他地方也同时被共享过去，比如全局主题中的配置参数就需要共享状态。但小程序似乎多了一个步骤，即<code>setStorage</code>、<code>getStorage</code>。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/">Vue官网：Vuex</a></p>
+</blockquote>
+<p>&#x2F;TinyShop-UniApp&#x2F;src&#x2F;store&#x2F;index.js</p>
+<p><img src="/images/2023-02-16-uni-app/image-20230222110326398.png" alt="image-20230222110326398"></p>
+<ul>
+<li><p><code>state</code>（存储介质）：Vuex 使用单一状态树，用一个对象就包含了全部的应用层级状态。每个应用将仅仅包含一个 store 实例。存储在 Vuex 中的数据和 Vue 实例中的 <code>data</code> 遵循相同的规则</p>
+</li>
+<li><p><code>getters</code>（获取）：获取state中的参数，一般用三种种方式传参，成员中可以加入计算代码，计算后以缓存方式存入，存入后只要state&#x2F;传入数据不变就不会再次计算，从而提高性能，<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/getters.html">详见</a></p>
+<ul>
+<li>属性访问</li>
+<li>方法访问</li>
+<li>mapGetters 辅助函数</li>
+</ul>
+</li>
+<li><p><code>mutations</code>（修改）：更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的事件类型 (type)和一个回调函数 (handler)。<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/mutations.html">详见</a></p>
+<ul>
+<li>事件类型 (type)，<code>store.commit(&#39;&lt;mutations中的函数&gt;&#39;)</code></li>
+<li>回调函数 (handler)，<code>store.commit(&#39;increment&#39;, 10)</code>&#x2F;<code>store.commit(&#39;increment&#39;, &#123;amount: 10&#125;)</code>大多数情况下，载荷应该是一个对象</li>
+</ul>
+</li>
+<li><p>Action 类似于 mutation，不同在于：</p>
+<ul>
+<li><p>Action 提交的是 mutation，而不是直接变更状态。</p>
+</li>
+<li><p>Action 可以包含任意<strong>异步操作</strong>。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设 getData() 和 getOtherData() 返回的是 Promise</span></span><br><span class="line"></span><br><span class="line">actions: &#123;</span><br><span class="line">  async <span class="title function_">actionA</span> <span class="params">(&#123; commit &#125;)</span> &#123;</span><br><span class="line">    commit(<span class="string">&#x27;gotData&#x27;</span>, await <span class="title function_">getData</span><span class="params">()</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  async <span class="title function_">actionB</span> <span class="params">(&#123; dispatch, commit &#125;)</span> &#123;</span><br><span class="line">    await <span class="title function_">dispatch</span><span class="params">(<span class="string">&#x27;actionA&#x27;</span>)</span> <span class="comment">// 等待 actionA 完成</span></span><br><span class="line">    commit(<span class="string">&#x27;gotOtherData&#x27;</span>, await <span class="title function_">getOtherData</span><span class="params">()</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>以上常见的访问方式：</p>
+<ul>
+<li><code>this.$store</code>前提挂载<code>store</code>全局访问<code>Vue.prototype.$mStore = store</code></li>
+<li>mapGetters、mapMutations、mapActions等辅助函数访问</li>
+</ul>
+<h4 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h4><blockquote>
+<p>查官网的时候一共有两种sass-loader，分别为 <a target="_blank" rel="noopener" href="https://github.com/sass/dart-sass">Dart Sass</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sass/node-sass">Node Sass</a>，其中Dart Sass是官方推荐的，也是本项目所用。它们的作用是将Sass代码经打包转化为css代码，乍一想其实就是安装在devDependencies下的依赖，无需安装在dependencies中，其实几乎所有Node开发的依赖，在使用文档中有安装命令的，无需考虑安装在dependencies&#x2F;devDependencies，按照依赖包的说明安装基本就没啥大的问题。</p>
+<p>官网上声明装一个就好，但此项目<a target="_blank" rel="noopener" href="https://github.com/sass/dart-sass">Dart Sass</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sass/node-sass">Node Sass</a>两个都装了。。。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders/sass-loader/">webpack:sass-loader</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">装为开发环境依赖</span></span><br><span class="line">yarn add sass-loader sass -D </span><br></pre></td></tr></table></figure>
+
+<h4 id="flyio"><a href="#flyio" class="headerlink" title="flyio"></a>flyio</h4><blockquote>
+<p>官网在网络请求中有提及，如果选用三方拦截器即可选择flyio&#x2F;axios。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/request/request.html#request">DCLOUD-uni-app文档：网络 发起请求</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wendux/fly">GitHub-wendux：fly</a></p>
+</blockquote>
+<p>此项目中好像没有用到flyio的拦截器，倒是又导入了一个axios,也是没有用到，本来也想着用axios来实现请求API操作，不过 uni.request 是Uniapp官网提供的，axios可能还不支持多种移动端http请求，看了flyio请求方式支持好多端（官方：目前Fly.js支持的平台包括：<a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a> 、<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/cgi-bin/wx">微信小程序</a> 、<a target="_blank" rel="noopener" href="http://weex.apache.org/">Weex</a> 、<a target="_blank" rel="noopener" href="http://facebook.github.io/react-native/">React Native</a> 、<a target="_blank" rel="noopener" href="https://www.quickapp.cn/">Quick App</a> 和浏览器，这些平台的 JavaScript 运行时都是不同的。）。</p>
+<h4 id="其他依赖"><a href="#其他依赖" class="headerlink" title="其他依赖"></a>其他依赖</h4><p>有些非常底层的依赖注释没写，可自行研究。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">    ...</span><br><span class="line">   <span class="comment">// TS语言规范工具（官网说明安装在devDependencies即可）</span></span><br><span class="line">    <span class="attr">&quot;@typescript-eslint/eslint-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.27.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@typescript-eslint/parser&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.27.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;axios&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.19.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 官网在网络请求中有提及，如果选用三方拦截器即可选择flyio/axios</span></span><br><span class="line">    <span class="attr">&quot;flyio&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.6.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 这个包实现了一个全功能的源代码转换，它采用 ECMAScript 2015 或 ES2015 的生成器/收益语法和异步迭代提议，并吐出行为相同的高效 JS-of-today (ES5)。</span></span><br><span class="line">    <span class="attr">&quot;regenerator-runtime&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.12.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 此处的依赖可能有一个是多余，来自https://webpack.docschina.org/loaders/sass-loader/（webpack官方） sass-loader 需要预先安装 Dart Sass 或 Node Sass（可以在这两个链接中找到更多的资料）。这可以控制所有依赖的版本， 并自由的选择使用的 Sass 实现。</span></span><br><span class="line">    <span class="attr">&quot;node-sass&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^4.13.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 规范Git提交说明</span></span><br><span class="line">    <span class="attr">&quot;commitizen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 从 git 元数据生成变更日志</span></span><br><span class="line">    <span class="attr">&quot;conventional-changelog-cli&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.23&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;cz-conventional-changelog&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 现代原生 git 钩子变得简单，在使用git hooks的时候，我们一般会使用husky工具，它可以使本地git hooks变的更加的简单,我们一般会这样使用;</span></span><br><span class="line">    <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 针对暂存的 git 文件运行 linters，不要让它溜进你的代码库！</span></span><br><span class="line">    <span class="attr">&quot;lint-staged&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^8.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 支付宝小程序的 TypeScript 声明文件。</span></span><br><span class="line">    <span class="attr">&quot;mini-types&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 自动化版本控制和包发布，使用release-it自动管理版本号和生成CHANGELOG</span></span><br><span class="line">    <span class="attr">&quot;release-it&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^10.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 微信小程序 API 的 TypeScript 类型定义文件</span></span><br><span class="line">    <span class="attr">&quot;miniprogram-api-typings&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.9.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// Allow postcss to support inline comments，官方文档说明需要安装postcss才可以使用，说明这个依赖没用</span></span><br><span class="line">    <span class="attr">&quot;postcss-comment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MyProject"><a href="#MyProject" class="headerlink" title="MyProject"></a>MyProject</h2><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><blockquote>
+<p>除上述开源介绍依赖之外，展示本项目独有依赖。</p>
+<p>参考：</p>
+</blockquote>
+<h4 id="uView"><a href="#uView" class="headerlink" title="uView"></a>uView</h4><blockquote>
+<p>uView依赖SCSS，您必须要安装此插件，否则无法正常运行。</p>
+<p>至于为什么不使用Uniapp原生，这个火，更好看。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.uviewui.com/">uView官方文档</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add uview-ui@2.0.31  </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="顽固问题"><a href="#顽固问题" class="headerlink" title="顽固问题"></a>顽固问题</h2><h3 id="样式不生效"><a href="#样式不生效" class="headerlink" title="样式不生效"></a>样式不生效</h3><blockquote>
+<p>Uniapp中有一个很坑的问题就是你在H5端样式明明没啥问题，但是编译到其他平台出现样式不生效，这个就是常说的“Uniapp坑多”原因之一吧。</p>
+</blockquote>
+<p>以下代码是uView中Radio单选框组件，此组件<code>placement=&quot;row&quot;</code>属性使得Radio 单选框显示为横排，但编译在微信小程序不生效，只能竖排显示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;u-radio-group</span><br><span class="line">        class=&quot;select-perm&quot;</span><br><span class="line">        v-model=&quot;sValue&quot;</span><br><span class="line">        placement=&quot;row&quot;</span><br><span class="line">        size=&quot;200&quot;</span><br><span class="line">        @change=&quot;groupChange&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;u-radio name=&quot;1&quot; label=&quot;管理员&quot; size=&quot;20&quot; labelSize=&quot;18&quot;&gt; &lt;/u-radio&gt;</span><br><span class="line">        &lt;u-radio name=&quot;0&quot; label=&quot;普通用户&quot; size=&quot;20&quot; labelSize=&quot;18&quot;&gt;&lt;/u-radio&gt;</span><br><span class="line">&lt;/u-radio-group&gt; </span><br></pre></td></tr></table></figure>
+
+<p><code>::v-deep</code>其实是Vue2中提供的深度选择器，可强制将样式穿透到子组件中。这样你可以在父组件的样式表中定义样式，并使其应用到子组件的元素上。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">::v-deep .u-radio-group--row &#123;</span><br><span class="line">   <span class="attribute">display</span>: flex;</span><br><span class="line">   <span class="attribute">flex-direction</span>: row;</span><br><span class="line">   <span class="attribute">justify-content</span>: space-evenly;</span><br><span class="line">   <span class="attribute">padding-top</span>: <span class="number">40</span>rpx;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2023/02/16/uni-app">https://ding-f.github.io/2023/02/16/uni-app</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%90%86%E8%AE%BA/">理论</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a></div><div class="post_share"><div class="social-share" data-image="/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/27/javascript" title="JavaScript"><img class="cover" src="/images/2023-04-27-JavaScript/R-C.3833d4b070ca7c198ebc5a2ba765a32erik=z7tex%252bOSycssNQ&amp;riu=http%253a%252f%252fwww.techsors.com%252fwp-content%252fuploads%252f2016%252f02%252fJavascript.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/23/nginx" title="Nginx"><img class="cover" src="/images/2022-12-23-Nginx/what-is-nginx.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Nginx</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji" title="安康学院校园墙小程序（全栈）"><img class="cover" src="/images/java_dev/graduate.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">安康学院校园墙小程序（全栈）</div></div></a></div><div><a href="/2022/04/17/http-xie-yi" title="Http协议"><img class="cover" src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/R-C.6efdc6258152726375358dc6f5119e91?rik=LbcO4y5j3zGfKA&riu=http%253a%252f%252fimage1.slideserve.com%252f1619534%252fhypertext-transfer-protocol-n-20220607174529087.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-17</div><div class="title">Http协议</div></div></a></div><div><a href="/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji" title="企业级小程序全栈开发笔记"><img class="cover" src="/images/2022-10-29-%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.0cb0ecbe4912bad8c6abe125e8d056a3rik=XDrLdRz%252fgxsuiw&riu=http%253a%252f%252fstatics.ovopic.com%252fUpload%252fimgs%252fc705055de8881080%252f1.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">企业级小程序全栈开发笔记</div></div></a></div><div><a href="/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji" title="企业微信公众号开发笔记"><img class="cover" src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.86e392717a70a00f09abcd8173189293rik=JhyQ%252bGKjXFHkyQ&riu=http%253a%252f%252fpic.baike.soso.com%252fp%252f20140605%252f20140605161236-1949656822.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">企业微信公众号开发笔记</div></div></a></div><div><a href="/2022/01/12/ipv6" title="IPv6"><img class="cover" src="/images/ipv6/ipv6-earth-2021-1-1280x720.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">IPv6</div></div></a></div><div><a href="/2022/04/11/apache-shiro-jwt" title="Apache Shiro + JWT"><img class="cover" src="/images/shir_jwt/shiro_jwt.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">Apache Shiro + JWT</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-number">1.1.</span> <span class="toc-text">相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E6%B1%87"><span class="toc-number">1.2.</span> <span class="toc-text">词汇</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%9D%E5%A3%AB"><span class="toc-number">3.</span> <span class="toc-text">芝士</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">开源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-number">4.1.</span> <span class="toc-text">技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue2"><span class="toc-number">4.1.1.</span> <span class="toc-text">Vue2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vuex"><span class="toc-number">4.1.2.</span> <span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sass-loader"><span class="toc-number">4.1.3.</span> <span class="toc-text">sass-loader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flyio"><span class="toc-number">4.1.4.</span> <span class="toc-text">flyio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BE%9D%E8%B5%96"><span class="toc-number">4.1.5.</span> <span class="toc-text">其他依赖</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyProject"><span class="toc-number">5.</span> <span class="toc-text">MyProject</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96"><span class="toc-number">5.1.</span> <span class="toc-text">依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#uView"><span class="toc-number">5.1.1.</span> <span class="toc-text">uView</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BD%E5%9B%BA%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">顽固问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F%E4%B8%8D%E7%94%9F%E6%95%88"><span class="toc-number">6.1.</span> <span class="toc-text">样式不生效</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

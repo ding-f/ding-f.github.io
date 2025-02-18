@@ -1,0 +1,624 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>企业微信公众号开发笔记 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="了解公众号开发 参考： 小美哥的个人博客：手把手教你入门微信公众号开发 博客园-方倍工作室：微信公众平台开发入门教程[2020版] 微信官网文档-公众号：入门指引 微信官方文档-公众号：开始开发 &#x2F;获取Access token  首先要申请通过一个微信公众平台接口测试帐号，可免费调用接口等操作： 需搭建一个80&#x2F;443端口的公网服务器，服务器中代码包含Token（随便自定义），">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企业微信公众号开发笔记">
+<meta property="og:url" content="https://ding-f.github.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="了解公众号开发 参考： 小美哥的个人博客：手把手教你入门微信公众号开发 博客园-方倍工作室：微信公众平台开发入门教程[2020版] 微信官网文档-公众号：入门指引 微信官方文档-公众号：开始开发 &#x2F;获取Access token  首先要申请通过一个微信公众平台接口测试帐号，可免费调用接口等操作： 需搭建一个80&#x2F;443端口的公网服务器，服务器中代码包含Token（随便自定义），">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.86e392717a70a00f09abcd8173189293rik=JhyQ%252bGKjXFHkyQ&riu=http%253a%252f%252fpic.baike.soso.com%252fp%252f20140605%252f20140605161236-1949656822.jpeg">
+<meta property="article:published_time" content="2022-11-23T03:30:55.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.110Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.86e392717a70a00f09abcd8173189293rik=JhyQ%252bGKjXFHkyQ&riu=http%253a%252f%252fpic.baike.soso.com%252fp%252f20140605%252f20140605161236-1949656822.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '企业微信公众号开发笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.86e392717a70a00f09abcd8173189293rik=JhyQ%252bGKjXFHkyQ&amp;riu=http%253a%252f%252fpic.baike.soso.com%252fp%252f20140605%252f20140605161236-1949656822.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">企业微信公众号开发笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-23T03:30:55.000Z" title="发表于 2022-11-23 11:30:55">2022-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.110Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji" data-flag-title="企业微信公众号开发笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="了解公众号开发"><a href="#了解公众号开发" class="headerlink" title="了解公众号开发"></a>了解公众号开发</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://coolboygym.github.io/2017/11/01/basic-wechat-develop/">小美哥的个人博客：手把手教你入门微信公众号开发</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/txw1958/p/wechat-tutorial.html">博客园-方倍工作室：微信公众平台开发入门教程[2020版]</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Getting_Started_Guide.html">微信官网文档-公众号：入门指引</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html">微信官方文档-公众号：开始开发 &#x2F;获取Access token</a></p>
+</blockquote>
+<p>首先要申请通过一个<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login">微信公众平台接口测试帐号</a>，可免费调用接口等操作：</p>
+<p>需搭建一个80&#x2F;443端口的公网服务器，服务器中代码包含Token（随便自定义），公网服务器连接和Token需填入登录后的微信公众平台接口测试帐号，微信后台会发送一个请求携带4个数据，公网服务器需处理微信后台Get方式请求数据，处理请求数据，并响应<code>echostr</code>完成验证，详情见<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Getting_Started_Guide.html">微信官网文档：入门指引</a></p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221124150554959.png" alt="微信后台"></p>
+<p>了解公众号实现“你问我答”机制，理解被动消息的含义、理解收\发消息机制</p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/wechat-5.jpeg" alt="微信用户与开发者的交互流程"></p>
+<ul>
+<li>FromUserName是粉丝的ID</li>
+<li>ToUserName结尾的是我们公众号ID（可理解为我们提供公众号服务的主机）</li>
+<li>MsgId: 是公众平台为记录识别该消息的一个标记数值, 微信后台系统自动产生</li>
+<li>接收消息和发送的前5个xml标签是一样的，此图FunFlag（星标字段），但<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Getting_Started_Guide.html">微信官网文档：入门指引</a>中，此标签是没有的</li>
+</ul>
+<p>首先接收消息的服务器是微信的服务器，转发粉丝的消息，相当于一个代理，而我们自己的服务器提供回复消息处理、网页等服务。</p>
+<h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/4971669345480_.pic.jpg" alt="4971669345480_.pic"></p>
+<h3 id="网站-H5页面"><a href="#网站-H5页面" class="headerlink" title="网站 H5页面"></a>网站 H5页面</h3><blockquote>
+<p>可简单理解为，分别代表web后端和前端项目</p>
+<p>如果用户在微信客户端中访问第三方网页，公众号可以通过微信网页授权机制，来获取用户基本信息，进而实现业务逻辑。</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html">微信官方文档-公众号：网页授权</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/0002a2c78f8a48309d2b3870551800">微信开放社区-潇～：h5微信公众号，能授权获取用户手机号码？</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022303078">segmentfault-hello_world：微信公众号网页授权</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/minihome/doc/000c2c34068880629ced91a2f56001">微信网页授权能力调整公告</a></p>
+</blockquote>
+<p><strong>规则</strong></p>
+<ul>
+<li><p>从开放社区了解到，微信公众号网页是不能像小程序那样注册后直接获取用户手机号的</p>
+</li>
+<li><p>开发者在网页中在不规范使用发起 snsapi_userinfo 网页授权时，将会进入网页快照页模式</p>
+<ul>
+<li>获取的头像、昵称、openId、unionId 均为虚拟账号数据</li>
+<li>快照页不与正常页面共享缓存，离开将清理</li>
+<li>快照页内也无法使用微信其它 JS-SDK 的能力</li>
+</ul>
+</li>
+</ul>
+<p><strong>可获取用户信息</strong></p>
+<p>公众号可以通过微信网页授权机制，来获取用户基本信息，进而实现业务逻辑（来自微信官方文档-公众号：网页授权）</p>
+<h3 id="中控服务器"><a href="#中控服务器" class="headerlink" title="中控服务器"></a>中控服务器</h3><p>建议公众号开发者使用中控服务器统一获取和刷新access_token，一般情况下放于后端即可，除业务繁重的公众号，需单独分离中控服务器</p>
+<ul>
+<li><p>非微信官方提供，专用于访问微信服务器获取access_token的API，Token用于访问微信公众号所有接口的唯一凭证</p>
+</li>
+<li><p>中控服务器需要 AppID 和 AppSecret 调用本接口来获取access_token</p>
+</li>
+<li><p>access_token有效时间2小时，需定时刷新，重复获取将导致上次获取的access_token失效</p>
+</li>
+<li><p>中控服务器不仅需要内部定时主动刷新，还需要提供被动刷新access_token的接口</p>
+</li>
+</ul>
+<h3 id="API-Proxy"><a href="#API-Proxy" class="headerlink" title="API-Proxy"></a>API-Proxy</h3><p>微信官方提供的API访问代理，目的是为了隐藏内部真实接口，保障真实API服务器安全</p>
+<h2 id="官方理论"><a href="#官方理论" class="headerlink" title="官方理论"></a>官方理论</h2><h3 id="服务器地址有效性"><a href="#服务器地址有效性" class="headerlink" title="服务器地址有效性"></a>服务器地址有效性</h3><blockquote>
+<p>按照官方文档的方式建立公众号过程中，发现 微信官方文档-公众号 中不仅代码有问题居然还有错别字，也不知为何，由于要写公众号的后端是部署在服务器上，根据官方要求还得做一些开发认证啥的，比如验证服务器地址的有效性，不得不边写代码边测试，出问题还得调试代码，无奈选择内网穿透服务frp，并成功搭建，详见本站文章 「内网穿透」，配置见本节 网页授权。</p>
+<p>内网穿透为了可以通过一台阿里云主机（公众号主机）代理我的电脑，比如我的电脑开启博客网站服务，直接就可以从这台阿里云访问到我的电脑上的博客网站，这样一来，我电脑上的博客项目源码就可利用各种工具方便写，方便调试，方便测试。</p>
+<p>注意：若使用WeRobot框架做好内网穿透，开发直接填入Token即可，无序官方的繁琐步骤，以下内容目的仅为了理清微信公众号理论。</p>
+</blockquote>
+<p><strong>理论</strong></p>
+<p>按照官方文档，验证服务器地址的有效性，填入url和token（只用于验证开发者服务器），官方先用数组排序对<code>[token, timestamp, nonce]</code>按照数字和字母正序进行排序，排序后再进行解码成二进制，因为sha算法需要对二进制数据进行提取的，sha1生成后，像这样：</p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221209000028802.png" alt="image-20221209000028802"></p>
+<p>此时生成的sha1字符串就是微信官方传来的signature，我们只需写代码验证一次这个算法再得出一遍sha1，对比自己生成的sha和signature相等，返回nonce即可验证成功：</p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221209000839325.png" alt="image-20221209000839325"></p>
+<h3 id="消息处理"><a href="#消息处理" class="headerlink" title="消息处理"></a>消息处理</h3><p>完成服务器地址有效性验证，开始写消息处理，web.py接收微信服务器POST请求，但微信服务器只知道<code>/wx</code>这个接口，写入POST方式到<code>/wx</code>关注测试号或者通过<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/debug/">公众平台接口测试工具</a>发送hellowx，http协议传输二进制格式的信息，打印出的字符串前带<code>b</code></p>
+<p><strong>通过关注者微信发送</strong></p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221209143106692.png" alt="image-20221209143106692"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--格式化后的xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--测试公众号的微信号--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[gh_d97b95c57123]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--发送消息的微信的微信号--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[oG3lz6INdKtk0CGaHdyzo-vimvKQ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1670566948<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[text]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Content</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[hellowx]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MsgId</span>&gt;</span>23916769268770750<span class="tag">&lt;/<span class="name">MsgId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>通过公众平台测试工具发送</strong></p>
+<p>分别以xml格式和json格式进行</p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221209145033588.png" alt="image-20221209145033588"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;URL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://8.8.8.8/wx&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;ToUserName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gh_d97b95c57123&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;FromUserName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;oG3lz6INdKtk0CGaHdyzo-vimvKQ&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;CreateTime&quot;</span><span class="punctuation">:</span> <span class="number">1670566949</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;MsgType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\xe9\x93\xb8\xe9\xbc\x8e&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;MsgId&quot;</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">URL</span>&gt;</span></span><br><span class="line">		&lt;![CDATA[http://8.8.8.8/wx]]&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">URL</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span></span><br><span class="line">		&lt;![CDATA[gh_d97b95c57123]]&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span></span><br><span class="line">		&lt;![CDATA[oG3lz6INdKtk0CGaHdyzo-vimvKQ]]&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span></span><br><span class="line">		1670566949</span><br><span class="line">	<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">MsgType</span>&gt;</span></span><br><span class="line">		&lt;![CDATA[text]]&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Content</span>&gt;</span></span><br><span class="line">		&lt;![CDATA[\xe9\x93\xb8\xe9\xbc\x8e]]&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">MsgId</span>&gt;</span></span><br><span class="line">		1</span><br><span class="line">	<span class="tag">&lt;/<span class="name">MsgId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="access-token"><a href="#access-token" class="headerlink" title="access_token"></a>access_token</h3><blockquote>
+<p>微信官方文档中所述的access_token，一共有两种，一种是只能用来获取用户信息的<strong>网页授权access_token</strong>，另一种是<strong>基础支持access_token</strong>，超时时间均为7200（2小时），两种都需要开发使其开发者者服务器妥善保管。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html">公众号官方文档：开始开发&#x3D;&gt;获取access_token</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">公众号官方文档：微信网页开发&#x3D;&gt;JS-SDK说明文档&#x3D;&gt;附录1-JS-SDK使用权限签名算法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiqing9006/p/11021461.html">博客园-TBHacker：网页授权access_token，基础支持access_token，jsapi_ticket</a></p>
+</blockquote>
+<p><strong>网页授权access_token</strong></p>
+<ul>
+<li>用来获取用户信息</li>
+<li>面向单用户，网页授权access_token是一次性的(来自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiqing9006/p/11021461.html">博客园-TBHacker：网页授权access_token，基础支持access_token，jsapi_ticket</a>待验证)</li>
+<li>如果需要可进行刷新，刷新后有效期为30天</li>
+<li>没有次数限制</li>
+</ul>
+<p><strong>基础支持access_toke</strong></p>
+<ul>
+<li>调用微信接口，weixin-js-sdk所需</li>
+<li>面向多用户</li>
+<li>需刷新</li>
+<li>可采用GET方式请求获得jsapi_ticket有效期7200秒（生成 JS-SDK 权限验证的signature）</li>
+<li>测试号2000次&#x2F;天</li>
+</ul>
+<h3 id="网页授权"><a href="#网页授权" class="headerlink" title="网页授权"></a>网页授权</h3><blockquote>
+<p>关于网页授权access_token和普通access_token的区别</p>
+<ol>
+<li>微信网页授权是通过OAuth2.0机制实现的，在用户授权给公众号后，公众号可以获取到一个网页授权特有的接口调用凭证（网页授权access_token），通过网页授权access_token可以进行授权后接口调用，如获取用户基本信息；</li>
+<li>其他微信接口，需要通过基础支持中的“获取access_token”接口来获取到的普通access_token调用。</li>
+</ol>
+<p>网页授权过程中从微信服务器不只是acess_token（有效时长2小时）授权，还要有一个code，这个code是换取用户信息的关键，每个用户获取的code不一样的，只有5分钟，此acess_token是为了允许我们的服务器向微信获取code下用户的信息。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7097097242091192357#heading-11">掘金-ForeverChen：微信公众号网页开发（JS——SDK）</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html">微信公众号文档：网页授权</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/User_Management/Get_users_basic_information_UnionID.html">微信公众号文档：获取用户基本信息（UnionID机制）</a></p>
+</blockquote>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221216162626787.png" alt="image-20221216162626787"></p>
+<h4 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h4><p>两种scope，不同的信息获取权限</p>
+<p><strong>详细用户信息</strong></p>
+<ul>
+<li>snsapi_userinfo，用来获取用户的基本信息<ul>
+<li><p>未关注</p>
+<ul>
+<li>弹出页面授权</li>
+<li>需用户同意授权</li>
+<li>无需关注公众号</li>
+</ul>
+</li>
+<li><p>已关注</p>
+<ul>
+<li>从公众号的会话&#x2F;自定义菜单进入本公众号的网页授权页</li>
+<li>静默授权</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">openid</td>
+<td align="left">用户的唯一标识</td>
+</tr>
+<tr>
+<td align="left">nickname</td>
+<td align="left">用户昵称</td>
+</tr>
+<tr>
+<td align="left">sex</td>
+<td align="left">用户的性别，值为1时是男性，值为2时是女性，值为0时是未知</td>
+</tr>
+<tr>
+<td align="left">province</td>
+<td align="left">用户个人资料填写的省份</td>
+</tr>
+<tr>
+<td align="left">city</td>
+<td align="left">普通用户个人资料填写的城市</td>
+</tr>
+<tr>
+<td align="left">country</td>
+<td align="left">国家，如中国为CN</td>
+</tr>
+<tr>
+<td align="left">headimgurl</td>
+<td align="left">用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像 URL 将失效。</td>
+</tr>
+<tr>
+<td align="left">privilege</td>
+<td align="left">用户特权信息，json 数组，如微信沃卡用户为（chinaunicom）</td>
+</tr>
+<tr>
+<td align="left">unionid</td>
+<td align="left">只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。</td>
+</tr>
+</tbody></table>
+<p><strong>简要用户信息</strong></p>
+<ul>
+<li>snsapi_base，用来获取进入页面的用户的 openid 和 access_token，后期可通过 用户管理接口（需关注且需产生消息交互）获取用户基本信息<ul>
+<li>静默授权</li>
+<li>自动跳转回调页（用户无感知，不弹出授权窗口）</li>
+<li>服务器通过code请求获取access_token &amp; openID</li>
+</ul>
+</li>
+<li>拿到用户OpenID&#x2F;UnionID，可通过 用户管理-获取用户基本信息(UnionID机制)，获取用户基本信息<ul>
+<li>关注者与公众号产生消息交互后（比如网页snsapi_base授权），公众号可获得关注者的OpenID</li>
+<li>可批量获取简要用户信息</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">subscribe</td>
+<td align="left">用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息。</td>
+</tr>
+<tr>
+<td align="left">openid</td>
+<td align="left">用户的标识，对当前公众号唯一</td>
+</tr>
+<tr>
+<td align="left">language</td>
+<td align="left">用户的语言，简体中文为zh_CN</td>
+</tr>
+<tr>
+<td align="left">subscribe_time</td>
+<td align="left">用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间</td>
+</tr>
+<tr>
+<td align="left">unionid</td>
+<td align="left">只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。</td>
+</tr>
+<tr>
+<td align="left">remark</td>
+<td align="left">公众号运营者对粉丝的备注，公众号运营者可在微信公众平台用户管理界面对粉丝添加备注</td>
+</tr>
+<tr>
+<td align="left">groupid</td>
+<td align="left">用户所在的分组ID（兼容旧的用户分组接口）</td>
+</tr>
+<tr>
+<td align="left">tagid_list</td>
+<td align="left">用户被打上的标签 ID 列表</td>
+</tr>
+<tr>
+<td align="left">subscribe_scene</td>
+<td align="left">返回用户关注的渠道来源，ADD_SCENE_SEARCH 公众号搜索，ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移，ADD_SCENE_PROFILE_CARD 名片分享，ADD_SCENE_QR_CODE 扫描二维码，ADD_SCENE_PROFILE_LINK 图文页内名称点击，ADD_SCENE_PROFILE_ITEM 图文页右上角菜单，ADD_SCENE_PAID 支付后关注，ADD_SCENE_WECHAT_ADVERTISEMENT 微信广告，ADD_SCENE_REPRINT 他人转载 ,ADD_SCENE_LIVESTREAM 视频号直播，ADD_SCENE_CHANNELS 视频号 , ADD_SCENE_OTHERS 其他</td>
+</tr>
+<tr>
+<td align="left">qr_scene</td>
+<td align="left">二维码扫码场景（开发者自定义）</td>
+</tr>
+<tr>
+<td align="left">qr_scene_str</td>
+<td align="left">二维码扫码场景描述（开发者自定义）</td>
+</tr>
+</tbody></table>
+<h2 id="网页授权-1"><a href="#网页授权-1" class="headerlink" title="网页授权"></a>网页授权</h2><blockquote>
+<p>本节独立拿出来是因为网页授权需要两个端之间的联动，涉及到两个项目的编码，结合官方理论进行实践。</p>
+<p>网页授权需要JS接口安全域名主机下的网页，于是此操作也需要内网穿透，再结合Nginx反向代理，将H5前端和公众号后端进行了80端口反向代理，访问80请求按照接口前缀不同分流至各自内网穿透转发到公网服务器的各自端口。</p>
+</blockquote>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p><strong>JS接口安全域名</strong></p>
+<p>填入公众号测试号中JS接口安全域名，此步骤不需要验证即可填入，IP地址、域名均可，只是IP地址作为网页应该会有如下提示</p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221223170432681.png" alt="image-20221223170432681"></p>
+<h5 id="Frp-内网穿透"><a href="#Frp-内网穿透" class="headerlink" title="Frp 内网穿透"></a>Frp 内网穿透</h5><blockquote>
+<p>详细内容见本博客 「内网穿透」文章</p>
+</blockquote>
+<p><strong>客户端</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = x.x.x.x</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">1668</span></span><br><span class="line"></span><br><span class="line"><span class="section">[wx]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">8088</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">88</span></span><br><span class="line"></span><br><span class="line"><span class="section">[h5]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = localhost</span><br><span class="line"><span class="attr">local_port</span> = <span class="number">8080</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">808</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>服务端</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">1668</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx 反向代理"></a>Nginx 反向代理</h5><blockquote>
+<p>详细内容见本博客 「Nginx」文章</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">···</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">     listen       80;</span><br><span class="line">     # listen       [::]:80 default_server;</span><br><span class="line">     server_name  localhost;</span><br><span class="line">     # root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">     # Load configuration files for the default server block.</span><br><span class="line">     include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">     location / &#123;</span><br><span class="line">         proxy_pass http://127.0.0.1:808;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     location /dalai/wx &#123;</span><br><span class="line">         proxy_pass http://127.0.0.1:88;</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     ···</span><br><span class="line">     </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"> ···</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="公众号后端"><a href="#公众号后端" class="headerlink" title="公众号后端"></a>公众号后端</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Getting_Started_Guide.html">微信官网文档-公众号：入门指引</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/offu/WeRoBot">GitHub-offu：WeRoBot</a></p>
+<p><a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/">WeRoBot官方文档</a></p>
+</blockquote>
+<p><strong>依赖</strong></p>
+<ul>
+<li>WeRoBot，是一个微信公众号开发框架</li>
+<li>Django</li>
+</ul>
+<h3 id="WeRoBot"><a href="#WeRoBot" class="headerlink" title="WeRoBot"></a>WeRoBot</h3><blockquote>
+<p>由于微信官网的文档所提及的技术实在是太老了，开发时十分的费力，况且目前的项目基本上都流行Json格式传递数据了，这家伙微信公众号开发还只能是xml，选用了一个专门做微信公众号的框架WeRobot，而且它可以集成Django，详见：<a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/contrib.html">与其他 Web 框架集成</a>，开发效率大大提升。</p>
+<p><a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/">WeRoBot官方文档</a></p>
+</blockquote>
+<h4 id="功能清单"><a href="#功能清单" class="headerlink" title="功能清单"></a>功能清单</h4><p>- </p>
+<h4 id="消息处理-1"><a href="#消息处理-1" class="headerlink" title="消息处理"></a>消息处理</h4><p>WeRoBot 会解析微信服务器发来的消息，将消息转换成成 Message 或者是 Event，在Dango中全都需处理成views，需<code>werobot.contrib.django</code>中的<code>make_view()</code>函数处理，。</p>
+<ul>
+<li><h2 id="Message-文本-图片"><a href="#Message-文本-图片" class="headerlink" title="Message- 文本- 图片"></a>Message<br>- 文本<br>- 图片</h2></li>
+<li><h2 id="Event-关注-扫码"><a href="#Event-关注-扫码" class="headerlink" title="Event- 关注- 扫码"></a>Event<br>- 关注<br>- 扫码</h2></li>
+</ul>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><blockquote>
+<p>WeRobot官方：你可以通过 Session 实现用户状态的记录。</p>
+<p>引入WeRobot的项目会默认使用Sqlite作为默认数据库，其中Session也是存在于Sqlite的，准备将Sqlite替换为Redis（待后期决定）</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/session.html">WeRoBot：Session</a></p>
+<p><a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/api.html">WeRoBot：API&#x3D;&gt;Session 对象</a></p>
+</blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://werobot.readthedocs.io/zh_CN/latest/api.html">WeRoBot：API&#x3D;&gt;Session 对象</a> 发现可以将Session的存储方式进行改变，由于项目会使用Redis，但由于Session会存储用户状态，比如服务器重启，如果使用Redis用户状态会消失，将后期决定是否将Sqlite替换为Redis。</p>
+<h2 id="H5前端"><a href="#H5前端" class="headerlink" title="H5前端"></a>H5前端</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6961227243322507278">掘金-water：你需要知道的vue开发公众号网页</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904090816741384">掘金-#陈大翱#：对于babel的几点理解</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61780633">知乎-Leon：Babel 插件有啥用？</a></p>
+</blockquote>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><h4 id="VsCode"><a href="#VsCode" class="headerlink" title="VsCode"></a>VsCode</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/tool/vscode/494880.html">PHP中文网-青灯夜游：【整理分享】6 个 Vue3 开发必备的 VSCode 插件</a></p>
+</blockquote>
+<p><strong>插件</strong></p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7024379834004406308">掘金-卡尔特斯：SVG VSCode 插件，显示svg文件图像预览等</a></p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221201140612348.png" alt="image-20221201140612348"></p>
+<p><img src="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/image-20221201140700871.png" alt="image-20221201140700871"></p>
+</li>
+<li></li>
+</ul>
+<h3 id="前端依赖"><a href="#前端依赖" class="headerlink" title="前端依赖"></a>前端依赖</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue3-h5-template&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;homepage&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://yulimchen.github.io/vue3-h5-template/&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;license&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MIT&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;repository&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;git&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;git+https://github.com/yulimchen/vue3-h5-template.git&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;bugs&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://github.com/yulimchen/vue3-h5-template/issues&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;serve&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service serve&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service serve --open&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service serve --open&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service build&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;lint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service lint --fix&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@vant/compat&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;axios&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;core-js&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.14.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;normalize.css&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^8.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vant&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^4&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vue-router&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^4.0.8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vuex&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^4.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;weixin-js-sdk&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.6.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@vue/cli-plugin-babel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;~4.5.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@vue/cli-plugin-eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;~4.5.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@vue/cli-service&quot;</span><span class="punctuation">:</span> <span class="string">&quot;~4.5.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@vue/compiler-sfc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 帮我们自动补齐前缀，解放双手，关怀前端人的心智负担，兼任多浏览器</span></span><br><span class="line">    <span class="attr">&quot;autoprefixer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^9.8.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;babel-eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^10.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;babel-plugin-import&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.13.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 命令行美化</span></span><br><span class="line">    <span class="attr">&quot;chalk&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^4.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 封装 Node.js 监控文件系统文件变化功能的库</span></span><br><span class="line">    <span class="attr">&quot;chokidar&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.5.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;compression-webpack-plugin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 是一个用来识别 ECMAScript/JavaScript 并且按照规则给出报告的代码检测工具</span></span><br><span class="line">    <span class="attr">&quot;eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.7.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint-plugin-vue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^7.0.0-0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;less&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.12.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;less-loader&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^7.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;mockjs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 关于 PostCSS 的一个插件，它从像素单位生成视口单位（vw、vh、vmin、vmax）。通过一种设计尺寸在不同显示器上创建可扩展界面的最佳选择。</span></span><br><span class="line">    <span class="attr">&quot;postcss-px-to-viewport&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.1.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;svg-sprite-loader&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.11&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 它可以自动引入组件，并按需引入组件的样式</span></span><br><span class="line">    <span class="attr">&quot;unplugin-vue-components&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.22.12&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;eslintConfig&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;root&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;env&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;node&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">&quot;plugin:vue/vue3-essential&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;eslint:recommended&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;parserOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;parser&quot;</span><span class="punctuation">:</span> <span class="string">&quot;babel-eslint&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postcss&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;plugins&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;autoprefixer&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;browserslist&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;Android &gt;= 4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;iOS &gt;= 7&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="vue3-h5-template"><a href="#vue3-h5-template" class="headerlink" title="vue3-h5-template"></a>vue3-h5-template</h3><blockquote>
+<p>前端将基于Vant3 + Vue3 + H5的一个模板项目作为前端项目开发</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yulimchen/vue3-h5-template">GitHub-yulimchen：vue3-h5-template</a></p>
+</blockquote>
+<h4 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yulimchen/vue3-h5-template/blob/master/README.md">GitHub-yulimchen：vue3-h5-template &#x3D;&gt; README</a></p>
+<p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/">vue3 文档</a><br><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/v3/#/zh-CN">Vant3 文档</a><br><a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/">Vuex 文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/introduction.html">Vue Router 文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://axios-http.com/docs/intro">Axiso 文档</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7067165103547744263#comment">掘金-狮吼土拨鼠：一个好用的svg加载器svg-sprite-loader</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mynewdays/article/details/124377001">CSDN-巴山却话:详解vue 配置 cdn 加载依赖的方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7055816507044921352">掘金-死鱼：normalize.css 是什么？</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136357710">知乎-小思：什么是ESLint？</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6959825653029928968">掘金-谢小飞：一文彻底读懂ESLint</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7018433228591595550">掘金-远航_：Vue移动端 &#x2F; PC端适配解决方案：postcss-px-to-viewport</a></p>
+<p><a href="">掘金-藤原托漆：尤大推荐的神器unplugin-vue-components,解放双手!以后再也不用呆呆的手动引入(组件,ui(Element-ui)库,vue hooks等)</a></p>
+<p><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/quickstart">Vant4:按需引入组件和样式</a></p>
+</blockquote>
+<p><strong>基于 Vue3 全家桶、Vant3，vw 视口适配，开箱即用的移动端项目基础模板</strong></p>
+<ul>
+<li>Vue3✨</li>
+<li>Vant3（升级Vant4）✨</li>
+<li>支持 SVG 图标自动注册组件✨</li>
+<li>vw 视口适配，<a target="_blank" rel="noopener" href="https://juejin.cn/post/7018433228591595550">postcss-px-to-viewport</a>它能完美解决上面的三个痛点，高效的将代码中px单位转为rm、rem、vw等视口单位，一份配置文件完美解决适配问题</li>
+<li>Axios （升级1.2.1） 封装：Axios 是一个基于 promise 网络请求库，作用于node.js 和浏览器中。 它是 isomorphic 的(即同一套代码可以运行在浏览器和node.js中)。在服务端它使用原生 node.js http 模块, 而在客户端 (浏览端) 则使用 XMLHttpRequests</li>
+<li>生产环境 CDN 依赖：将项目依赖的一些第三方包替换成通过 cdn 方式外部加载，而不是打包到 vender，对于提升应用的加载、响应速度很有意义，同时减少打包的体积</li>
+<li>打包资源 gzip 压缩</li>
+<li>ESLint：是一个用来识别 ECMAScript&#x2F;JavaScript 并且按照规则给出报告的代码检测工具，比如编译的时候可以编译通过，但会出现好多代码格式不对的提示，不过挺烦人的</li>
+<li>首屏加载动画</li>
+<li>项目资源路径 alias 别名</li>
+<li>开发环境调试面板</li>
+<li><a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/">Vuex</a> 集成：Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新</li>
+<li><a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/introduction.html">Vue-router</a> 集成：Vue Router 是 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue.js</a> 的官方路由。它与 Vue.js 核心深度集成，让用 Vue.js 构建单页应用变得轻而易举。</li>
+<li>开发环境 Mock 数据</li>
+<li>normalize.css 它是css样式初始化的插件，<a target="_blank" rel="noopener" href="https://juejin.cn/post/7055816507044921352">详见</a></li>
+<li>unplugin-vue-components 它可以自动引入组件，并按需引入组件的样式</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/liriliri/eruda">eruda</a> H5移动端开发者模式，类似于腾讯的<a target="_blank" rel="noopener" href="https://gitee.com/Tencent/vConsole">VConsole</a></li>
+</ul>
+<p><strong>&#x2F;src&#x2F;main.js</strong></p>
+<p>此文件为Vue入口文件，任何全局函数变量、插件挂载都在此文件中表达。</p>
+<ul>
+<li>注册App.vue到createApp</li>
+<li>注册Vant组件、svg-icon组件</li>
+<li>导入less样式</li>
+</ul>
+<h5 id="依赖升级"><a href="#依赖升级" class="headerlink" title="依赖升级"></a>依赖升级</h5><blockquote>
+<p>开发小程序使用的是<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/introduction.html">vant-weapp</a> v1.10.2 微信小程序版，遇到了非常多的Bug，打开Vant官网其实可以看到目前的最新版也只不过是Vant2只是升级到了vant-weapp v1.10.10，看样子之前版本遗留的问题依旧没有得到解决，毕竟小程序企业开发已经很少使用微信原生的方式进行开发了，使用量相比Vue版本的Vant来说还是小巫见大巫。</p>
+<p>决定使用最新版的Vant4作为本项目的组件库，以达到没有常见Bug的目的。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000039874769">segmentfault-Ethan小木：如何检测及升级项目中的 Node 依赖</a></p>
+<p><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/release-note-v4">Vant 4 官方文档：4.0 版本介绍</a></p>
+<p><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/migrate-from-v3">Vant 4 官方文档：从 v3 升级到 v4</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/69343038/cant-import-the-named-export-xxxx-from-non-ecmascript-module-only-default-expo">Stack Overflow：Can’t import the named export XXXX from non EcmaScript module (only default export is available)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6886698055685373965">掘金-UU：vue.config.js 的完整配置（超详细）！</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/antfu/unplugin-vue-components">GitHub-antfu：unplugin-vue-components</a></p>
+<p><a target="_blank" rel="noopener" href="https://axios-http.com/zh/docs/intro">Axios 官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7067165103547744263#comment">掘金-狮吼土拨鼠：一个好用的svg加载器svg-sprite-loader</a></p>
+</blockquote>
+<h5 id="升级Vant-4"><a href="#升级Vant-4" class="headerlink" title="升级Vant 4"></a>升级Vant 4</h5><p>依赖常规操作详见<a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/migrate-from-v3">Vant 4 官方文档：从 v3 升级到 v4</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过 yarn 安装</span></span><br><span class="line">yarn add vant@^4 @vant/compat@^1</span><br></pre></td></tr></table></figure>
+
+<p>移除babel.config.js代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">presets</span>: [<span class="string">&#x27;@vue/app&#x27;</span>],</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// [</span></span><br><span class="line">    <span class="comment">//   &#x27;import&#x27;,</span></span><br><span class="line">    <span class="comment">//   &#123;</span></span><br><span class="line">    <span class="comment">//     libraryName: &#x27;vant&#x27;,</span></span><br><span class="line">    <span class="comment">//     libraryDirectory: &#x27;es&#x27;,</span></span><br><span class="line">    <span class="comment">//     style: name =&gt; `$&#123;name&#125;/style/less`</span></span><br><span class="line">    <span class="comment">//   &#125;,</span></span><br><span class="line">    <span class="comment">//   &#x27;vant&#x27;</span></span><br><span class="line">    <span class="comment">// ]</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照官网操作后升级会有报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Can&#x27;t import the named export XXXX.mjs from non EcmaScript module (only default export is available)</span><br></pre></td></tr></table></figure>
+
+<p>看样子就是没加载到文件，结合查找的一些资料得知，需要修改vue.config.js，正好从<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/69343038/cant-import-the-named-export-xxxx-from-non-ecmascript-module-only-default-expo">Stack Overflow：Can’t import the named export XXXX from non EcmaScript module (only default export is available)</a>找到了解决方案，文件修改以下内容，即可正常运行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">chainWebpack</span>: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// ...other chains</span></span><br><span class="line">        config.<span class="property">module</span> <span class="comment">// fixes https://github.com/graphql/graphql-js/issues/1272</span></span><br><span class="line">            .<span class="title function_">rule</span>(<span class="string">&#x27;mjs$&#x27;</span>)</span><br><span class="line">            .<span class="title function_">test</span>(<span class="regexp">/\.mjs$/</span>)</span><br><span class="line">            .<span class="property">include</span></span><br><span class="line">                .<span class="title function_">add</span>(<span class="regexp">/node_modules/</span>)</span><br><span class="line">                .<span class="title function_">end</span>()</span><br><span class="line">            .<span class="title function_">type</span>(<span class="string">&#x27;javascript/auto&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">        <span class="attr">resolve</span>: &#123;</span><br><span class="line">            <span class="comment">// .mjs needed for https://github.com/graphql/graphql-js/issues/1272</span></span><br><span class="line">            <span class="attr">extensions</span>: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.mjs&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.vue&#x27;</span>, <span class="string">&#x27;.json&#x27;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更改这个就是为了更改webpage打包的配置，之前的vue2项目可能是改的<code>webpack.config.js</code>，现在换成Vue3只能更改<code>vue.config.js</code>以达到相同的目的，原理待后期研究，先放着。</p>
+<p><strong>调整按需引入样式方式</strong></p>
+<p>通过以上配置后所有组件的样式已经全部消失，分析代码，此模板所使用了<code>src/plugins/registerVant.js</code>按需方式引入（GitHub文档有说明），每次引入组件需要加入引入组件的相关代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="title class_">Field</span>,</span><br><span class="line">  <span class="title class_">Cell</span>,</span><br><span class="line">  <span class="title class_">CellGroup</span>,</span><br><span class="line">  <span class="title class_">Button</span>,</span><br><span class="line">  <span class="title class_">Icon</span>,</span><br><span class="line">  <span class="title class_">Tabbar</span>,</span><br><span class="line">  <span class="title class_">TabbarItem</span></span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> componentList = [</span><br><span class="line">  <span class="title class_">Field</span>,</span><br><span class="line">  <span class="title class_">Cell</span>,</span><br><span class="line">  <span class="title class_">CellGroup</span>,</span><br><span class="line">  <span class="title class_">Button</span>,</span><br><span class="line">  <span class="title class_">Icon</span>,</span><br><span class="line">  <span class="title class_">Tabbar</span>,</span><br><span class="line">  <span class="title class_">TabbarItem</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">registerVantComp</span>(<span class="params">app</span>) &#123;</span><br><span class="line">  componentList.<span class="title function_">forEach</span>(<span class="function">(<span class="params">comp</span>) =&gt;</span> &#123;</span><br><span class="line">    app.<span class="title function_">use</span>(comp)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>安装<a target="_blank" rel="noopener" href="https://github.com/yulimchen/vue3-h5-template/blob/master/README.md">官方升级v4</a>所述插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过 yarn 安装 -D 依赖安装在package.json的devDependencies中</span></span><br><span class="line">yarn add unplugin-vue-components -D</span><br></pre></td></tr></table></figure>
+
+<p>基于 <code>vue-cli</code> 的项目，在 <code>vue.config.js</code> 文件中配置插件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">VantResolver</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-vue-components/resolvers&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ComponentsPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-vue-components/webpack&#x27;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: <span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// unplugin-vue-components插件配置，vant4按需引入</span></span><br><span class="line">      configNew.<span class="property">plugins</span>=[</span><br><span class="line">      <span class="title class_">ComponentsPlugin</span>(&#123;</span><br><span class="line">        <span class="attr">resolvers</span>: [<span class="title class_">VantResolver</span>()],</span><br><span class="line">      &#125;)</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 <a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/config-provider">ConfigProvider 全局配置</a> 组件进行替换</strong></p>
+<p>由于官网声称目前 Vant 已经支持了基于 CSS 变量的主题定制能力，相较于 Less 定制更加灵活。因此，Vant 4 将不再提供基于 Less 的主题定制方式。</p>
+<p>这意味着 Vant 的 npm 包中将不再会包含 <code>.less</code> 样式源文件，只会提供编译后的 <code>.css</code> 样式文件。</p>
+<p>如果你的项目正在使用旧版的 Less 主题定制，请使用 <a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/config-provider">ConfigProvider 全局配置</a> 组件进行替换。</p>
+<p>通俗讲意思是使用了<code>ConfigProvider</code>组件后可以自定义主题的样式，在 Vant4 官方文档中每个组件的文档最后的部分都有<strong>主题定制</strong>，提供相比于less更加方便快捷的组件自定义主题样式。</p>
+<p>引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ConfigProvider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>();</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">ConfigProvider</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="升级Axiso"><a href="#升级Axiso" class="headerlink" title="升级Axiso"></a>升级Axiso</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在项目目录下执行，就会列出可供更新的依赖</span></span><br><span class="line">ncu </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">单个依赖升级</span></span><br><span class="line">ncu axios -u</span><br><span class="line"></span><br><span class="line">Using yarn</span><br><span class="line">Upgrading /Users/fuding/Desktop/大来智能科技/vue3-h5-template/package.json</span><br><span class="line">[====================] 1/1 100%</span><br><span class="line"></span><br><span class="line"> axios  ^0.21.1  →  ^1.2.1</span><br><span class="line"></span><br><span class="line">Run yarn install to install new versions.</span><br></pre></td></tr></table></figure>
+
+<h5 id="升级svg-sprite-loader"><a href="#升级svg-sprite-loader" class="headerlink" title="升级svg-sprite-loader"></a>升级svg-sprite-loader</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ncu svg-sprite-loader -u</span><br><span class="line">Using yarn</span><br><span class="line">Upgrading /Users/fuding/Desktop/大来智能科技/vue3-h5-template/package.json</span><br><span class="line">[====================] 1/1 100%</span><br><span class="line"></span><br><span class="line"> svg-sprite-loader  ^5.0.0  →  ^6.0.11</span><br><span class="line"></span><br><span class="line">Run yarn install to install new versions.</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="网页授权-2"><a href="#网页授权-2" class="headerlink" title="网页授权"></a>网页授权</h3><blockquote>
+<p>网页授权</p>
+</blockquote>
+<h2 id="H5后端"><a href="#H5后端" class="headerlink" title="H5后端"></a>H5后端</h2><h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/geekskai/vue3-jd-h5/blob/vue-next/README-zh_CN.md">GitHub-geekskai:vue3-jd-h5</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yulimchen/vue3-h5-template">GitHub-yulimchen：vue3-h5-template</a></p>
+</blockquote>
+<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><h3 id="公众号菜单栏"><a href="#公众号菜单栏" class="headerlink" title="公众号菜单栏"></a>公众号菜单栏</h3><blockquote>
+<p>微信公众号官方规定：一级菜单最多4个汉字，二级菜单最多8个汉字</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xin1243790377/article/details/51424640">CSDN-千尘梦：微信 错误码：40018，错误提示：invalid button name size</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Creating_Custom-Defined_Menu.html">微信官方文档-公众号：自定义菜单&#x2F;创建接口</a></p>
+</blockquote>
+<p><strong>报错</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">werobot.client.ClientException: 40018: invalid button name size rid: 64ce638f-40af05da-2da1d84a</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji">https://ding-f.github.io/2022/11/23/wei-xin-gong-zhong-hao-kai-fa-bi-ji</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%90%86%E8%AE%BA/">理论</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></div><div class="post_share"><div class="social-share" data-image="/images/2022-11-23-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.86e392717a70a00f09abcd8173189293rik=JhyQ%252bGKjXFHkyQ&amp;riu=http%253a%252f%252fpic.baike.soso.com%252fp%252f20140605%252f20140605161236-1949656822.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/28/vscode" title="VScode"><img class="cover" src="/images/2022-11-28-vscode/R-C.e446e7e99d3accb611b4f6783b55feffrik=KMGvaL7lSRJW3g&amp;riu=http%253a%252f%252fimg.geek-docs.com%252fvscode%252fwhat-is-vscode.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">VScode</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/15/sqlserver" title="SQLServer"><img class="cover" src="/images/2022-11-15-SQLServer/logo-microsoft-sql-server-595x3350.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SQLServer</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji" title="安康学院校园墙小程序（全栈）"><img class="cover" src="/images/java_dev/graduate.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">安康学院校园墙小程序（全栈）</div></div></a></div><div><a href="/2022/10/29/qi-ye-ji-xiao-cheng-xu-qian-hou-duan-kai-fa-bi-ji" title="企业级小程序全栈开发笔记"><img class="cover" src="/images/2022-10-29-%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/R-C.0cb0ecbe4912bad8c6abe125e8d056a3rik=XDrLdRz%252fgxsuiw&riu=http%253a%252f%252fstatics.ovopic.com%252fUpload%252fimgs%252fc705055de8881080%252f1.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">企业级小程序全栈开发笔记</div></div></a></div><div><a href="/2022/04/17/http-xie-yi" title="Http协议"><img class="cover" src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/R-C.6efdc6258152726375358dc6f5119e91?rik=LbcO4y5j3zGfKA&riu=http%253a%252f%252fimage1.slideserve.com%252f1619534%252fhypertext-transfer-protocol-n-20220607174529087.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-17</div><div class="title">Http协议</div></div></a></div><div><a href="/2023/02/16/uni-app" title="uni-app"><img class="cover" src="/images/2023-02-16-uni-app/d490d7b4576290f-7-600x338.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-16</div><div class="title">uni-app</div></div></a></div><div><a href="/2022/01/12/ipv6" title="IPv6"><img class="cover" src="/images/ipv6/ipv6-earth-2021-1-1280x720.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">IPv6</div></div></a></div><div><a href="/2022/04/11/apache-shiro-jwt" title="Apache Shiro + JWT"><img class="cover" src="/images/shir_jwt/shiro_jwt.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">Apache Shiro + JWT</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text">了解公众号开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">基本架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99-H5%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">网站 H5页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%8E%A7%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">中控服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API-Proxy"><span class="toc-number">1.4.</span> <span class="toc-text">API-Proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E7%90%86%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">官方理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9C%B0%E5%9D%80%E6%9C%89%E6%95%88%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">服务器地址有效性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">消息处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#access-token"><span class="toc-number">2.3.</span> <span class="toc-text">access_token</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83"><span class="toc-number">2.4.</span> <span class="toc-text">网页授权</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">2.4.1.</span> <span class="toc-text">获取用户信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83-1"><span class="toc-number">3.</span> <span class="toc-text">网页授权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.1.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">Frp 内网穿透</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">Nginx 反向代理</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E4%BC%97%E5%8F%B7%E5%90%8E%E7%AB%AF"><span class="toc-number">4.</span> <span class="toc-text">公众号后端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WeRoBot"><span class="toc-number">4.1.</span> <span class="toc-text">WeRoBot</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">功能清单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86-1"><span class="toc-number">4.1.2.</span> <span class="toc-text">消息处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Message-%E6%96%87%E6%9C%AC-%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text">Message- 文本- 图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Event-%E5%85%B3%E6%B3%A8-%E6%89%AB%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">Event- 关注- 扫码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Session"><span class="toc-number">6.0.1.</span> <span class="toc-text">Session</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H5%E5%89%8D%E7%AB%AF"><span class="toc-number">7.</span> <span class="toc-text">H5前端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">7.1.</span> <span class="toc-text">开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VsCode"><span class="toc-number">7.1.1.</span> <span class="toc-text">VsCode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BE%9D%E8%B5%96"><span class="toc-number">7.2.</span> <span class="toc-text">前端依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue3-h5-template"><span class="toc-number">7.3.</span> <span class="toc-text">vue3-h5-template</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90"><span class="toc-number">7.3.1.</span> <span class="toc-text">技术分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%8D%87%E7%BA%A7"><span class="toc-number">7.3.1.1.</span> <span class="toc-text">依赖升级</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7Vant-4"><span class="toc-number">7.3.1.2.</span> <span class="toc-text">升级Vant 4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7Axiso"><span class="toc-number">7.3.1.3.</span> <span class="toc-text">升级Axiso</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7svg-sprite-loader"><span class="toc-number">7.3.1.4.</span> <span class="toc-text">升级svg-sprite-loader</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83-2"><span class="toc-number">7.4.</span> <span class="toc-text">网页授权</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H5%E5%90%8E%E7%AB%AF"><span class="toc-number">8.</span> <span class="toc-text">H5后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="toc-number">9.</span> <span class="toc-text">开源项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99"><span class="toc-number">10.</span> <span class="toc-text">报错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E4%BC%97%E5%8F%B7%E8%8F%9C%E5%8D%95%E6%A0%8F"><span class="toc-number">10.1.</span> <span class="toc-text">公众号菜单栏</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

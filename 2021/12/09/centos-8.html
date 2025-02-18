@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CentOS 8 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="配置国内源 更新国内软件源使得系统更新更迅速 参考： 菜鸟教程 Linux sed 命令 阿里云 Cent OS 国内源配置 清华大学开源镜像站 网易开源镜像站 稀土掘金 常用的yum源整理 博客园-DevBlog by WS：CentOS 8 &#x2F; CentOS Stream 换源，设置dnf &#x2F; yum镜像  起因 公司使用的是腾讯云主机，下载golang速度实在是太慢了，等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS 8">
+<meta property="og:url" content="https://ding-f.github.io/2021/12/09/centos-8">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="配置国内源 更新国内软件源使得系统更新更迅速 参考： 菜鸟教程 Linux sed 命令 阿里云 Cent OS 国内源配置 清华大学开源镜像站 网易开源镜像站 稀土掘金 常用的yum源整理 博客园-DevBlog by WS：CentOS 8 &#x2F; CentOS Stream 换源，设置dnf &#x2F; yum镜像  起因 公司使用的是腾讯云主机，下载golang速度实在是太慢了，等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/cent_os/CentOS-8.0.png">
+<meta property="article:published_time" content="2021-12-08T16:19:21.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.107Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="Cent OS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/cent_os/CentOS-8.0.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2021/12/09/centos-8"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CentOS 8',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/cent_os/CentOS-8.0.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CentOS 8</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-08T16:19:21.000Z" title="发表于 2021-12-09 00:19:21">2021-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.107Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2021/12/09/centos-8" data-flag-title="CentOS 8"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/12/09/centos-8#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2021/12/09/centos-8" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h2><blockquote>
+<p>更新国内软件源使得系统更新更迅速</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">菜鸟教程 Linux sed 命令</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.3e221b1131RkKV">阿里云 Cent OS 国内源配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/centos/">清华大学开源镜像站</a></p>
+<p><a target="_blank" rel="noopener" href="http://mirrors.163.com/">网易开源镜像站</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903873111392270">稀土掘金 常用的yum源整理</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wswind/p/11751829.html">博客园-DevBlog by WS：CentOS 8 &#x2F; CentOS Stream 换源，设置dnf &#x2F; yum镜像</a></p>
+</blockquote>
+<p><strong>起因</strong></p>
+<p>公司使用的是腾讯云主机，下载golang速度实在是太慢了，等待的心情焦灼，直接换源。</p>
+<p><strong>腾讯云CnetOS 镜像源文件</strong></p>
+<p>在使用腾讯云的CentOS 8发现yum makecache <code>/etc/yum.repos.d/</code>目录下有好多文件，猜测是各个源有各个源不同的配置文件，也不知道这么做的目的，只是觉得搞的很杂。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum.repos.d ls</span><br><span class="line">CentOS-AppStream.repo.rpmsave   CentOS-HA.repo.rpmsave                   CentOS-Linux-Debuginfo.repo      CentOS-Linux-FastTrack.repo.bak         CentOS-Linux-PowerTools.repo</span><br><span class="line">CentOS-Base.repo.rpmsave        CentOS-Linux-AppStream.repo              CentOS-Linux-Debuginfo.repo.bak  CentOS-Linux-HighAvailability.repo      CentOS-Linux-PowerTools.repo.bak</span><br><span class="line">CentOS-centosplus.repo.rpmsave  CentOS-Linux-AppStream.repo.bak          CentOS-Linux-Devel.repo          CentOS-Linux-HighAvailability.repo.bak  CentOS-Linux-Sources.repo</span><br><span class="line">CentOS-Devel.repo.rpmsave       CentOS-Linux-BaseOS.repo                 CentOS-Linux-Devel.repo.bak      CentOS-Linux-Media.repo                 CentOS-Linux-Sources.repo.bak</span><br><span class="line">CentOS-Epel.repo                CentOS-Linux-BaseOS.repo.bak             CentOS-Linux-Extras.repo         CentOS-Linux-Media.repo.bak             CentOS-PowerTools.repo.rpmsave</span><br><span class="line">CentOS-Epel.repo.bak            CentOS-Linux-ContinuousRelease.repo      CentOS-Linux-Extras.repo.bak     CentOS-Linux-Plus.repo</span><br><span class="line">CentOS-Extras.repo.rpmsave      CentOS-Linux-ContinuousRelease.repo.bak  CentOS-Linux-FastTrack.repo      CentOS-Linux-Plus.repo.bak</span><br></pre></td></tr></table></figure>
+
+<p>一气之下，直接在此目录下创建了个backeup文件夹，直接将这些杂乱无章的文件放在backeup文件夹下</p>
+<p><strong>使用阿里云镜像</strong></p>
+<p>在<code>/etc/yum.repos.d/</code>目录下，直接执行阿里云官网文档的步骤下载阿里云提供的CentOS-Base.repo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo</span><br></pre></td></tr></table></figure>
+
+<p>查看这个文件的内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">yum.repos.d cat CentOS-Base.repo </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CentOS-Base.repo</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># The mirror system uses the connecting IP address of the client and the</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">update status of each mirror to pick mirrors that are updated to and</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">geographically close to the client.  You should use this <span class="keyword">for</span> CentOS updates</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">unless you are manually picking other mirrors.</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># If the mirrorlist= does not work for you, as a fall back you can try the</span></span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">remarked out baseurl= line instead.</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment">#</span></span></span><br><span class="line"> </span><br><span class="line">[base]</span><br><span class="line">name=CentOS-8.5.2111 - Base - mirrors.aliyun.com</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</span><br><span class="line">        http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</span><br><span class="line">gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">additional packages that may be useful</span></span><br><span class="line">[extras]</span><br><span class="line">name=CentOS-8.5.2111 - Extras - mirrors.aliyun.com</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos-vault/8.5.2111/extras/$basearch/os/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/</span><br><span class="line">        http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/</span><br><span class="line">gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">additional packages that extend functionality of existing packages</span></span><br><span class="line">[centosplus]</span><br><span class="line">name=CentOS-8.5.2111 - Plus - mirrors.aliyun.com</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos-vault/8.5.2111/centosplus/$basearch/os/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/</span><br><span class="line">        http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span><br><span class="line"> </span><br><span class="line">[PowerTools]</span><br><span class="line">name=CentOS-8.5.2111 - PowerTools - mirrors.aliyun.com</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</span><br><span class="line">        http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[AppStream]</span><br><span class="line">name=CentOS-8.5.2111 - AppStream - mirrors.aliyun.com</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos-vault/8.5.2111/AppStream/$basearch/os/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/</span><br><span class="line">        http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/</span><br><span class="line">gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>运行以下命令生成缓存</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dnf clean all # 可以先清除所有的缓存文件</span><br><span class="line">yum makecache  # 制作元数据缓存</span><br><span class="line">CentOS-8.5.2111 - Base - mirrors.aliyun.com                                                                                                               265 kB/s | 4.6 MB     00:17    </span><br><span class="line">CentOS-8.5.2111 - Extras - mirrors.aliyun.com                                                                                                              66 kB/s |  10 kB     00:00    </span><br><span class="line">CentOS-8.5.2111 - AppStream - mirrors.aliyun.com                                                                                                          172 kB/s | 8.4 MB     00:50    </span><br><span class="line">Metadata cache created.</span><br></pre></td></tr></table></figure>
+
+<p>可见原理其实是阿里云官方直接将分那么几个的镜像配置文件写成了一个，更新缓存的时候所需的几个镜像缓存直接就从阿里云更新了。</p>
+<p><strong>速度飞起～</strong></p>
+<p>其他源热门国内源更新的方式也看了一下，比如清华源，无非就是把那一堆每个源分成各个文件中的所有官方http协议的链接都用命令进行了更改，原理还是一样的。</p>
+<p><strong>更新系统包</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dnf check-update		<span class="comment">#首先更新需要更新的软件列表</span></span><br><span class="line">dnf update		<span class="comment">#更新所有软件（包括内核更新）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="软件仓库"><a href="#软件仓库" class="headerlink" title="软件仓库"></a>软件仓库</h3><p><strong>在 CentOS 系统中，有多种方法可以添加软件仓库</strong></p>
+<ol>
+<li>使用 yum-config-manager 添加仓库：</li>
+</ol>
+<p>可以使用 yum-config-manager 工具添加新的仓库。这需要先安装 yum-utils 软件包。以下是添加仓库的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo &lt;repository_url&gt;</span><br></pre></td></tr></table></figure>
+
+<p>将 <repository_url> 替换为您要添加的仓库的 URL。</p>
+<ol start="2">
+<li>手动创建仓库文件：</li>
+</ol>
+<p>在 &#x2F;etc&#x2F;yum.repos.d&#x2F; 目录下，您可以手动创建一个以 .repo 结尾的文件，例如 myrepo.repo。在这个文件中，您需要提供仓库的相关信息。一个简单的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[myrepo]</span><br><span class="line">name=My Repository</span><br><span class="line">baseurl=http://example.com/myrepo/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用 RPM 包添加仓库：</li>
+</ol>
+<p>有时，软件提供商会提供一个 RPM 包，用于自动添加仓库和安装相关密钥。要使用 RPM 包添加仓库，您可以运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install &lt;rpm_package_url&gt;</span><br></pre></td></tr></table></figure>
+
+<p>将 <rpm_package_url> 替换为 RPM 包的 URL。</p>
+<p>这些方法中的任何一种都可以用于在 CentOS 系统中添加软件仓库。添加仓库后，您可以使用 yum 或 dnf（在 CentOS 8 及更高版本中）来安装、更新和管理来自这些仓库的软件包。</p>
+<h2 id="dnf-包管理"><a href="#dnf-包管理" class="headerlink" title="dnf 包管理"></a>dnf 包管理</h2><blockquote>
+<p>首先Cent OS的DNF 和 YUM 均是 rpm 软件包管理工具，但是 DFN 替代 YUM 的说法由来已久，因为 YUM 包管理工具有一些问题长期得不到解决。<br>这些问题包括性能低下、内存占用高以及依赖包解决方案不佳等。<br>而 DNF 在依赖包解决方案中采用了由 SUSE 开发的”libsolv”库，用以提升依赖包解析性能。<br>YUM 是一个管理 RPM 软件依赖包和软件库的前端工具，可以下载 RPM 软件包并安装，最后删除下载的软件包。<br>至于为什么要开发一个新的工具来替代 YUM，而不是解决 YUM 现有的问题，其原因在于想要解决 YUM 现有的问题技术上存在很多问题，并且 YUM 团队也不能很快适应更新带来的改变。</p>
+<p>另外，更重要的原因是 YUM 的源代码有大概56000行，修改起来工作量巨大。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36148847/article/details/79260745">linux 解决”zsh: no matches found”</a></p>
+</blockquote>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>当你输入一个命令按下回车键时候会出现<code>command not found：&lt;command&gt;</code>时，不知道执行此命令需要哪个软件包的情况下，使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据命令查找软件包名称</span></span><br><span class="line">dnf provides &lt;<span class="built_in">command</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 升级系统所有包的列表</span></span><br><span class="line">dnf check-update</span><br><span class="line"><span class="comment">#更新所有软件包（两个命令没区别）</span></span><br><span class="line">dnf upgrade</span><br><span class="line">dnf update</span><br><span class="line"><span class="comment">#列出已安装的包</span></span><br><span class="line">dnf list installed</span><br><span class="line"><span class="comment">#搜索镜像源内的包</span></span><br><span class="line">dnf search httpd</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装一个http的包</span></span><br><span class="line">dnf install httpd</span><br><span class="line"><span class="comment">#重新安装一个http的包</span></span><br><span class="line">dnf reinstall httpd</span><br><span class="line"><span class="comment">#只进行下载http的包</span></span><br><span class="line">dnf download httpd</span><br><span class="line"><span class="comment">#显示lua包的信息</span></span><br><span class="line">dnf info lua</span><br><span class="line"><span class="comment">#更新指定包</span></span><br><span class="line">dnf update httpd</span><br><span class="line"><span class="comment">#显示所有已有软件包组</span></span><br><span class="line">dnf grouplist</span><br><span class="line"><span class="comment">#单独安装所有的指定的软件包组</span></span><br><span class="line">dnf groupinstall <span class="string">&#x27;System Tools&#x27;</span></span><br><span class="line"><span class="comment">#单独升级软件包组</span></span><br><span class="line">dnf groupupdate <span class="string">&#x27;System Tools&#x27;</span></span><br><span class="line"><span class="comment">#列出所有库文件（可看到系统中哪些库开了哪些被禁了）</span></span><br><span class="line">dnf repolist all</span><br><span class="line"><span class="comment">#列出系统所有被开了的软件库</span></span><br><span class="line">dnf repolist</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常用包管理命令"><a href="#常用包管理命令" class="headerlink" title="常用包管理命令"></a>常用包管理命令</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xuyaowen/p/rpm_list_packages.html">博客园-xuyaowen：yum&#x2F;dnf&#x2F;rpm 等 查看rpm 包安装路径 （fedora 中 pygtk 包内容安装到哪里了）</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa 		# 查询所有已安装包 -a, --all   query/verify all packages   &#123;-q|--query&#125; </span><br><span class="line">yum info &lt;package_name&gt;			# 查看包信息</span><br><span class="line">rpm -ql &lt;package_name&gt;			# 查看某个包内容和安装位置</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><blockquote>
+<p>非root用户要更改文件权限不允许非root用户修改时会报错：[用户] is not in the sudoers file.  This incident will be reported.</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/henrylinux/p/9746835.html">博客园-henrylinux：Linux给用户添加sudo权限</a></p>
+</blockquote>
+<p><strong>非root用户开启sudo</strong></p>
+<p>编辑&#x2F;etc&#x2F;sudoers文件，找到<code>root ALL=(ALL) ALL</code>往后添加一行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例： zhuding ALL=(ALL) ALL</span> </span><br><span class="line">&lt;你的用户名&gt; ALL=(ALL) ALL </span><br></pre></td></tr></table></figure>
+
+<p><strong>去除非root用户sudo输入密码</strong></p>
+<p>但普通用户使用sudo需要输入密码，如果不需要这个安全限制，可以每次sudo要求输入密码的配置如下（注意空格）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fuding  ALL=(ALL)  NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2021/12/09/centos-8">https://ding-f.github.io/2021/12/09/centos-8</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a><a class="post-meta__tags" href="/tags/Cent-OS/">Cent OS</a></div><div class="post_share"><div class="social-share" data-image="/images/cent_os/CentOS-8.0.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/17/mac-os" title="Mac OS"><img class="cover" src="/images/mac_os/macos.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Mac OS</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/30/git-gitee" title="git&amp;github教程"><img class="cover" src="/images/git_github/gitgithub.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">git&amp;github教程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/10/open-ssh" title="Open SSH"><img class="cover" src="/images/openssh/openssh-logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div><div><a href="/2021/08/10/vim-bian-ji-qi" title="Vim编辑器"><img class="cover" src="/images/vim/vim.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Vim编辑器</div></div></a></div><div><a href="/2022/05/09/docker" title="Docker"><img class="cover" src="/images/2022-05-09-Docker/R-C.4e7301538895cdc19b0eb5f2a3b60730?rik=wmdxq9xAm5kaPA&riu=http%253a%252f%252fstratechery.com%252fwp-content%252fuploads%252f2014%252f12%252fdocker.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-09</div><div class="title">Docker</div></div></a></div><div><a href="/2021/03/10/arch-linux" title="Arch Linux"><img class="cover" src="/images/arch_linux/arch-linux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-10</div><div class="title">Arch Linux</div></div></a></div><div><a href="/2021/04/06/mysql" title="MySQL"><img class="cover" src="/images/mariadb/mysql-mariadb.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-06</div><div class="title">MySQL</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text">配置国内源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">软件仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dnf-%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">dnf 包管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">常用包管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo"><span class="toc-number">4.</span> <span class="toc-text">sudo</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

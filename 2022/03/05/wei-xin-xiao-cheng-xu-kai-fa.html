@@ -1,0 +1,481 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>微信小程序开发 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JavaScript 基础DOM &amp; BOM 参考： PHP中文网-长期闲置：深入了解JavaScript中的DOM与BOM  JavaScript 三大部件组成：  ECMAscript，ECMAscript更像一个规定，规定了各个浏览器怎么样去执行JavaScript的语法 DOM（Document Object Model ，文档对象模型）一种独立于语言，用于操作xml，html文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发">
+<meta property="og:url" content="https://ding-f.github.io/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="JavaScript 基础DOM &amp; BOM 参考： PHP中文网-长期闲置：深入了解JavaScript中的DOM与BOM  JavaScript 三大部件组成：  ECMAscript，ECMAscript更像一个规定，规定了各个浏览器怎么样去执行JavaScript的语法 DOM（Document Object Model ，文档对象模型）一种独立于语言，用于操作xml，html文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/mini_app/mini_app.png">
+<meta property="article:published_time" content="2022-03-05T02:45:44.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.108Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/mini_app/mini_app.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微信小程序开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/mini_app/mini_app.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">微信小程序开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-05T02:45:44.000Z" title="发表于 2022-03-05 10:45:44">2022-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.108Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa" data-flag-title="微信小程序开发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="JavaScript-基础"><a href="#JavaScript-基础" class="headerlink" title="JavaScript 基础"></a>JavaScript 基础</h2><h3 id="DOM-BOM"><a href="#DOM-BOM" class="headerlink" title="DOM &amp; BOM"></a>DOM &amp; BOM</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/js-tutorial-491050.html">PHP中文网-长期闲置：深入了解JavaScript中的DOM与BOM</a></p>
+</blockquote>
+<h4 id="JavaScript-三大部件组成："><a href="#JavaScript-三大部件组成：" class="headerlink" title="JavaScript 三大部件组成："></a>JavaScript 三大部件组成：</h4><p><img src="/images/2022-03-05-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/fa0f9a89611a5037b1472f1b0c9c6222-0.jpg" alt="img"></p>
+<ul>
+<li><strong>ECMAscript</strong>，ECMAscript更像一个规定，规定了各个浏览器怎么样去执行JavaScript的语法</li>
+<li><strong>DOM</strong>（Document Object Model ，文档对象模型）一种独立于语言，用于操作xml，html文档的应用编程接口，<strong>为了能使JavaScript操作Html</strong></li>
+<li><strong>BOM</strong> 是 Browser Object Model，浏览器对象模型。<strong>BOM 是为了控制浏览器的行为而出现的接口</strong>，<strong>BOM为JavaScript提供了一种控制浏览器行为的”方法”</strong></li>
+</ul>
+<h4 id="DOM及其相关操作"><a href="#DOM及其相关操作" class="headerlink" title="DOM及其相关操作"></a>DOM及其相关操作</h4><p>一目明了DOM树：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM_demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://ding-f.gitee.io/&quot;</span>&gt;</span>铸鼎_<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上可展示为DOM树：</p>
+<p><img src="/images/2022-03-05-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/image-20220821214720209.png" alt="DOM树"></p>
+<p>JavaScript 可以通过<code>document.</code>直接可以对DOM树进行灵活的操作（增删改查），以实现网页的变换效果（详细请看参考资料）：</p>
+<ul>
+<li><p>通过元素的id、name、class、签名等获取节点（元素）返回一数组&#x2F;对象</p>
+</li>
+<li><p>传递属性名(class、id、href等)，获取属性值</p>
+</li>
+<li><p>获取某元素父节点、子节点、按索引获取子节点、同级节点</p>
+</li>
+<li><p>设置属性值，传递进去属性名以及要设置的属性值</p>
+</li>
+<li><p>创建DOM节点，传递元素类型</p>
+</li>
+<li><p>创建属性节点，传递对应属性名</p>
+</li>
+<li><p>向某个节点后面添加一个节点，传入的节点类型</p>
+</li>
+<li><p>向某个节点内部已存在节点前插入节点，传入节点类型</p>
+</li>
+<li><p>删除某个节点的内部节点，传入节点类型</p>
+</li>
+</ul>
+<h4 id="BOM及其相关操作"><a href="#BOM及其相关操作" class="headerlink" title="BOM及其相关操作"></a>BOM及其相关操作</h4><blockquote>
+<p><strong>window是整个BOM树食物链的顶端</strong>，因此<strong>每一个新打开的窗口，都被认为是一个window对象。</strong></p>
+</blockquote>
+<p>BOM与DOM类似，BOM也有一个树结构：</p>
+<p><img src="/images/2022-03-05-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/image-20220821220644325.png" alt="BOM树"></p>
+<h5 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h5><blockquote>
+<p>window是整个BOM树食物链的顶端，因此每一个新打开的窗口，都被认为是一个window对象。</p>
+</blockquote>
+<p>常见属性和方法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>属性&#x2F;方法</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>opener</td>
+<td>当前窗口的父窗口</td>
+</tr>
+<tr>
+<td>length</td>
+<td>窗口中的框架数</td>
+</tr>
+<tr>
+<td>document</td>
+<td>窗口中当前显示的文档对象</td>
+</tr>
+<tr>
+<td>alert(string)</td>
+<td>创建一个警告对话框，显示一条信息</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>关闭窗口</td>
+</tr>
+<tr>
+<td>confirm()</td>
+<td>创建一个需要用户确认的对话框</td>
+</tr>
+<tr>
+<td>open(url,name,[options])</td>
+<td>打开一个新窗口并返回新 window 对象</td>
+</tr>
+<tr>
+<td>prompt(text,defaultInput)</td>
+<td>创建一个对话框要求用户输入信息</td>
+</tr>
+<tr>
+<td>setInterval(expression,milliseconds)</td>
+<td>经过指定时间间隔计算一个表达式</td>
+</tr>
+<tr>
+<td>setInterval(function,millis enconds,[arguments])</td>
+<td>经过指定时间间隔后调用一个函数</td>
+</tr>
+<tr>
+<td>setTimeout(expression,milli seconds)</td>
+<td>在定时器超过后计算一个表达式</td>
+</tr>
+<tr>
+<td>setTimeout(expression,milli seconds,[arguments])</td>
+<td>在定时器超过时后计算一个函数</td>
+</tr>
+</tbody></table>
+<p>其中有一个<code>alert()</code>，可能会引起大家的注意，其实就是我们平常使用的浏览器弹窗，只不过window有两种调用方式，我们常用第一种：</p>
+<ol>
+<li><code>window.属性</code>  &#x2F;  <code>window.方法()</code></li>
+<li>不加<code>window</code>，直接可以调用<code>.属性 </code> &#x2F; <code>.方法()</code></li>
+</ol>
+<h5 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a><strong>location</strong>对象</h5><blockquote>
+<p>location对象是window对象的一个属性，提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。</p>
+</blockquote>
+<p>常见的属性和方法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>属性&#x2F;方法</strong></th>
+<th><strong>内容</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>host</td>
+<td>主机名：端口号</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>主机名</td>
+</tr>
+<tr>
+<td>href</td>
+<td>整个 URL</td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>路径名</td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>协议部分</td>
+</tr>
+<tr>
+<td>search</td>
+<td>查询字符串</td>
+</tr>
+<tr>
+<td>reload()</td>
+<td>重载当前 URL</td>
+</tr>
+<tr>
+<td>repalce()</td>
+<td>用新的 URL 替换当前页面</td>
+</tr>
+</tbody></table>
+<p>location对象不仅仅是window对象的一个属性，还是document对象的一个属性，即：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">location</span> = location = <span class="variable language_">document</span>.<span class="property">location</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h5><blockquote>
+<p>history 对象是 window 对象的属性，它保存着用户上网的记录，这个记录的时间戳是从窗口被打开的那一刻算起。</p>
+</blockquote>
+<p>常见属性和方法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>属性&#x2F;方法</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>length</td>
+<td>history 对象中的记录数</td>
+</tr>
+<tr>
+<td>back()</td>
+<td>前往浏览器历史条目前一个 URL，类似后退</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>前往浏览器历史条目下一个 URL，类似前进</td>
+</tr>
+<tr>
+<td>go(num)</td>
+<td>浏览器在 history 对象中向前或向后</td>
+</tr>
+</tbody></table>
+<h5 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h5><blockquote>
+<p>navigator对象，是BOM中识别客户端浏览器的一个window属性。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appName</td>
+<td>完整的浏览器名称和版本信息</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>浏览器所在的系统平台</td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>浏览器中安装的插件信息的数 组</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>浏览器的用户代理字符串</td>
+</tr>
+<tr>
+<td>userLanguage</td>
+<td>操作系统的默认语言</td>
+</tr>
+</tbody></table>
+<h3 id="导入代码"><a href="#导入代码" class="headerlink" title="导入代码"></a>导入代码</h3><h4 id="导入JS脚本函数调用"><a href="#导入JS脚本函数调用" class="headerlink" title="导入JS脚本函数调用"></a>导入JS脚本函数调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Api</span> = <span class="built_in">require</span>(<span class="string">&#x27;../../utils/api.js&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">&#x27;../../utils/util.js&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Api.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="variable constant_">HOST_URI_WATCH_LIFE_JSON</span> = <span class="string">&#x27;http://&#x27;</span> + domain + <span class="string">&#x27;/schoolwall/&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="title function_">get_homeconfig</span>(<span class="params"></span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// http://0.0.0.0:3000/schoolwall/options/homeconfig</span></span><br><span class="line">    <span class="comment">// https://www.watch-life.net/wp-json/watch-life-net/v1/options/homeconfig</span></span><br><span class="line">    <span class="keyword">var</span> url = <span class="variable constant_">HOST_URI_WATCH_LIFE_JSON</span>;</span><br><span class="line">    url += <span class="string">&quot;options/homeconfig&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> url;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>调用一个Api.js脚本中的函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Api</span> = <span class="built_in">require</span>(<span class="string">&#x27;../../utils/api.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Api</span>.<span class="title function_">get_homeconfig</span>();		<span class="comment">//返回组成的URL</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="导入参数配置文件"><a href="#导入参数配置文件" class="headerlink" title="导入参数配置文件"></a>导入参数配置文件</h4><p>参数配置文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">DOMAIN</span> = <span class="string">&quot;0.0.0.0:3000&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">WEBSITENAME</span>=<span class="string">&quot;安康学院校园墙&quot;</span>; </span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">PAGECOUNT</span>=<span class="string">&#x27;10&#x27;</span>; <span class="comment">//每页文章数目</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> enableScanLogin =<span class="literal">false</span></span><br><span class="line"><span class="comment">//////////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> minapperVersion=<span class="number">4.12</span></span><br><span class="line"><span class="keyword">const</span> minapperSource=<span class="string">&quot;free&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">getDomain</span>: <span class="variable constant_">DOMAIN</span>,</span><br><span class="line">  <span class="attr">getWebsiteName</span>: <span class="variable constant_">WEBSITENAME</span>,  </span><br><span class="line">  <span class="attr">getPageCount</span>: <span class="variable constant_">PAGECOUNT</span>,</span><br><span class="line">  enableScanLogin,</span><br><span class="line">  minapperVersion,</span><br><span class="line">  minapperSource</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>导入参数配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">&#x27;../../utils/config.js&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>引用参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pageCount = config.<span class="property">getPageCount</span>;</span><br></pre></td></tr></table></figure>
+
+<p>直接使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (response.<span class="property">data</span>.<span class="property">length</span> &lt; pageCount) &#123;</span><br><span class="line">                  self.<span class="title function_">setData</span>(&#123;</span><br><span class="line">                    <span class="attr">isLastPage</span>: <span class="literal">true</span>,</span><br><span class="line">                    <span class="attr">isLoading</span>: <span class="literal">false</span></span><br><span class="line">                  &#125;);</span><br><span class="line">                &#125; </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考-分析"><a href="#参考-分析" class="headerlink" title="参考 &amp; 分析"></a>参考 &amp; 分析</h2><blockquote>
+<p>为了稳定性，选择了vue2作为本项目的前端框架。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6994617935697870861">掘金-逐步前行：分析小程序的设计方案，优劣势，以及如何技术选型</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7094822517369634823">掘金-kiki_：小程序技术选型</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7090532271257714695">掘金-小染Jun：这可能是最好、最详细的VSCode开发uni-app教程吧</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/article/doc/00064a6136030088107a7c49f5b813">微信开放社区-编程小石头：企业微信小程序的注册图文详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/35867">DCLOUD社区-DCloud_UNI_CHB：跨端框架深度评测：微信原生、wepy、mpvue、uni-app、taro、chameleon</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">微信官方文档：小程序框架 &#x2F;视图层 &#x2F;WXSS</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yubin-/p/11537122.html">博客园-不是于彬：React与Vue的对比</a></p>
+</blockquote>
+<h3 id="小程序数据交互设计"><a href="#小程序数据交互设计" class="headerlink" title="小程序数据交互设计"></a>小程序数据交互设计</h3><p><img src="/images/2022-03-05-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/4-1.ad156d1c.png" alt="img"></p>
+<ul>
+<li><strong>渲染层</strong>：单线程，使用WebView 进行渲染，但一个小程序存在多个页面，可能始终是单线程的，只是切换页面时一个线程暂停一个线程继续</li>
+<li><strong>逻辑层</strong>：单线程，逻辑层采用JsCore线程运行JS脚本</li>
+<li>其中WXML 模板和 WXSS 样式工作在渲染层，JS 脚本工作在逻辑层</li>
+<li><strong>渲染层</strong>和<strong>逻辑层</strong>之间的通讯更接近react native，或者是flutter的设计理念，此设计理念就是，逻辑层与展示层分开，通过中间JSBridge或者是其他存储技术，或者<strong>Native</strong>本身，完成两者的通信，形成一个逻辑与展示的互相驱动。</li>
+</ul>
+<h3 id="小程序运行环境"><a href="#小程序运行环境" class="headerlink" title="小程序运行环境"></a>小程序运行环境</h3><p><img src="/images/2022-03-05-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/image-20221030201555537.png" alt="image-20221030201555537"></p>
+<p>逻辑层，在IOS中是使用JavaScriptCore为宿主环境，而在安卓中，使用了V8引擎。就连渲染层，都属于定制的内核。这中间不妨包含很多微信内部的封装。</p>
+<p>开发者写的所有代码最终将会打包成一份 <code>JavaScript</code> 文件，并在小程序启动的时候运行，直到小程序销毁。这一行为类似 <a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">ServiceWorker</a>，所以逻辑层也称之为 App Service。</p>
+<p>即使是在微信自带的开发工具上开发，都无法完成跟客户端一模一样的体验。这里微信只是模拟客户端，搭建了一个NWJS环境方便开发调试。</p>
+<p><strong>于是</strong>：安卓小程序，IOS小程序会有一些差异？或者为什么本地开发时，一些功能不可使用。而App Service，是要依赖于微信客户端定制内核的webview才能执行。看到这里，你是否了解为什么小程序无法在浏览器运行？</p>
+<h3 id="特殊单位"><a href="#特殊单位" class="headerlink" title="特殊单位"></a>特殊单位</h3><h2 id="常用小程序代码示例"><a href="#常用小程序代码示例" class="headerlink" title="常用小程序代码示例"></a>常用小程序代码示例</h2><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/list.html">微信官方文档：列表渲染</a></p>
+</blockquote>
+<p><strong><code>wx:key</code> 的值以两种形式提供</strong></p>
+<blockquote>
+<p>如果列表中项目的位置会动态改变或者有新的项目添加到列表中，并且希望列表中的项目保持自己的特征和状态（如 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/input.html">input</a> 中的输入内容，<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/switch.html">switch</a> 的选中状态），需要使用 <code>wx:key</code> 来指定列表中项目的唯一的标识符。</p>
+<p>听说指定可以提升wx:for性能。</p>
+<p>代码示例请看参考链接。</p>
+</blockquote>
+<ul>
+<li><p>字符串，代表在 for 循环的 array 中 item 的某个 property，该 property 的值需要是列表中唯一的字符串或数字，且不能动态改变。</p>
+<p>![image-20220528111000950](&#x2F;Users&#x2F;fuding&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220528111000950.png)</p>
+</li>
+<li><p>保留关键字 <code>*this</code> 代表在 for 循环中的 item 本身，这种表示需要 item 本身是一个唯一的字符串或者数字。</p>
+<p>![image-20220528111201226](&#x2F;Users&#x2F;fuding&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220528111201226.png)</p>
+</li>
+</ul>
+<h2 id="微信开发者工具"><a href="#微信开发者工具" class="headerlink" title="微信开发者工具"></a>微信开发者工具</h2><h3 id="使用小技巧"><a href="#使用小技巧" class="headerlink" title="使用小技巧"></a>使用小技巧</h3><blockquote>
+<p>建议使用扫码登录，不要使用游客模式，会有意想不到的Bug</p>
+</blockquote>
+<h4 id="前端代码快速查找修改"><a href="#前端代码快速查找修改" class="headerlink" title="前端代码快速查找修改"></a>前端代码快速查找修改</h4><h4 id="给代码打标签"><a href="#给代码打标签" class="headerlink" title="给代码打标签"></a>给代码打标签</h4><p>这样做的目的是读过代码后可以为每个代码块设置注释标签，点击标签会快速找到对应的代码块所在位置，个人觉得这个是一个非常使用且方便的功能：</p>
+<p><img src="/images/mini_app/image-20220305155900463.png" alt="标签可索引到所需代码的位置"></p>
+<h4 id="调试代码"><a href="#调试代码" class="headerlink" title="调试代码"></a>调试代码</h4><blockquote>
+<p>无论是哪个开发工具调试代码是最好的找出代码错误的方式之一。</p>
+<p>本次的调试代码主要是找到一个非常难以发现的错误，但不是代码逻辑错误，往往就是一些低级错误导致。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/guochanof/article/details/80118035">CSDN:微信小程序开发工具介绍及断点代码调试</a></p>
+</blockquote>
+<h4 id="修改测试号AppID为正式AppID"><a href="#修改测试号AppID为正式AppID" class="headerlink" title="修改测试号AppID为正式AppID"></a>修改测试号AppID为正式AppID</h4><blockquote>
+<p>小程序测试号的AppID是不能进行登录测试的，必须去官网申请自己的小程序AppID和AppSecret，今天为了测试小程序登录</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa">https://ding-f.github.io/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="/images/mini_app/mini_app.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/11/apache-shiro-jwt" title="Apache Shiro + JWT"><img class="cover" src="/images/shir_jwt/shiro_jwt.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Apache Shiro + JWT</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/02/networkmanager-xin-ban-te-xing" title="NetWorkManager新版特性"><img class="cover" src="/images/network_manager/network_m.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">NetWorkManager新版特性</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/15/java" title="Java基础"><img class="cover" src="/images/java/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-15</div><div class="title">Java基础</div></div></a></div><div><a href="/2021/04/19/python3" title="Python3"><img class="cover" src="/images/Python3/python.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-19</div><div class="title">Python3</div></div></a></div><div><a href="/2021/06/27/jetbrains-quan-jia-tong" title="JetBrains全家桶"><img class="cover" src="/images/idea_intllij/idea_intellij.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-27</div><div class="title">JetBrains全家桶</div></div></a></div><div><a href="/2021/08/10/open-ssh" title="Open SSH"><img class="cover" src="/images/openssh/openssh-logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div><div><a href="/2021/08/10/vim-bian-ji-qi" title="Vim编辑器"><img class="cover" src="/images/vim/vim.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Vim编辑器</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">JavaScript 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-BOM"><span class="toc-number">1.1.</span> <span class="toc-text">DOM &amp; BOM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JavaScript-%E4%B8%89%E5%A4%A7%E9%83%A8%E4%BB%B6%E7%BB%84%E6%88%90%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">JavaScript 三大部件组成：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM%E5%8F%8A%E5%85%B6%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.2.</span> <span class="toc-text">DOM及其相关操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BOM%E5%8F%8A%E5%85%B6%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.3.</span> <span class="toc-text">BOM及其相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#window-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">window 对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#location%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">location对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#history%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">history对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#navigator%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">navigator对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">导入代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5JS%E8%84%9A%E6%9C%AC%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">导入JS脚本函数调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">导入参数配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83-%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">参考 &amp; 分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text">小程序数据交互设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">2.2.</span> <span class="toc-text">小程序运行环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%8D%95%E4%BD%8D"><span class="toc-number">2.3.</span> <span class="toc-text">特殊单位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">常用小程序代码示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.1.</span> <span class="toc-text">for循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7"><span class="toc-number">4.</span> <span class="toc-text">微信开发者工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">4.1.</span> <span class="toc-text">使用小技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E4%BF%AE%E6%94%B9"><span class="toc-number">4.1.1.</span> <span class="toc-text">前端代码快速查找修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%99%E4%BB%A3%E7%A0%81%E6%89%93%E6%A0%87%E7%AD%BE"><span class="toc-number">4.1.2.</span> <span class="toc-text">给代码打标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">4.1.3.</span> <span class="toc-text">调试代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%B5%8B%E8%AF%95%E5%8F%B7AppID%E4%B8%BA%E6%AD%A3%E5%BC%8FAppID"><span class="toc-number">4.1.4.</span> <span class="toc-text">修改测试号AppID为正式AppID</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

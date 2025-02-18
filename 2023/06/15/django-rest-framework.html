@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Django Rest Framework | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 Django REST Framework（简称DRF）是一个用于构建Web API的强大框架，基于Django开发。它提供了许多工具和库，使得构建和管理Web API变得简单和高效。DRF结合了Django的强大特性和灵活性，使开发人员能够轻松地创建功能强大、安全和可扩展的API。 Django REST Framework（DRF）是基于Django框架构建的，并且依赖于Django的核">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Rest Framework">
+<meta property="og:url" content="https://ding-f.github.io/2023/06/15/django-rest-framework">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="前言 Django REST Framework（简称DRF）是一个用于构建Web API的强大框架，基于Django开发。它提供了许多工具和库，使得构建和管理Web API变得简单和高效。DRF结合了Django的强大特性和灵活性，使开发人员能够轻松地创建功能强大、安全和可扩展的API。 Django REST Framework（DRF）是基于Django框架构建的，并且依赖于Django的核">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2023-06-15-Django-Rest-Framework/drf.png">
+<meta property="article:published_time" content="2023-06-15T02:53:46.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.111Z">
+<meta property="article:author" content="付鼎">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2023-06-15-Django-Rest-Framework/drf.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2023/06/15/django-rest-framework"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Django Rest Framework',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2023-06-15-Django-Rest-Framework/drf.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Django Rest Framework</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-15T02:53:46.000Z" title="发表于 2023-06-15 10:53:46">2023-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.111Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/06/15/django-rest-framework" data-flag-title="Django Rest Framework"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/06/15/django-rest-framework#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/06/15/django-rest-framework" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>Django REST Framework（简称DRF）是一个用于构建Web API的强大框架，基于Django开发。它提供了许多工具和库，使得构建和管理Web API变得简单和高效。DRF结合了Django的强大特性和灵活性，使开发人员能够轻松地创建功能强大、安全和可扩展的API。</p>
+<p>Django REST Framework（DRF）是基于Django框架构建的，并且依赖于Django的核心功能。DRF扩展了Django，提供了用于构建Web API的额外功能和工具。要使用Django REST Framework，需要首先安装和配置Django。DRF是作为Django的一个扩展包提供的，可以在Django项目中引入DRF，以便利用其提供的API构建功能和特性。</p>
+</blockquote>
+<p>以下是一些Django REST Framework的主要特性：</p>
+<ol>
+<li>序列化：DRF提供了一个强大的序列化系统，用于将数据库模型和其他数据类型转换为JSON、XML或其他格式的数据。它使得数据的转换和传输变得简单，并且可以轻松地处理数据验证和反序列化。</li>
+<li>视图：DRF提供了一组视图类，用于处理API请求和生成响应。它支持基于函数的视图和基于类的视图，并提供了一些常用的视图类，如通用视图和混合视图，以帮助开发人员更轻松地构建API。</li>
+<li>路由：DRF的路由系统使得定义API的URL变得简单和可维护。它允许开发人员将URL模式与视图类关联起来，从而实现API的映射。</li>
+<li>认证和权限控制：DRF提供了可配置的认证和权限控制系统，用于保护API的安全性。开发人员可以选择使用基于令牌、基于Session、基于OAuth等不同的认证方式，并且可以定义细粒度的权限控制规则。</li>
+<li>流量限制和缓存：DRF支持流量限制和缓存机制，可以帮助开发人员管理API的流量和性能。它允许设置访问频率限制，以避免滥用和DDoS攻击，并提供了缓存机制，以减少对数据库的频繁访问。</li>
+<li>文档生成：DRF自带了一个强大的文档生成工具，可以自动生成API的交互式文档。开发人员可以轻松地查看API的细节、参数和示例，并通过文档进行API的测试和调试。</li>
+</ol>
+<h3 id="服务器协议"><a href="#服务器协议" class="headerlink" title="服务器协议"></a>服务器协议</h3><blockquote>
+<p>常见协议WSGI ASGI：WSGI 适用于传统的同步 Web 应用程序，而 ASGI 则适用于异步的 Web 应用程序，它们在处理请求和响应的方式上有所不同，以满足不同类型的 Web 应用程序的需求。</p>
+</blockquote>
+<h4 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h4><ul>
+<li>WSGI 是 Python Web 应用程序与服务器之间的标准接口，定义了一种通用的方式来处理 HTTP 请求和响应。</li>
+<li>WSGI 是同步的，即每个请求都会在自己的线程中处理。这意味着在传统的 WSGI 服务器中，对于每个请求，都会阻塞一个线程来处理它，直到请求处理完毕。</li>
+<li>WSGI 适用于传统的同步 Web 应用程序，如 Django 和 Flask。</li>
+</ul>
+<h4 id="ASGI"><a href="#ASGI" class="headerlink" title="ASGI"></a>ASGI</h4><ul>
+<li>ASGI 是一种异步的 Web 应用程序与服务器之间的接口，它支持异步处理请求和响应，可以更高效地处理大量的并发请求。</li>
+<li>ASGI 适用于异步 Web 框架，如 FastAPI、Starlette 等。它们通常使用异步 IO（例如 asyncio）来处理请求，并且可以与异步服务器（如 uvicorn、daphne）一起工作，以实现更高效的异步处理。</li>
+</ul>
+<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><blockquote>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.1/">Django官网文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.django.cn/forum/forum-5.html">django中文网-3756404@qq.com :Django常用 命令</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1642134">腾讯云-老齐：彻底搞懂Django中的数据迁移</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33243661/startapp-with-manage-py-to-create-app-in-another-directory">stack Overflow-Liondancer：startapp with manage.py to create app in another directory</a></p>
+</blockquote>
+<h3 id="基础项目"><a href="#基础项目" class="headerlink" title="基础项目"></a>基础项目</h3><p><strong>虚拟环境</strong></p>
+<p>项目中的依赖全部包含在venv,此时选用的Python3.8进虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3.8 -m venv venv </span><br></pre></td></tr></table></figure>
+
+<p><strong>激活虚拟环境</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source venv/bin/activate     </span><br></pre></td></tr></table></figure>
+
+<p>激活成功后打印<code>python --version</code>即是你已经激活的虚拟环境</p>
+<p><strong>安装Django</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建项目</strong></p>
+<p>进入你的项目根目录,如果你不加<code>./</code>它会创建<code>application</code>文件夹包裹<code>/application</code>+<code>manage.py</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject application ./</span><br></pre></td></tr></table></figure>
+
+<p>此命令创建了一个项目到项目根目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">application  manage.py  venv</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建应用模块</strong></p>
+<p>我的习惯是将所有的应用模块放在项目根目录中专门放置应用模块的一个文件夹<code>/modules</code>,以下先创建<code>sms</code>项目模块的目录,再执行以下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp msm ./modules/msm </span><br></pre></td></tr></table></figure>
+
+<p>创建了一个名为sms的应用模块到<code>./modules/msm</code> </p>
+<p><strong>尝试启动服务</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python manage.py runserver</span> </span><br><span class="line">Watching for file changes with StatReloader</span><br><span class="line">Performing system checks...</span><br><span class="line"></span><br><span class="line">System check identified no issues (0 silenced).</span><br><span class="line"></span><br><span class="line">You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.</span><br><span class="line">Run &#x27;python manage.py migrate&#x27; to apply them.</span><br><span class="line">June 16, 2023 - 09:06:27</span><br><span class="line">Django version 4.2.2, using settings &#x27;application.settings&#x27;</span><br><span class="line">Starting development server at http://127.0.0.1:8000/</span><br><span class="line">Quit the server with CONTROL-C.</span><br></pre></td></tr></table></figure>
+
+<p>上面的意思是你的项目中存在18个迁移文件尚未应用到数据库中的相关应用程序</p>
+<p>这些迁移是由Django内置的应用程序（admin、auth、contenttypes和sessions）生成的。</p>
+<p>数据库迁移是Django用于管理数据库模式更改的机制。当你在Django应用程序中修改了模型（Model）的定义时，你需要生成迁移文件来记录这些变更。然后，通过应用这些迁移，可以将数据库模式与你的模型定义同步。</p>
+<p><strong>数据迁移</strong></p>
+<p>一般情况下更改了某个模块的models.py,就需要进行生成migrations文件夹中与models.py对应生成一组迁移文件（migration files）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br></pre></td></tr></table></figure>
+
+<p>一旦你运行了 makemigrations 并生成了迁移文件，migrate 命令会读取你的迁移文件并在数据库中执行相应的 SQL 语句，使得你的数据库表结构与你的模型保持同步。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python manage.py migrate</span></span><br><span class="line">Operations to perform:</span><br><span class="line">  Apply all migrations: admin, auth, contenttypes, sessions</span><br><span class="line">Running migrations:</span><br><span class="line">  Applying contenttypes.0001_initial... OK</span><br><span class="line">  Applying auth.0001_initial... OK</span><br><span class="line">  Applying admin.0001_initial... OK</span><br><span class="line">  Applying admin.0002_logentry_remove_auto_add... OK</span><br><span class="line">  Applying admin.0003_logentry_add_action_flag_choices... OK</span><br><span class="line">  Applying contenttypes.0002_remove_content_type_name... OK</span><br><span class="line">  Applying auth.0002_alter_permission_name_max_length... OK</span><br><span class="line">  Applying auth.0003_alter_user_email_max_length... OK</span><br><span class="line">  Applying auth.0004_alter_user_username_opts... OK</span><br><span class="line">  Applying auth.0005_alter_user_last_login_null... OK</span><br><span class="line">  Applying auth.0006_require_contenttypes_0002... OK</span><br><span class="line">  Applying auth.0007_alter_validators_add_error_messages... OK</span><br><span class="line">  Applying auth.0008_alter_user_username_max_length... OK</span><br><span class="line">  Applying auth.0009_alter_user_last_name_max_length... OK</span><br><span class="line">  Applying auth.0010_alter_group_name_max_length... OK</span><br><span class="line">  Applying auth.0011_update_proxy_permissions... OK</span><br><span class="line">  Applying auth.0012_alter_user_first_name_max_length... OK</span><br><span class="line">  Applying sessions.0001_initial... OK</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下,数据会被迁移到项目根目录下的<code>db.sqlite3</code>文件中,此文件使用<code>sqlite3 db.sqlite3</code>命令访问数据库,图形化使用<code>sqlitebrowser</code>。</p>
+<p>数据迁移就是按照模型只是将表结构(无数据)导入到了数据库,如图所示</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616221501144.png" alt="DB Browser for SQLite"></p>
+<p>数据库中的数据可以使用Json方式&#x2F;sql文件导入</p>
+<p><strong>再次启动服务</strong></p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616222823449.png" alt="image-20230616222823449"></p>
+<p><strong>Django管理界面</strong></p>
+<p>访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/admin/,%E5%87%BA%E7%8E%B0Django">http://127.0.0.1:8000/admin/,出现Django</a> administration登陆对话框</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616232256024.png" alt="image-20230616232256024"></p>
+<p>用户名&amp;密码需要运行:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python manage.py createsuperuser</span> </span><br><span class="line">Username (leave blank to use &#x27;fuding&#x27;): admin</span><br><span class="line">Email address: f_ding@126.com</span><br><span class="line">Password: [admin]</span><br><span class="line">Password (again): [admin]</span><br><span class="line">The password is too similar to the username.</span><br><span class="line">This password is too short. It must contain at least 8 characters.</span><br><span class="line">This password is too common.</span><br><span class="line">Bypass password validation and create user anyway? [y/N]: y</span><br><span class="line">Superuser created successfully.</span><br></pre></td></tr></table></figure>
+
+<p>创建了用户admin,密码admin,即可登陆</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230616231851504.png" alt="image-20230616231851504"></p>
+<h3 id="manage-py"><a href="#manage-py" class="headerlink" title="manage.py"></a>manage.py</h3><blockquote>
+<p>可执行命令行操作Django项目的相关命令,它们涵盖了开发、测试、数据库管理和部署等方面的常用操作。</p>
+</blockquote>
+<p><strong>常用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py &lt;options&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>runserver</code>：启动开发服务器，用于在本地运行Django应用程序。</li>
+<li><code>startapp &lt;app_name&gt;</code>：创建一个新的Django应用程序。</li>
+<li><code>makemigrations</code>：根据模型的更改生成数据库迁移文件。</li>
+<li><code>migrate</code>：应用数据库迁移，将数据库模式与模型定义同步。</li>
+<li><code>createsuperuser</code>：创建超级用户，用于管理Django管理界面。</li>
+<li><code>shell</code>：启动Django的交互式Python Shell，可以在其中执行Python代码和与数据库交互。</li>
+<li><code>test</code>：运行应用程序的测试套件，执行单元测试和集成测试。</li>
+<li><code>collectstatic</code>：收集静态文件到指定的静态文件目录，用于生产环境的部署。</li>
+<li><code>flush</code>：清空数据库中的所有数据，包括所有应用程序的表格和数据。</li>
+<li><code>dbshell</code>：通过命令行进入数据库的交互式Shell，用于执行原生的SQL查询和操作。</li>
+<li><code>dumpdata</code>：将数据库中的数据导出为JSON或XML格式，用于备份或数据迁移。</li>
+<li><code>loaddata</code>：从JSON或XML文件中加载数据到数据库中，用于恢复备份或导入数据。</li>
+<li><code>check</code>：检查项目的完整性和一致性，包括模型的验证和配置问题。</li>
+<li><code>showmigrations</code>：显示每个应用程序中的迁移状态，包括已应用和未应用的迁移文件。</li>
+</ol>
+<h3 id="setting-py"><a href="#setting-py" class="headerlink" title="setting.py"></a>setting.py</h3><blockquote>
+<p>Django项目的总配置文件</p>
+</blockquote>
+<h4 id="INSTALLED-APPS"><a href="#INSTALLED-APPS" class="headerlink" title="INSTALLED_APPS"></a>INSTALLED_APPS</h4><p><strong>作用</strong></p>
+<p>这个配置项告诉Django（如果你是在Django项目中使用<code>settings.py</code>）需要启用哪些应用程序，并将它们添加到项目中。这样，Django会自动加载这些应用程序并为你提供它们所提供的功能。</p>
+<p><strong>实例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    &#x27;django.contrib.admin&#x27;,</span><br><span class="line">    &#x27;django.contrib.auth&#x27;,</span><br><span class="line">    &#x27;django.contrib.contenttypes&#x27;,</span><br><span class="line">    &#x27;django.contrib.sessions&#x27;,</span><br><span class="line">    &#x27;django.contrib.messages&#x27;,</span><br><span class="line">    &#x27;django.contrib.staticfiles&#x27;,</span><br><span class="line">    &#x27;rest_framework&#x27;,</span><br><span class="line">    &#x27;modules.sms&#x27;,</span><br><span class="line">    &#x27;drf_yasg&#x27;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>项目内部应用程序：这些应用程序是你自己在项目中开发的应用程序，可以通过相对路径或模块路径指定，如<code>&#39;myapp&#39;</code>或<code>&#39;myproject.myapp&#39;</code>。</li>
+<li>第三方应用程序：这些应用程序是由其他开发者或组织开发的，用于提供特定的功能或服务。你可以通过包名称指定它们，如<code>&#39;django.contrib.admin&#39;</code>或<code>&#39;rest_framework&#39;</code>。</li>
+<li>Django内置应用程序：Django本身提供了一些内置应用程序，用于处理常见的任务和功能，如用户认证、管理后台等。你可以通过包名称指定它们，如<code>&#39;django.contrib.auth&#39;</code>或<code>&#39;django.contrib.contenttypes&#39;</code>。</li>
+</ol>
+<h2 id="DjangoRestFramework"><a href="#DjangoRestFramework" class="headerlink" title="DjangoRestFramework"></a>DjangoRestFramework</h2><blockquote>
+</blockquote>
+<p><strong>简单总结</strong> 2023-6-20</p>
+<ul>
+<li><p>models.py</p>
+<ul>
+<li>类名对应数据库中的数据表,其中属性用于定义数据库表结构中的字段,迁移时将models.py中的代码可生成各种数据库中的表[Django提供]</li>
+</ul>
+</li>
+<li><p>serializers.py</p>
+<ul>
+<li><p>Serializer设置内部类中设置<code>model = &lt;某个models&gt;</code>用于查询数据在数据库中是那个表,<code>fields = &lt;字段范围&gt;</code>可理解为存取数据的位置</p>
+</li>
+<li><p><code>code = serializers.CharField()</code>,提供了一些配置选项，如最大长度、是否唯一、是否必填、默认值等,请求的时候这个参数是用来接收&amp;验证请求中的Json字段<code>code</code></p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="路由（Router）"><a href="#路由（Router）" class="headerlink" title="路由（Router）"></a>路由（Router）</h3><p><strong>DefaultRouter()&#x2F;SimpleRouter()</strong></p>
+<p>无论默认路由&#x2F;简单路由都会有一个常用的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">system_url = routers.SimpleRouter()</span><br><span class="line">system_url.register(<span class="string">r&#x27;user&#x27;</span>, UserViewSet)</span><br><span class="line"><span class="comment"># 需要将生成的Django路由添加到 urlpatterns</span></span><br><span class="line">urlpatterns += system_url.urls</span><br></pre></td></tr></table></figure>
+
+<p>此方法可根据View中Djangorestframework提供的增删改查方法自动生成CURD接口路由提供给Django传统路由<code>urlpatterns</code>。</p>
+<p>UserViewSet中如果继承常用的</p>
+<ul>
+<li>mixins.CreateModelMixin — POST</li>
+<li>mixins.RetrieveModelMixin — GET</li>
+<li>mixins.UpdateModelMixin — PUT &#x2F; PATCH</li>
+<li>mixins.DestroyModelMixin — DELETE</li>
+<li>mixins.ListModelMixin — GET</li>
+</ul>
+<p>使用<code>system_url.register(r&#39;user&#39;, UserViewSet)</code>会自动注册相关以上对应的RestFull接口5大方法，如图所示（来自一个开源项目）。</p>
+<p><img src="/images/2023-06-15-Django-Rest-Framework/image-20230628123154489.png" alt="image-20230628123154489"></p>
+<p>Django中的<code>urlpatterns</code>例如需要手动添加路由映射到增删改查的方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserViewSet.as_view(&#123;<span class="string">&#x27;get&#x27;</span>: <span class="string">&#x27;import_data&#x27;</span>, <span class="string">&#x27;post&#x27;</span>: <span class="string">&#x27;import_data&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="视图（View）"><a href="#视图（View）" class="headerlink" title="视图（View）"></a>视图（View）</h3><h4 id="ModelViewSet"><a href="#ModelViewSet" class="headerlink" title="ModelViewSet"></a>ModelViewSet</h4><p>综合常用操作的视图，通过阅读以下源码可知，DRF已经将 增删改查 &amp;  GenericViewSet 已经继承到ModelViewSet中，等于说一般增删改查只需继承这一个类就可实现对数据库表的常用基础操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.viewsets <span class="keyword">import</span> ModelViewSet</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ModelViewSet</span>(mixins.CreateModelMixin,</span><br><span class="line">                   mixins.RetrieveModelMixin,</span><br><span class="line">                   mixins.UpdateModelMixin,</span><br><span class="line">                   mixins.DestroyModelMixin,</span><br><span class="line">                   mixins.ListModelMixin,</span><br><span class="line">                   GenericViewSet):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    A viewset that provides default `create()`, `retrieve()`, `update()`,</span></span><br><span class="line"><span class="string">    `partial_update()`, `destroy()` and `list()` actions.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>混合类<ul>
+<li><code>mixins.CreateModelMixin</code>：该混合类提供了创建模型实例的功能。它包含了一个 <code>create</code> 方法，用于处理 POST 请求并创建新的模型实例。</li>
+<li><code>mixins.UpdateModelMixin</code>：该混合类提供了更新模型实例的功能。它包含了一个 <code>update</code> 方法，用于处理 PUT 或 PATCH 请求并更新现有的模型实例。</li>
+<li><code>mixins.DestroyModelMixin</code>：该混合类提供了删除模型实例的功能。它包含了一个 <code>destroy</code> 方法，用于处理 DELETE 请求并删除指定的模型实例。</li>
+<li><code>mixins.ListModelMixin</code>：这是DRF提供的一个混合类，用于实现获取列表数据的功能。它添加了<code>list()</code>方法，用于处理 GET 请求并返回模型实例的列表。</li>
+<li><code>mixins.RetrieveModelMixin</code>：这是DRF提供的另一个混合类，用于实现获取单个数据对象的功能。它添加了<code>retrieve()</code>方法，处理 GET 请求并返回指定模型实例的详细信息。</li>
+</ul>
+</li>
+<li>通用视图基类<ul>
+<li><code>viewsets.GenericViewSet</code>：这是DRF提供的通用视图集基类，它结合了不同的混合类，并提供了默认的视图行为。通过继承<code>GenericViewSet</code>，可以创建具有常用CRUD（创建、读取、更新、删除）操作的视图集。</li>
+</ul>
+</li>
+</ul>
+<h4 id="queryset"><a href="#queryset" class="headerlink" title="queryset"></a>queryset</h4><p><strong>作用</strong></p>
+<ul>
+<li>数据范围控制：通过指定 <code>queryset</code>，可以明确指定视图操作的数据范围。这样可以确保只在特定的数据集上执行操作，而不会影响其他数据。例如，可以使用 <code>queryset</code> 仅查询特定用户的数据或特定时间范围内的数据。</li>
+<li>数据过滤：<code>queryset</code> 允许你使用过滤器和查询条件对数据进行过滤。这样可以根据特定的条件从数据集中筛选出满足条件的记录。例如，可以使用 <code>queryset</code> 来仅获取状态为已发布的文章或价格在特定范围内的商品。</li>
+<li>数据排序：<code>queryset</code> 允许对数据进行排序。你可以根据某个字段对数据进行升序或降序排序。这样可以确保在返回给客户端或进行后续处理时，数据以特定的顺序呈现。</li>
+<li>数据性能优化：通过使用 <code>queryset</code>，可以利用数据库的查询优化功能，提高数据访问和操作的性能。数据库可以针对 <code>queryset</code> 执行适当的索引和优化操作，从而提供更高效的查询和操作速度。</li>
+</ul>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p><strong>常见报错</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">VerySMSViewSet</span>(viewsets.GenericViewSet):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 加上以下就会解决</span></span><br><span class="line">    <span class="comment"># queryset = VerifyCode.objects.all() </span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assert queryset is not None, &#x27;`basename` argument not specified, and could &#x27; \</span><br><span class="line">AssertionError: `basename` argument not specified, and could not automatically determine the name from the viewset, as it does not have a `.queryset` attribute.</span><br></pre></td></tr></table></figure>
+
+<p>这个错误是由于在使用 Django REST Framework (DRF) 中的视图集（Viewset）时，没有指定视图集的 <code>basename</code> 参数，并且 DRF 无法自动从视图集中确定名称，因为它没有 <code>.queryset</code> 属性。</p>
+<p>在 DRF 的视图集中，需要提供一个 <code>basename</code> 参数，用于指定视图集的名称。<code>basename</code> 用于在路由中生成 URL 名称，以确保正确地匹配视图集的操作。</p>
+<p>解决这个错误的方法是在视图集中指定 <code>basename</code> 参数，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pythonCopy codeclass MyViewSet(viewsets.ViewSet):</span><br><span class="line">    queryset = MyModel.objects.<span class="built_in">all</span>()</span><br><span class="line">    serializer_class = MySerializer</span><br><span class="line">    basename = <span class="string">&#x27;my-model&#x27;</span>  <span class="comment"># 指定视图集的名称</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 其他视图集的代码</span></span><br></pre></td></tr></table></figure>
+
+<p>确保将 <code>basename</code> 参数设置为适当的名称，并与视图集的其他配置一起使用。</p>
+<p>如果视图集没有 <code>.queryset</code> 属性，你还可以考虑重写视图集的 <code>get_queryset()</code> 方法来提供查询集。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pythonCopy codeclass MyViewSet(viewsets.ViewSet):</span><br><span class="line">    serializer_class = MySerializer</span><br><span class="line">    basename = <span class="string">&#x27;my-model&#x27;</span>  <span class="comment"># 指定视图集的名称</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_queryset</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 返回适当的查询集</span></span><br><span class="line">        <span class="keyword">return</span> MyModel.objects.<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 其他视图集的代码</span></span><br></pre></td></tr></table></figure>
+
+<p>请根据你的视图集的具体配置进行相应的调整，确保提供正确的 <code>basename</code> 参数或重写 <code>get_queryset()</code> 方法。</p>
+<p><strong>源码</strong></p>
+<p>&#x2F;rest_framework&#x2F;viewsets.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GenericViewSet</span>(ViewSetMixin, generics.GenericAPIView):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    The GenericViewSet class does not provide any actions by default,</span></span><br><span class="line"><span class="string">    but does include the base set of generic view behavior, such as</span></span><br><span class="line"><span class="string">    the `get_object` and `get_queryset` methods.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;rest_framework&#x2F;generics.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GenericAPIView</span>(views.APIView):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Base class for all other generic views.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># You&#x27;ll need to either set these attributes,</span></span><br><span class="line">    <span class="comment"># or override `get_queryset()`/`get_serializer_class()`.</span></span><br><span class="line">    <span class="comment"># If you are overriding a view method, it is important that you call</span></span><br><span class="line">    <span class="comment"># `get_queryset()` instead of accessing the `queryset` property directly,</span></span><br><span class="line">    <span class="comment"># as `queryset` will get evaluated only once, and those results are cached</span></span><br><span class="line">    <span class="comment"># for all subsequent requests.</span></span><br><span class="line">    queryset = <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：<code>queryset = MyModel.objects.all()</code>加上就会解决，指定 <code>queryset</code> 是为了限定视图操作的数据范围和条件。在 Django 或 Django REST Framework 中，<code>queryset</code> 参数用于指定要在视图中查询、过滤和操作的数据集。</p>
+<h3 id="序列化器（Serializer）"><a href="#序列化器（Serializer）" class="headerlink" title="序列化器（Serializer）"></a>序列化器（Serializer）</h3><h4 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h4><blockquote>
+<p>设置与数据库字段相关名称的Field,才可以使用RestFul接口向设置的Field属性传值,Field参数可以设置限制输入值的一些参数（如下）限制条件。</p>
+</blockquote>
+<ul>
+<li><code>CharField</code>: 用于表示字符类型的字段，如字符串。可用于输入和输出数据。</li>
+<li><code>IntegerField</code>: 用于表示整数类型的字段。可用于输入和输出数据。</li>
+<li><code>FloatField</code>: 用于表示浮点数类型的字段。可用于输入和输出数据。</li>
+<li><code>Boolea nField</code>: 用于表示布尔类型的字段。可用于输入和输出数据。</li>
+<li><code>DateTimeField</code>: 用于表示日期和时间类型的字段。可用于输入和输出数据。</li>
+<li><code>DateField</code>: 用于表示日期类型的字段。可用于输入和输出数据。</li>
+<li><code>TimeField</code>: 用于表示时间类型的字段。可用于输入和输出数据。</li>
+<li><code>EmailField</code>: 用于表示电子邮件地址类型的字段。可用于输入和输出数据。</li>
+<li><code>URLField</code>: 用于表示 URL 类型的字段。可用于输入和输出数据。</li>
+<li><code>SerializerMethodField</code>: 用于表示计算属性或自定义方法的字段。通常用于输出数据，可以根据其他字段的值动态生成字段的值。</li>
+<li><code>ListField</code>: 用于表示列表类型的字段。可用于输入和输出数据。</li>
+<li><code>DictField</code>: 用于表示字典类型的字段。可用于输入和输出数据。</li>
+<li><code>FileField</code>: 用于表示上传文件类型的字段。可用于输入和输出数据。</li>
+<li><code>ImageField</code>: 用于表示上传图像类型的字段。可用于输入和输出数据。</li>
+</ul>
+<p><strong>配置</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">code = serializers.CharField(required=<span class="literal">True</span>, </span><br><span class="line">                              write_only=<span class="literal">True</span>, </span><br><span class="line">                              max_length=<span class="number">4</span>, min_length=<span class="number">4</span>, label=<span class="string">&quot;验证码&quot;</span>,</span><br><span class="line">                              error_messages=&#123;</span><br><span class="line">                                     <span class="string">&quot;blank&quot;</span>: <span class="string">&quot;请输入验证码&quot;</span>,</span><br><span class="line">                                     <span class="string">&quot;required&quot;</span>: <span class="string">&quot;请输入验证码&quot;</span>,</span><br><span class="line">                                     <span class="string">&quot;max_length&quot;</span>: <span class="string">&quot;验证码格式错误&quot;</span>,</span><br><span class="line">                                     <span class="string">&quot;min_length&quot;</span>: <span class="string">&quot;验证码格式错误&quot;</span></span><br><span class="line">                                 &#125;,</span><br><span class="line">                               help_text=<span class="string">&quot;验证码&quot;</span>)</span><br><span class="line">username = serializers.CharField(label=<span class="string">&quot;用户名&quot;</span>, </span><br><span class="line">                                 help_text=<span class="string">&quot;用户名&quot;</span>, </span><br><span class="line">                                 required=<span class="literal">True</span>, </span><br><span class="line">                                 allow_blank=<span class="literal">False</span>,</span><br><span class="line">                                 validators=[UniqueValidator(queryset=User.objects.<span class="built_in">all</span>(), message=<span class="string">&quot;用户已经存在&quot;</span>)])</span><br><span class="line"></span><br><span class="line">password = serializers.CharField(style=&#123;<span class="string">&#x27;input_type&#x27;</span>: <span class="string">&#x27;password&#x27;</span>&#125;,</span><br><span class="line">                                 help_text=<span class="string">&quot;密码&quot;</span>, </span><br><span class="line">                                 label=<span class="string">&quot;密码&quot;</span>, </span><br><span class="line">                                 write_only=<span class="literal">True</span>,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>常用的配置参数</p>
+<ul>
+<li><code>required</code>: 指定字段是否为必填字段，接受布尔值（<code>True</code> 或 <code>False</code>）。默认为 <code>True</code>。</li>
+<li><code>default</code>: 指定字段的默认值，当字段未提供值时将使用该默认值。</li>
+<li><code>allow_null</code>: 指定字段是否允许为 <code>None</code>，接受布尔值。默认为 <code>False</code>。</li>
+<li><code>read_only</code>: 指定字段是否只用于输出，不允许输入。接受布尔值。默认为 <code>False</code>。</li>
+<li><code>write_only</code>: 指定字段是否只用于输入，不会在输出中显示。接受布尔值。默认为 <code>False</code>。</li>
+<li><code>max_length</code>: 用于 <code>CharField</code> 的选项，指定字符字段的最大长度。</li>
+<li><code>min_length</code>: 用于 <code>CharField</code> 的选项，指定字符字段的最小长度。</li>
+<li><code>validators</code>: 指定字段的验证器列表，用于验证字段的值的有效性。</li>
+<li><code>choices</code>: 指定字段的可选值列表或可选值元组，用于限制字段的值。</li>
+<li><code>label</code>: 指定字段的标签，用于显示在序列化输出中或表单中。</li>
+<li><code>help_text</code>: 指定字段的帮助文本，用于显示在表单或 API 文档中。</li>
+</ul>
+<h4 id="Serializer"><a href="#Serializer" class="headerlink" title="Serializer"></a>Serializer</h4><ul>
+<li><code>Serializer</code> 是 DRF 中的基础序列化类，用于将数据转换为<strong>可传输</strong>或<strong>可存储</strong>的格式（如JSON）。</li>
+<li><code>Serializer</code> 提供了灵活的字段定义，可以<strong>手动定义</strong>每个<strong>字段的类型</strong>、<strong>验证规则</strong>和<strong>序列化&#x2F;反序列化方法</strong>。</li>
+<li><code>Serializer</code> <strong>不直接与数据库模型关联</strong>，因此需要<strong>手动编写字段定义</strong>和数据<strong>操作逻辑</strong>。</li>
+<li><code>Serializer</code> 适用于<strong>处理非模型数据</strong>或需要更多<strong>自定义逻辑</strong>的场景。</li>
+</ul>
+<h4 id="ModelSerializer"><a href="#ModelSerializer" class="headerlink" title="ModelSerializer"></a>ModelSerializer</h4><blockquote>
+<p>如果将本Serializer放入了一个继承ModelViewSet中的View中，设置的对每个输入字段的限制将会互相影响需要上传Body数据的Restful接口，比如，PUT、PATCH，所以需要单独设置PUT、PATCH动作的Serializer，通过动作限制使用的Serializer，从而不会互相干扰上传数据检测。</p>
+</blockquote>
+<ul>
+<li><code>ModelSerializer</code> 是 <code>Serializer</code> 的<strong>子类</strong>，专门<strong>用于与数据库模型进行交互</strong>的序列化器。</li>
+<li><code>ModelSerializer</code> <strong>自动根据模型定义生成字段</strong>，并提供了一些默认的序列化&#x2F;反序列化逻辑。</li>
+<li><code>ModelSerializer</code> <strong>自动关联模型的字段</strong>和<strong>验证规则</strong>，<strong>简化</strong>了序列化器的编写。</li>
+<li><code>ModelSerializer</code> <strong>自动处理</strong>与数据库模型的<strong>创建、更新和查询等操作</strong>，减少了手动编写数据操作逻辑的工作量。</li>
+<li><code>ModelSerializer</code> <strong>适用于简单的数据库模型交互场景</strong>，能够快速创建符合模型结构的序列化器。</li>
+</ul>
+<p><strong>示例代码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">VerySMSSerializer</span>(<span class="title class_ inherited__">ModelSerializer</span>):</span><br><span class="line">    code = serializers.CharField(required=<span class="literal">True</span>, write_only=<span class="literal">True</span>, max_length=<span class="number">4</span>, min_length=<span class="number">4</span>, label=<span class="string">&quot;验证码&quot;</span>,</span><br><span class="line">                                 error_messages=&#123;</span><br><span class="line">                                     <span class="string">&quot;blank&quot;</span>: <span class="string">&quot;请输入验证码&quot;</span>,</span><br><span class="line">                                     <span class="string">&quot;required&quot;</span>: <span class="string">&quot;请输入验证码&quot;</span>,</span><br><span class="line">                                     <span class="string">&quot;max_length&quot;</span>: <span class="string">&quot;验证码格式错误&quot;</span>,</span><br><span class="line">                                     <span class="string">&quot;min_length&quot;</span>: <span class="string">&quot;验证码格式错误&quot;</span></span><br><span class="line">                                 &#125;,</span><br><span class="line">                                 help_text=<span class="string">&quot;验证码&quot;</span>)</span><br><span class="line">    mobile = serializers.CharField(max_length=<span class="number">11</span>,</span><br><span class="line">                                   error_messages=&#123;</span><br><span class="line">                                       <span class="string">&quot;max_length&quot;</span>: <span class="string">&quot;手机号码长度超出&quot;</span></span><br><span class="line">                                   &#125;</span><br><span class="line">                                   )</span><br><span class="line">    add_time = serializers.DateTimeField()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">validate_mobile</span>(<span class="params">self, mobile</span>):</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> re.<span class="keyword">match</span>(REGEX_MOBILE,mobile):</span><br><span class="line">            <span class="keyword">raise</span> serializers.ValidationError(<span class="string">&#x27;手机号码格式不正确&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> mobile</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_code</span>(<span class="params">self, mobile, code</span>):</span><br><span class="line">        code_obj = VerifyCode.objects.<span class="built_in">filter</span>(mobile=mobile).order_by(<span class="string">&quot;-add_time&quot;</span>)</span><br><span class="line">        v_time = datetime.now() - timedelta(minutes=<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(code_obj):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> code_obj[<span class="number">0</span>].add_time &gt; v_time:</span><br><span class="line">                <span class="keyword">raise</span> serializers.ValidationError(&#123;<span class="string">&#x27;code&#x27;</span>: <span class="string">&#x27;验证码过期&#x27;</span>&#125;)</span><br><span class="line">            <span class="keyword">if</span> code_obj[<span class="number">0</span>].code != code:</span><br><span class="line">                <span class="keyword">raise</span> serializers.ValidationError(&#123;<span class="string">&#x27;code&#x27;</span>: <span class="string">&#x27;验证码错误&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> serializers.ValidationError(&#123;<span class="string">&#x27;code&#x27;</span>: <span class="string">&#x27;未生成验证码&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">validate</span>(<span class="params">self, attrs</span>):</span><br><span class="line">        mobile = attrs[<span class="string">&#x27;mobile&#x27;</span>]</span><br><span class="line">        code = attrs[<span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">        self.check_code(mobile, code)</span><br><span class="line">        <span class="keyword">return</span> attrs</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = VerifyCode</span><br><span class="line">        fields = (<span class="string">&#x27;code&#x27;</span>, <span class="string">&#x27;mobile&#x27;</span>, <span class="string">&#x27;add_time&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>实验</strong></p>
+<ul>
+<li><p>Field 属性作用，在调用接口的时候，对传入数据进行检测，设置参数限制传入数据的合法性</p>
+</li>
+<li><p>Meta 中 fields属性定义参与查询和传入字段</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2023/06/15/django-rest-framework">https://ding-f.github.io/2023/06/15/django-rest-framework</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/2023-06-15-Django-Rest-Framework/drf.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/07/mi-ma-xue" title="密码学"><img class="cover" src="/images/2023-08-07-%E5%AF%86%E7%A0%81%E5%AD%A6/v2-7b4c29b859eeaf727dc5dead97fda067_r.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">密码学</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/13/websocket-xie-yi" title="WebSocket协议"><img class="cover" src="/images/2023-06-13-WebSocket%E5%8D%8F%E8%AE%AE/05b2d49065b685e48decbc581aa0cb23.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WebSocket协议</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text">服务器协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WSGI"><span class="toc-number">1.1.1.</span> <span class="toc-text">WSGI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ASGI"><span class="toc-number">1.1.2.</span> <span class="toc-text">ASGI</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django"><span class="toc-number">2.</span> <span class="toc-text">Django</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">基础项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#manage-py"><span class="toc-number">2.2.</span> <span class="toc-text">manage.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setting-py"><span class="toc-number">2.3.</span> <span class="toc-text">setting.py</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#INSTALLED-APPS"><span class="toc-number">2.3.1.</span> <span class="toc-text">INSTALLED_APPS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DjangoRestFramework"><span class="toc-number">3.</span> <span class="toc-text">DjangoRestFramework</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%EF%BC%88Router%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">路由（Router）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%EF%BC%88View%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">视图（View）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ModelViewSet"><span class="toc-number">3.2.1.</span> <span class="toc-text">ModelViewSet</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#queryset"><span class="toc-number">3.2.2.</span> <span class="toc-text">queryset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">3.2.3.</span> <span class="toc-text">实验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8%EF%BC%88Serializer%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">序列化器（Serializer）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Field"><span class="toc-number">3.3.1.</span> <span class="toc-text">Field</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Serializer"><span class="toc-number">3.3.2.</span> <span class="toc-text">Serializer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ModelSerializer"><span class="toc-number">3.3.3.</span> <span class="toc-text">ModelSerializer</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

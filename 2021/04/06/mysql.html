@@ -1,0 +1,609 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MySQL | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="技巧客户端工具mycli 使用好多年MySQL其实最重要的还是客户端工具，图形化不是王者，使用命令行才是王者。此工具就是MySQL客户端工具的王者，默认支持SQL自动补全，还很轻便。 参考： mycli | MySQL 技术论坛  连接MySQL1mycli -u &lt;用户名&gt; -h &lt;主机&gt; -P &lt;端口号&gt;    用户管理重置密码(忘记密码) 以下操作在Arc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="https://ding-f.github.io/2021/04/06/mysql">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="技巧客户端工具mycli 使用好多年MySQL其实最重要的还是客户端工具，图形化不是王者，使用命令行才是王者。此工具就是MySQL客户端工具的王者，默认支持SQL自动补全，还很轻便。 参考： mycli | MySQL 技术论坛  连接MySQL1mycli -u &lt;用户名&gt; -h &lt;主机&gt; -P &lt;端口号&gt;    用户管理重置密码(忘记密码) 以下操作在Arc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/mariadb/mysql-mariadb.png">
+<meta property="article:published_time" content="2021-04-06T02:09:00.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.105Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="Mysql">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/mariadb/mysql-mariadb.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2021/04/06/mysql"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/mariadb/mysql-mariadb.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-06T02:09:00.000Z" title="发表于 2021-04-06 10:09:00">2021-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.105Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2021/04/06/mysql" data-flag-title="MySQL"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/04/06/mysql#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2021/04/06/mysql" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="客户端工具mycli"><a href="#客户端工具mycli" class="headerlink" title="客户端工具mycli"></a>客户端工具mycli</h3><blockquote>
+<p>使用好多年MySQL其实最重要的还是客户端工具，图形化不是王者，使用命令行才是王者。此工具就是MySQL客户端工具的王者，默认支持SQL自动补全，还很轻便。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://learnku.com/articles/16815/mysql-command-line-artifact-mycli"><strong>mycli</strong> | MySQL 技术论坛</a></p>
+</blockquote>
+<h4 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mycli -u &lt;用户名&gt; -h &lt;主机&gt; -P &lt;端口号&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="重置密码-忘记密码"><a href="#重置密码-忘记密码" class="headerlink" title="重置密码(忘记密码)"></a>重置密码(忘记密码)</h3><blockquote>
+<p>以下操作在Arch Linux 环境，数据库为10.5.9-MariaDB，经过2小时的搜索资料和实践，才有以下总结</p>
+</blockquote>
+<p>首先，我们停掉MariaDB服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mariadb.service  <span class="comment">#停止MariaDB</span></span><br></pre></td></tr></table></figure>
+
+<p>以安全模式启动MySQL：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysqld_safe --skip-grant-tables --skip-networking &amp;        <span class="comment">#--skip-networking；避免远程无密码登录 MariaDB，后面的&amp;的作用是启动安全模式后能继续编辑命令窗口</span></span><br></pre></td></tr></table></figure>
+
+<p>这样我们就可以直接用root登录，无需密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>特别是此处的操作，不能和Mysql数据库的改密码命令一样，不然会出现<code>ERROR 1348 (HY000): Column &#39;Password&#39; is not updatable</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> flush privileges;    #必须执行此操作才可以进行以下</span><br><span class="line">mysql<span class="operator">&gt;</span> use mysql;  </span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">set</span> password <span class="keyword">for</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span><span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>);</span><br><span class="line">#以下注释的两个适用于Mysql重置密码操作 </span><br><span class="line">#<span class="keyword">update</span> mysql.user <span class="keyword">set</span> authentication_string<span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>) <span class="keyword">where</span> host<span class="operator">=</span><span class="string">&#x27;localhost&#x27;</span> <span class="keyword">and</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"># <span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">mysql<span class="operator">&gt;</span> flush privileges; </span><br></pre></td></tr></table></figure>
+
+<p>重设完毕后，我们退出，然后启动 MariaDB 服务：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">&gt;</span> quit  </span><br></pre></td></tr></table></figure>
+
+<p>重启服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mariadb.service <span class="comment">#重启MariaDB</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来直接登录使用设置的密码<code>123456</code>即可，实际的运维当中不建议使用弱密码。</p>
+<h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><blockquote>
+<p>localhost:可使用“%”（任何主机）、“localhost”（本地）、指定IP，但在最新版的MariaDB上发现使用“%”，不能使用本地主机登录，只能使用本地主机IP地址进行登录；</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailiailan/p/14819467.html">博客园:MySQL修改用户权限</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29645505/article/details/90117313">CSDN:MariaDB用户访问权限设置</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#创建用户只允许本地连接</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;密码&#x27;</span>;</span><br><span class="line">#创建用户，允许所有ip连接（用通配符<span class="operator">%</span>表示）</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置用户授权"><a href="#设置用户授权" class="headerlink" title="设置用户授权"></a>设置用户授权</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#只设置权限，不修改密码</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> 数据库名.表名 <span class="keyword">to</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;指定ip&#x27;</span>;</span><br><span class="line">#修改权限同时修改密码</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> 数据库名.表名 <span class="keyword">to</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;指定ip&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;新用户密码&#x27;</span> ;</span><br><span class="line"></span><br><span class="line">#允许访问所有数据库&quot;*&quot;下的所有表&quot;*&quot; [同时修改密码]</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;指定ip&#x27;</span> [identified <span class="keyword">by</span> <span class="string">&#x27;新用户密码&#x27;</span>] ;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置用户操作权限"><a href="#设置用户操作权限" class="headerlink" title="设置用户操作权限"></a>设置用户操作权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#设置用户拥有所有权限也就是管理员</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;指定ip&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;新用户密码&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line">#拥有查询权限</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;指定ip&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;新用户密码&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line">#其它操作权限说明,<span class="keyword">select</span>查询 <span class="keyword">insert</span>插入 <span class="keyword">delete</span>删除 <span class="keyword">update</span>修改</span><br><span class="line">#设置用户拥有查询插入的权限</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span> <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;新用户名&#x27;</span>@<span class="string">&#x27;指定ip&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;新用户密码&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line">#取消用户查询的查询权限</span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">select</span> <span class="keyword">ON</span> what <span class="keyword">FROM</span> <span class="string">&#x27;新用户名&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在MySQL 8.0中，使用<code>IDENTIFIED BY</code>来设置用户的密码已经不再支持<code>WITH GRANT OPTION</code>选项</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">&#x27;fuding&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改后刷新权限"><a href="#修改后刷新权限" class="headerlink" title="修改后刷新权限"></a>修改后刷新权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这个每次都要执行最好</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看修改后的用户权限"><a href="#查看修改后的用户权限" class="headerlink" title="查看修改后的用户权限"></a>查看修改后的用户权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> <span class="string">&#x27;fuding&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;		#如果修改新用户权限成功，显示一大波允许的权限，类似：<span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, <span class="keyword">UPDATE</span>, <span class="keyword">DELETE</span>, <span class="keyword">CREATE</span>, <span class="keyword">DROP</span>, RELOAD, SHUTDOWN, PROCESS, FILE, <span class="keyword">REFERENCES</span>, INDEX, <span class="keyword">ALTER</span>, <span class="keyword">SHOW</span> DATABASES, SUPER, <span class="keyword">CREATE</span> TEMPORARY TABLES, LOCK TABLES, <span class="keyword">EXECUTE</span>, REPLICATION SLAVE, REPLICATION CLIENT, <span class="keyword">CREATE</span> <span class="keyword">VIEW</span>, <span class="keyword">SHOW</span> <span class="keyword">VIEW</span>, <span class="keyword">CREATE</span> ROUTINE, <span class="keyword">ALTER</span> ROUTINE, <span class="keyword">CREATE</span> <span class="keyword">USER</span>, EVENT, <span class="keyword">TRIGGER</span>, <span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE, <span class="keyword">CREATE</span> ROLE, <span class="keyword">DROP</span> ROLE <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> `fuding`@`<span class="operator">%</span>`</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> username<span class="variable">@localhost</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="允许Mysql用户外部访问"><a href="#允许Mysql用户外部访问" class="headerlink" title="允许Mysql用户外部访问"></a>允许Mysql用户外部访问</h3><ol>
+<li><p>登进MySQL之后。</p>
+</li>
+<li><p>输入以下语句，进入mysql库：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新域属性，’%’表示允许外部访问：</p>
+<blockquote>
+<p>注意MariaDB最新版本，“%”不代表本地主机可登录。</p>
+</blockquote>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host<span class="operator">=</span><span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span> <span class="operator">=</span><span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行以上语句之后再执行：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138890537">知乎-数据库索引，你要了解的都在这里！</a></p>
+</blockquote>
+<h3 id="CHAR、VARCHAR、TEXT、BLOB总结"><a href="#CHAR、VARCHAR、TEXT、BLOB总结" class="headerlink" title="CHAR、VARCHAR、TEXT、BLOB总结"></a>CHAR、VARCHAR、TEXT、BLOB总结</h3><blockquote>
+<p>以下数据库引擎采用InnoDB </p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91994971">知乎：CHAR与VARCHAR详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lance--blog/p/5193027.html">博客园：MySQL中的char与varchar详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wanlixingzhe/article/details/95324243">CSDN：MySQL_TEXT与BLOB字段类型的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/printN/p/7463737.html">博客园：MySQL中TEXT与BLOB字段类型的区别</a></p>
+</blockquote>
+<p><strong>CHAR、VARCHAR类型区别：</strong></p>
+<table>
+<thead>
+<tr>
+<th>CHAR</th>
+<th>VARCHAR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定长</td>
+<td>不定长</td>
+</tr>
+<tr>
+<td>存取速度效率高，一般用于固定长度的表单提交数据存储（身份证、手机号、姓名）</td>
+<td>存取速度效率偏低</td>
+</tr>
+<tr>
+<td>CHAR(M)定义的列的长度为固定的，M取值可以为0～255个字符</td>
+<td>4.1以下的版本中的最大长度限制为255<br />MySQL5.0以上的版本中varchar数据类型的行长度支持到了0-65535字节<br /></td>
+</tr>
+<tr>
+<td>一个英文字符占用1个字节<br />一个汉字占用两个字节</td>
+<td>字符类型若为gbk，每个字符最多占2个字节，最大长度不能超过32766<br />字符类型若为utf8，每个字符最多占3个字节，最大长度不能超过21845</td>
+</tr>
+<tr>
+<td>只限制列长度最大255</td>
+<td>varchar最长是64k，整个行的长度不可超过这个储存空间，1024*64字节</td>
+</tr>
+</tbody></table>
+<ul>
+<li>定长与不定长（定义一个Char(10)和一个Varchar(10)，同时存入‘abcd’）<ul>
+<li>Char(10)，所占的长度依然为10，除了字符‘ABCD’外，CHAR类型的要用trim()去掉多余的空格，后面跟六个空格。</li>
+<li>Varchar(10)，长度变为4了，取数据的时候，VARCHAR类型是不需要用trim()去掉多余的空格的。</li>
+</ul>
+</li>
+</ul>
+<p><strong>TEXT、BLOB类型：</strong></p>
+<table>
+<thead>
+<tr>
+<th>TEXT</th>
+<th>BLOB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>只支持文本</td>
+<td>支持图片，转换成二进制数据</td>
+</tr>
+<tr>
+<td>INYTEXT、TEXT、MEDIUMTEXT、LONGTEXT四种类型</td>
+<td>TinyBlob 最大 255个字符<br/>Blob 最大 65K<br/>MediumBlob 最大 16M<br/>LongBlob 最大 4G</td>
+</tr>
+<tr>
+<td>EXT列有一个字符集，并且根据字符集的校对规则对值进行排序和比较</td>
+<td>BLOB列没有字符集，并且排序和比较基于列值字节的数值值</td>
+</tr>
+<tr>
+<td>存储或检索过程中，不存在大小写转换</td>
+<td>存储或检索过程中，不存在大小写转换</td>
+</tr>
+<tr>
+<td>保存或检索BLOB和TEXT列的值时不删除尾部空格</td>
+<td>保存或检索BLOB和TEXT列的值时不删除尾部空格</td>
+</tr>
+<tr>
+<td>不能有默认值</td>
+<td>不能有默认值</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><p>实际使用中根据需要存入的数据大小定义不同的BLOB类型，除了类型对后面存取文件大小有限制，还要修改mysql的配置文件。Windows、linux基本一样通过修改文件my.ini或my.cnf文件，在文件中增加 max_allowed_packet&#x3D;1M（就是最大1M）<br>需要注意的是：如果你存储的文件过大，数据库的性能会下降很多。</p>
+</li>
+<li><p>运行在非严格模式时，如果你为BLOB或TEXT列分配一个超过该列类型的最大长度的值值，值被截取以保证适合。如果截掉的字符不是空格，将会产生一条警告。使用严格SQL模式，会产生错误，并且值将被拒绝而不是截取并给出警告。</p>
+</li>
+</ul>
+<h3 id="INT类型总结"><a href="#INT类型总结" class="headerlink" title="INT类型总结"></a>INT类型总结</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wulw829/p/11325285.html">博客园：MySQL_bigint(20) 是什么意思？</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型（默认大小）</th>
+<th>存储空间</th>
+<th>M默认值(最大显示宽度)</th>
+<th>数据大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tinyint(M)</td>
+<td>1</td>
+<td>tinyint(4)</td>
+<td>有符号的范围：-128 到 127，无符号的范围： 0 到 255 的整型数据。</td>
+</tr>
+<tr>
+<td>smallint(M)</td>
+<td>2</td>
+<td>smallint(6)</td>
+<td>有符号的范围：-2^15 (-32,768) 到 2^15-1 (32,767) 的整型数据，无符号的范围：-32768 到 32767 【3万左右】</td>
+</tr>
+<tr>
+<td>mediumint(M)</td>
+<td>3</td>
+<td>mediumint(9)</td>
+<td>有符号的范围：-8388608到8388607，无符号的范围：0到16777215的整型数据。【1600万左右】</td>
+</tr>
+<tr>
+<td>int(M)</td>
+<td>4</td>
+<td>int(11)</td>
+<td>-2^31 (-2,147,483,648) 到 2^31-1 (2,147,483,647) 的整型数据。【21亿左右】</td>
+</tr>
+<tr>
+<td>bigint(M)</td>
+<td>8</td>
+<td>bigint(20)</td>
+<td>-2^63 (-9223372036854775808) 到 2^63-1 (9223372036854775807) 的整型数据。【远大于21亿左右】</td>
+</tr>
+</tbody></table>
+<ul>
+<li>M：表示最大显示宽度，建表若选择zerofill，会在数字前面补0，没设置zerofill，直接显示数字，不会影响储存空间大小，不设置没用上就会节省空间。</li>
+<li>储存空间：储存需要占多少字节。</li>
+<li>显示宽度和数据类型：<ul>
+<li>如果插入了小于指定的宽度时会由空格填充，显示宽度只是指明Mysql最大可能显示的数字个数；</li>
+<li>如果插入了大于显示宽度的值，只要该值不超过该类型的取值范围，数值依然可以插入，而且能够显示出来。</li>
+</ul>
+</li>
+</ul>
+<h3 id="枚举ENUM总结"><a href="#枚举ENUM总结" class="headerlink" title="枚举ENUM总结"></a>枚举ENUM总结</h3><blockquote>
+<p>ENUM类型也叫作枚举类型，ENUM类型的取值范围需要在定义字段时进行指定。设置字段值时，<strong>ENUM类型只允许从成员中选取单个值，不能一次选取多个值。</strong></p>
+<p>其所需要的存储空间由定义ENUM类型时指定的成员个数决定。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1955344">腾讯云：【mysql】ENUM类型</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43725548/article/details/121397067">CSDN:关于 mysql 枚举类型(enum) 的说明</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">文本字符串类型</th>
+<th align="left">长度</th>
+<th align="left">长度范围</th>
+<th align="left">占用的存储空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ENUM</td>
+<td align="left">L</td>
+<td align="left">1 &lt;&#x3D; L &lt;&#x3D; 65535</td>
+<td align="left">1或2个字节</td>
+</tr>
+</tbody></table>
+<ul>
+<li>当ENUM类型包含1～255个成员时，需要1个字节的存储空间；</li>
+<li>当ENUM类型包含256～65535个成员时，需要2个字节的存储空间。</li>
+<li>ENUM类型的成员个数的上限为65535个。</li>
+<li>含有类型索引下标，即定义元素就像数组那样，可以对其元素进行索引（INT）查询,但不同于数组索引，ENUM是从1开始的。</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>ENUM()内部定义元素，不能重复定义;</li>
+<li>ENUM()内部定义元素，会忽略大小写；</li>
+<li>不能插入定义元素以外的数据；</li>
+<li>没有限制非空的情况下，可以添加<code>null</code>值# 当ENUM类型的字段没有声明为NOT NULL时，插入NULL也是有效的</li>
+</ul>
+<h3 id="多表查询总结"><a href="#多表查询总结" class="headerlink" title="多表查询总结"></a>多表查询总结</h3><blockquote>
+<p>总结一下多表查询的内连接（INNER JOIN）、外连接的左右连接（LEFT JOIN、RIGHT JOIN）之间的区别，以及全连接（FULL JOIN），联合查询（UNION JOIN）。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1772875">腾讯云社区：Mysql中外连接,内连接,左连接,右连接的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wjw1014/p/10851218.html">博客园：MySQL多表创建关联及操作 </a></p>
+</blockquote>
+<p>内连接和外连接关系图：</p>
+<p><img src="/images/mariadb/0s55fnp8d2.png" alt="连接查询的关系"></p>
+<p><img src="/images/mariadb/1334178-20190512145833419-1701713907.png" alt="连接查询之间的关联"></p>
+<p>首先建立两张表：</p>
+<ul>
+<li>tableA</li>
+</ul>
+<p><img src="/images/mariadb/74vz7w68fq.png" alt="表A"></p>
+<ul>
+<li>tableB</li>
+</ul>
+<p><img src="/images/mariadb/z5lpq72tpv.png" alt="表B"></p>
+<h4 id="内连接："><a href="#内连接：" class="headerlink" title="内连接："></a>内连接：</h4><blockquote>
+<p>相对而言，隐式连接好理解好书写，语法简单，担心的点较少。但是显式连接可以减少字段的扫描，有更快的执行速度。这种速度优势在3张或更多表连接时比较明显（已实验）。</p>
+</blockquote>
+<ul>
+<li>显式内连接</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tableb <span class="keyword">INNER</span> <span class="keyword">JOIN</span> tablea <span class="keyword">on</span> tablea.aid<span class="operator">=</span>tableb.bid;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/mariadb/0utsznatoo.png" alt="显式内连接结果"></p>
+<ul>
+<li>隐式内连接</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tableb,tablea <span class="keyword">where</span> aid <span class="operator">=</span> bid;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/mariadb/0utsznatoo1.png" alt="隐式内连接结果"></p>
+<h4 id="外连接："><a href="#外连接：" class="headerlink" title="外连接："></a>外连接：</h4><ul>
+<li><p>左连接</p>
+<blockquote>
+<p>只查询出<code>left join</code>左边表的完整数据，如果<code>left join</code>右边表没有对应的数据就会空出来。如果右边有有左边没右边不显示，但左边一定会一条不漏的显示。</p>
+</blockquote>
+</li>
+</ul>
+<p>		</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tablea <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> tableb <span class="keyword">on</span> tablea.aid<span class="operator">=</span>tableb.bid;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/mariadb/yy4dyjxqa2.png" alt="左连接查询结果"></p>
+<p>实验：</p>
+<p><img src="/images/mariadb/image-20220516172326536.png" alt="Left Join 实验"></p>
+<ul>
+<li><p>右连接</p>
+<blockquote>
+<p>只查询出<code>right join</code>右边表的完整数据，<code>right jsin</code>左边表没有对应的数据就会空出来。如果左边有右边没左边不显示，但右边一定会一条不漏的显示。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tablea <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> tableb <span class="keyword">on</span> tablea.aid<span class="operator">=</span>tableb.bid;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/mariadb/3i8hwkbecb.png" alt="右连查询结果"></p>
+<ul>
+<li><p>全外连接</p>
+<blockquote>
+<p>全外连接实际是上左外连接和右外连接的数学合集（去掉重复），即“全外&#x3D;左外 UNION 右外”。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tablea <span class="keyword">FULL</span> <span class="keyword">JOIN</span> tableb <span class="keyword">on</span> tablea.aid<span class="operator">=</span>tableb.bid;</span><br></pre></td></tr></table></figure>
+
+<p>可理解为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> f rom  tablea  <span class="keyword">left</span>  <span class="keyword">join</span> tableb <span class="keyword">on</span>  tablea.aid<span class="operator">=</span>tableb.bid</span><br><span class="line"><span class="keyword">union</span>	#去除重复</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> f rom  tablea  <span class="keyword">right</span>  <span class="keyword">join</span> tablea  <span class="keyword">on</span>   tablea.aid<span class="operator">=</span>tableb.bid;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><blockquote>
+<p>相当于将两个表查询结果上下对齐显示，但下面的表的字段数一定要和上面表的字段数相等，即使下表的字段和上表的字段名称不同，查询结果只会显示为上表字段名的查询结果。</p>
+<p>查询语句，默认union会“自动消除重复行”，即默认是distinct 【不同】如果想要将所有数据都显示（允许重复行），就使用union all。</p>
+<p>可以使用order by对表进行排序，不一定按照上表下表顺序进行。</p>
+<p>参考；</p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/622595">阿里云开发者社区：MySQL表连接（内连接、交叉连接、外连接、联合查询）</a></p>
+</blockquote>
+<p><strong>union实现全外连接：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> f rom  表<span class="number">1</span>  <span class="keyword">left</span>  <span class="keyword">join</span> 表<span class="number">2</span> <span class="keyword">on</span>  条件</span><br><span class="line"></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> f rom  表<span class="number">1</span>  <span class="keyword">right</span>  <span class="keyword">join</span> 表<span class="number">2</span>  <span class="keyword">on</span>  条件</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Limit分页"><a href="#Limit分页" class="headerlink" title="Limit分页"></a>Limit分页</h3><blockquote>
+<p> <a target="_blank" rel="noopener" href="https://www.runoob.com/note/28032">菜鸟教程：MYSQL LIMIT 用法</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select _column,_column from _table [where Clause] [limit N][offset M]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>limit N</strong> : 返回 N 条记录</li>
+<li><strong>offset M</strong> : 跳过 M 条记录, 默认 M&#x3D;0, 单独使用似乎不起作用</li>
+<li><strong>limit N,M</strong> : 相当于 <strong>limit M offset N</strong> , 从第 N 条记录开始, 返回 M 条记录</li>
+</ul>
+<h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><h3 id="数据库库创建"><a href="#数据库库创建" class="headerlink" title="数据库库创建"></a>数据库库创建</h3><blockquote>
+<p>做项目如果要搭建到公网那经常会使用此操作，由于学期末的实训使用c3p0连接池搭建了个音乐共享网站，查表操作都放在session中（这里可能是导致连接数过多的原因），于是作者专门网上专门查了一系列的数据库连接数的配置操作，可见这方面的知识对于运维工作还是很重要的。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_17555933/article/details/101445526">mysql使用utf8mb4经验吐血总结</a></p>
+</blockquote>
+<p>创建新的数据库，选用字符集utf8mb4 排序字符集utf8mb4_unicode_ci：</p>
+<p><img src="/images/java_dev/new_database.png" alt="建立数据库"></p>
+<ul>
+<li>MySQL在 5.5.3 之后增加了 <code>utf8mb4</code> 字符编码，mb4即 most bytes 4。简单说 utf8mb4 是 utf8 的超集并完全兼容utf8，能够用四个字节存储更多的字符。也就是当你的数据库里要求能够存入这些表情或宽字符时，可以把字段定义为 utf8mb4</li>
+<li>常见排序字符集有两种：<ul>
+<li><code>utf8mb4_unicode_ci</code> 是基于标准的Unicode来排序和比较，能够在各种语言之间精确排序</li>
+<li><code>utf8mb4_general_ci</code> 没有实现Unicode排序规则，在遇到某些特殊语言或字符是，排序结果可能不是所期望的。</li>
+<li><code>utf8mb4_general_ci</code> 在比较和排序的时候更快</li>
+<li><code>utf8mb4_unicode_ci</code> 在特殊情况下，Unicode排序规则为了能够处理特殊字符的情况，实现了略微复杂的排序算法。</li>
+</ul>
+</li>
+<li>但目前来说，性能已经不是这个时代的瓶颈了，推荐是 <code>utf8mb4_unicode_ci</code>，将来 8.0 里也极有可能使用变为默认的规则。</li>
+</ul>
+<h3 id="最大连接数"><a href="#最大连接数" class="headerlink" title="最大连接数"></a>最大连接数</h3><ul>
+<li>方式一（root用户登录进Mysql才可以执行）</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#查看mysql连接进程列表(你会发现大部分都是睡眠状态)</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">full</span> processlist;</span><br><span class="line"></span><br><span class="line"># 修改最大连接数</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">GLOBAL</span> max_connections <span class="operator">=</span> <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">#查看设置的最大连接数，默认<span class="number">100</span>左右（通常，mysql的最大连接数默认是<span class="number">100</span>, 最大可以达到<span class="number">16384</span>。（<span class="number">16384</span><span class="operator">=</span><span class="number">2</span>的<span class="number">14</span>次方））</span><br><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%max_connections%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 查看已经使用的连接数</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> status <span class="keyword">like</span> <span class="string">&#x27;Max_used_connections&#x27;</span>;</span><br><span class="line"></span><br><span class="line">#查看进程等待多少秒后清除连接</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> variables <span class="keyword">like</span> <span class="string">&#x27;wait_timeout&#x27;</span>;</span><br><span class="line"></span><br><span class="line">#设置禁触休息多少秒后清除连接</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> wait_timeout<span class="operator">=</span><span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"># 设置打断后多少秒清除连接</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> interactive_timeout<span class="operator">=</span><span class="number">300</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方式二（通过修改配置文件来修改mysql最大连接数(max_connections)）</li>
+</ul>
+<p>修改Linux配置文件路径<code>/etc/mysql/my.cnf</code></p>
+<p>只要修改MySQL配置文件my.ini 或 my.cnf的参数max_connections，将其改为<code>max_connections=1000</code>，然后重启MySQL即可。</p>
+<h3 id="Mysql-5-7"><a href="#Mysql-5-7" class="headerlink" title="Mysql 5.7"></a>Mysql 5.7</h3><blockquote>
+<p>此版本经常会遇到的问题，比如跑一个项目的时候提示SQL描述 的表名称不存在。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53741107/mysql-in-docker-on-ubuntu-warning-world-writable-config-file-is-ignored">stackoverflow-ZhaoGang:MySQL in Docker on Ubuntu: Warning: World-writable config file is ignored</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/option-files.html">MySQL：MySQL 8.0 Reference Manual：</a></p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1283364/mysql-my-cnf-and-etc-alternatives">askubuntu-Déjà vu：MySQL, my.cnf and &#x2F;etc&#x2F;alternatives</a></p>
+</blockquote>
+<p><strong>查看数据库当前大小写是否敏感</strong></p>
+<p>Value表示1为大小写不敏感，0为大小写敏感。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">SHOW VARIABLES LIKE <span class="string">&#x27;%case%&#x27;</span>;</span></span><br><span class="line">MySQL root@localhost:(none)&gt; SHOW VARIABLES LIKE &#x27;lower_case_table_names&#x27;;</span><br><span class="line">+------------------------+-------+</span><br><span class="line">| Variable_name          | Value |</span><br><span class="line">+------------------------+-------+</span><br><span class="line">| lower_case_table_names | 1     |</span><br><span class="line">+------------------------+-------+</span><br><span class="line">1 row in set</span><br><span class="line">Time: 0.007s</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>改配置文件my.cnf</strong></p>
+<p>Linux系统一般情况下此文件都在<code>/etc/my.cnf</code>中配置，且这个文件是经常需要配置的。</p>
+<p>添加以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">lower_case_table_names=1</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>重启数据库</strong></p>
+<p>如果你是Docker环境，<code>my.cnf</code> 可能会不起作用，可能是因为文件的权限设置问题，详细请查看：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53741107/mysql-in-docker-on-ubuntu-warning-world-writable-config-file-is-ignored">stackoverflow-ZhaoGang:MySQL in Docker on Ubuntu: Warning: World-writable config file is ignored</a>。</p>
+<h2 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h2><blockquote>
+<p>Mysql 数据库备份有好几种方式</p>
+</blockquote>
+<h3 id="Mysqldump"><a href="#Mysqldump" class="headerlink" title="Mysqldump"></a>Mysqldump</h3><blockquote>
+<p>这个方式只要是你安装了Mysql就可以备份任何已知Mysql数据库的数据</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump --host=127.0.0.1 --port=3305 --user=root -p dailyfresh &gt; ~/Desktop/OpenSource/Dailyfresh-B2C/Backend/dailyfresh.sql</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>host 主机地址</li>
+<li>port 端口</li>
+<li>user 用户名</li>
+<li>-p 执行后提示输入密码</li>
+<li>dailyfresh 数据库名</li>
+<li><code>&gt;</code> 覆盖写入文件</li>
+</ul>
+<p><strong>问题</strong></p>
+<blockquote>
+<p>写这个方式的原因是使用Mysql workbench出现了一个报错：Unknown table ‘COLUMN_STATISTICS’ in information_schema (1109)</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://serverfault.com/questions/912162/mysqldump-throws-unknown-table-column-statistics-in-information-schema-1109/912677">serverfault</a></p>
+</blockquote>
+<p>这个问题直接导致备份数据库报告以上错误，解决方式如下，直接使用命令行执行mysqldump备份时候加上<code>--column-statistics=0</code>：</p>
+<ul>
+<li><p>方案一</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump --column-statistics=0 --host=&lt;server&gt; --port=&lt;port&gt; --user=&lt;user&gt; --password=&lt;password&gt; &gt; &lt;dump_file_path&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>方案二</p>
+<p>找到 MySQL 配置文件, 比如 <code>/etc/my.cnf</code>, <code>~/.my.cnf</code>, or directly to &#96;&#x2F;etc&#x2F;mysql&#x2F;mysql.cnf，加上下面的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqldump]</span><br><span class="line">column-statistics=0</span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2021/04/06/mysql">https://ding-f.github.io/2021/04/06/mysql</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a><a class="post-meta__tags" href="/tags/Mysql/">Mysql</a><a class="post-meta__tags" href="/tags/SQL/">SQL</a></div><div class="post_share"><div class="social-share" data-image="/images/mariadb/mysql-mariadb.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/15/java" title="Java基础"><img class="cover" src="/images/java/java.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java基础</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/10/arch-linux" title="Arch Linux"><img class="cover" src="/images/arch_linux/arch-linux.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Arch Linux</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/10/arch-linux" title="Arch Linux"><img class="cover" src="/images/arch_linux/arch-linux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-10</div><div class="title">Arch Linux</div></div></a></div><div><a href="/2021/08/10/open-ssh" title="Open SSH"><img class="cover" src="/images/openssh/openssh-logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div><div><a href="/2021/08/10/vim-bian-ji-qi" title="Vim编辑器"><img class="cover" src="/images/vim/vim.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Vim编辑器</div></div></a></div><div><a href="/2021/08/15/proxmox-ve" title="Proxmox VE"><img class="cover" src="/images/proxmoxve/unnamed.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-15</div><div class="title">Proxmox VE</div></div></a></div><div><a href="/2021/12/09/centos-8" title="CentOS 8"><img class="cover" src="/images/cent_os/CentOS-8.0.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-09</div><div class="title">CentOS 8</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text">技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7mycli"><span class="toc-number">1.1.</span> <span class="toc-text">客户端工具mycli</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5MySQL"><span class="toc-number">1.1.1.</span> <span class="toc-text">连接MySQL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81-%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">重置密码(忘记密码)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-number">2.2.</span> <span class="toc-text">添加用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83"><span class="toc-number">2.3.</span> <span class="toc-text">设置用户授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%9D%83%E9%99%90"><span class="toc-number">2.4.</span> <span class="toc-text">设置用户操作权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E%E5%88%B7%E6%96%B0%E6%9D%83%E9%99%90"><span class="toc-number">2.5.</span> <span class="toc-text">修改后刷新权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-number">2.6.</span> <span class="toc-text">查看修改后的用户权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">2.7.</span> <span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%81%E8%AE%B8Mysql%E7%94%A8%E6%88%B7%E5%A4%96%E9%83%A8%E8%AE%BF%E9%97%AE"><span class="toc-number">2.8.</span> <span class="toc-text">允许Mysql用户外部访问</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">3.1.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CHAR%E3%80%81VARCHAR%E3%80%81TEXT%E3%80%81BLOB%E6%80%BB%E7%BB%93"><span class="toc-number">3.2.</span> <span class="toc-text">CHAR、VARCHAR、TEXT、BLOB总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INT%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93"><span class="toc-number">3.3.</span> <span class="toc-text">INT类型总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BEENUM%E6%80%BB%E7%BB%93"><span class="toc-number">3.4.</span> <span class="toc-text">枚举ENUM总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93"><span class="toc-number">3.5.</span> <span class="toc-text">多表查询总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5%EF%BC%9A"><span class="toc-number">3.5.1.</span> <span class="toc-text">内连接：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5%EF%BC%9A"><span class="toc-number">3.5.2.</span> <span class="toc-text">外连接：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.5.3.</span> <span class="toc-text">联合查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limit%E5%88%86%E9%A1%B5"><span class="toc-number">3.6.</span> <span class="toc-text">Limit分页</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">数据库配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%93%E5%88%9B%E5%BB%BA"><span class="toc-number">4.1.</span> <span class="toc-text">数据库库创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">最大连接数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mysql-5-7"><span class="toc-number">4.3.</span> <span class="toc-text">Mysql 5.7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD"><span class="toc-number">5.</span> <span class="toc-text">数据库备份</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mysqldump"><span class="toc-number">5.1.</span> <span class="toc-text">Mysqldump</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

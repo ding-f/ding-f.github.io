@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Apache Shiro + JWT | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JWT 来自： 铸鼎__ &gt; Java毕业设计开发笔记 &gt; 后端开发 &gt; shiro+JWT  JWT 的原理 参考： 简书：什么是 JWT – JSON WEB TOKEN RESTful API:JWT 认证 JWT官网 知乎：Base64编码详解 CSDN:从零入门HMAC-SHA256  服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。 12345&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Shiro + JWT">
+<meta property="og:url" content="https://ding-f.github.io/2022/04/11/apache-shiro-jwt">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="JWT 来自： 铸鼎__ &gt; Java毕业设计开发笔记 &gt; 后端开发 &gt; shiro+JWT  JWT 的原理 参考： 简书：什么是 JWT – JSON WEB TOKEN RESTful API:JWT 认证 JWT官网 知乎：Base64编码详解 CSDN:从零入门HMAC-SHA256  服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。 12345&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/shir_jwt/shiro_jwt.png">
+<meta property="article:published_time" content="2022-04-11T03:23:22.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.108Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="安全运维">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="理论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/shir_jwt/shiro_jwt.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/04/11/apache-shiro-jwt"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Apache Shiro + JWT',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/shir_jwt/shiro_jwt.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Apache Shiro + JWT</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-11T03:23:22.000Z" title="发表于 2022-04-11 11:23:22">2022-04-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.108Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/04/11/apache-shiro-jwt" data-flag-title="Apache Shiro + JWT"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/04/11/apache-shiro-jwt#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/04/11/apache-shiro-jwt" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><blockquote>
+<p>来自：</p>
+<p>铸鼎__ &gt; Java毕业设计开发笔记 &gt; 后端开发 &gt; shiro+JWT</p>
+</blockquote>
+<h4 id="JWT-的原理"><a href="#JWT-的原理" class="headerlink" title="JWT 的原理"></a>JWT 的原理</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/576dbf44b2ae">简书：什么是 JWT – JSON WEB TOKEN</a></p>
+<p><a target="_blank" rel="noopener" href="https://restfulapi.cn/page/jwt">RESTful API:JWT 认证</a></p>
+<p><a target="_blank" rel="noopener" href="https://jwt.io/">JWT官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339477329">知乎：Base64编码详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sdnyqfyqf/article/details/105534376">CSDN:从零入门HMAC-SHA256</a></p>
+</blockquote>
+<p>服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;姓名&quot;: &quot;张三&quot;,</span><br><span class="line"> &quot;角色&quot;: &quot;管理员&quot;,</span><br><span class="line"> &quot;到期时间&quot;: &quot;2018年7月1日0点0分&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>以后，用户与服务端通信的时候，都要发回这个 JSON 对象。服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会加上签名（详见后文）。</p>
+<p>服务器就不保存任何 session 数据了，也就是说，服务器变成无状态了，从而比较容易实现扩展。</p>
+<p><strong>JWT 的数据结构</strong>：</p>
+<p>实际的 JWT 大概就像下面这样。</p>
+<p><img src="/images/java_dev/jwt_structure.png" alt="img"></p>
+<p>它是一个很长的字符串，中间用点（.）分隔成三个部分。注意，JWT 内部是没有换行的，这里只是为了便于展示，将它写成了几行。</p>
+<p>JWT 的三个部分依次如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Header（头部）</span><br><span class="line">Payload（负载）</span><br><span class="line">Signature（签名）</span><br></pre></td></tr></table></figure>
+
+<p>写成一行，就是下面的样子。</p>
+<p>Header.Payload.Signature</p>
+<p><img src="/images/java_dev/jet_structure_all.jpg"></p>
+<p>下面依次介绍这三个部分。</p>
+<p><strong>Header</strong></p>
+<p>Header 部分是一个 JSON 对象，描述 JWT 的元数据，通常是下面的样子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;alg&quot;: &quot;HS256&quot;,</span><br><span class="line">  &quot;typ&quot;: &quot;JWT&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，alg属性表示签名的算法（algorithm），默认是 HMAC SHA256（写成 HS256）；typ属性表示这个令牌（token）的类型（type），JWT 令牌统一写为JWT。</p>
+<p>最后，将上面的 JSON 对象使用 Base64URL 算法（详见后文）转成字符串。</p>
+<p><strong>Payload</strong></p>
+<p>Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段，供选用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">iss (issuer)：签发人</span><br><span class="line">exp (expiration time)：过期时间</span><br><span class="line">sub (subject)：主题</span><br><span class="line">aud (audience)：受众</span><br><span class="line">nbf (Not Before)：生效时间</span><br><span class="line">iat (Issued At)：签发时间</span><br><span class="line">jti (JWT ID)：编号</span><br></pre></td></tr></table></figure>
+
+<p>除了官方字段，你还可以在这个部分定义私有字段，下面就是一个例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;sub&quot;: &quot;1234567890&quot;,</span><br><span class="line">  &quot;name&quot;: &quot;John Doe&quot;,</span><br><span class="line">  &quot;admin&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意，JWT 默认是不加密的，任何人都可以读到，所以不要把秘密信息放在这个部分。</p>
+<p>这个 JSON 对象也要使用 Base64URL 算法转成字符串。</p>
+<p><strong>Signature</strong></p>
+<p>Signature 部分是对前两部分的签名，防止数据篡改。</p>
+<p>首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256），按照下面的公式产生签名，也就是说需要base64url加密后的header和base64url加密后的payload使用<code>.</code>连接组成的字符串，然后通过header中声明的加密方式进行加盐<code>secret</code>组合加密，然后就构成了jwt的第三部分。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload), secret)</span><br></pre></td></tr></table></figure>
+
+<p>算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用”点”（.）分隔，就可以返回给用户。</p>
+<p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret, 那就意味着客户端是可以自我签发jwt了。</p>
+<p><strong>名词：</strong></p>
+<ul>
+<li>Claim 解析了Jwt后的得到的明文信息；</li>
+</ul>
+<p><strong>总结：</strong></p>
+<p>看到有关HMAC SHA256算法原理的文章，其实就是此算法相当于加盐（secret）处理，有了这个secret才可以对传输过来的Token内部的Signature才可以认证是否是本服务器进行签发的，只有知道secret才可以对<code>base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload)</code> 字符串进行一个完整性的鉴别（再进行一遍HMAC SHA256对比Signature），如果匹配就可以进行登录，含有secret服务器也可以进行对Token延期后发给客户端。</p>
+<p><strong>Base64URL</strong></p>
+<p>前面提到，Header 和 Payload 串型化的算法是 Base64URL。这个算法跟 Base64 算法基本类似，但有一些小的不同。</p>
+<p>JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com&#x2F;?token&#x3D;xxx）。Base64 有三个字符+、&#x2F;和&#x3D;，在 URL 里面有特殊含义，所以要被替换掉：&#x3D;被省略、+替换成-，&#x2F;替换成_ 。这就是 Base64URL 算法。</p>
+<p><strong>JWT 的使用方式</strong></p>
+<p>客户端收到服务器返回的 JWT，可以储存在 Cookie 里面，也可以储存在 localStorage。</p>
+<p>此后，客户端每次与服务器通信，都要带上这个 JWT。你可以把它放在 Cookie 里面自动发送，但是这个方式跨域需要考虑更多问题，所以更好的做法是放在 HTTP 请求的头信息Authorization字段里面。</p>
+<p>Authorization: Bearer</p>
+<p>另一种做法是，跨域的时候，JWT 就放在 POST 请求的数据体里面。</p>
+<h4 id="JWT特点"><a href="#JWT特点" class="headerlink" title="JWT特点"></a>JWT特点</h4><ul>
+<li><p>JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。</p>
+</li>
+<li><p>JWT 不加密的情况下，不能将秘密数据写入 JWT。</p>
+</li>
+<li><p>JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</p>
+</li>
+<li><p>JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。</p>
+</li>
+<li><p>JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。</p>
+</li>
+<li><p>为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</p>
+</li>
+</ul>
+<h4 id="Session和JWT登录-整合方案"><a href="#Session和JWT登录-整合方案" class="headerlink" title="Session和JWT登录 整合方案"></a>Session和JWT登录 整合方案</h4><p><strong>分析：</strong></p>
+<ul>
+<li>用类似于JWT的token作为SessionId，客户端采用JWT模式来保存和发送这个sessionId，保存在cookie或localStorage中，发送时用header；</li>
+<li>为了接收非同源客户端的AJAX请求，服务器端需要启用 CORS（Cross-Origin Resource Sharing） 跨域访问，为指定域名的客户端开通白名单，以便接收其他不同客户端的请求；</li>
+<li>服务器端采用session的处理方式，保存session信息，并根据请求来更新过期时间，同时，服务器端兼容从cookie或者header中取得sessionId；</li>
+<li>平滑的处理token过期，如果用户一直在活动，需要刷新token，客户端要配合。</li>
+</ul>
+<h4 id="SessionID与JWT-Token-两种方式的对比"><a href="#SessionID与JWT-Token-两种方式的对比" class="headerlink" title="SessionID与JWT Token 两种方式的对比"></a>SessionID与JWT Token 两种方式的对比</h4><table>
+<thead>
+<tr>
+<th>JWT登录步骤</th>
+<th>Session登录步骤</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户端 携带认证名和密码 发起登录请求</td>
+<td>客户端 携带认证名和密码 发起登录请求</td>
+</tr>
+<tr>
+<td>服务器端验证成功，返回 token 给客户端</td>
+<td>服务器端验证成功，将用户信息存储下来，生成一个 sessionId， 返回给客户端，并通知客户端将sessionId set到cookie中</td>
+</tr>
+<tr>
+<td>客户端保存 token（通常是保存在Cookie或者LocalStorage中）</td>
+<td>客户端自动执行服务器端将sessionId set到cookie中的命令，sessionId被自动保存在cookie中</td>
+</tr>
+<tr>
+<td>客户端以后每次请求，都在Header中 携带该Token</td>
+<td>客户端以后每次请求，都会自动将cookie中的sessionId发送给服务器端</td>
+</tr>
+<tr>
+<td>服务器端，每次接收非登录请求，都验证Header中是否有token</td>
+<td>服务器端，每次接收请求，都从cookie中取出sessionId，根据这个id找到存储的用户信息，如果有，说明登录，否则说明未登录或者已过期。</td>
+</tr>
+</tbody></table>
+<h2 id="Shiro简介"><a href="#Shiro简介" class="headerlink" title="Shiro简介"></a>Shiro简介</h2><blockquote>
+<p>Apache Shiro 是 Java 的一个<strong>安全框架</strong>。</p>
+<p>Shiro是apache旗下一个开源框架，它将软件系统的安全认证相关的功能抽取出来，实现用户身份认证，权限授权、加密、会话管理等功能，组成了一个通用的安全认证框架。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145901232#:~:text=Shiro%E6%98%AFap,%E7%9A%84%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E6%A1%86%E6%9E%B6%E3%80%82">Shiro框架原理及应用分析</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mydistance/article/details/84545768">CSDN:为什么使用token？session与token的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dghkgjlh/article/details/89820043">CSDN:shiro使用(使用token预热,为什么要使用token)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dghkgjlh/article/details/90145603">CSDN:shiro使用(使用token)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dghkgjlh/article/details/90551285">CSDN:shiro使用(增强版token,JWT和shiro结合使用)</a></p>
+</blockquote>
+<h3 id="为什么学习Shiro"><a href="#为什么学习Shiro" class="headerlink" title="为什么学习Shiro"></a>为什么学习Shiro</h3><ul>
+<li>既然shiro将安全认证相关的功能抽取出来组成一个<strong>框架</strong>，使用shiro就可以<strong>非常快速的完成认证</strong>、<strong>授权等</strong>功能的开发，<strong>降低系统成本</strong>。</li>
+<li>shiro使用广泛，shiro可以运行在web应用，非web应用，集群分布式应用中越来越多的用户开始使用shiro。</li>
+<li>java领域中spring security(原名Acegi)也是一个开源的权限管理框架，但是spring security依赖spring运行，而shiro就相对独立，最主要是因为shiro使用简单、灵活，所以现在越来越多的用户选择shiro。</li>
+</ul>
+<h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><p><img src="/images/shiro/1.png" alt="Shiro基本功能"></p>
+<ul>
+<li><strong>Authentication</strong>：身份认证 &#x2F; 登录，验证用户是不是拥有相应的身份；</li>
+<li><strong>Authorization</strong>：权限验证，验证某个用户是否拥有某项权限；</li>
+<li><strong>Session Management</strong>：会话管理，登录一次后没退登前，他的所有信息都在会话中；</li>
+<li><strong>Cryptography</strong>：加密保护数据安全，密码加密存储到数据库；</li>
+<li><strong>Web Support</strong>：Web 支持，可集成到Web环境；</li>
+<li><strong>Caching</strong>：缓存，用户登录后，其用户信息、拥有的角色 &#x2F; 权限不必每次去查，这样可以提高效率；</li>
+<li><strong>Concurrency</strong>： 支持多线程应用的并发验证，在一个线程中开启另一个线程，能把权限自动传播过去；</li>
+<li><strong>Testing</strong>：提供测试支持；</li>
+<li><strong>Run As</strong>：允许一个用户假装为另一个用户；</li>
+<li>Remember Me：记住我，常见的功能，一次登录，下次来就不用登录；</li>
+</ul>
+<p><strong>注意：</strong>Shiro 不会去维护用户、维护权限；这些需要我们自己去设计 &#x2F; 提供；然后通过相应的接口注入给 Shiro 即可。</p>
+<h3 id="工作流程介绍"><a href="#工作流程介绍" class="headerlink" title="工作流程介绍"></a>工作流程介绍</h3><p><img src="https://atts.w3cschool.cn/attachments/image/wk/shiro/2.png" alt="Shiro工作流程"></p>
+<p>代码直接交互的对象是 Subject，也就是说 Shiro 的对外 API 核心就是 Subject。</p>
+<ul>
+<li><p><strong>SecurityManager</strong>：安全管理器，所有与安全有关的操作都会与 SecurityManager 交互，Shiro的核心，它负责与后边介绍的其他组件进行交互，比如对全部的subject进行安全管理。实质上SecurityManager是通过Authenticator进行认证，通过Authorizer进行授权，通过SessionManager进行会话管理等。SecurityManager是一个接口，继承了Authenticator, Authorizer, SessionManager这三个接口。；</p>
+</li>
+<li><p><strong>Realm</strong>：域，Shiro 从 Realm 获取安全数据（如用户、角色、权限），SecurityManager 要验证用户身份，那么它需要从 Realm 获取相应的用户进行比较以确定用户身份是否合法，需要从 Realm 得到用户相应的角色 &#x2F; 权限进行验证用户是否能进行操作</p>
+<ul>
+<li>例如：Realm中获取JWT利用JWT的内部方解密出JWT中包含的信息，比如校验解析出JWT信息成一个Claim（校验后的JWT信息），获取Claim中的getSubject（获得用户唯一信息，比如userID），再将获取到的Subject，比如userID，根据userID对数据库进行查询，将查询出的User实体类一部分信息（保证唯一）放入另一个实体类，再将这个实体类存入比如Redis中，完成认证<strong>（未进行源码调试）</strong>。</li>
+</ul>
+</li>
+<li><p><strong>Subject</strong>：主体，代表当前用户，不一定是具体的人，当前应用交互的任何东西都是 Subject，可能是一个通过浏览器请求的用户，也可能是一个运行的程序，如网络爬虫，机器人等。Subject在shiro中是一个接口，接口中定义了很多认证授相关的方法，外部程序通过subject进行认证授，而subject是通过SecurityManager安全管理器进行认证授权；</p>
+</li>
+<li><p>Subject 的所有交互都会委托给 SecurityManager；</p>
+</li>
+</ul>
+<h3 id="Shiro-的架构"><a href="#Shiro-的架构" class="headerlink" title="Shiro 的架构"></a>Shiro 的架构</h3><p><img src="/images/shiro/3.png" alt="Shiro 内部的架构"></p>
+<ul>
+<li><strong>SecurityManager</strong>： Shiro 的核心，所有具体的交互都通过 SecurityManager 进行控制，管理着所有 Subject，且负责进行认证和授权、及会话、缓存的管理。</li>
+<li><strong>Realm</strong>：可以有 1 个或多个 Realm，可以认为是安全实体，相当于datasource数据源，但不要把realm理解成只是从数据源取数据，在realm中还有认证授权校验的相关的代码。securityManager进行安全认证需要通过Realm获取用户权限数据，用于获取安全实体的；可以是 JDBC 实现、 LDAP 实现、内存实现等等；由用户提供；注意：Shiro 不知道你的用户 &#x2F; 权限存储在哪及以何种格式存储；一般要在应用中都需要实现自己的 Realm；</li>
+<li><strong>Subject</strong>：主体，任何可以与应用交互的 “用户”；</li>
+<li><strong>Authenticator</strong>：认证器，负责主体认证，是一个扩展点， Shiro 默认实现，shiro提供ModularRealmAuthenticator实现类，通过ModularRealmAuthenticator基本上可以满足大多数需求，也可以自定义实现；其需要认证策略（Authentication Strategy），即什么情况下用户认证通过；</li>
+<li><strong>Authorizer</strong>：授权器，用来决定主体是否有权限进行相应的操作；即控制着用户能访问应用中的哪些功能；</li>
+<li><strong>SessionManager</strong>：如果写过 Servlet 就应该知道 Session 的概念，Session 呢需要有人去管理它的生命周期，这个组件就是 SessionManager；而 Shiro 并不仅仅可以用在 Web 环境，也可以用在如普通的 JavaSE 环境、EJB 等环境；所以呢，Shiro 就抽象了一个自己的 Session 来管理主体与应用之间交互的数据，它不依赖web容器的session，于是shiro可以使用在非web应用上，也可以将分布式应用的会话集中在一点管理，此特性可使它实现单点登录；这样的话，比如我们在 Web 环境用，刚开始是一台 Web 服务器；接着又上了台 EJB 服务器；这时想把两台服务器的会话数据放到一个地方，这个时候就可以实现自己的分布式会话（如把数据放到 Memcached 服务器）；</li>
+<li><strong>SessionDAO</strong>：DAO 即，数据访问对象，用于会话的 CRUD，比如我们想把 Session 保存到数据库，那么可以实现自己的 SessionDAO，通过 JDBC 写到数据库；另外 SessionDAO 中可以使用 Cache 进行缓存，以提高性能；</li>
+<li><strong>CacheManager</strong>：缓存控制器，来管理如用户、角色、权限等的缓存的；因为这些数据基本上很少去改变，放到缓存中后可以提高访问的性能</li>
+<li><strong>Cryptography</strong>：密码模块，Shiro 提供了一些常见的加密组件用于如密码加密 &#x2F; 解密的，方便开发。比如提供常用的散列、加&#x2F;解密等功能。。</li>
+</ul>
+<p><strong>作为开发者：</strong></p>
+<ol>
+<li>代码通过Subject 来进行认证和授权，而 Subject 又委托给 SecurityManager；</li>
+<li>需要给 Shiro 的 SecurityManager 注入 Realm，从而让 SecurityManager 能得到合法的用户及其权限进行判断。</li>
+<li>Shiro 不提供维护用户 &#x2F; 权限，而是通过 Realm 让开发人员自己注入。</li>
+</ol>
+<h2 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h2><blockquote>
+<p>即在应用中谁能证明他就是他本人。一般提供如他们的身份 ID 一些标识信息来表明他就是他本人，如提供身份证，用户名 &#x2F; 密码来证明。</p>
+</blockquote>
+<p><strong>常见名词：</strong></p>
+<ul>
+<li><strong>principals</strong>：身份，即主体的标识属性，可以是数据库字段任何属性，如用户名、邮箱等，但需要保证唯一。一个主体可以有多个 <code>principals</code>，但只有一个 <code>Primary principals</code>，一般是用户名 &#x2F; 密码 &#x2F; 手机号。</li>
+<li><strong>credentials</strong>：证明 &#x2F; 凭证，即只有主体知道的安全值，如密码 &#x2F; 数字证书等。</li>
+<li>最常见的 <code>principals</code> 和 <code>credentials</code> 组合就是用户名 &#x2F; 密码了。</li>
+</ul>
+<h3 id="身份认证流程"><a href="#身份认证流程" class="headerlink" title="身份认证流程"></a>身份认证流程</h3><blockquote>
+<p>代码详见：</p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/shiro/xgj31if4.html">W3c School：Shiro 身份验证</a></p>
+</blockquote>
+<p><img src="/images/shiro/4.png" alt="img"></p>
+<ol>
+<li>首先调用 <code>Subject.login(token)</code> 进行登录，其会自动委托给 <code>Security Manager</code>，调用之前必须通过 <code>SecurityUtils.setSecurityManager()</code> 设置；</li>
+<li><code>SecurityManager</code> 负责真正的身份验证逻辑；它会委托给 <code>Authenticator</code> 进行身份验证；</li>
+<li><code>Authenticator</code> 才是真正的身份验证者，<code>Shiro API</code> 中核心的身份认证入口点，此处可以自定义插入自己的实现；</li>
+<li><code>Authenticator</code> 可能会委托给相应的 <code>AuthenticationStrategy</code> 进行多 <code>Realm</code> 身份验证，默认 <code>ModularRealmAuthenticator</code> 会调用 <code>AuthenticationStrategy</code> 进行多 <code>Realm</code> 身份验证；</li>
+<li><code>Authenticator </code>会把相应的 <code>token</code> 传入 <code>Realm</code>，从 <code>Realm</code> 获取身份验证信息，如果没有返回 &#x2F; 抛出异常表示身份验证成功了。此处可以配置多个 <code>Realm</code>，将按照相应的顺序及策略进行访问。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/04/11/apache-shiro-jwt">https://ding-f.github.io/2022/04/11/apache-shiro-jwt</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/">安全运维</a><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/JavaEE/">JavaEE</a><a class="post-meta__tags" href="/tags/%E7%90%86%E8%AE%BA/">理论</a></div><div class="post_share"><div class="social-share" data-image="/images/shir_jwt/shiro_jwt.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/11/redis" title="Redis"><img class="cover" src="/images/redis/redis.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Redis</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa" title="微信小程序开发"><img class="cover" src="/images/mini_app/mini_app.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">微信小程序开发</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji" title="安康学院校园墙小程序（全栈）"><img class="cover" src="/images/java_dev/graduate.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">安康学院校园墙小程序（全栈）</div></div></a></div><div><a href="/2021/03/08/spring" title="Spring"><img class="cover" src="/images/java_ee/spring.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-08</div><div class="title">Spring</div></div></a></div><div><a href="/2021/03/07/kali-liunx" title="Kali Liunx"><img class="cover" src="/images/kali_linux/kalilinux.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-07</div><div class="title">Kali Liunx</div></div></a></div><div><a href="/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi" title="Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密"><img class="cover" src="/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-28</div><div class="title">Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密</div></div></a></div><div><a href="/2021/04/15/java" title="Java基础"><img class="cover" src="/images/java/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-15</div><div class="title">Java基础</div></div></a></div><div><a href="/2021/06/27/jetbrains-quan-jia-tong" title="JetBrains全家桶"><img class="cover" src="/images/idea_intllij/idea_intellij.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-27</div><div class="title">JetBrains全家桶</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT"><span class="toc-number">1.</span> <span class="toc-text">JWT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT-%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.0.1.</span> <span class="toc-text">JWT 的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT%E7%89%B9%E7%82%B9"><span class="toc-number">1.0.2.</span> <span class="toc-text">JWT特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Session%E5%92%8CJWT%E7%99%BB%E5%BD%95-%E6%95%B4%E5%90%88%E6%96%B9%E6%A1%88"><span class="toc-number">1.0.3.</span> <span class="toc-text">Session和JWT登录 整合方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SessionID%E4%B8%8EJWT-Token-%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.0.4.</span> <span class="toc-text">SessionID与JWT Token 两种方式的对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shiro%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Shiro简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%A6%E4%B9%A0Shiro"><span class="toc-number">2.1.</span> <span class="toc-text">为什么学习Shiro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.</span> <span class="toc-text">基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.3.</span> <span class="toc-text">工作流程介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shiro-%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="toc-number">2.4.</span> <span class="toc-text">Shiro 的架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">身份验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">身份认证流程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

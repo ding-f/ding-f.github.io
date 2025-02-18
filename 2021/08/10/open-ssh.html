@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Open SSH | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Openssh首先安装Openssh 用户名密码方式连接 默认配置文件的路径为 &#x2F;etc&#x2F;ssh&#x2F;sshd_config,可更改是否禁用以密码方式登录、是否显示欢迎信息等…  12# ssh -p 端口号 用户名@主机名或者IPssh -p 22 user@hostname_or_ip  设置新密码 1passwd      #此方式与更改linux当前登录用户密码是一样的，由于ssh连接主机一般">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Open SSH">
+<meta property="og:url" content="https://ding-f.github.io/2021/08/10/open-ssh">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="Openssh首先安装Openssh 用户名密码方式连接 默认配置文件的路径为 &#x2F;etc&#x2F;ssh&#x2F;sshd_config,可更改是否禁用以密码方式登录、是否显示欢迎信息等…  12# ssh -p 端口号 用户名@主机名或者IPssh -p 22 user@hostname_or_ip  设置新密码 1passwd      #此方式与更改linux当前登录用户密码是一样的，由于ssh连接主机一般">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/openssh/openssh-logo.png">
+<meta property="article:published_time" content="2021-08-10T09:16:39.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.106Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="Linux软件">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/openssh/openssh-logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2021/08/10/open-ssh"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Open SSH',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/openssh/openssh-logo.png')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Open SSH</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-10T09:16:39.000Z" title="发表于 2021-08-10 17:16:39">2021-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.106Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2021/08/10/open-ssh" data-flag-title="Open SSH"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/08/10/open-ssh#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2021/08/10/open-ssh" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Openssh"><a href="#Openssh" class="headerlink" title="Openssh"></a>Openssh</h2><p>首先安装Openssh</p>
+<h3 id="用户名密码方式连接"><a href="#用户名密码方式连接" class="headerlink" title="用户名密码方式连接"></a>用户名密码方式连接</h3><blockquote>
+<p>默认配置文件的路径为 <code>/etc/ssh/sshd_config</code>,可更改是否禁用以密码方式登录、是否显示欢迎信息等…</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ssh -p 端口号 用户名@主机名或者IP</span></span><br><span class="line">ssh -p 22 user@hostname_or_ip</span><br></pre></td></tr></table></figure>
+
+<p>设置新密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd      <span class="comment">#此方式与更改linux当前登录用户密码是一样的，由于ssh连接主机一般使用主机用户名&amp;密码</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过公私钥方式连接"><a href="#通过公私钥方式连接" class="headerlink" title="通过公私钥方式连接"></a>通过公私钥方式连接</h3><blockquote>
+<p>腾讯云需要额外特殊配置</p>
+<p>阿里云正常配置</p>
+<p>技巧：拿私钥的一般是连接方，拿公钥的一般是被连接方</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/213/35700">腾讯云：使用 SSH 登录 Linux 实例</a></p>
+<p><a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/ssh-permission-denied-publickey">phoenixnap：How to Fix SSH Failed Permission Denied (publickey,gssapi-keyex,gssapi-with-mic)</a></p>
+</blockquote>
+<p><strong>配置</strong><code>/etc/ssh/sshd_config</code>（非root 命令前加sudo）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin yes		#开启密钥验证</span><br><span class="line">PubkeyAuthentication yes	# 开启密钥验证</span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys		# 公钥文件位置</span><br><span class="line">PasswordAuthentication no	# 密钥验证可选关闭密码验证方式</span><br><span class="line">ChallengeResponseAuthentication no	</span><br><span class="line">GSSAPIAuthentication yes</span><br><span class="line">GSSAPICleanupCredentials no</span><br><span class="line">UsePAM yes</span><br></pre></td></tr></table></figure>
+
+<p>配置完成执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<p>用户端&#x2F;服务器端<strong>生成密钥对</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen      <span class="comment">#生成后连接时的默认密钥对</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -f .ssh/centos		<span class="comment">#指定文件路径名称名称，会生成centos(私) centos.pub(公)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ls</span> ~/.ssh       <span class="comment">#生成后一般有3个文件</span></span><br><span class="line">id_rsa  id_rsa.pub  known_hosts </span><br><span class="line"><span class="comment"># id_rsa，私钥（一般不外传）</span></span><br><span class="line"><span class="comment"># id_rsa.pub，公钥</span></span><br><span class="line"><span class="comment"># known_hosts，本机(连接方)已经连接过的主机记录，可进行删除来解决一部分问题</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>复制公钥到</strong>服务器</p>
+<blockquote>
+<p>由于复制的公钥，只能决定被连接方，黑客截取到公钥也没什么用，除非他喜欢定义自己的服务器为被连接方给你玩。</p>
+<p>复制公钥到服务器的authorized_keys文件&#x2F;删除某个客户端的公钥都是立即生效的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一定先要在客户端生成id_rsa.pub，再将其拷贝到被连接方</span></span><br><span class="line"><span class="comment"># 此处是被连接端</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ls</span> ~/.ssh</span><br><span class="line">id_rsa.pub authorized_keys  id_rsa  id_rsa.pub  known_hosts     <span class="comment">#id_rsa.pub是拷贝过来的</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub &gt;&gt; authorized_keys        <span class="comment"># 公钥写入 ~/.ssh/authorized_keys 文件的作用是允许指定的私钥对应的公钥进行 SSH 密钥验证</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> 600 authorized_keys		<span class="comment"># 如果是腾讯云请执行</span></span><br></pre></td></tr></table></figure>
+
+<p>指定私钥连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> ~/ls</span><br><span class="line">id_rsa         id_rsa.pub   centos centos.pub <span class="comment">#若此处的id_rsa_centOS.pub内容已经复制到服务器 authorized_keys</span></span><br><span class="line"> ~/ ~/ ssh root@fuding.qicp.vip -p 22 -i .ssh/centos		<span class="comment">#回车即可连接成功</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>默认私钥连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> ~/ ~/ ssh root@fuding.qicp.vip -p 22		<span class="comment">#回车即可连接成功（默认会选择id_rsa）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh-agent"><a href="#ssh-agent" class="headerlink" title="ssh-agent"></a>ssh-agent</h3><blockquote>
+<p>SSH代理是一个用于管理SSH密钥的程序。它可以在用户登录时启动，并在用户会话期间持续运行。当用户需要使用SSH密钥进行身份验证时，代理会提供密钥，免去了每次都需要输入密码的麻烦。</p>
+</blockquote>
+<p><strong>设置环境变量</strong></p>
+<p>执行以下命令可输出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-agent -s</span></span><br><span class="line">SSH_AUTH_SOCK=/tmp/ssh-ZXjlJaw2fUZe/agent.28975; export SSH_AUTH_SOCK;</span><br><span class="line">SSH_AGENT_PID=28976; export SSH_AGENT_PID;</span><br></pre></td></tr></table></figure>
+
+<p>执行以下命令后，相关的环境变量（如<code>SSH_AUTH_SOCK</code>和<code>SSH_AGENT_PID</code>）将被设置到当前shell会话中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval $(ssh-agent -s)</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成ssh密钥对</strong></p>
+<p>可以使用<code>ssh-keygen</code>命令生成SSH密钥对，该命令将生成一个公钥文件（通常是<code>id_rsa.pub</code>）和一个私钥文件（通常是<code>id_rsa</code>）。公钥文件是你需要将其添加到目标服务器上的文件。</p>
+<p>添加公钥后的主机为目标主机（服务端），生成密钥对机器是客户端。</p>
+<p><strong>添加私钥到SSH代理</strong></p>
+<p>可以添加多个私钥绑定同一个环境变量中，当连接某个目标主机时，ssh-agent会使用递归的方式加载私钥尝试连接目标主机，直到连接成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用`ssh-add`命令时，它会尝试加载默认的私钥文件`~/.ssh/id_rsa`到ssh-agent</span></span><br><span class="line">ssh-add</span><br></pre></td></tr></table></figure>
+
+<p>以下是<code>ssh-add</code>命令的一些常用用法：</p>
+<ol>
+<li><p>加载默认私钥文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行示例</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-add</span></span><br><span class="line">Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载指定路径的私钥文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add /path/to/private_key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出当前已加载到SSH代理的私钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行示例</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-add -l</span></span><br><span class="line">2048 SHA256:GmzywdSI/RZA5lqnrdtuqFlkZF02sYwOyuyNiAegHaA /root/.ssh/id_rsa (RSA)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从SSH代理中删除指定私钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -d /path/to/private_key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从SSH代理中删除所有私钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -D</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="SSH安全协议传输文件"><a href="#SSH安全协议传输文件" class="headerlink" title="SSH安全协议传输文件"></a>SSH安全协议传输文件</h3><blockquote>
+<p>SSH 不仅仅可以远程连接服务器，同样也可以使用SSH自带的scp命令进行文件上传(本地文件&#x2F;文件夹)</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/358987274">知乎：SCP命令如何使用密钥传输</a></p>
+</blockquote>
+<h4 id="scp文件-目录上传操作"><a href="#scp文件-目录上传操作" class="headerlink" title="scp文件&#x2F;目录上传操作"></a>scp文件&#x2F;目录上传操作</h4><p>上传文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scp 本地文件路径 远程主机用户名@远程主机名或IP:远程文件保存的位置路径</span></span><br><span class="line">scp local_file remote_username@remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加上 -i 可以指定秘钥文件进行上传</li>
+</ul>
+<p>上传目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scp -r 本地文件夹路径 远程主机用户名@远程主机名或IP:远程文件夹保存的位置路径</span></span><br><span class="line">scp -r local_folder remote_username@remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 必须加-r才能复制目录里的所有文件及目录</span></span><br><span class="line">scp -r ./public/* root@ding.fu:/www/wwwroot/Hexo/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="SFTP服务器"><a href="#SFTP服务器" class="headerlink" title="SFTP服务器"></a>SFTP服务器</h4><blockquote>
+<p>文件下载推荐访问OpenSSH自带的sftp服务器(一般情况服务器22端口开启默认就可以使用客户端命令进行连接)</p>
+</blockquote>
+<p>ssh 连接通常是这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用户名@主机名或IP</span></span><br><span class="line"><span class="comment">#-p 小写p指定端口号，一般情况22</span></span><br><span class="line">$ ssh root@immor.com -p 22</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>sftp 用法也一样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#大写p指定端口号且不能写在主机之后</span></span><br><span class="line">$ sftp -P 22  root@immor.com </span><br><span class="line"><span class="comment">#回车后一般情况下会请求输入密码</span></span><br><span class="line"><span class="comment">#如果以前有使用SRA公钥/私钥加密方式连接就会直接进入</span></span><br><span class="line"></span><br><span class="line">sftp&gt;   <span class="comment">#登录成功显示，默认登录进去任何主机都位于`~`之下</span></span><br><span class="line">sftp&gt; <span class="built_in">help</span></span><br><span class="line">Available commands:</span><br><span class="line"></span><br><span class="line">put [-afpR] <span class="built_in">local</span> [remote]         Upload file      <span class="comment">#上传本地的文件或整个目录  文件夹必须加-R/-r</span></span><br><span class="line">get [-afpR] remote [<span class="built_in">local</span>]         Download file    <span class="comment">#得到远程目录的文件或整个目录  文件夹必须加-R/-r</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">bye</span>                                Quit sftp    <span class="comment">#退出sftp</span></span><br><span class="line"><span class="built_in">cd</span> path                            Change remote directory to <span class="string">&#x27;path&#x27;</span>    <span class="comment">#改变目录</span></span><br><span class="line"><span class="built_in">chmod</span> [-h] mode path               Change permissions of file <span class="string">&#x27;path&#x27;</span> to <span class="string">&#x27;mode&#x27;</span>  <span class="comment">#改变远程目录文件权限</span></span><br><span class="line"><span class="built_in">exit</span>                               Quit sftp    <span class="comment">#退出sftp</span></span><br><span class="line"><span class="built_in">help</span>                               Display this <span class="built_in">help</span> text   <span class="comment">#打印帮助信息</span></span><br><span class="line">lcd path                           Change <span class="built_in">local</span> directory to <span class="string">&#x27;path&#x27;</span>     <span class="comment">#改变本地目录</span></span><br><span class="line">lls [ls-options [path]]            Display <span class="built_in">local</span> directory listing  <span class="comment">#列出本地目录</span></span><br><span class="line">lmkdir path                        Create <span class="built_in">local</span> directory   <span class="comment">#创建本地目录</span></span><br><span class="line"><span class="built_in">ln</span> [-s] oldpath newpath            Link remote file (-s <span class="keyword">for</span> symlink)    <span class="comment">#为远程文件创建软链</span></span><br><span class="line">lpwd                               Print <span class="built_in">local</span> working directory    <span class="comment">#打印本地所处目录</span></span><br><span class="line"><span class="built_in">ls</span> [-1afhlnrSt] [path]             Display remote directory listing     <span class="comment">#显示远程目录内容</span></span><br><span class="line"><span class="built_in">mkdir</span> path                         Create remote directory    <span class="comment">#创建远程目录</span></span><br><span class="line"><span class="built_in">pwd</span>                                Display remote working directory     <span class="comment">#显示远程主机所处路径</span></span><br><span class="line">quit                               Quit sftp       <span class="comment">#退出sftp</span></span><br><span class="line">reget [-fpR] remote [<span class="built_in">local</span>]        Resume download file     <span class="comment">#续传下载所需文件</span></span><br><span class="line">rename oldpath newpath             Rename remote file       <span class="comment">#重命名远程文件</span></span><br><span class="line">reput [-fpR] <span class="built_in">local</span> [remote]        Resume upload file       <span class="comment">#续上传本地文件</span></span><br><span class="line"><span class="built_in">rm</span> path                            Delete remote file       <span class="comment">#删除远程文件</span></span><br><span class="line"><span class="built_in">rmdir</span> path                         Remove remote directory      <span class="comment">#删除远程目录</span></span><br><span class="line">symlink oldpath newpath            Symlink remote file      <span class="comment">#创建远程文件符号链接</span></span><br><span class="line">version                            Show SFTP version        <span class="comment">#显示SFTP服务器版本</span></span><br><span class="line">!<span class="built_in">command</span>                           Execute <span class="string">&#x27;command&#x27;</span> <span class="keyword">in</span> <span class="built_in">local</span> shell     <span class="comment">#执行linux命令在本地主机</span></span><br><span class="line">!                                  Escape to <span class="built_in">local</span> shell    <span class="comment">#退出</span></span><br><span class="line">?                                  Synonym <span class="keyword">for</span> <span class="built_in">help</span>     <span class="comment">#和help作用一致</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过配置本地私钥进行连接配置远程公钥的服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sftp -i .ssh/id_rsa_centos -P 222 root@fuding.qicp.vip		<span class="comment">#此处的用户名和主机一定要放到最后，不然会报错</span></span><br><span class="line">sftp  -oIdentityFile=.ssh/id_rsa_centos -oPort=222 root@fuding.qicp.vip		<span class="comment">#这个也是一样的</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="疑难"><a href="#疑难" class="headerlink" title="疑难"></a>疑难</h2><h3 id="ssh易断开问题解决"><a href="#ssh易断开问题解决" class="headerlink" title="ssh易断开问题解决"></a>ssh易断开问题解决</h3><blockquote>
+<p>一个互联网上的机器连接服务器非常容易断开，于是有以下两种方式来解决这个问题，当然也可以两个方式都用上。</p>
+</blockquote>
+<ol>
+<li>在Linux客户端上修改文件<code>/etc/ssh/ssh_config</code>，添加如下内容：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加</span></span><br><span class="line"><span class="string">ServerAliveInterval</span> <span class="number">3</span>		<span class="comment">#每隔3秒客户端给服务器发送一次心跳</span></span><br><span class="line"><span class="string">ServerAliveCountMax</span> <span class="number">9</span>		<span class="comment">#如果服务器没有回复超过9次，主动断开</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在Linux服务器上修改文件<code>/etc/ssh/sshd_config</code></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加</span></span><br><span class="line"><span class="string">ClientAliveInterval</span> <span class="number">3</span>		<span class="comment">#与上面一样的作用</span></span><br><span class="line"><span class="string">ClientAliveCountMax</span> <span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>最后一定要重启配置过的机器的sshd</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Too-many-authentication-failures"><a href="#Too-many-authentication-failures" class="headerlink" title="Too many authentication failures"></a>Too many authentication failures</h3><blockquote>
+<p>如果你确定不是因为你输入了太多次错误密码，那么产生这个问题的一个可能原因是：<br>在发起连接的机器（记为A）的 ~&#x2F;.ssh 目录下放了太多密钥文件，当你连接一台新的服务器并且没有在 ~&#x2F;.ssh&#x2F;config 文件中做过特殊的配置时，默认会挨个尝试所有密钥文件，而这些密钥文件，都不是适配那台新服务器的，所以会连接失败。</p>
+<p>参考:<a target="_blank" rel="noopener" href="https://www.codelast.com/%e5%8e%9f%e5%88%9b-ssh%e8%bf%9e%e6%8e%a5linux%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%97%b6%e6%8f%90%e7%a4%batoo-many-authentication-failures%e7%9a%84%e8%a7%a3%e5%86%b3%e5%8a%9e%e6%b3%95/">编码无悔:ssh连接Linux服务器时提示”Too many authentication failures”的解决办法</a></p>
+</blockquote>
+<ul>
+<li><p>仍然要使用 用户名+密码 的方式登录目标服务器，加“PubkeyAuthentication&#x3D;no”参数来指定不使用密钥文件</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o PubkeyAuthentication=no root@192.168.15.16</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>禁止密码登陆,使用密钥对</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2021/08/10/open-ssh">https://ding-f.github.io/2021/08/10/open-ssh</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux%E8%BD%AF%E4%BB%B6/">Linux软件</a><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a></div><div class="post_share"><div class="social-share" data-image="/images/openssh/openssh-logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/10/vim-bian-ji-qi" title="Vim编辑器"><img class="cover" src="/images/vim/vim.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vim编辑器</div></div></a></div><div class="next-post pull-right"><a href="/2021/06/27/jetbrains-quan-jia-tong" title="JetBrains全家桶"><img class="cover" src="/images/idea_intllij/idea_intellij.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JetBrains全家桶</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/10/vim-bian-ji-qi" title="Vim编辑器"><img class="cover" src="/images/vim/vim.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Vim编辑器</div></div></a></div><div><a href="/2022/05/09/docker" title="Docker"><img class="cover" src="/images/2022-05-09-Docker/R-C.4e7301538895cdc19b0eb5f2a3b60730?rik=wmdxq9xAm5kaPA&riu=http%253a%252f%252fstratechery.com%252fwp-content%252fuploads%252f2014%252f12%252fdocker.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-09</div><div class="title">Docker</div></div></a></div><div><a href="/2022/03/02/networkmanager-xin-ban-te-xing" title="NetWorkManager新版特性"><img class="cover" src="/images/network_manager/network_m.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">NetWorkManager新版特性</div></div></a></div><div><a href="/2022/04/11/redis" title="Redis"><img class="cover" src="/images/redis/redis.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">Redis</div></div></a></div><div><a href="/2022/06/07/typora" title="Typora"><img class="cover" src="/images/2022-06-07-Typora/R.905fcd3e7557ba81dbb4cf09d49b0528?rik=5L%252fG2%252fdBZas4yw&riu=http%253a%252f%252fi0.hdslb.com%252fbfs%252farchive%252fe825965680ffbbd90b6b6020d2c532615da01a47-20220607172319241.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-07</div><div class="title">Typora</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Openssh"><span class="toc-number">1.</span> <span class="toc-text">Openssh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.1.</span> <span class="toc-text">用户名密码方式连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%85%AC%E7%A7%81%E9%92%A5%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">通过公私钥方式连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh-agent"><span class="toc-number">1.3.</span> <span class="toc-text">ssh-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">SSH安全协议传输文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#scp%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E4%B8%8A%E4%BC%A0%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.1.</span> <span class="toc-text">scp文件&#x2F;目录上传操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SFTP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">SFTP服务器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%9A%BE"><span class="toc-number">2.</span> <span class="toc-text">疑难</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh%E6%98%93%E6%96%AD%E5%BC%80%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-number">2.1.</span> <span class="toc-text">ssh易断开问题解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Too-many-authentication-failures"><span class="toc-number">2.2.</span> <span class="toc-text">Too many authentication failures</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Http协议 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概述 HTTP 协议一般指 HTTP（超文本传输协议）。 超文本传输协议（英语：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议，是因特网上应用最为广泛的一种网络传输协议，所有的 WWW 文件都必须遵守这个标准。 HTTP 是为 Web 浏览器与 Web 服务器之间的通信而设计的，但也可以用于其他目的。 HTTP 是一个基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Http协议">
+<meta property="og:url" content="https://ding-f.github.io/2022/04/17/http-xie-yi">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="概述 HTTP 协议一般指 HTTP（超文本传输协议）。 超文本传输协议（英语：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议，是因特网上应用最为广泛的一种网络传输协议，所有的 WWW 文件都必须遵守这个标准。 HTTP 是为 Web 浏览器与 Web 服务器之间的通信而设计的，但也可以用于其他目的。 HTTP 是一个基">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/R-C.6efdc6258152726375358dc6f5119e91?rik=LbcO4y5j3zGfKA&riu=http%253a%252f%252fimage1.slideserve.com%252f1619534%252fhypertext-transfer-protocol-n-20220607174529087.jpg">
+<meta property="article:published_time" content="2022-04-17T02:44:42.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.108Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="协议">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/R-C.6efdc6258152726375358dc6f5119e91?rik=LbcO4y5j3zGfKA&riu=http%253a%252f%252fimage1.slideserve.com%252f1619534%252fhypertext-transfer-protocol-n-20220607174529087.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/04/17/http-xie-yi"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Http协议',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/R-C.6efdc6258152726375358dc6f5119e91?rik=LbcO4y5j3zGfKA&amp;riu=http%253a%252f%252fimage1.slideserve.com%252f1619534%252fhypertext-transfer-protocol-n-20220607174529087.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Http协议</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-17T02:44:42.000Z" title="发表于 2022-04-17 10:44:42">2022-04-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.108Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/04/17/http-xie-yi" data-flag-title="Http协议"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/04/17/http-xie-yi#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/04/17/http-xie-yi" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>HTTP 协议一般指 HTTP（超文本传输协议）。</p>
+<p>超文本传输协议（英语：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议，是因特网上应用最为广泛的一种网络传输协议，所有的 WWW 文件都必须遵守这个标准。</p>
+<p>HTTP 是为 Web 浏览器与 Web 服务器之间的通信而设计的，但也可以用于其他目的。</p>
+<p>HTTP 是一个基于 TCP&#x2F;IP 通信协议来传递数据的（HTML 文件、图片文件、查询结果等）。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/http/http-tutorial.html">菜鸟教程：HTTP教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://jishuin.proginn.com/p/763bfbd67425">程序员栈：说一下什么是http协议无状态以及怎么解决？</a></p>
+</blockquote>
+<ul>
+<li>HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>HTTP是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li>
+<li>HTTP是无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
+</ul>
+<p><strong>简单点理解：</strong></p>
+<p>其中有状态协议就比如SMTP协议，自个人的理解就好比两个人之间的对唱，我唱第一句的时候你得唱第二句，但HTTP协议算是一个人点歌一个人唱，每次单点不会影响到第二次点歌。</p>
+<p><strong>无状态协议缺点</strong></p>
+<p>无状态协议的主要缺点在于：单个请求需要的所有信息都必须要包含在请求中一次发送到服务端，这导致<strong>单个消息的结构需要比较复杂，必须能够支持大量元数据</strong>，因此 HTTP 消息的解析要比其他许多协议都要复杂得多。同时，这也导致了<strong>相同的数据在多个请求上往往需要反复传输</strong>，例如同一个连接上的每个请求都需要传输 <code>Host</code>、<code>Authentication</code>、 <code>Cookies</code>、 <code>Server</code> 等往往是完全重复的元数据，在一定程度上<strong>降低了协议的效率</strong>。</p>
+<p>一句话来说：请求头太大，还要反复传输。</p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><blockquote>
+<p>再一次偶然的使用手机搭建服务器的过程中发现，服务端软件被请求时候打印出的结果是好多请求数据来自不同的端口，而且这些端口是不断动态变化的，猜测是因为HTTP协议的无状态导致TCP协议不停的断开和连接，所以导致客户端的源端口不停的变化，但问了ChatGPT之后才发现不完全是这个原因。</p>
+</blockquote>
+<p><strong>TCP</strong></p>
+<p>TCP连接的建立过程中，客户端会选择一个空闲的本地端口作为源端口，并将其包含在连接请求中发送给服务器。服务器收到连接请求后，会分配一个本地端口作为目标端口，并将其发送回客户端以建立连接。这样，源端口和目标端口在连接建立后就确定下来，并且<strong>在连接的生命周期内保持不变</strong>。</p>
+<p>需要注意的是，在客户端与服务器之间的每个TCP连接中，源端口和目标端口都是独立的。这意味着，<strong>当多个连接同时存在时</strong>，每个连接都可以使用不同的端口号，而不会产生冲突。</p>
+<p>因此，虽然TCP端口在连接建立前是动态分配的，但在<strong>连接建立后，源端口和目标端口通常保持不变</strong>。这有助于确保数据能够正确地传递到正确的连接和应用程序中。</p>
+<p><strong>动态变化的原因</strong></p>
+<p><strong>我</strong>：您说的：HTTP协议的无状态性与客户端端口的动态变化之间没有直接的因果关系。客户端端口的动态变化是操作系统的行为，而HTTP的无状态性是协议设计的特点。这句话难道说HTTP协议的无状态到底会不会导致TCP端口的动态变化，没有关系吗</p>
+<p><strong>ChatGPT</strong>：我向您道歉，之前的回答可能不够清晰。我会尝试更清楚地解释。</p>
+<p>HTTP协议的无状态性与TCP端口的动态变化之间没有直接因果关系。这两个概念在网络通信中是独立的。</p>
+<p>HTTP协议的无状态性是指每个HTTP请求与响应之间是相互独立的，服务器不会保留任何关于客户端的状态信息。每个请求都是独立的事务，服务器只根据请求中的信息进行处理，而不依赖之前的请求或客户端的状态。</p>
+<p>而TCP端口的动态变化是操作系统的行为，用于避免端口冲突和管理网络连接。操作系统会动态分配空闲的本地端口给客户端使用，确保每个连接具有唯一的源端口。</p>
+<p>虽然在建立HTTP连接时客户端会使用动态分配的源端口，但这是因为操作系统的行为，而不是HTTP协议本身的特性。无状态性和端口动态分配是两个独立的概念，它们之间没有直接的因果关系。</p>
+<p>因此，<strong>HTTP协议的无状态性并不直接导致TCP端口的动态变化</strong>。无状态性是HTTP协议的设计特点，而<strong>端口的动态分配是操作系统在处理网络连接时的行为</strong>。</p>
+<h2 id="HTTP消息结构"><a href="#HTTP消息结构" class="headerlink" title="HTTP消息结构"></a>HTTP消息结构</h2><h3 id="请求-响应"><a href="#请求-响应" class="headerlink" title="请求&amp;响应"></a>请求&amp;响应</h3><blockquote>
+<p>某次实验在axiso的请求响应拦截器上分别定义了打印请求数据和打印响应数据,结果如下:</p>
+</blockquote>
+<p><img src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/image-20230614223504502.png" alt="image-20230614223504502"></p>
+<p>以上数据是一个登陆接口请求和响应</p>
+<p><strong>GET请求</strong></p>
+<p><img src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/image-20230614222252420.png" alt="image-20230614222252420"></p>
+<p>以上分别请求网页配置状态接口 和 网页右侧树状导航栏接口 </p>
+<p><strong>GET响应</strong></p>
+<p><img src="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/image-20230614223959815.png" alt="image-20230614223959815"></p>
+<p>以上分别响应网页配置状态接口 和 网页右侧树状导航栏接口 </p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><blockquote>
+<p>GET方法是HTTP协议中最常见的方法之一,一般情况下，使用POST方法进行文件下载并不常见</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/04/17/http-xie-yi">https://ding-f.github.io/2022/04/17/http-xie-yi</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a><a class="post-meta__tags" href="/tags/%E7%90%86%E8%AE%BA/">理论</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/%E5%8D%8F%E8%AE%AE/">协议</a></div><div class="post_share"><div class="social-share" data-image="/images/2022-04-17-Http%E5%8D%8F%E8%AE%AE/R-C.6efdc6258152726375358dc6f5119e91?rik=LbcO4y5j3zGfKA&amp;riu=http%253a%252f%252fimage1.slideserve.com%252f1619534%252fhypertext-transfer-protocol-n-20220607174529087.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/09/docker" title="Docker"><img class="cover" src="/images/2022-05-09-Docker/R-C.4e7301538895cdc19b0eb5f2a3b60730?rik=wmdxq9xAm5kaPA&amp;riu=http%253a%252f%252fstratechery.com%252fwp-content%252fuploads%252f2014%252f12%252fdocker.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Docker</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/11/redis" title="Redis"><img class="cover" src="/images/redis/redis.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redis</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/01/12/ipv6" title="IPv6"><img class="cover" src="/images/ipv6/ipv6-earth-2021-1-1280x720.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">IPv6</div></div></a></div><div><a href="/2022/07/19/node-js" title="NodeJS&amp;前端工程化"><img class="cover" src="/images/2022-07-19-node-js/nodeJS-training-360edukraft.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-19</div><div class="title">NodeJS&amp;前端工程化</div></div></a></div><div><a href="/2022/12/23/nginx" title="Nginx"><img class="cover" src="/images/2022-12-23-Nginx/what-is-nginx.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-23</div><div class="title">Nginx</div></div></a></div><div><a href="/2023/04/27/javascript" title="JavaScript"><img class="cover" src="/images/2023-04-27-JavaScript/R-C.3833d4b070ca7c198ebc5a2ba765a32erik=z7tex%252bOSycssNQ&riu=http%253a%252f%252fwww.techsors.com%252fwp-content%252fuploads%252f2016%252f02%252fJavascript.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-27</div><div class="title">JavaScript</div></div></a></div><div><a href="/2023/05/05/typescript" title="TypeScript"><img class="cover" src="/images/2023-05-05-TypeScript/R-C.0985ec3bbc58712c69c384d75d089db8rik=aygODZtZRK4%252fsA&riu=http%253a%252f%252fmspoweruser.com%252fwp-content%252fuploads%252f2016%252f07%252ftypescript-cover-image.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-05</div><div class="title">TypeScript</div></div></a></div><div><a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji" title="安康学院校园墙小程序（全栈）"><img class="cover" src="/images/java_dev/graduate.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">安康学院校园墙小程序（全栈）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">2.</span> <span class="toc-text">实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">HTTP消息结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94"><span class="toc-number">3.1.</span> <span class="toc-text">请求&amp;响应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text">下载</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

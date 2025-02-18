@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>浅谈Node-Vue-ES6-调试-编译-前端原理 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引入话题 我在使用Vue2开发一个前端项目，由于在代码中经常使用console.log()打印输出某些重要的参数，不过有一个地方忘记注释掉console.log()，此时浏览器正处于开发者模式，打印输出以下数据，这些数据是前端请求后端，我进行了console.log()打印。上线环境中这种console.log()打印肯定是要注释掉的，因为浏览器打印出来的同时后面会标明  运行方式  consol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈Node-Vue-ES6-调试-编译-前端原理">
+<meta property="og:url" content="https://ding-f.github.io/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="引入话题 我在使用Vue2开发一个前端项目，由于在代码中经常使用console.log()打印输出某些重要的参数，不过有一个地方忘记注释掉console.log()，此时浏览器正处于开发者模式，打印输出以下数据，这些数据是前端请求后端，我进行了console.log()打印。上线环境中这种console.log()打印肯定是要注释掉的，因为浏览器打印出来的同时后面会标明  运行方式  consol">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/vuejs-es6modules.jpeg">
+<meta property="article:published_time" content="2023-08-10T03:10:14.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.111Z">
+<meta property="article:author" content="付鼎">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/vuejs-es6modules.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浅谈Node-Vue-ES6-调试-编译-前端原理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/vuejs-es6modules.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">浅谈Node-Vue-ES6-调试-编译-前端原理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-10T03:10:14.000Z" title="发表于 2023-08-10 11:10:14">2023-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.111Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao" data-flag-title="浅谈Node-Vue-ES6-调试-编译-前端原理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引入话题"><a href="#引入话题" class="headerlink" title="引入话题"></a>引入话题</h2><blockquote>
+<p>我在使用Vue2开发一个前端项目，由于在代码中经常使用<code>console.log()</code>打印输出某些重要的参数，不过有一个地方忘记注释掉<code>console.log()</code>，此时浏览器正处于开发者模式，打印输出以下数据，这些数据是前端请求后端，我进行了<code>console.log()</code>打印。上线环境中这种<code>console.log()</code>打印肯定是要注释掉的，因为浏览器打印出来的同时后面会标明</p>
+</blockquote>
+<p>运行方式</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810113806485.png" alt="image-20230810113806485"></p>
+<p><code>console.log()</code>打印输出</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810113413477.png" alt="image-20230810113413477"></p>
+<p>如果将相关<code>index.vue:159</code> 处的代码在VSCode中注释掉就会出现<code>VM1634 94736:177</code>，这是因为 <code>index.vue:159</code> 处的代码已经注释掉了，浏览器中的此处源代码也会注释，我还以为会剩下编译打包后的静态代码</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810114559619.png" alt="image-20230810114559619"></p>
+<p>为了验证<code>VM1634 94736:177</code>是否为编译打包后的静态代码，我重新打包为H5的方式，使用Python自带的HTTP服务器重新部署了一个服务</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810143813342.png" alt="image-20230810143813342"></p>
+<p>再次运行到之前的<code>console.log()</code></p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810144345542.png" alt="image-20230810144345542"></p>
+<p>点进<code>pages-admin-set_conf-index.720cbcbe.js</code>，此文件其实是由源码<code>src/pages/admin/set_conf/index.vue</code>编译而来，但是有两个结果，虽然代码基本一样的，但如下可做一个对比，静态编译后的代码和<code>&quot;serve&quot;: &quot;npm run dev:h5&quot;</code>方式中<code>VM1634 94736:177</code>代码逻辑基本一致，但有一点<code>VM1634 94736:177</code>的代码文件<code>VM1650 94736</code>是不能在浏览器的缓存文件中被找到的，但是</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810145253630.png" alt="&quot;serve&quot;: &quot;npm run dev:h5&quot; 方式"></p>
+<p>编译后的静态代码文件可以右击文件导航栏点击<code>Reveal in sidebar</code>找到</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810150616857.png" alt="image-20230810150616857"></p>
+<p>由此可以猜测可能是Chrome浏览器开发工程师防止你在编写Vue代码的时候突然在源码中注释掉<code>console.log()</code>随后保存代码，浏览器调试工具的命令行还是存在的，之前打印结果对应的源码已经不存在了，只是临时保存一份静态代码而已，说白了还是对应静态文件代码文件的某段相关代码。</p>
+<h2 id="浏览器调试"><a href="#浏览器调试" class="headerlink" title="浏览器调试"></a>浏览器调试</h2><blockquote>
+<p>经过以上的过程，还发现了<code>&quot;serve&quot;: &quot;npm run dev:h5&quot;</code>方式在浏览器进入开发者模式可以在调试的过程中通过浏览器的命令行导航到源代码，对，没错就是源代码，由此浏览器调试就是一个相比<code>console.log()</code>方式更为便捷高效率的调试方式。</p>
+<p>但是有一点，我记得在Vue项目的配置文件中需要开开启相应的功能才可以在浏览器端看到原原本本的代码，如果不开启，就只能看到编译后的文件，编译后的文件相对源代码还是很难看懂的，虽然也可以打断点进行调试。</p>
+</blockquote>
+<h3 id="浏览器源码结构"><a href="#浏览器源码结构" class="headerlink" title="浏览器源码结构"></a>浏览器源码结构</h3><p>如果你的项目配置开启了源码调试功能，就可以看到以下结果，上方的目录结构是网页静态文件，下方是开启了源码调试功能才会有的，且可使用<code>console.log()</code>打印出指示源码的位置：</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810153015671.png" alt="image-20230810153015671"></p>
+<p>指示位置<code>index.vue:159</code>，鼠标点击可找到文件</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810154002373.png" alt="image-20230810154002373"></p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810154020649.png" alt="文件在浏览器缓存中路径"></p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810153715685.png" alt="image-20230810153715685"></p>
+<h3 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h3><p>点击源码中的某一行的数字，就会打上一个断点，当你再次刷新同一页并保证可以执行到<code>console.log(data)</code>处时，你就会发现代码会停止运行到此处，并且携带了好多可见到的参数，这个和后端调试几乎差不多的方便，让我感到惊喜：</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810155830113.png" alt="image-20230810155830113"></p>
+<p>同时网页中会出现如下</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810155910558.png" alt="image-20230810155910558"></p>
+<p>这个时候你还可以直接再点击一个后面一定会执行的代码行数，打一个新的断点，并点击继续运行的图标就会发现再次停住，并且你可以完全的看到代码执行后数据处理的展现，非常方便调试</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810160708102.png" alt="image-20230810160708102"></p>
+<h2 id="编译打包"><a href="#编译打包" class="headerlink" title="编译打包"></a>编译打包</h2><blockquote>
+<p>简述一下我自己对这个过程的理解，编译过程其实就是将Vue代码编译成了浏览器直接可以执行的代码，虽然编译后逻辑依旧还是JavaScript，但听说Vue是基于虚拟DOM的方式，我看了编译后的代码文件结构，找到一处HTML页面代码，其余只剩下css、js，这个结果可能就是实现虚拟DOM的方式了，虚拟DOM是通过编译后的js代码逻辑实现的，同时编译后js代码会加载css文件中虚拟DOM所需渲染样式，于是只使用一个HTML文件来引导加载js和css文件，此HTML文件相当于一个 BIOS (Basic Input&#x2F;Output System）是一种计算机固件,它在计算机加电时首先运行，然后初始化硬件组件，如内存、硬盘、显示适配器等，最后加载操作系统。</p>
+</blockquote>
+<p>以下是HTML引导文件内容，浏览器目录结构</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810164416303.png" alt="image-20230810164416303"></p>
+<p>代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span></span><br><span class="line">            页面标题</span><br><span class="line">        <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> coverSupport = <span class="string">&#x27;CSS&#x27;</span> <span class="keyword">in</span> <span class="variable language_">window</span> &amp;&amp; <span class="keyword">typeof</span> <span class="variable constant_">CSS</span>.<span class="property">supports</span> === <span class="string">&#x27;function&#x27;</span> &amp;&amp; (<span class="variable constant_">CSS</span>.<span class="title function_">supports</span>(<span class="string">&#x27;top: env(a)&#x27;</span>) || <span class="variable constant_">CSS</span>.<span class="title function_">supports</span>(<span class="string">&#x27;top: constant(a)&#x27;</span>))</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&#x27;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&#x27;</span> + (coverSupport ? <span class="string">&#x27;, viewport-fit=cover&#x27;</span> : <span class="string">&#x27;&#x27;</span>) + <span class="string">&#x27;&quot; /&gt;&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/static/index.5841170f.css&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;/static/js/chunk-vendors.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;/static/js/index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">strong</span>&gt;</span>Please enable JavaScript to continue.<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> userAgent = navigator.<span class="property">userAgent</span></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (navigator.<span class="property">userAgent</span> !== userAgent) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">/* eslint-disable no-undef */</span></span></span><br><span class="line"><span class="language-javascript">      location.<span class="title function_">reload</span>()</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript">&#125;)()</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><blockquote>
+<p>分别对比了 ‘打包成静态网站的代码’ ‘对应依赖中的源码’ 和 ‘<code>&quot;serve&quot;: &quot;npm run dev:h5&quot;</code>环境下的静态网页代码’ 得出以下结论</p>
+</blockquote>
+<p>首先明确一点，一个vue页面被编译后打包成一个js文件，比如以下的两个页面对应：</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810174825728.png" alt="image-20230810174825728"></p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810174704878.png" alt="image-20230810174704878"></p>
+<p><strong>对比三者代码</strong></p>
+<p>对应依赖中的源码</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810234745557.png" alt="image-20230810234745557"></p>
+<p><code>&quot;serve&quot;: &quot;npm run dev:h5&quot;</code>环境下</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810221524826.png" alt="image-20230810221524826"></p>
+<p>打包成静态网站的代码</p>
+<p><img src="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/image-20230810221225368.png" alt="image-20230810221225368"></p>
+<p>对比以上可发现node_modules&#x2F;crypto-js&#x2F;aes.js文件中三个结果的代码特征</p>
+<ul>
+<li>源码打包到单页面js文件，<code>&quot;serve&quot;: &quot;npm run dev:h5&quot;</code>方式基本上没太多差别，处理了一部分逻辑，比如运行下来必是true</li>
+<li>如果编译为H5静态网页，就会发现好多变量&#x2F;函数使用几个字母代替，从而减小打包体积，同时以上的的换行&#x2F;空格也会被删除</li>
+</ul>
+<p><strong>crypto-js</strong></p>
+<p>是一个集成好多加密算法的依赖，但如果使用以下导入方式，就会将所有加密算法代码打包进单页面js文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CryptoJS</span> <span class="keyword">from</span> <span class="string">&#x27;crypto-js&#x27;</span>;</span><br><span class="line"><span class="comment">// CommonJS </span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CryptoJS</span> = <span class="built_in">require</span>(<span class="string">&#x27;crypto-js&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>解决方案</p>
+<ul>
+<li><p>使用按需加载（懒加载）的方式来导入 <code>crypto-js</code> 的特定部分，而不是整个库</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="variable constant_">AES</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;crypto-js&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>ProvidePlugin</code> 和 <code>expose-loader</code>：</strong> 这两个插件都是用来将模块或变量设置为全局变量，从而在你的代码中不需要显式导入模块。但是它们的使用场景有些不同。</p>
+<ul>
+<li><p><code>ProvidePlugin</code>：它用于自动加载模块，并将它们设置为全局变量，以便在代码中使用。你可以在 Webpack 配置中配置该插件，指定模块和对应的全局变量名。比如，你可以配置 <code>ProvidePlugin</code> 将 <code>crypto-js</code> 设置为全局变量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy code<span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="title class_">ProvidePlugin</span>(&#123;</span><br><span class="line">      <span class="title class_">CryptoJS</span>: <span class="string">&#x27;crypto-js&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>expose-loader</code>：它可以在需要时显式地将模块暴露到全局变量上。你需要在代码中显式导入模块，然后使用 <code>expose-loader</code> 将模块设置为全局变量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy code<span class="comment">// 在需要的文件中</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;expose-loader?CryptoJS!crypto-js&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong><code>externals</code> 配置：</strong> <code>externals</code> 配置用于告诉 Webpack 你的代码中使用的模块是外部可用的，并且不应该将其打包进最终的输出文件中。它是为了避免重复打包某些库，而期望它们在运行时从全局环境获取。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">javascriptCopy code<span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">externals</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;crypto-js&#x27;</span>: <span class="string">&#x27;CryptoJS&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="浏览器运行"><a href="#浏览器运行" class="headerlink" title="浏览器运行"></a>浏览器运行</h2><blockquote>
+<p>浏览器访问编译后的静态代码网站，浏览器输入地址后面的部分一般就是前端路由了，点击页面自然会路由到那些对应的页面并下载到浏览器缓存，点击过多少页面，就会加载多少页面代码，并不是全部加载到本地，可能可以写一些逻辑实现所有静态代码加载到本地，运行时只调用后端接口，来提升加载速度吧。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao">https://ding-f.github.io/2023/08/10/qian-tan-node-vue-es6-diao-shi-da-bao</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/2023-08-10-%E6%B5%85%E8%B0%88Node-Vue-ES6-%E8%B0%83%E8%AF%95-%E6%89%93%E5%8C%85/vuejs-es6modules.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/26/mongodb" title="MongoDB"><img class="cover" src="/images/2023-08-26-MongoDB/mongodb-header-o.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MongoDB</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/07/mi-ma-xue" title="密码学"><img class="cover" src="/images/2023-08-07-%E5%AF%86%E7%A0%81%E5%AD%A6/v2-7b4c29b859eeaf727dc5dead97fda067_r.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">密码学</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E8%AF%9D%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">引入话题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">浏览器调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BA%90%E7%A0%81%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">浏览器源码结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%AD%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">断点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">编译打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85"><span class="toc-number">3.1.</span> <span class="toc-text">打包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">浏览器运行</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>微服务 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介 维基上对其定义为：一种软件开发技术- 面向服务的体系结构（SOA）架构样式的一种变体，它提倡将单一应用程序划分成一组小的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相沟通（通常是基于HTTP的RESTful API）。每个服务都围绕着具体业务进行构建，并且能够独立地部署到生产环境、类生产环境等。另外，应尽量避免统一的、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务">
+<meta property="og:url" content="https://ding-f.github.io/2022/06/18/wei-fu-wu">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="简介 维基上对其定义为：一种软件开发技术- 面向服务的体系结构（SOA）架构样式的一种变体，它提倡将单一应用程序划分成一组小的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相沟通（通常是基于HTTP的RESTful API）。每个服务都围绕着具体业务进行构建，并且能够独立地部署到生产环境、类生产环境等。另外，应尽量避免统一的、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg">
+<meta property="article:published_time" content="2022-06-18T12:35:16.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.108Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="微服务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/06/18/wei-fu-wu"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微服务',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">微服务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-18T12:35:16.000Z" title="发表于 2022-06-18 20:35:16">2022-06-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.108Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/06/18/wei-fu-wu" data-flag-title="微服务"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/06/18/wei-fu-wu#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/06/18/wei-fu-wu" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>维基上对其定义为：一种软件开发技术- 面向服务的体系结构（SOA）架构样式的一种变体，它提倡将单一应用程序划分成一组小的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相沟通（通常是基于HTTP的RESTful API）。每个服务都围绕着具体业务进行构建，并且能够独立地部署到生产环境、类生产环境等。另外，应尽量避免统一的、集中式的服务管理机制，对具体的一个服务而言，应根据上下文，选择合适的语言、工具对其进行构建。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BE%AE%E6%9C%8D%E5%8A%A1/18758759">百度百科：微服务</a></p>
+</blockquote>
+<h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><blockquote>
+<p>现阶段首先提及到微服务一定离不开虚拟化，现阶段的微服务实现基本上都是基于虚拟化和容器进行开展的。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.sumologic.com/blog/lxc-lxd-linux-containers/">LXC and LXD: Explaining Linux Containers</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/276054509">知乎：IaaS、PaaS、SaaS的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1541194">腾讯云：四种正确的微服务部署方式</a></p>
+</blockquote>
+<h3 id="了解LXC-LXD和Docker-CoreOS"><a href="#了解LXC-LXD和Docker-CoreOS" class="headerlink" title="了解LXC&amp;LXD和Docker&amp;CoreOS"></a>了解LXC&amp;LXD和Docker&amp;CoreOS</h3><p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/Containers.png" alt="LXC Vs Docker"></p>
+<p><strong>除了以上的对比，重要的还有：</strong></p>
+<ul>
+<li><p>This means you should consider the type of deployment you will have to manage before making a choice regarding LXD or Docker (or CoreOS, which is similar to Docker in this regard). Are you going to be spinning up large numbers of containers quickly based on generic app images? If so, go with Docker or CoreOS. Alternatively, if you intend to virtualize an entire OS, or to run a persistent virtual app for a long period, LXD will likely prove a better solution.</p>
+<p>这意味着在选择LXD或Docker(或CoreOS，在这方面与Docker类似)之前，应该考虑必须管理的部署类型。你是否打算基于通用的应用图像快速旋转大量容器?如果是，请使用Docker或CoreOS。另外，如果您打算虚拟化整个操作系统，或者长时间运行持久的虚拟应用程序，那么LXD可能是更好的解决方案。</p>
+</li>
+<li><p>The second factor to consider is your host environment. LXD only supports Linux—and, at least for now, it’s really only documented for use with Ubuntu. So if your servers run another flavor of Linux or Windows, LXD won’t work well for you. In contrast, Docker and CoreOS are pretty portable across almost any Linux-based OS, and you can now even run Docker natively on Windows and OS X.</p>
+<p>第二个要考虑的因素是宿主环境。LXD只支持Linux，至少目前，它只在文档中描述了与Ubuntu一起使用。因此，如果您的服务器运行另一种类型的Linux或Windows, LXD将不能很好地为您工作。相比之下，Docker和CoreOS在几乎所有基于linux的操作系统上都是非常可移植的，你现在甚至可以在Windows和OS X上本机运行Docker。</p>
+</li>
+</ul>
+<h3 id="了解云计算三种服务模型"><a href="#了解云计算三种服务模型" class="headerlink" title="了解云计算三种服务模型"></a>了解云计算三种服务模型</h3><p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-7f0bfa7aa952a47c7f1a180ff9a2c687_r.jpg" alt="preview"></p>
+<p><strong>云服务三种类别：</strong></p>
+<ul>
+<li><p>IaaS (Infrastructure as a Service),基础架构即服务</p>
+<ul>
+<li>说白了就是公司不用直接买硬件搞硬件维护了和系统维安全维护等，直接找IaaS提供商，直接购买虚拟机按需购买虚拟机配置。</li>
+<li>例如：AWS，阿里云，腾讯云，华为云</li>
+</ul>
+</li>
+<li><p>PaaS(Platform as a Service).平台即服务</p>
+<ul>
+<li>PaaS主要由构建软件或应用程序的开发人员使用，PaaS解决方案为开发人员提供了创建独特的、可定制软件的平台。</li>
+<li>例如：Spring Cloud、Microsoft Windows Azure，百度BAE、新浪SAE、京东云擎JAE</li>
+</ul>
+</li>
+<li><p>SaaS(Software as a Service),软件即服务</p>
+<ul>
+<li>租用已开发好的软件，开发、维护、升级换代都不用考虑，更方便、更安全。</li>
+<li>例如：企业微信、Microsoft Office 365</li>
+</ul>
+</li>
+</ul>
+<h3 id="发展阶段"><a href="#发展阶段" class="headerlink" title="发展阶段"></a>发展阶段</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnnews/article/details/79441488">CDSN-kimmking：如何向小白讲述软件架构发展历程？</a></p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/">凤凰架构</a></p>
+</blockquote>
+<p><strong>四大发展阶段</strong></p>
+<ul>
+<li>单体架构阶段<ul>
+<li>简单单体模式</li>
+<li>单体架构MVC模式</li>
+</ul>
+</li>
+<li>分布式架构阶段<ul>
+<li>SOA 架构阶段</li>
+<li>微服务架构阶段（MSA）</li>
+</ul>
+</li>
+</ul>
+<h4 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h4><p><strong>简单单体模式</strong></p>
+<blockquote>
+<p>严重影响开发效率。如果一个使用 Java 的简单单体项目代码超过 100 万行，那么在一台笔记本电脑上修改了代码后执行自动编译，可能需要等待十分钟以上，并且内存可能不够编译过程使用，这是非常难以忍受的。</p>
+</blockquote>
+<ul>
+<li>适用于规模较小的系统开发。</li>
+<li>项目开发，直接上手，质量换速度。</li>
+<li>项目的依赖关系混乱，修改一处代码，可能影响一大片的功能无法正常使用。</li>
+<li>项目的任何业务逻辑调整都会导致整个系统的重新打包、部署、停机、再启动。</li>
+<li>扩展性受限，业务存在性能问题，就要部署几个完整的实例集群，或加上负载均衡，才能保障系统性能可以支撑用户的使用。</li>
+</ul>
+<p><strong>MVC模式</strong></p>
+<blockquote>
+<p>由于简单单体存在诸多问题，MVC模式很好的将简单单体模式直接分为三层模型，模型层（Model Layer）、视图层（View Layer）、控制器层（Controller Layer）。发展的同时出现了ORM简化数据操作层，相比于简单单体模式的开发效率提升了，但也存在未解决的问题，可用性、扩展性等问题依旧存在。</p>
+</blockquote>
+<ul>
+<li>把整个系统拆解成了很多粒度较小的零件，简单、直观、可以非常有效的上手。</li>
+<li>有利于分配开发工作，投入大量的后端工程师进行大规模工程的开发。</li>
+<li>基于MVC模式，发展了ORM等简化数据操作层，以及响应的代码生成工具等，提升软件开发效率。</li>
+</ul>
+<p><strong>前后端分离模式</strong></p>
+<blockquote>
+<p>JSP或页面Tag技术，比如FreeMaker、Velocity等模板技术，导致前端技术和后端技术处理的逻辑和数据耦合到一起，使得前后端开发工程师很难只处于各自独立的领域进行开发。随着富网络应用程序（Rich Internet Application，RIA）概念的兴起，比如Ajax 和 JQuery 框架，越来越多的业务逻辑需要在浏览器端实现，此时前端技术发展到了一个百花齐放的阶段，特别是NodeJS前端技术成功应用，使前端技术成为了一个与后端技术领域并驾齐驱的阶段。</p>
+</blockquote>
+<ul>
+<li>Web 系统就由原来的 BS 系统，变成了提供 UI 和交互的前端 B 系统，提供数据接口的后端 S 系统。</li>
+<li>前后端开发人员可进行并行开发工作，前端团队负责前端系统开发，后端团队负责后端系统开发，两个团队一起制定前后端系统的数据接口。</li>
+<li>前后端系统可以各自独立发展和维护。这一条准则不仅仅是单体架构独有的，所有的 Web 系统都可以按照这种方式进行设计。</li>
+</ul>
+<h4 id="分布式架构阶段"><a href="#分布式架构阶段" class="headerlink" title="分布式架构阶段"></a>分布式架构阶段</h4><p><strong>SOA 架构阶段</strong></p>
+<blockquote>
+<p>SOA 在 21 世纪最初的十年里曾经盛行一时，有 IBM 等一众行业巨头厂商为其呐喊冲锋，吸引了不少软件开发商、尤其是企业级软件的开发商的跟随，最终却还是偃旗息鼓，沉寂了下去。本质原因：过于严格的规范定义带来过度的复杂性。而构建在 SOAP 基础之上的 ESB、BPM、SCA、SDO 等诸多上层建筑，进一步加剧了这种复杂性。开发信息系统毕竟不是作八股文章，过于精密的流程和理论也需要懂得复杂概念的专业人员才能够驾驭。SOA 诞生的那一天起，就已经注定了它只能是少数系统阳春白雪式的精致奢侈品，它可以实现多个异构大型系统之间的复杂集成交互，却很难作为一种具有广泛普适性的软件架构风格来推广。SOA 最终没有获得成功的致命伤与当年的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/EJB">EJB</a>如出一辙，尽管有 Sun Microsystems 和 IBM 等一众巨头在背后力挺，EJB 仍然败于以 Spring、Hibernate 为代表的“草根框架”，可见一旦脱离人民群众，终究会淹没在群众的海洋之中，连信息技术也不曾例外过。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/soa.html">凤凰架构：SOA 时代</a></p>
+</blockquote>
+<p><strong>微服务架构（MSA）</strong></p>
+<blockquote>
+<p>微服务是一种通过多个小型服务组合来构建单个应用的架构风格，这些服务围绕业务能力而非特定的技术标准来构建。各个服务可以采用不同的编程语言，不同的数据存储技术，运行在不同的进程之中。服务采取轻量级的通信机制和自动化的部署机制实现通信与运维。</p>
+<p>虽有诸多的优点，比如测试阶段，一个全流程的测试跨8-10个系统。数据的一致性、系统监控等都会因为拆分太细，复杂度大幅度增加。如果代码设计上有一个涉及到多个不同的微服务，那么团队协调配合也会增加。合理的组件边界应该如何确定，这是非常困难的。</p>
+<p>Martin Fowler 建议：不要一上来就以微服务架构作为系统设计的起点。相反地，要用一个单块系统作为起点，并保持其模块化。当这个单块系统出现了问题后，再将其分解为微服务。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/microservices.html">凤凰架构：微服务时代</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/667399.html">51CTO-老_张：微服务架构超强讲解，通俗易懂，写得太好了！</a></p>
+</blockquote>
+<ul>
+<li>更加彻底的组件化，系统内部各个组件之间解耦的比较干脆，单个系统的规模小很多；</li>
+<li>可以组建每个服务独立的维护团队，利于各自团队独立的开发和维护；</li>
+<li>每个微服务独立部署，只要服务间的接口稳定，各系统可以相互之间互不干扰的独立发展；</li>
+<li>微服务架构使得每个服务本身可以独立的扩展，性能出现瓶颈，优化或增加这个服务的配置即可。</li>
+</ul>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/329ac3e0b9a967d6a063384d245aa3d0.jpg" alt="传统开发模式"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/6e84190e6ec0481de7e2b58c2bb8e356.jpg" alt="微服务架构的设计"></p>
+<p>越来越多的论坛、社区、blog以及互联网行业巨头开始对微服务进行讨论、实践，可以说这样更近一步推动了微服务的发展和创新。而微服务的流行，Martin Fowler功不可没。</p>
+<p>这老头是个奇人，特别擅长抽象归纳和制造概念。特别是微服务这种新生的名词，都有一个特点： <strong>一解释就懂，一问就不知，一讨论就打架。</strong></p>
+<p>Martin Fowler是国际著名的OO专家，敏捷开发方法的创始人之一，现为ThoughtWorks公司的首席科学家。在面向对象分析设计、UML、模式、软件开发方法学、XP、重构等方面，都是世界顶级的专家，现为Thought Works公司的首席科学家。Thought Works是一家从事企业应用开发和——集成的公司。早在20世纪80年代，Fowler就是使用对象技术构建多层企业应用的倡导者，他著有几本经典书籍：《企业应用架构模式》、《UML精粹》和《重构》等。             </p>
+<p>—— 百度百科</p>
+<p>This common manifestation of SOA has led some microservice advocates to reject the SOA label entirely, although others consider microservices to be one form of SOA , perhaps service orientation done right. Either way, the fact that SOA means such different things means it’s valuable to have a term that more crisply defines this architectural style</p>
+<p>由于与 SOA 具有一致的表现形式，这让微服务的支持者更加迫切地拒绝再被打上 SOA 的标签，尽管有一些人坚持认为微服务就是 SOA 的一种变体形式，也许从面向服务方面这个方面来说是对的，但无论如何，SOA 与微服务都是两种不同的东西，正因如此，使用一个别的名称来简明地定义这种架构风格就显得更有必要。</p>
+<p>—— Martin Fowler &#x2F; James Lewis，<a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html">Microservices</a></p>
+<p><strong>无服务时代</strong></p>
+<blockquote>
+<p>如果说微服务架构是分布式系统这条路的极致，那无服务架构，也许就是“不分布式”的云端系统这条路的起点。</p>
+<p>大家看看就好，是一种预言新技术发展的架构。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="http://icyfenix.cn/architecture/architect-history/serverless.html">凤凰架构：无服务时代</a></p>
+</blockquote>
+<h2 id="微服务部署方式"><a href="#微服务部署方式" class="headerlink" title="微服务部署方式"></a>微服务部署方式</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.kubernetes.org.cn/2250.html">K8s中文社区-雷伟:CoreOS VS Docker容器大战，之容器引擎</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1035241">腾讯云-DevOps时代：DevOps 三剑客：Dev，Ops and Jenkins</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Andya/p/12402674.html">博客园-Andya：OpenShift-介绍 </a></p>
+<p>OpenShift可以安装在RHEL（Red Hat Enterprise Linux）和RHELAH（Red Hat Eneterprise Linux Atomic Host）、CentOS和Fedora上；K8S最好在Unbuntu、Fedora和Debian上运行，可部署在任何主要的IaaS上，如IBM、AWS、Azure、GCP和阿里云等云平台上。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266873694">腾讯云-互联网老辛：【DevOps】持续集成的流程及jenkins的介绍</a></p>
+<p>Jenkins是一个开源的、可扩展的持续集成、交付、部署（软件&#x2F;代码的编译、打包、部署）的基于web界面的平台。允许持续集成和持续交付项目，无论用的是什么平台，可以处理任何类型的构建或持续集成。jenkins 是用java开发的，一款开源的自动化服务器，我们只需要通过界面或者jenkinsfile告诉jenkins，执行什么任务，什么时间执行，就可以</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/column/2176">腾讯云-Linyb极客之路 四种正确的微服务部署方式</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110249846">知乎哈-喽沃德先生：一篇文章搞懂 Spring Cloud 是什么</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/667399.html">51CTO-老_张：微服务架构超强讲解，通俗易懂，写得太好了！</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huanglitao0912/article/details/82314123">CSDN-爱码三疯：Spring Cloud与Docker的完美结合，运维可以不用拜菩萨啦</a></p>
+</blockquote>
+<h3 id="Java微服务方案"><a href="#Java微服务方案" class="headerlink" title="Java微服务方案"></a>Java微服务方案</h3><h4 id="采用Swarm将多台安装Docker的物理机统一管理"><a href="#采用Swarm将多台安装Docker的物理机统一管理" class="headerlink" title="采用Swarm将多台安装Docker的物理机统一管理"></a>采用Swarm将多台安装Docker的物理机统一管理</h4><blockquote>
+<p>Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。<strong>它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。</strong></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6946421472499859487">稀土掘金-code泷：Docker Swarm 搭建集群环境(高可用)</a></p>
+</blockquote>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/83b8d14a86b0413a8295b485b6528b8a~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="Swarm的基本架构"></p>
+<p>假如公司有多台物理主机或者云服务主机，我们的主机中都安装了Docker，为了方便统一管理运行的容器和将这些主机视为一个大的Docker主机，或者将分布在不同物理&#x2F;虚拟机主机的容器之间形成一个大的子网，供所有的容器进行之间跨主机跨容器互访提供了便捷。</p>
+<h4 id="将服务打包成镜像"><a href="#将服务打包成镜像" class="headerlink" title="将服务打包成镜像"></a>将服务打包成镜像</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1589863">腾讯云-louiezhou001：Dockerfile究竟是做什么的</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/docker-library/mysql/blob/275e9822858884a85434448cb6777683692365e6/8.0/Dockerfile.oracle">GitHub：Mysql8.0 Dockerfile</a></p>
+</blockquote>
+<p> Docker一般采用“一个容器一个进程”的方式，而我们每个微服务也都是一个spring boot应用单进程，直接采用java -jar的形式即可运行应用，那么我们只需将我们的一个服务打包到一个镜像中即可。每个<a href="#docker-compose%E8%BF%9B%E8%A1%8C%E6%9C%8D%E5%8A%A1%E7%BC%96%E6%8E%92">服务</a>下面都会有一个专门的Docker目录，里面放置了Dockerfile及镜像中需要用到的文件，说白了Dockerfile就是为了使用Maven的插件docker-maven-plugin构建镜像时指挥此插件构建镜像时候需要拿什么资源，就比如，Java项目就必须拿JDK，我的镜像需要运行在什么样的系统，比如Linux，就会拿相应的Linux内核等。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70.png" alt="maven的docker打包的插件"></p>
+<h4 id="配置Jenkins"><a href="#配置Jenkins" class="headerlink" title="配置Jenkins"></a>配置Jenkins</h4><blockquote>
+<p>参考： </p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266873694">腾讯云-互联网老辛：【DevOps】持续集成的流程及jenkins的介绍</a></p>
+<p>Jenkins是一个开源的、可扩展的持续集成、交付、部署（软件&#x2F;代码的编译、打包、部署）的基于web界面的平台。允许持续集成和持续交付项目，无论用的是什么平台，可以处理任何类型的构建或持续集成。jenkins 是用java开发的，一款开源的自动化服务器，我们只需要通过界面或者jenkinsfile告诉jenkins，执行什么任务，什么时间执行，就可以。</p>
+</blockquote>
+<p>有人可能有疑问，通过上面的Maven进行打包镜像不就可以，其实通过Jenkins批量进行更为方便，可以更方便进行交付、编译、打包、部署的工具，且是一个基于web界面的平台，通过下图shell操作后Jenkins会将打好的镜像包批量推送到比如阿里云容器服务中的镜像库中（没部署，只是上传了）。参考资料发现Jenkins会通过GitHub等发现代码改动自动进行打包部署上线。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220619182845035.png" alt="Jenkins批量打包推送到自己的镜像库"></p>
+<h4 id="docker-compose进行服务编排"><a href="#docker-compose进行服务编排" class="headerlink" title="docker-compose进行服务编排"></a>docker-compose进行服务编排</h4><blockquote>
+<p>微服务架构的应用系统中一般包含若干个微服务，每个微服务一般都会部署多个实例，如果每个微服务都要手动启停，维护的工作量会很大。Docker Compose可以轻松的管理容器，降低维护工作量。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1373786eff75">简书-AaronSimon：Docker Compose编排微服务</a></p>
+</blockquote>
+<p><strong>Compose 中有两个重要的概念：</strong></p>
+<ul>
+<li>服务 ( service )：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例</li>
+<li>项目 ( project )：由一组关联的应用容器组成的一个完整业务单元，在 dockercompose.yml 文件中定义。<br> Compose 的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理。可见，一个项目可以由多个服务（容器）关联而成， Compose 面向项目进行管理</li>
+</ul>
+<p><strong>基本步骤</strong></p>
+<ol>
+<li>在 Dockfile 中定义你的应用环境，使其可以在任何地方重现该环境。</li>
+<li>在 <code>docker-compose.yml</code> 中定义组成应用程序的服务，以便它们可以在隔离的环境中一起运行。</li>
+<li>运行<code>dcoker-compose up</code>，Compose 将启动并运行整个应用程序。</li>
+</ol>
+<p><strong>部署服务示例，请查看本节参考（使用docker compose部署spring cloud项目）。</strong></p>
+<p>部署前项目中的maven配置文件必须先满足含有<code>docker-maven-plugin</code>，且每个Module已经含有docker文件夹，其中包含Dockerfile和镜像中需要用到的文件。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/image-20220619220553226.png" alt="像这样"></p>
+<p><strong>编排示例</strong></p>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>端口</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eureka-server</td>
+<td>1111,1112</td>
+<td>服务注册与发现中心（高可用部署）</td>
+</tr>
+<tr>
+<td>demo</td>
+<td>8102</td>
+<td>服务1</td>
+</tr>
+<tr>
+<td>feign-upload_first</td>
+<td>8100</td>
+<td>服务2</td>
+</tr>
+<tr>
+<td>feign_upload_second</td>
+<td>8101</td>
+<td>服务</td>
+</tr>
+</tbody></table>
+<p>首先要在两个服务中编写好配置，这里演示配置方式为.properties文件：</p>
+<ul>
+<li>application-peer1.properties</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port</span>=<span class="string">1111</span></span><br><span class="line"><span class="attr">spring.application.name</span>=<span class="string">eureka-server</span></span><br><span class="line"><span class="attr">eureka.instance.hostname</span>=<span class="string">peer1</span></span><br><span class="line"><span class="attr">eureka.client.service-url.defaultZone</span>=<span class="string">http://peer2:1112/eureka/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>application-peer2.properties</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port</span>=<span class="string">1112</span></span><br><span class="line"><span class="attr">spring.application.name</span>=<span class="string">eureka-server</span></span><br><span class="line"><span class="attr">eureka.instance.hostname</span>=<span class="string">peer2</span></span><br><span class="line"><span class="attr">eureka.client.service-url.defaultZone</span>=<span class="string">http://peer1:1111/eureka/</span></span><br></pre></td></tr></table></figure>
+
+<p>写入docker-compose-manage.yml，目的是将这两个服务直接可以运行起来，并设置好正确的端口映射到物理主机：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;2&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="comment"># 指定服务名称</span></span><br><span class="line">  <span class="attr">peer1:</span></span><br><span class="line"> 		<span class="comment">#指定Eureka镜像地址</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ibase/eureka-server:0.0.1-SNAPSHOT</span>			</span><br><span class="line">    <span class="comment">#映射端口到物理主机</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;1111:1111&quot;</span>		</span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">spring.profiles.active=peer1</span></span><br><span class="line">  <span class="attr">peer2:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ibase/eureka-server:0.0.1-SNAPSHOT</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">peer2</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;1112:1112&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">spring.profiles.active=peer2</span></span><br></pre></td></tr></table></figure>
+
+<p>自己写的服务，将使用docker-compose-services.yml，一样是上面的道理，直接就可以配置端口并运行起来服务：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;2&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="comment"># 指定服务名称</span></span><br><span class="line">  <span class="attr">feign_upload_first:</span></span><br><span class="line">    <span class="comment">#指定服务所使用的镜像名称</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ibase/feign_upload_first:0.0.1-SNAPSHOT</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;8100:8100&quot;</span></span><br><span class="line">  <span class="attr">feign_upload_second:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ibase/feign_upload_second:0.0.1-SNAPSHOT</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;8101:8101&quot;</span></span><br><span class="line">  <span class="attr">demo:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ibase/demo:0.0.1-SNAPSHOT</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;8102:8102&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>启动</strong></p>
+<p>执行如下命令执行以上编排配置文件来批量启动服务，但后面的直接可以用Swarm启动即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose docker-compose-manage.yml up</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose docker-compose-services.yml up</span><br></pre></td></tr></table></figure>
+
+<p><strong>再附上一个docker-compose编排配置代码：</strong></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620002539559.png" alt="img"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620002643990.png" alt="其中数据卷映射配置"></p>
+<p>以上指定了该服务启动时的运行环境、运行数量、数据卷映射（可以创建NAS数据卷做为通用数据存储）、指向的阿里云SLB等，结合着spring cloud的统一配置服务，我们可以通过采用不同的docker-compose编排来区分不同环境。</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620002751555.png" alt="img"></p>
+<h4 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h4><p>此步骤直接可以用Docker-compose命令可以进行，但是Docker的 Swarm直接就可以操作图形化进行编排。</p>
+<ol>
+<li><p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620003630280.png" alt="创建一个应用基本信息填写"></p>
+</li>
+<li><p>将之前maven配置的编排模板号填入：</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/image-20220620004131132.png" alt="之前定义的系统模板版本号"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620003804107.png" alt="点击使用已有编排模板"></p>
+<p>比如我之前的模板版本号是2.5.0</p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620004236250.png" alt="填入镜像版本号"></p>
+<p><img src="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/70-20220620004259975.png" alt="完成"></p>
+</li>
+</ol>
+<h4 id="部署到生产环境"><a href="#部署到生产环境" class="headerlink" title="部署到生产环境"></a>部署到生产环境</h4><p>测试通过之后需要部署到生产环境，传统的部署方式要么是通过对测试通过的代码包进行拷贝，并对配置文件进行更改；要么就是通过svn&#x2F;git中的版本控制从测试到生产的迁移，再进行jenkins的预生产环境测试，但是无论哪种部署方式都很容易出问题：</p>
+<ul>
+<li>漏改、错改配置文件；</li>
+<li>代码合并&#x2F;迁移过程中产生新的问题；</li>
+<li>生产、测试服务器环境不同，环境差异造成的问题。但docker镜像是一个单进程的应用，而且只要宿主机运行docker没问题，那么docker重的环境也不会出现任何问题，我们将通过测试的应用从测试环境迁移到生产环境就很简单了，只用提供不同的docker-compose服务编排，生产环境直接通过变更配置更改镜像版本号即可。</li>
+</ul>
+<p><strong>日志采集</strong>详见参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/huanglitao0912/article/details/82314123">CSDN-爱码三疯：Spring Cloud与Docker的完美结合，运维可以不用拜菩萨啦</a>。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/06/18/wei-fu-wu">https://ding-f.github.io/2022/06/18/wei-fu-wu</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></div><div class="post_share"><div class="social-share" data-image="/images/2022-06-18-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/28/swagger3" title="SpringBoot Swagger3"><img class="cover" src="/images/2022-06-28-Swagger3/spring-boot-swagger.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SpringBoot Swagger3</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/07/typora" title="Typora"><img class="cover" src="/images/2022-06-07-Typora/R.905fcd3e7557ba81dbb4cf09d49b0528?rik=5L%252fG2%252fdBZas4yw&amp;riu=http%253a%252f%252fi0.hdslb.com%252fbfs%252farchive%252fe825965680ffbbd90b6b6020d2c532615da01a47-20220607172319241.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Typora</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji" title="安康学院校园墙小程序（全栈）"><img class="cover" src="/images/java_dev/graduate.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">安康学院校园墙小程序（全栈）</div></div></a></div><div><a href="/2022/07/27/java-wei-fu-wu" title="Java 微服务"><img class="cover" src="/images/2022-07-27-Java-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-27</div><div class="title">Java 微服务</div></div></a></div><div><a href="/2021/03/10/arch-linux" title="Arch Linux"><img class="cover" src="/images/arch_linux/arch-linux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-10</div><div class="title">Arch Linux</div></div></a></div><div><a href="/2021/04/06/mysql" title="MySQL"><img class="cover" src="/images/mariadb/mysql-mariadb.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-06</div><div class="title">MySQL</div></div></a></div><div><a href="/2021/08/10/open-ssh" title="Open SSH"><img class="cover" src="/images/openssh/openssh-logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3LXC-LXD%E5%92%8CDocker-CoreOS"><span class="toc-number">2.1.</span> <span class="toc-text">了解LXC&amp;LXD和Docker&amp;CoreOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B8%89%E7%A7%8D%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">了解云计算三种服务模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5"><span class="toc-number">2.3.</span> <span class="toc-text">发展阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">单体架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E9%98%B6%E6%AE%B5"><span class="toc-number">2.3.2.</span> <span class="toc-text">分布式架构阶段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">微服务部署方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%A1%88"><span class="toc-number">3.1.</span> <span class="toc-text">Java微服务方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%87%E7%94%A8Swarm%E5%B0%86%E5%A4%9A%E5%8F%B0%E5%AE%89%E8%A3%85Docker%E7%9A%84%E7%89%A9%E7%90%86%E6%9C%BA%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86"><span class="toc-number">3.1.1.</span> <span class="toc-text">采用Swarm将多台安装Docker的物理机统一管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E6%9C%8D%E5%8A%A1%E6%89%93%E5%8C%85%E6%88%90%E9%95%9C%E5%83%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">将服务打包成镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEJenkins"><span class="toc-number">3.1.3.</span> <span class="toc-text">配置Jenkins</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-compose%E8%BF%9B%E8%A1%8C%E6%9C%8D%E5%8A%A1%E7%BC%96%E6%8E%92"><span class="toc-number">3.1.4.</span> <span class="toc-text">docker-compose进行服务编排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8"><span class="toc-number">3.1.5.</span> <span class="toc-text">创建应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.6.</span> <span class="toc-text">部署到生产环境</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

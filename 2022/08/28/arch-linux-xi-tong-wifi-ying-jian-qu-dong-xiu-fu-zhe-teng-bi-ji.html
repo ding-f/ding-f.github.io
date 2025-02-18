@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Arch Linux 系统 WiFi硬件驱动修复折腾笔记 | 铸鼎_</title><meta name="author" content="付鼎"><meta name="copyright" content="付鼎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于本文 此文为了解决我的无线网卡Intel(R) Dual Band Wireless AC 7265, REV&#x3D;0x210的问题，WiFi经常断网，只要一出现断网就必须进行好几次的重启才可以让我的Arch Linux系统正常加载7265D网卡驱动。自从换了个笔记本这问题已经困扰我半年了，此问题差点导致我从一个Linux爱好者变为果粉（过分），没办法MacOS实在是太方便了，但是7月份">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arch Linux 系统 WiFi硬件驱动修复折腾笔记">
+<meta property="og:url" content="https://ding-f.github.io/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji">
+<meta property="og:site_name" content="铸鼎_">
+<meta property="og:description" content="关于本文 此文为了解决我的无线网卡Intel(R) Dual Band Wireless AC 7265, REV&#x3D;0x210的问题，WiFi经常断网，只要一出现断网就必须进行好几次的重启才可以让我的Arch Linux系统正常加载7265D网卡驱动。自从换了个笔记本这问题已经困扰我半年了，此问题差点导致我从一个Linux爱好者变为果粉（过分），没办法MacOS实在是太方便了，但是7月份">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ding-f.github.io/images/2022-08-28-Arch-Linux-%E7%B3%BB%E7%BB%9F-WiFi%E7%A1%AC%E4%BB%B6%E9%A9%B1%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/OIP-C.jpeg">
+<meta property="article:published_time" content="2022-08-27T19:00:31.000Z">
+<meta property="article:modified_time" content="2024-11-25T17:23:15.109Z">
+<meta property="article:author" content="付鼎">
+<meta property="article:tag" content="ArchLinux">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ding-f.github.io/images/2022-08-28-Arch-Linux-%E7%B3%BB%E7%BB%9F-WiFi%E7%A1%AC%E4%BB%B6%E9%A9%B1%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/OIP-C.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ding-f.github.io/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Arch Linux 系统 WiFi硬件驱动修复折腾笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-26 01:23:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/2022-08-28-Arch-Linux-%E7%B3%BB%E7%BB%9F-WiFi%E7%A1%AC%E4%BB%B6%E9%A9%B1%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/OIP-C.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="铸鼎_"><img class="site-icon" src="/images/logo.png"/><span class="site-name">铸鼎_</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Arch Linux 系统 WiFi硬件驱动修复折腾笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-27T19:00:31.000Z" title="发表于 2022-08-28 03:00:31">2022-08-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-25T17:23:15.109Z" title="更新于 2024-11-26 01:23:15">2024-11-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji" data-flag-title="Arch Linux 系统 WiFi硬件驱动修复折腾笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="关于本文"><a href="#关于本文" class="headerlink" title="关于本文"></a>关于本文</h2><blockquote>
+<p>此文为了解决我的无线网卡Intel(R) Dual Band Wireless AC 7265, REV&#x3D;0x210的问题，WiFi经常断网，只要一出现断网就必须进行好几次的重启才可以让我的Arch Linux系统正常加载7265D网卡驱动。自从换了个笔记本这问题已经困扰我半年了，此问题差点导致我从一个Linux爱好者变为果粉（过分），没办法MacOS实在是太方便了，但是7月份我已经从大学毕业，进入工作岗位，那时在Mac上为了搭建Java项目的环境，只为做一个Mysql两个版本的兼容，折腾的还是回到了Arch Linux，不过无线网卡问题依旧，虽然已经解决我的多MySql兼容（使用Docker），这使我更加坚信作为一个Linux爱好者能为生产带来更高的效率以及便利。当然，可能有人不同意这个说法，但如果你使用Linux足够熟练，确实会发现在Linux环境下做开发比MacOS更适合！！</p>
+<p>切换到Linux上来又有一个新的问题，那就是之前使用Arch Linux其实也永不到超过16G的运行内存，当时换内存的时候直接就删除了Swap分区（听网上说内存大就没必要使用Swap，等…），但进入工作岗位企业项目部署到我的Arch Linux 上后才发现系统非常的卡，卡的几乎不能控制鼠标！但是，还是太过相信网上的瞎结论，其次坚信Arch 非常强大，可能是中了什么挖矿脚本，于是在刚开启的时候就使用top命令监控程序行为。令我意外的是竟然真的出现了一个程序占满了CPU，一个名为<strong>kswapd0</strong>的程序出现在top监控范围！就刻意的搜索到了这样一篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465487828">kswapd0挖矿病毒的发现与清除</a>，一看这个<code>kswapd0</code>程序的名字就知道，估计和Swap有关系，于是找资料查看此程序到底是个什么作用，在国外找到了一篇这样的文章<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu">kswapd0 is taking a lot of cpu</a>最后才明白原来不是什么挖矿脚本，只是缺少了Swap分区导致,添加上Swap分区就解决了以上问题。</p>
+<p>不过网卡问题依旧存在，折腾时间估计加起来能有两周了，一直在和问题做斗争，终于在第二周还是解决了这个最棘手的问题，因为过程中这个7265的网卡修好一次坏掉，修好一又坏掉！！反反复复折腾好几次，因为在<a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi">Linux Wireless：iwlwifi</a>网站上看到Intel官网已经不更新这个网卡在Linux上的驱动固件了，看国内文章没啥技术水平，只能去国外的Linux论坛上寻求问题的解决方案，但结果只有一些变通的方法，我一致认为7265D网卡只能认灾，只想骂Intel。当我只能硬改无线网卡或者买Linux系统支持的USB网卡 时（我已经买了！！！），通过<a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/users/drivers">Linux Wireless：Existing Linux Wireless drivers</a> 文章根据厂商驱动挑选适配Linux的网卡设备，由于为什么要买后期会出专门一个这样的文章。正好由于网卡和Swap问题恰好在有了一次交集，就是我在修复我一致认为i的驱动问题的时候又不小心把休眠到Swap功能给搞没了（即：Linux电脑的休眠功能），又翻了一遍 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation">Arch WiKi：Power management&#x2F;Suspend and hibernate</a>，在修复的过程中执行<code>mkinitcpio -P</code>出现了以往并不注意的<code>==&gt; WARNING: Possibly missing firmware for module: xxx</code>，心理一想我的电脑问题最近开机报错挺多（网卡驱动报错也在其中），就想着搜索一下这些报错，并根据 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Possibly_missing_firmware_for_module_XXXX">Arch WiKi：mkinitcpio</a> 提示安装了报错所需要的软件包，重启电脑，网卡竟然可以正常工作了，不过在测试过程中还是相对于之前没有WiFi问题的Arch笔记本来说还是存在一些小的Bug,不过还是解决了使用7265D网卡的大部分痛点，下文就是修复此网卡的所有过程了，尽情欣赏。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Installing_driver/firmware">Network configuration&#x2F;Wireless</a></p>
+</blockquote>
+<h2 id="udev"><a href="#udev" class="headerlink" title="udev"></a>udev</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Udev">udev</a> takes an inventory of your hardware and loads appropriate modules (drivers) for your corresponding hardware, which will in turn allow creation of a network <em>interface</em>.</p>
+<p>列出硬件清单，并为所有硬件加载对应的驱动，过程将允许创建网络接口。</p>
+</blockquote>
+<h3 id="udev加载可能存在的问题"><a href="#udev加载可能存在的问题" class="headerlink" title="udev加载可能存在的问题"></a>udev加载可能存在的问题</h3><p>If the proper module is not loaded by udev on boot, simply <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Kernel_modules#Manual_module_handling">load it manually</a>. If udev loads more than one driver for a device, the resulting conflict may prevent successful configuration. Make sure to <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Blacklist">blacklist</a> the unwanted module.</p>
+<p>如果Arch启动时udev没有加载正确的模块，就需要手动加载。如果加载多个设备的驱动，可能会产生冲突并阻止加载。确保不需要加载的硬件放入黑名单。</p>
+<h2 id="检查设备状态"><a href="#检查设备状态" class="headerlink" title="检查设备状态"></a>检查设备状态</h2><p>To check if the driver for your card has been loaded, check the output of the <code>lspci -k</code> or <code>lsusb -v</code> command, depending on if the card is connected by PCI(e) or USB.</p>
+<p>如果你的驱动已加硬件，可通过<code>lspci -k</code> &#x2F; <code>lsusb -v</code>命令显示：</p>
+<ul>
+<li><code>lspci -k</code> 显示pci设备加载情况</li>
+<li><code>lsusb -v</code>  显示usb设备加载情况（包：<a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/core/x86_64/usbutils/">usbutils</a>）</li>
+</ul>
+<p>If the card is a USB device, running <code>dmesg | grep usbcore</code> as root should give something like <code>usbcore: registered new interface driver rtl8187</code> as output.</p>
+<p>如果你的网卡为usb设备，<code>dmesg | grep usbcore</code>命令可以输出（例）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbcore: registered new interface driver rtl8187</span><br></pre></td></tr></table></figure>
+
+<p>Also check the output of the <code>ip link</code> command to see if a wireless interface was created; usually the naming of the wireless <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_interfaces">network interfaces</a> starts with the letter “w”, e.g. <code>wlan0</code> or <code>wlp2s0</code>. Then bring the interface up with:</p>
+<p>还要使用命令<code>ip link</code> 检查 无限接口是否被创建，通常无线接口名称为w开头。</p>
+<p>可使用此命令，开启接口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link set interface up</span><br></pre></td></tr></table></figure>
+
+<p> 通常输出：</p>
+<ul>
+<li>SIOCSIFFLAGS: No such file or directory，缺少驱动（固件）文件。</li>
+<li>更多：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Device_driver">https://wiki.archlinux.org/title/Network_configuration/Wireless#Device_driver</a></li>
+</ul>
+<p>检查驱动是否被加载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dmesg | grep firmware</span><br><span class="line">[   7.148259] iwlwifi 0000:02:00.0: loaded firmware version 39.30.4.1 build 35138 op_mode iwldvm</span><br></pre></td></tr></table></figure>
+
+<p>如果没有输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将会加载 iwlwifi 相关加载日志</span></span><br><span class="line">dmesg | grep iwlwifi</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="linux-firmware"><a href="#linux-firmware" class="headerlink" title="linux-firmware"></a>linux-firmware</h2><blockquote>
+<p>Many firmware images are provided by the <a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware">linux-firmware</a> package; however, proprietary firmware images are not included and have to be installed separately. This is described in <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Installing_driver/firmware">#Installing driver&#x2F;firmware</a>.</p>
+<p>大多数硬件<a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware">linux-firmware</a>已经提供，但专有硬件的驱动还需要自行安装。</p>
+</blockquote>
+<h3 id="安装驱动-固件"><a href="#安装驱动-固件" class="headerlink" title="安装驱动&#x2F;固件"></a>安装驱动&#x2F;固件</h3><blockquote>
+<p>安装前建议查看，其中包括Linux无线设备驱动，和驱动支持的硬件： <a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/users/drivers">existing Linux wireless drivers</a></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi">Linux Wireless：iwlwifi</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.netspotapp.com/cn/blog/wifi-security/wifi-encryption-and-security.html">NetSpot：无线安全协议： WEP, WPA, WPA2, 和 WPA3</a></p>
+</blockquote>
+<h4 id="关于我的设备"><a href="#关于我的设备" class="headerlink" title="关于我的设备"></a>关于我的设备</h4><p>我的无线网卡设备是<code>Intel(R) Dual Band Wireless AC **7265**, REV=0x210</code>，上述链接找到iwlwifi驱动（Intel家的），且iwlwifi需要加载7265D的驱动 *-29.ucode，由于<strong>官网是这么说的</strong>：</p>
+<p>The revision number of a 7265D device is 0x210, if you see any other number, you have a 7265 device.</p>
+<p><strong>且非常重要的一句话是：</strong></p>
+<p>Those devices will not be supported by the newest firmware versions: the last firmware that was released for 3160, 7260 and 7265 is -17.ucode. Bug fixes will be ported to -17.ucode. 7265D, 3165 and 3168’s latest firmware version is -29.ucode. </p>
+<p>这些设备将不被支持最新的固件版本，为3160,7260和7265发布的最后一个固件是-17. code。Bug修复将被移植到-17.ucode。7265D, 3165和3168的最新固件版本是-29.ucode。</p>
+<p><strong>等于说我的设备7265D不再支持更新驱动！！</strong></p>
+<p>所以我一致认为我的Wifi不停的断网是这个设备固件随着Linux更新而使得7265D这个设备固件越来越不兼容导致的问题。</p>
+<h3 id="网络接口管理"><a href="#网络接口管理" class="headerlink" title="网络接口管理"></a>网络接口管理</h3><p>the wireless ones are controlled with <em>ip</em> from the <a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=iproute2">iproute2</a> package.</p>
+<p>Managing a wireless connection requires a basic set of tools. Either use a <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_manager">network manager</a> or use one of the following directly:</p>
+<p>管理无线连接需要一套基本的工具，使用网络 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_manager">network manager</a>或者使以下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Software</th>
+<th align="center">Package</th>
+<th align="center"><a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/developers/documentation/wireless-extensions">WEXT</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/developers/documentation/nl80211">nl80211</a></th>
+<th align="center">WEP</th>
+<th align="center">WPA&#x2F;WPA2</th>
+<th align="center"><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Archiso">Archiso</a> [<a target="_blank" rel="noopener" href="https://gitlab.archlinux.org/archlinux/archiso/-/blob/master/configs/releng/packages.x86_64">1]</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://hewlettpackard.github.io/wireless-tools/Tools.html">wireless_tools</a>1</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=wireless_tools">wireless_tools</a></td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/users/documentation/iw">iw</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=iw">iw</a></td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Wpa_supplicant">wpa_supplicant</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=wpa_supplicant">wpa_supplicant</a></td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Iwd">iwd</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=iwd">iwd</a></td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+</tbody></table>
+<h4 id="iw-and-wireless-tools-comparison"><a href="#iw-and-wireless-tools-comparison" class="headerlink" title="iw and wireless_tools comparison"></a>iw and wireless_tools comparison</h4><p>两个常用工具常用命令比较。</p>
+<table>
+<thead>
+<tr>
+<th align="center"><em>iw</em> command</th>
+<th align="center"><em>wireless_tools</em> command</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">iw dev <em>wlan0</em> link</td>
+<td align="center">iwconfig <em>wlan0</em></td>
+<td align="center">Getting link status.</td>
+</tr>
+<tr>
+<td align="center">iw dev <em>wlan0</em> scan</td>
+<td align="center">iwlist <em>wlan0</em> scan</td>
+<td align="center">Scanning for available access points.</td>
+</tr>
+<tr>
+<td align="center">iw dev <em>wlan0</em> set type ibss</td>
+<td align="center">iwconfig <em>wlan0</em> mode ad-hoc</td>
+<td align="center">Setting the operation mode to <em>ad-hoc</em>.</td>
+</tr>
+<tr>
+<td align="center">iw dev <em>wlan0</em> connect <em>your_essid</em></td>
+<td align="center">iwconfig <em>wlan0</em> essid <em>your_essid</em></td>
+<td align="center">Connecting to open network.</td>
+</tr>
+<tr>
+<td align="center">iw dev <em>wlan0</em> connect <em>your_essid</em> 2432</td>
+<td align="center">iwconfig <em>wlan0</em> essid <em>your_essid</em> freq 2432M</td>
+<td align="center">Connecting to open network specifying channel.</td>
+</tr>
+<tr>
+<td align="center">iw dev <em>wlan0</em> connect <em>your_essid</em> key 0:<em>your_key</em></td>
+<td align="center">iwconfig <em>wlan0</em> essid <em>your_essid</em> key <em>your_key</em></td>
+<td align="center">Connecting to WEP encrypted network using hexadecimal key.</td>
+</tr>
+<tr>
+<td align="center">iwconfig <em>wlan0</em> essid <em>your_essid</em> key s:<em>your_key</em></td>
+<td align="center">Connecting to WEP encrypted network using ASCII key.</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">iw dev <em>wlan0</em> set power_save on</td>
+<td align="center">iwconfig <em>wlan0</em> power on</td>
+<td align="center">Enabling power save.</td>
+</tr>
+</tbody></table>
+<p>不过建议如果使用命令行工具，建议的顺序：iwd &gt; iw &gt; wireless_tools，我用的是前两个。</p>
+<h4 id="扫描接入点"><a href="#扫描接入点" class="headerlink" title="扫描接入点"></a>扫描接入点</h4><p>If it displays <code>Interface does not support scanning</code>, then you probably forgot to install the firmware. In some cases this message is also displayed when not running <em>iw</em> as root.</p>
+<p>如果不支持扫描，你可能忘记安装相应的固件。还有一些原因是没有使用root权限运行<code>iw</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iw dev interface scan | less</span><br></pre></td></tr></table></figure>
+
+<p><strong>Tip:</strong> Depending on your location, you might need to set the correct <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Respecting_the_regulatory_domain">regulatory domain</a> in order to see all available networks.</p>
+<p>取决于你的地区，你可能需要设置一下，才可以。</p>
+<h4 id="无线管理领域设置"><a href="#无线管理领域设置" class="headerlink" title="无线管理领域设置"></a>无线管理领域设置</h4><blockquote>
+<p>设置管理领域作用在于，每个国家有每个国家对WiFi功率或者频段的一个标准，当然我们可以改变这个标准在我们的Linux机器上，比如设置无线设备的功率，这个将会扫描到更多的无线网络或开启热点时让更多的设备可以进行发现，提升无线网络的稳定性。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Tips_and_tricks">Arch Linux WiKi：Wireless</a></p>
+</blockquote>
+<p>In the 2.4GHz band, the allowed channels are 1-11 for the US, 1-14 for Japan, and 1-13 for most of the rest of the world. In the 5GHz band, the rules for allowed channels are much more complex.</p>
+<p>在2.4GHz频段，美国允许的频道为1-11，日本为1-14，世界其他大部分地区为1-13。在5GHz频段，允许的信道规则要复杂得多。</p>
+<p><strong>这段我个人觉得5G WiFi频段的功率要低于2.4G：</strong></p>
+<p>This is derived from transmit power&#x2F;“tx power”, and is measured in <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/DBm">dBm&#x2F;mBm (1dBm&#x3D;100mBm) or mW (log scale)</a>. In the 2.4GHz band, the maximum is 30dBm in the US and Canada, 20dBm in most of Europe, and 20dBm-30dBm for the rest of the world. In the 5GHz band, maximums are usually lower. </p>
+<p>这是由发射功率&#x2F;“发送功率”导出的，以dBm&#x2F;mBm (1dBm&#x3D;100mBm)或mW(对数尺度)测量。在2.4GHz频段，美国和加拿大的最大值为30dBm，欧洲大部分地区为20dBm，世界其他地区为20dBm-30dBm。在5GHz频段，最大值通常较低。</p>
+<p><strong>改变信道来在信道拥挤的情况下使用比如更稳定的2.4G频段，但是可能会影响其他无线设备，比如使用这个功能将CN使用的信道范围改为JP信道的使用范围。从而避免信道拥挤造成的2.4G不稳定</strong></p>
+<p>Misconfiguring the regdomain can be useful - for example, by allowing use of an unused channel when other channels are crowded, or by allowing an increase in tx power to widen transmitter range. However, <strong>this is not recommended</strong> as it could break local laws and cause interference with other radio devices.</p>
+<p>错误配置regdomain可能是有用的-例如，允许在其他信道拥挤时使用未使用的信道，或允许增加tx功率以扩大发射机范围。然而，这是不建议的，因为它可能违反当地法律，并导致干扰其他无线电设备。</p>
+<p><strong>如果你想在Linux机器上方便的改变信道或者无线设备发送功率，你需要安装<a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=wireless-regdb">wireless-regdb</a>包。</strong></p>
+<p><strong>临时的改变无线领域：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iw reg set US</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看当前领域：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iw reg get</span><br><span class="line">global</span><br><span class="line">country US: DFS-FCC</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看信道 功率是否改变成功：</strong></p>
+<p>但我的显示还是CN的功率和信道，我估计没作用，主要还是在于敢于测试。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iw list | grep -A 15 Frequencies:</span><br></pre></td></tr></table></figure>
+
+<p>A more permanent configuration of the regdomain can be achieved through editing <code>/etc/conf.d/wireless-regdom</code> and uncommenting the appropriate domain.</p>
+<p>可以通过编辑 <code>/etc/conf.d/wireless-regdom</code> 并取消注释相应的域来实现更永久的 regdomain 配置。</p>
+<h4 id="设置无线网卡工作模式"><a href="#设置无线网卡工作模式" class="headerlink" title="设置无线网卡工作模式"></a>设置无线网卡工作模式</h4><p>You might need to set the proper operating mode of the wireless card. More specifically, if you are going to connect an <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Ad-hoc_networking">ad-hoc network</a>, you need to set the operating mode to <code>ibss</code>:</p>
+<p>你可能需要设置合适的操作模式为无线网卡，具体的说，你需要连接一个<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Ad-hoc_networking">ad-hoc network</a>（理解成游戏对战时候，各个支持ad-hoc的游戏机互相连接所使用的协议）,你就需要设置工作模式为ibss：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iw dev interface set type ibss</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h2><p>This section contains general troubleshooting tips, not strictly related to problems with drivers or firmware. For such topics, see next section <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Troubleshooting_drivers_and_firmware">#Troubleshooting drivers and firmware</a>.</p>
+<p>此部分包含一般的故障排除提示，与驱动或固件不相关，想看更多，请看下一个环节。</p>
+<p><strong>临时上网方式</strong></p>
+<blockquote>
+<p>你的Arch可能先要安装<a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=usb_modeswitch">usb_modeswitch</a>，装好后Arch将具备可以将连接手机的USB硬盘模式自动转换为网络解调器模式，才可以共享手机网络。</p>
+</blockquote>
+<p>If you have problematic hardware and need internet access to, for example, download some software or get help in forums, you can make use of Android’s built-in feature for internet sharing via USB cable. See <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Android_tethering#USB_tethering">Android tethering#USB tethering</a> for more information.</p>
+<p>如果你有硬件问题并且需要接入互联网。例如，下载一些软件或者向论坛提供求助，你可以先使用Android设备USB共享网络给你的设备，详见<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Android_tethering#USB_tethering">Android tethering#USB tethering</a>。</p>
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><p>A good first measure to troubleshoot is to analyze the system’s logfiles first. In order not to manually parse through them all, it can help to open a second terminal&#x2F;console window and watch the kernels messages with.</p>
+<p>一种很好的排错方式就是分析系统的日志文件。帮助你打开第二个终端&#x2F;窗口并查看内核消息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmesg -w</span><br></pre></td></tr></table></figure>
+
+<p>When using a tool for network management, the same can be done for systemd with</p>
+<p>当你使用网络管理工具，你就可以用下面的方式输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -f </span><br></pre></td></tr></table></figure>
+
+<p>Frequently a wireless error is accompanied by a deauthentication with a particular reason code, for example:</p>
+<p>通常一个无线错误往往伴随着一个特殊的代码，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wlan0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (reason=3)</span><br></pre></td></tr></table></figure>
+
+<p>Looking up <a target="_blank" rel="noopener" href="http://www.aboutcher.co.uk/2012/07/linux-wifi-deauthenticated-reason-codes/">the reason code</a> might give a first hint. Maybe it also helps you to look at the control message <a target="_blank" rel="noopener" href="https://wireless.wiki.kernel.org/en/developers/documentation/mac80211/auth-assoc-deauth">flowchart</a>, the journal messages will follow it.</p>
+<p>查找原因代码可能会给出第一个提示。也许它还可以帮助您查看控制消息流程图，日志消息将遵循它。</p>
+<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><blockquote>
+<p>由于之前解决了没有Swap导致Arch Linux卡顿的问题，同时也实现了机器的休眠功能。在找WiFi网络问题的过程中，在我搜索的众多解决方案中看到一个改善此问题的变通方法，来自一篇论坛问题 <a target="_blank" rel="noopener" href="https://askubuntu.com/questions/583574/intel-dual-band-wireless-7265-dropping-connection/803452#803452">askubuntu-garzanti：Intel Dual Band Wireless 7265 dropping connection</a> ，大部分外国网友的解决方案其实都是出自<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Troubleshooting_drivers_and_firmware">Arch WiKi:Network configuration&#x2F;Wireless</a>，比如其中配置<code>/etc/modprobe.d/iwlwifi.conf</code>禁用掉无线802.11n协议，或者配置关闭蓝牙与WiFi兼容。然而这些配置对于我来说根本毫无作用。又由于之前Swap休眠功能不小心又被我玩坏了，查看一遍 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation">Arch WiKi:Power management&#x2F;Suspend and hibernate</a> 才知道是搞反了两条命令的顺序，<code>mkinitcpio -P</code>和<code>grub-mkconfig -o /boot/grub/grub.cfg</code>， 而在执行<code>mkinitcpio -P</code>命令时候过程报出6条<code>WARNING: Possibly missing firmware for module: xxx</code>，上网一查才知道原来是缺少驱动导致的问题，根据 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Possibly_missing_firmware_for_module_XXXX">Arch WiKi：mkinitcpio</a> 提示安装了报错所需要的固件软件包，至此这样的一个顽固的问题才被解决。</p>
+<p>以下内容只包含解决此标题的问题的操作，关于Swap休眠原理以及实现方式，详细查看 <a target="_blank" rel="noopener" href="https://ding-f.gitee.io/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi.html">铸鼎_：Arch Linux “挖矿脚本kswapd0清除” 背后的秘密</a> 。</p>
+</blockquote>
+<p><strong>由以下报错发现问题所在是缺少固件导致的问题：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mkinitcpio -P</span><br><span class="line">==&gt; Building image from preset: /etc/mkinitcpio.d/linux-lts.preset: &#x27;default&#x27;</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">-k /boot/vmlinuz-linux-lts -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-lts.img</span></span><br><span class="line">==&gt; Starting build: 5.15.61-1-lts</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [base]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [udev]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [autodetect]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [modconf]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [block]</span></span><br><span class="line">==&gt; WARNING: Possibly missing firmware for module: xhci_pci</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [keyboard]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [filesystems]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [resume]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [fsck]</span></span><br><span class="line">==&gt; Generating module dependencies</span><br><span class="line">==&gt; Creating zstd-compressed initcpio image: /boot/initramfs-linux-lts.img</span><br><span class="line">==&gt; Image generation successful</span><br><span class="line">==&gt; Building image from preset: /etc/mkinitcpio.d/linux-lts.preset: &#x27;fallback&#x27;</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">-k /boot/vmlinuz-linux-lts -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-lts-fallback.img -S autodetect</span></span><br><span class="line">==&gt; Starting build: 5.15.61-1-lts</span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [base]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [udev]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [modconf]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [block]</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: wd719x</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: qla2xxx</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: bfa</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: qla1280</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: qed</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: aic94xx</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: xhci_pci</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [keyboard]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [filesystems]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [resume]</span></span><br><span class="line"><span class="meta prompt_">  -&gt; </span><span class="language-bash">Running build hook: [fsck]</span></span><br><span class="line">==&gt; Generating module dependencies</span><br><span class="line">==&gt; Creating zstd-compressed initcpio image: /boot/initramfs-linux-lts-fallback.img</span><br><span class="line">==&gt; Image generation successful</span><br></pre></td></tr></table></figure>
+
+<p>个人认为以上的缺少固件不应该只是<code>WARNING</code>报错，应该标记成<code>ERROR</code>，毕竟缺少固件确实有时候会导致非常令人头疼的问题，比如我的7265D网卡。</p>
+<p><strong>根据 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Possibly_missing_firmware_for_module_XXXX">Arch WiKi：mkinitcpio</a>解决方案安装相应的固件包：</strong></p>
+<p>When initramfs are being rebuild after a kernel update, you might get warnings such as:</p>
+<p>当内核更新后重建 initramfs 时可能会收到警告：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">==&gt; WARNING: Possibly missing firmware for module: wd719x</span><br><span class="line">==&gt; WARNING: Possibly missing firmware for module: aic94xx</span><br><span class="line">==&gt; WARNING: Possibly missing firmware for module: xhci_pci</span><br></pre></td></tr></table></figure>
+
+<p>If these or similar messages appear when generating a <strong>default initramfs image</strong>, then, as the warning says, installing additional firmware may be required. Most common firmware files can be acquired by <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Install">installing</a> the <a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware">linux-firmware</a> package. For other packages providing firmware see the table below or try searching for the module name in the <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Official_repositories">official repositories</a> or <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/AUR">AUR</a>.</p>
+<p>如果在生成默认的initramfs映像时出现这些或类似的消息，那么，正如警告所说，可能需要安装额外的固件。大多数常见的固件文件可以通过安装linux-firmware包来获得。对于提供固件的其他包，请参阅下表，或尝试在官方存储库或AUR中搜索模块名称。</p>
+<p>Otherwise, if the messages only appear when generating the <strong>fallback initramfs image</strong> you have the following options:</p>
+<p>否则，如果消息仅在生成后备 initramfs 映像时出现，您有以下选项：</p>
+<ul>
+<li><p>You can safely ignore the warnings, if you know that you do not use the affected hardware.</p>
+<p>如果您知道您没有<strong>使用受影响的硬件</strong>，那么您可以放心地忽略警告。</p>
+</li>
+<li><p>If you want to suppress the warnings, you can install the missing firmware. The meta-package <a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/mkinitcpio-firmware/">mkinitcpio-firmware</a>AUR contains most optional firmwares. Alternatively, manually install the needed packages:</p>
+<p>如果您想消除警告，可以安装缺失的固件。元包mkinitcpio-firmwareAUR包含了大多数可选的固件。或者，手动安装所需的包：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Module</th>
+<th align="center">Package</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">aic94xx</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/aic94xx-firmware/">aic94xx-firmware</a>AUR</td>
+</tr>
+<tr>
+<td align="center">bfa</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-qlogic">linux-firmware-qlogic</a></td>
+</tr>
+<tr>
+<td align="center">bnx2x</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-bnx2x">linux-firmware-bnx2x</a></td>
+</tr>
+<tr>
+<td align="center">liquidio</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-liquidio">linux-firmware-liquidio</a></td>
+</tr>
+<tr>
+<td align="center">mlxsw_spectrum</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-mellanox">linux-firmware-mellanox</a></td>
+</tr>
+<tr>
+<td align="center">nfp</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-nfp">linux-firmware-nfp</a></td>
+</tr>
+<tr>
+<td align="center">qat_4xxx</td>
+<td align="center">Firmware is not yet available.</td>
+</tr>
+<tr>
+<td align="center">qed</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-qlogic">linux-firmware-qlogic</a></td>
+</tr>
+<tr>
+<td align="center">qla1280</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-qlogic">linux-firmware-qlogic</a></td>
+</tr>
+<tr>
+<td align="center">qla2xxx</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=linux-firmware-qlogic">linux-firmware-qlogic</a></td>
+</tr>
+<tr>
+<td align="center">wd719x</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/wd719x-firmware/">wd719x-firmware</a>AUR</td>
+</tr>
+<tr>
+<td align="center">xhci_pci</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/upd72020x-fw/">upd72020x-fw</a>AUR</td>
+</tr>
+</tbody></table>
+<p>根据以上说明，一个是在生成<strong>default initramfs image</strong>阶段，一个是在生成<strong>fallback initramfs image</strong>阶段，当然这两个镜像的生成也是有先后顺序的，具体请查看 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio#Image_creation_and_activation">Arch WiKi：mkinitcpio</a>。</p>
+<p><strong>根据上述安装缺失的固件包：</strong></p>
+<ul>
+<li><strong>default initramfs image</strong>阶段缺少 xhci_pci，根据<code>==&gt; WARNING: Possibly missing firmware for module: xhci_pci</code></li>
+<li><strong>fallback initramfs image</strong>阶段缺少 wd719x qla2xxx bfa qla1280 qed aic94xx xhci_pci</li>
+</ul>
+<p>根据步骤，查询安装所需软件包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S upd72020x-fw linux-firmware-qlogic upd72020x-fw wd719x-firmware aic94xx-firmware</span><br></pre></td></tr></table></figure>
+
+<p><strong>再生成一遍mkinitcpio：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkinitcpio -P</span><br></pre></td></tr></table></figure>
+
+<p>以上未报错，直接Success.</p>
+<p><strong>为了保险起见，重新生成了一次grub配置：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>重启，问题解决！！</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ding-f.github.io">付鼎</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ding-f.github.io/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji">https://ding-f.github.io/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ding-f.github.io" target="_blank">铸鼎_</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ArchLinux/">ArchLinux</a><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a></div><div class="post_share"><div class="social-share" data-image="/images/2022-08-28-Arch-Linux-%E7%B3%BB%E7%BB%9F-WiFi%E7%A1%AC%E4%BB%B6%E9%A9%B1%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/OIP-C.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="/images/reward/alipay_red.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/alipay_red.png" alt="🧧"/></a><div class="post-qr-code-desc">🧧</div></li><li class="reward-item"><a href="/images/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/reward/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/28/arch-linux-wa-kuang-jiao-ben-kswapd0-qing-chu-bei-hou-de-mi-mi" title="Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密"><img class="cover" src="/images/2022-08-28-Arch-Linux-%E6%8C%96%E7%9F%BF%E8%84%9A%E6%9C%ACkswapd0%E6%B8%85%E9%99%A4-%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86/726bd92a52d538da4db4149b4966551a7eb.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Arch Linux &quot;挖矿脚本kswapd0清除&quot; 背后的秘密</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/27/java-wei-fu-wu" title="Java 微服务"><img class="cover" src="/images/2022-07-27-Java-%E5%BE%AE%E6%9C%8D%E5%8A%A1/v2-05ffc3ebd00f9ff4b1f5922649694e6b_1440w.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 微服务</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/10/arch-linux" title="Arch Linux"><img class="cover" src="/images/arch_linux/arch-linux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-10</div><div class="title">Arch Linux</div></div></a></div><div><a href="/2022/03/02/networkmanager-xin-ban-te-xing" title="NetWorkManager新版特性"><img class="cover" src="/images/network_manager/network_m.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">NetWorkManager新版特性</div></div></a></div><div><a href="/2021/04/06/mysql" title="MySQL"><img class="cover" src="/images/mariadb/mysql-mariadb.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-06</div><div class="title">MySQL</div></div></a></div><div><a href="/2021/08/10/open-ssh" title="Open SSH"><img class="cover" src="/images/openssh/openssh-logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Open SSH</div></div></a></div><div><a href="/2021/08/10/shell" title="Shell"><img class="cover" src="/images/shell/shell.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Shell</div></div></a></div><div><a href="/2021/08/10/vim-bian-ji-qi" title="Vim编辑器"><img class="cover" src="/images/vim/vim.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-10</div><div class="title">Vim编辑器</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">付鼎</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ding-f"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://qm.qq.com/cgi-bin/qm/qr?k=OK8IvfGeK0mn9ocBK1YcJKdY2No_KXoR" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #74C0FC;"></i></a><a class="social-icon" href="mailto:g00gleding@gmail.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">关于本文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udev"><span class="toc-number">2.</span> <span class="toc-text">udev</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#udev%E5%8A%A0%E8%BD%BD%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">udev加载可能存在的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81"><span class="toc-number">3.</span> <span class="toc-text">检查设备状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux-firmware"><span class="toc-number">4.</span> <span class="toc-text">linux-firmware</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-%E5%9B%BA%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">安装驱动&#x2F;固件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E8%AE%BE%E5%A4%87"><span class="toc-number">4.1.1.</span> <span class="toc-text">关于我的设备</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">网络接口管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#iw-and-wireless-tools-comparison"><span class="toc-number">4.2.1.</span> <span class="toc-text">iw and wireless_tools comparison</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E6%8E%A5%E5%85%A5%E7%82%B9"><span class="toc-number">4.2.2.</span> <span class="toc-text">扫描接入点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%AE%A1%E7%90%86%E9%A2%86%E5%9F%9F%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.2.3.</span> <span class="toc-text">无线管理领域设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.4.</span> <span class="toc-text">设置无线网卡工作模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">故障排除</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="toc-number">5.1.</span> <span class="toc-text">查看日志</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">发现问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="嵌入式通讯协议"/></a><div class="content"><a class="title" href="/2024/11/26/qian-ru-shi-tong-xun-xie-yi" title="嵌入式通讯协议">嵌入式通讯协议</a><time datetime="2024-11-25T18:37:22.000Z" title="发表于 2024-11-26 02:37:22">2024-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/16/lvm" title="LVM"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LVM"/></a><div class="content"><a class="title" href="/2024/07/16/lvm" title="LVM">LVM</a><time datetime="2024-07-16T00:12:29.000Z" title="发表于 2024-07-16 08:12:29">2024-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由"><img src="/images/error.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux网络路由"/></a><div class="content"><a class="title" href="/2024/07/09/linux-wang-luo-lu-you" title="Linux网络路由">Linux网络路由</a><time datetime="2024-07-08T20:39:26.000Z" title="发表于 2024-07-09 04:39:26">2024-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求"><img src="/images/2024-06-14-%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/1bb5dbbcf24047c59aa8f300ce6baec8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域请求"/></a><div class="content"><a class="title" href="/2024/06/14/kua-yu-qing-qiu" title="跨域请求">跨域请求</a><time datetime="2024-06-13T20:37:03.000Z" title="发表于 2024-06-14 04:37:03">2024-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件"><img src="/images/2024-06-09-%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6/d5a3f9ec8d634cb658645b38f9d74d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="电子元件"/></a><div class="content"><a class="title" href="/2024/06/09/dian-zi-yuan-jian" title="电子元件">电子元件</a><time datetime="2024-06-08T20:23:34.000Z" title="发表于 2024-06-09 04:23:34">2024-06-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 付鼎</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ziXj4IBdz8gJoTTwpwRz1j1d-gzGzoHsz',
+      appKey: 'cdWGyVSvxCcDKnMhlRaSvAJo',
+      avatar: 'monsterid',
+      serverURLs: 'https://zixj4ibd.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
