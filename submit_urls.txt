@@ -1,3 +1,4 @@
+https://ding-f.github.io/2022/06/07/typora
 https://ding-f.github.io/2026/03/06/fang-da-qi
 https://ding-f.github.io/2021/02/16/hexo
 https://ding-f.github.io/2024/06/09/dian-zi-dian-lu-san-da-he-xin-qi-jian-jie-xi
@@ -7,4 +8,3 @@ https://ding-f.github.io/2021/03/08/spring
 https://ding-f.github.io/2021/04/19/python3
 https://ding-f.github.io/2023/06/11/pip-yi-lai-guan-li
 https://ding-f.github.io/2021/11/30/git-gitee
-https://ding-f.github.io/2024/05/26/qian-tan-duo-xian-cheng
