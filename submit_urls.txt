@@ -1,3 +1,4 @@
+https://buildding.github.io/2026/04/07/jbct12-han-tai-xiang-mu-9-hao-ji-shi
 https://buildding.github.io/2021/02/14/markdown
 https://buildding.github.io/2021/02/24/wine-pei-zhi
 https://buildding.github.io/2022/03/05/wei-xin-xiao-cheng-xu-kai-fa
@@ -7,4 +8,3 @@ https://buildding.github.io/2022/02/13/java-bi-ye-she-ji-kai-fa-bi-ji
 https://buildding.github.io/2022/07/27/java-wei-fu-wu
 https://buildding.github.io/2021/11/30/git-gitee
 https://buildding.github.io/2022/08/28/arch-linux-xi-tong-wifi-ying-jian-qu-dong-xiu-fu-zhe-teng-bi-ji
-https://buildding.github.io/2024/03/05/openwrt
